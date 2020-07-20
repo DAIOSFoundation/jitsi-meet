@@ -10,6 +10,8 @@ import {
 import Container from './Container';
 import Text from './Text';
 
+import { Button } from './index';
+
 type Props = {
 
     /**
@@ -163,38 +165,56 @@ export default class MeetingsList extends Component<Props> {
                 onPress ? 'with-click-handler' : 'without-click-handler'}`;
 
         return (
-            <Container
-                className = { rootClassName }
-                key = { index }
-                onClick = { onPress }>
-                <Container className = 'left-column'>
-                    <Text className = 'date'>
-                        { _toDateString(date) }
-                    </Text>
-                    <Text>
-                        { _toTimeString(time) }
-                    </Text>
+            // eslint-disable-next-line react-native/no-inline-styles
+            <Container style = {{ position: 'relative' }}>
+                <Container
+                    onClick = { onPress }
+                    className = { rootClassName }
+                    key = { index }>
+                    <Container className = 'left-column'>
+                        <Text className = 'date'>
+                            {_toDateString(date)}
+                        </Text>
+                        <Text>
+                            {_toTimeString(time)}
+                        </Text>
+                    </Container>
+                    <Container className = 'right-column'>
+                        <Text className = 'title'>
+                            {title}
+                        </Text>
+                        {
+                            hideURL || !url ? null : (
+                                <Text>
+                                    {url}
+                                </Text>)
+                        }
+                        {
+                            typeof duration === 'number' ? (
+                                <Text>
+                                    {getLocalizedDurationFormatter(duration)}
+                                </Text>) : null
+                        }
+                    </Container>
+                    <Container className = 'actions'>
+                        {elementAfter || null}
+                    </Container>
                 </Container>
-                <Container className = 'right-column'>
-                    <Text className = 'title'>
-                        { title }
-                    </Text>
-                    {
-                        hideURL || !url ? null : (
-                            <Text>
-                                { url }
-                            </Text>)
-                    }
-                    {
-                        typeof duration === 'number' ? (
-                            <Text>
-                                { getLocalizedDurationFormatter(duration) }
-                            </Text>) : null
-                    }
-                </Container>
-                <Container className = 'actions'>
-                    { elementAfter || null }
-                </Container>
+                {/* eslint-disable-next-line react-native/no-inline-styles */}
+                <div
+                    style = {{
+                        position: 'absolute',
+                        top: '50%',
+                        right: 30,
+                        transform: 'translate(0,-50%)'
+                    }}>
+                    {/* eslint-disable-next-line react/jsx-no-bind */}
+                    <Button onValueChange = { () => console.log('TEST') }>
+                        <Text>
+                            삭제
+                        </Text>
+                    </Button>
+                </div>
             </Container>
         );
     }
