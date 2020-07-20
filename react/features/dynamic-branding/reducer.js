@@ -14,7 +14,7 @@ const DEFAULT_STATE = {
     backgroundColor: '',
     backgroundImageUrl: '',
     customizationReady: false,
-    logoClickUrl: '',
+    logoClickUrl: 'https://daios.io',
     logoImageUrl: ''
 };
 
