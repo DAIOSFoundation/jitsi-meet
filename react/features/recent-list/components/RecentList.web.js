@@ -6,6 +6,7 @@ import type { Dispatch } from 'redux';
 import { translate } from '../../base/i18n';
 import { MeetingsList } from '../../base/react';
 import { connect } from '../../base/redux';
+import { _deleteRecentListEntry } from '../actions';
 import { isRecentListEnabled, toDisplayableList } from '../functions';
 
 import AbstractRecentList from './AbstractRecentList';
@@ -33,7 +34,10 @@ type Props = {
     /**
      * The recent list from the Redux store.
      */
-    _recentList: Array<Object>
+    _recentList: Array<Object>,
+
+    // 최근 회의방 리스트 개별 제거 함수
+    _deleteRecentListEntry: Function
 };
 
 /**
@@ -68,12 +72,14 @@ class RecentList extends AbstractRecentList<Props> {
         }
         const {
             disabled,
-            _recentList
+            _recentList,
+            _deleteRecentListEntry
         } = this.props;
         const recentList = toDisplayableList(_recentList);
 
         return (
             <MeetingsList
+                deleteRecentListEntry = { _deleteRecentListEntry }
                 disabled = { disabled }
                 hideURL = { true }
                 listEmptyComponent = { this._getRenderListEmptyComponent() }
@@ -98,4 +104,22 @@ export function _mapStateToProps(state: Object) {
     };
 }
 
-export default translate(connect(_mapStateToProps)(RecentList));
+/**
+ * Maps dispatching of some actions to React component props.
+ *
+ * @param {Function} dispatch - Redux action dispatcher.
+ * @private
+ * @returns {{
+ *     _deleteRecentListEntry: void
+ * }}
+ */
+export function _mapDispatchToProps(dispatch: Function) {
+    // 최근 회의방 리스트 개별 제거 Dispatch
+    return {
+        _deleteRecentListEntry(entryId: Object) {
+            dispatch(_deleteRecentListEntry(entryId));
+        }
+    };
+}
+
+export default translate(connect(_mapStateToProps, _mapDispatchToProps)(RecentList));

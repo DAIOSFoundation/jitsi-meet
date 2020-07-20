@@ -16,7 +16,7 @@ import {
  *     entryId: Object
  * }}
  */
-export function deleteRecentListEntry(entryId: Object) {
+export function _deleteRecentListEntry(entryId: Object) {
     return {
         type: DELETE_RECENT_LIST_ENTRY,
         entryId

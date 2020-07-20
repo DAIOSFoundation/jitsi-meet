@@ -42,7 +42,10 @@ type Props = {
     /**
      * Defines what happens when  an item in the section list is clicked
      */
-    onItemClick: Function
+    onItemClick: Function,
+
+    // 최근 회의방 리스트 개별 제거 함수
+    deleteRecentListEntry: Function
 };
 
 /**
@@ -158,7 +161,7 @@ export default class MeetingsList extends Component<Props> {
             title,
             url
         } = meeting;
-        const { hideURL = false } = this.props;
+        const { hideURL = false, deleteRecentListEntry } = this.props;
         const onPress = this._onPress(url);
         const rootClassName
             = `item ${
@@ -168,9 +171,9 @@ export default class MeetingsList extends Component<Props> {
             // eslint-disable-next-line react-native/no-inline-styles
             <Container style = {{ position: 'relative' }}>
                 <Container
-                    onClick = { onPress }
                     className = { rootClassName }
-                    key = { index }>
+                    key = { index }
+                    onClick = { onPress }>
                     <Container className = 'left-column'>
                         <Text className = 'date'>
                             {_toDateString(date)}
@@ -209,7 +212,7 @@ export default class MeetingsList extends Component<Props> {
                         transform: 'translate(0,-50%)'
                     }}>
                     {/* eslint-disable-next-line react/jsx-no-bind */}
-                    <Button onValueChange = { () => console.log('TEST') }>
+                    <Button onValueChange = { () => deleteRecentListEntry(meeting) }>
                         <Text>
                             삭제
                         </Text>
