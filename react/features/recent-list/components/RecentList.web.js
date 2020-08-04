@@ -55,7 +55,6 @@ class RecentList extends AbstractRecentList<Props> {
      */
     constructor(props: Props) {
         super(props);
-
         this._getRenderListEmptyComponent
             = this._getRenderListEmptyComponent.bind(this);
         this._onPress = this._onPress.bind(this);
