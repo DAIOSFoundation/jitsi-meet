@@ -2,7 +2,7 @@
 /* eslint sort-keys: ["error", "asc", {"caseSensitive": false}] */
 
 var interfaceConfig = {
-    APP_NAME: 'Jitsi Meet',
+    APP_NAME: 'DVision',
     AUDIO_LEVEL_PRIMARY_COLOR: 'rgba(255,255,255,0.4)',
     AUDIO_LEVEL_SECONDARY_COLOR: 'rgba(255,255,255,0.2)',
 
@@ -47,7 +47,7 @@ var interfaceConfig = {
     DEFAULT_BACKGROUND: '#474747',
     DEFAULT_LOCAL_DISPLAY_NAME: 'me',
     DEFAULT_LOGO_URL: 'images/watermark.png',
-    DEFAULT_REMOTE_DISPLAY_NAME: 'Fellow Jitster',
+    DEFAULT_REMOTE_DISPLAY_NAME: 'DVision',
 
     DISABLE_DOMINANT_SPEAKER_INDICATOR: false,
 
@@ -130,7 +130,7 @@ var interfaceConfig = {
      */
     MOBILE_APP_PROMO: true,
 
-    NATIVE_APP_NAME: 'Jitsi Meet',
+    NATIVE_APP_NAME: 'DVision',
 
     // Names of browsers which should show a warning stating the current browser
     // has a suboptimal experience. Browsers which are not listed as optimal or
