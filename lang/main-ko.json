@@ -1,6 +1,7 @@
 {
     "addPeople": {
         "add": "초대",
+        "addContacts": "연락처 초대",
         "countryNotSupported": "아직 해당 지역을 지원하지 않습니다",
         "countryReminder": "미국 이외의 지역으로 전화하시겠습니까? 국가 번호로 시작해야합니다!",
         "disabled": "사람들을 초대 할 수 없습니다",
@@ -17,7 +18,9 @@
         "telephone": "전화: {{number}}",
         "title": "이 회의에 사람들을 초대하십시오",
         "inviteMoreHeader": "현재 회의방에 혼자 있습니다.",
-        "inviteMorePrompt": "더 많은 사람 초대"
+        "inviteMorePrompt": "더 많은 사람 초대",
+        "shareLink": "다른 사람을 초대하기 위해 회의 링크 공유",
+        "shareInvite": "회의 초대 공유"
     },
     "audioDevices": {
         "bluetooth": "블루투스",
@@ -603,7 +606,7 @@
             "show": "",
             "speakerStats": "",
             "tileView": "",
-            "toggleCamera": "카메라 토ㄱ",
+            "toggleCamera": "카메라 토글",
             "videomute": "",
             "videoblur": ""
         },
@@ -635,9 +638,11 @@
         "raiseHand": "말하기 요청/해제",
         "raiseYourHand": "",
         "Settings": "설정",
-        "sharedvideo": "",
+        "sharedvideo": "YouTube 비디오 공유",
+        "muteEveryone": "모두 음소거",
+        "embedMeeting": "내장회의",
         "shareRoom": "",
-        "shortcuts": "",
+        "shortcuts": "뷰 단축키",
         "speakerStats": "접속자 통계",
         "startScreenSharing": "",
         "startSubtitles": "",
@@ -646,9 +651,9 @@
         "stopSharedVideo": "",
         "talkWhileMutedPopup": "",
         "tileViewToggle": "",
-        "toggleCamera": "카메라 토ㄱ",
+        "toggleCamera": "카메라 토글",
         "videomute": "",
-        "startvideoblur": "",
+        "startvideoblur": "배경 흐리게",
         "stopvideoblur": ""
     },
     "transcribing": {
@@ -739,5 +744,8 @@
         "terms": "이용약관",
         "title": "비대면 화상 솔루션 DVision",
         "placeHolder": "방 제목을 입력해주세요"
+    },
+    "embedMeeting": {
+        "title": "이 회의 퍼가기"
     }
 }
