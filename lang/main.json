@@ -604,13 +604,13 @@
             "signedIn": "Currently accessing calendar events for {{email}}. Click the Disconnect button below to stop accessing calendar events.",
             "title": "Calendar"
         },
-        "devices": "장치",
+        "devices": "Devices",
         "followMe": "Everyone follows me",
         "language": "Language",
         "loggedIn": "Logged in as {{name}}",
         "microphones": "Microphones",
         "moderator": "Moderator",
-        "more": "더보기",
+        "more": "More",
         "name": "Name",
         "noDevice": "None",
         "selectAudioOutput": "Audio output",
@@ -842,7 +842,7 @@
             "join": "Tap to join",
             "roomname": "Enter room name"
         },
-        "appDescription": "Go ahead, video chat with the whole team. In fact, invite everyone you know. {{app}} is a fully encrypted, 100% open source video conferencing solution that you can use all day, every day, for free — with no account needed.",
+        "appDescription": "DVision is a non-face-to-face video conferencing system provided by the media part of DAIOS, a distributed AI operating system.",
         "audioVideoSwitch": {
             "audio": "Voice",
             "video": "Video"
@@ -850,7 +850,7 @@
         "calendar": "Calendar",
         "connectCalendarButton": "Connect your calendar",
         "connectCalendarText": "Connect your calendar to view all your meetings in {{app}}. Plus, add {{provider}} meetings to your calendar and start them with one click.",
-        "enterRoomTitle": "DVision에 오신걸 환영합니다 !",
+        "enterRoomTitle": "Welcome to DVision!",
         "getHelp": "Get help",
         "go": "GO",
         "goSmall": "GO",
@@ -867,7 +867,8 @@
         "roomnameHint": "Enter the name or URL of the room you want to join. You may make a name up, just let the people you are meeting know it so that they enter the same name.",
         "sendFeedback": "Send feedback",
         "terms": "Terms",
-        "title": "Secure, fully featured, and completely free video conferencing"
+        "title": "DVision for non-facing imaging solution",
+        "placeHolder": "Please enter a room title"
     },
     "lonelyMeetingExperience": {
         "button": "Invite others",

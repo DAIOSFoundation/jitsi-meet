@@ -169,11 +169,10 @@ export default class MeetingsList extends Component<Props> {
 
         return (
             // eslint-disable-next-line react-native/no-inline-styles
-            <Container style = {{ position: 'relative' }}>
+            <Container style = {{ position: 'relative' }}  key = { index }>
                 <Container
                     onClick = { onPress }
-                    className = { rootClassName }
-                    key = { index }>
+                    className = { rootClassName }>
                     <Container className = 'left-column'>
                         <Text className = 'date'>
                             {_toDateString(date)}

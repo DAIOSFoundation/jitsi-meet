@@ -72,13 +72,18 @@ class RecentList extends AbstractRecentList<Props> {
         const {
             disabled,
             _recentList,
-            _deleteRecentListEntry
+            dispatch
         } = this.props;
         const recentList = toDisplayableList(_recentList);
 
+        // 최근 회의방 리스트 개별 제거 Dispatch
+        const deleteRecentListEntry = (entryId) => {
+            dispatch(_deleteRecentListEntry(entryId))
+        }
+
         return (
             <MeetingsList
-                deleteRecentListEntry = { _deleteRecentListEntry }
+                deleteRecentListEntry = { deleteRecentListEntry }
                 disabled = { disabled }
                 hideURL = { true }
                 listEmptyComponent = { this._getRenderListEmptyComponent() }
@@ -103,22 +108,4 @@ export function _mapStateToProps(state: Object) {
     };
 }
 
-/**
- * Maps dispatching of some actions to React component props.
- *
- * @param {Function} dispatch - Redux action dispatcher.
- * @private
- * @returns {{
- *     _deleteRecentListEntry: void
- * }}
- */
-export function _mapDispatchToProps(dispatch: Function) {
-    // 최근 회의방 리스트 개별 제거 Dispatch
-    return {
-        _deleteRecentListEntry(entryId: Object) {
-            dispatch(_deleteRecentListEntry(entryId));
-        }
-    };
-}
-
-export default translate(connect(_mapStateToProps, _mapDispatchToProps)(RecentList));
+export default translate(connect(_mapStateToProps)(RecentList));
