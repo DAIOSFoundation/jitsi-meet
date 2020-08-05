@@ -15,7 +15,9 @@
         "searchPeople": "인명 검색",
         "searchPeopleAndNumbers": "인명 검색 또는 전화번호 추가",
         "telephone": "전화: {{number}}",
-        "title": "이 회의에 사람들을 초대하십시오"
+        "title": "이 회의에 사람들을 초대하십시오",
+        "inviteMoreHeader": "현재 회의방에 혼자 있습니다.",
+        "inviteMorePrompt": "더 많은 사람 초대"
     },
     "audioDevices": {
         "bluetooth": "블루투스",
@@ -49,7 +51,7 @@
         "messagebox": "",
         "nickname": {
             "popover": "닉네임을 선택하세요",
-            "title": ""
+            "title": "채팅 할 닉네임을 입력하십시오"
         },
         "title": ""
     },
