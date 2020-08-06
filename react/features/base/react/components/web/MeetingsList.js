@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 import {
     getLocalizedDateFormatter,
@@ -10,7 +10,7 @@ import {
 import Container from './Container';
 import Text from './Text';
 
-import { Button } from './index';
+import {Button} from './index';
 
 type Props = {
 
@@ -103,7 +103,7 @@ export default class MeetingsList extends Component<Props> {
      * @returns {React.ReactNode}
      */
     render() {
-        const { listEmptyComponent, meetings } = this.props;
+        const {listEmptyComponent, meetings} = this.props;
 
         /**
          * If there are no recent meetings we don't want to display anything
@@ -111,7 +111,7 @@ export default class MeetingsList extends Component<Props> {
         if (meetings) {
             return (
                 <Container
-                    className = 'meetings-list'>
+                    className='meetings-list'>
                     {
                         meetings.length === 0
                             ? listEmptyComponent
@@ -134,7 +134,7 @@ export default class MeetingsList extends Component<Props> {
      * @returns {Function}
      */
     _onPress(url) {
-        const { disabled, onPress } = this.props;
+        const {disabled, onPress} = this.props;
 
         if (!disabled && url && typeof onPress === 'function') {
             return () => onPress(url);
@@ -161,28 +161,28 @@ export default class MeetingsList extends Component<Props> {
             title,
             url
         } = meeting;
-        const { hideURL = false, deleteRecentListEntry } = this.props;
+        const {hideURL = false, deleteRecentListEntry} = this.props;
         const onPress = this._onPress(url);
         const rootClassName
             = `item ${
-                onPress ? 'with-click-handler' : 'without-click-handler'}`;
+            onPress ? 'with-click-handler' : 'without-click-handler'}`;
 
         return (
             // eslint-disable-next-line react-native/no-inline-styles
-            <Container style = {{ position: 'relative' }}  key = { index }>
+            <Container style={{position: 'relative'}} key={index}>
                 <Container
-                    onClick = { onPress }
-                    className = { rootClassName }>
-                    <Container className = 'left-column'>
-                        <Text className = 'date'>
+                    onClick={onPress}
+                    className={rootClassName}>
+                    <Container className='left-column'>
+                        <Text className='date'>
                             {_toDateString(date)}
                         </Text>
                         <Text>
                             {_toTimeString(time)}
                         </Text>
                     </Container>
-                    <Container className = 'right-column'>
-                        <Text className = 'title'>
+                    <Container className='right-column'>
+                        <Text className='title'>
                             {title}
                         </Text>
                         {
@@ -198,20 +198,26 @@ export default class MeetingsList extends Component<Props> {
                                 </Text>) : null
                         }
                     </Container>
-                    <Container className = 'actions'>
+                    <Container className='actions'>
                         {elementAfter || null}
                     </Container>
                 </Container>
                 {/* eslint-disable-next-line react-native/no-inline-styles */}
                 <div
-                    style = {{
+                    style={{
                         position: 'absolute',
                         top: '50%',
                         right: 30,
                         transform: 'translate(0,-50%)'
                     }}>
                     {/* eslint-disable-next-line react/jsx-no-bind */}
-                    <button style={{padding:15,backgroundColor:'gray', color:'white', outline:'none'}} onClick = { () => deleteRecentListEntry(meeting) }>
+                    <button style={{
+                        padding: 15,
+                        backgroundColor: 'black',
+                        color: 'white',
+                        border: 'none',
+                        outline: 'none'
+                    }} onClick={() => deleteRecentListEntry(meeting)}>
                         <Text>
                             삭제
                         </Text>
