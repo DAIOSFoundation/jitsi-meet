@@ -211,11 +211,11 @@ export default class MeetingsList extends Component<Props> {
                         transform: 'translate(0,-50%)'
                     }}>
                     {/* eslint-disable-next-line react/jsx-no-bind */}
-                    <Button onValueChange = { () => deleteRecentListEntry(meeting) }>
+                    <button style={{padding:15,backgroundColor:'gray', color:'white', outline:'none'}} onClick = { () => deleteRecentListEntry(meeting) }>
                         <Text>
                             삭제
                         </Text>
-                    </Button>
+                    </button>
                 </div>
             </Container>
         );
