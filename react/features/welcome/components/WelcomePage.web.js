@@ -186,17 +186,17 @@ class WelcomePage extends AbstractWelcomePage {
                     <div className = 'header-image' />
                     <div className = 'header-text'>
                         <h1 className = 'header-text-title'>
-                            { t('welcomepage.title') }
+                            {/*{ t('welcomepage.title') }*/}
                         </h1>
                         <p className = 'header-text-description'>
-                            { t('welcomepage.appDescription',
-                                { app: APP_NAME }) }
+                            {/*{ t('welcomepage.appDescription',*/}
+                            {/*    { app: APP_NAME }) }*/}
                         </p>
                     </div>
                     <div id = 'enter_room'>
                         <div className = 'enter-room-input-container'>
                             <div className = 'enter-room-title'>
-                                { t('welcomepage.enterRoomTitle') }
+                                {/*{ t('welcomepage.enterRoomTitle') }*/}
                             </div>
                             <form onSubmit = { this._onFormSubmit }>
                                 <input
