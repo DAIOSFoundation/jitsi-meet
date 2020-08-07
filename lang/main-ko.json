@@ -492,12 +492,12 @@
         "availableSpace": "",
         "beta": "베타",
         "busy": "레코딩 자원을 확보하고 있습니다. 몇 분 후에 다시 시도하십시오.",
-        "busyTitle": "모든 레코더가 현재 사용 중입니다",
+        "busyTitle": "모든 레코더가 현재 사용 중입니다.",
         "error": "레코딩이 실패했습니다. 다시 시도하십시오.",
         "expandedOff": "레코딩이 중지됨",
         "expandedOn": "",
         "expandedPending": "",
-        "failedToStart": "레코딩을 시작하지 못했습니다",
+        "failedToStart": "레코딩을 시작하지 못했습니다.",
         "fileSharingdescription": "",
         "live": "라이브",
         "loggedIn": "",
@@ -510,7 +510,7 @@
         "signIn": "",
         "signOut": "",
         "unavailable": "죄송합니다. {{serviceName}}은 현재 사용할 수 없습니다. 저희는 문제를 해결하기 위해 노력하고 있습니다. 나중에 다시 시도 해주십시오.",
-        "unavailableTitle": "레코딩을 사용할 수 없습니다"
+        "unavailableTitle": "레코딩을 사용할 수 없습니다."
     },
     "sectionList": {
         "pullToRefresh": "당겨서 새로고침"
@@ -534,14 +534,14 @@
         "selectAudioOutput": "오디오 출력",
         "selectCamera": "카메라",
         "selectMic": "오디오",
-        "startAudioMuted": "모두가 음소거를 시작합니다",
-        "startVideoMuted": "모두가 비디오 비활성화로 시작합니다",
+        "startAudioMuted": "모두가 음소거를 시작합니다.",
+        "startVideoMuted": "모두가 비디오 비활성화로 시작합니다.",
         "title": "설정"
     },
     "settingsView": {
         "alertOk": "확인",
         "alertTitle": "경고",
-        "alertURLText": "입력된 서버 URL이 잘못되었습니다",
+        "alertURLText": "입력된 서버 URL이 잘못되었습니다.",
         "buildInfoSection": "",
         "conferenceSection": "회의",
         "displayName": "유저이름",
@@ -568,12 +568,12 @@
     },
     "startupoverlay": {
         "policyText": " ",
-        "title": "{{app}}은 마이크와 카메라를 사용해야합니다"
+        "title": "{{app}}은 마이크와 카메라를 사용해야합니다."
     },
     "suspendedoverlay": {
         "rejoinKeyTitle": "재접속",
-        "text": "다시 연결하려면 <i>재접속</i> 버튼을 누르십시오",
-        "title": "컴퓨터 휴식 모드가 되어 화상 통화가 중단되었습니다"
+        "text": "다시 연결하려면 <i>재접속</i> 버튼을 누르십시오.",
+        "title": "컴퓨터 휴식 모드가 되어 화상 통화가 중단되었습니다."
     },
     "toolbar": {
         "accessibilityLabel": {
@@ -630,7 +630,7 @@
         "login": "",
         "logout": "로그아웃",
         "lowerYourHand": "",
-        "moreActions": "추가 액션",
+        "moreActions": "추가 기능",
         "mute": "마이크",
         "openChat": "",
         "pip": "",
@@ -672,23 +672,23 @@
         "androidGrantPermissions": "브라우저에서 권한을 요청할 때 <b><i>허락</i></b>을 선택",
         "chromeGrantPermissions": "브라우저에서 권한을 요청할 때 <b><i>허락</i></b>을 선택",
         "edgeGrantPermissions": "브라우저에서 권한을 요청할 때 <b><i>Yes</i></b>를 선택",
-        "electronGrantPermissions": "카메라와 마이크 사용 권한을 부여하십시오",
+        "electronGrantPermissions": "카메라와 마이크 사용 권한을 부여하십시오.",
         "firefoxGrantPermissions": "브라우저에서 권한을 요청할 때 <b><i>선택된 디바이스 공유</i></b>를 선택",
         "iexplorerGrantPermissions": "브라우저에서 권한을 요청할 때 <b><i>OK</i></b>를 선택",
-        "nwjsGrantPermissions": "카메라와 마이크 사용 권한을 부여하십시오",
+        "nwjsGrantPermissions": "카메라와 마이크 사용 권한을 부여하십시오.",
         "operaGrantPermissions": "브라우저에서 권한을 요청할 때 <b><i>허락</i></b>을 선택",
         "react-nativeGrantPermissions": "브라우저에서 권한을 요청할 때 <b><i>허락</i></b>을 선택",
         "safariGrantPermissions": "브라우저에서 권한을 요청할 때 <b><i>OK</i></b>를 선택"
     },
     "videoSIPGW": {
         "busy": "자원을 확보하기 위해 노력하고 있습니다. 몇 분 후에 다시 시도하십시오.",
-        "busyTitle": "서비스가 현재 사용 중입니다",
-        "errorAlreadyInvited": "{{displayName}} 이미 초대되었습니다",
+        "busyTitle": "서비스가 현재 사용 중입니다.",
+        "errorAlreadyInvited": "{{displayName}} 이미 초대되었습니다.",
         "errorInvite": "회의가 아직 설정되지 않았습니다. 나중에 다시 시도 해주십시오.",
         "errorInviteFailed": "문제를 해결하기 위해 노력하고 있습니다. 나중에 다시 시도 해주십시오.",
         "errorInviteFailedTitle": "{{displayName}} 초대 실패",
-        "errorInviteTitle": "초대하는 중에 오류가 발생했습니다",
-        "pending": "{{displayName}} 이미 초대되었습니다"
+        "errorInviteTitle": "초대하는 중에 오류가 발생했습니다.",
+        "pending": "{{displayName}} 이미 초대되었습니다."
     },
     "videoStatus": {
         "audioOnly": "오디오 전용",
@@ -700,8 +700,8 @@
         "labelTooltipAudioOnly": "오디오 전용 모드 사용",
         "ld": "LD",
         "lowDefinition": "저화질",
-        "onlyAudioAvailable": "오디오만 사용할 수 있습니다",
-        "onlyAudioSupported": "이 브라우저에서는 오디오만 지원합니다",
+        "onlyAudioAvailable": "오디오만 사용할 수 있습니다.",
+        "onlyAudioSupported": "이 브라우저에서는 오디오만 지원합니다.",
         "sd": "SD",
         "standardDefinition": "표준 해상도"
     },
@@ -729,7 +729,7 @@
         "calendar": "",
         "connectCalendarButton": "",
         "connectCalendarText": "",
-        "enterRoomTitle": "DVision에 오신걸 환영합니다 !",
+        "enterRoomTitle": "DVision에 오신걸 환영합니다",
         "go": "방 만들기",
         "goSmall": "방 만들기",
         "join": "가입",
@@ -744,7 +744,7 @@
         "sendFeedback": "",
         "terms": "이용약관",
         "title": "비대면 화상 솔루션 DVision",
-        "placeHolder": "방 제목을 입력해주세요"
+        "placeHolder": "방 제목을 입력해주세요."
     },
     "embedMeeting": {
         "title": "이 회의 퍼가기"
