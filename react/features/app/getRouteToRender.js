@@ -16,6 +16,9 @@ import {
     isWelcomePageUserEnabled
 } from '../welcome';
 
+// DVision Main 스크린
+import WelcomePageMain from '../welcome/components/WelcomePageMain';
+
 /**
  * Object describing application route.
  *
@@ -89,7 +92,6 @@ function _getWebConferenceRoute(state): ?Promise<Route> {
 
     if (window.location.href !== locationURL.href) {
         route.href = locationURL.href;
-
         return Promise.resolve(route);
     }
 

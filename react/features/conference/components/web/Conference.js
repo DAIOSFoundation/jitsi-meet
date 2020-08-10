@@ -15,6 +15,7 @@ import { LargeVideo } from '../../../large-video';
 import { KnockingParticipantList, LobbyScreen } from '../../../lobby';
 import { Prejoin, isPrejoinPageVisible } from '../../../prejoin';
 import { fullScreenChanged, setToolboxAlwaysVisible, showToolbox } from '../../../toolbox/actions.web';
+import { closeChatWindow } from '../../../chat';
 import { Toolbox } from '../../../toolbox/components/web';
 import { LAYOUTS, getCurrentLayout } from '../../../video-layout';
 import { maybeShowSuboptimalExperienceNotification } from '../../functions';
@@ -89,7 +90,9 @@ type Props = AbstractProps & {
     _showPrejoin: boolean,
 
     dispatch: Function,
-    t: Function
+    t: Function,
+
+    _closeChatWindow: Function;
 }
 
 /**
@@ -122,6 +125,8 @@ class Conference extends AbstractConference<Props, *> {
 
         // Bind event handler so it is only bound once for every instance.
         this._onFullScreenChange = this._onFullScreenChange.bind(this);
+        this._closeChatWindow = this._closeChatWindow.bind(this);
+
     }
 
     /**
@@ -196,7 +201,7 @@ class Conference extends AbstractConference<Props, *> {
 
                 <Notice />
                 <div id = 'videospace'>
-                    <LargeVideo />
+                    <LargeVideo _closeChatWindow = {this._closeChatWindow}/>
                     <KnockingParticipantList />
                     <Filmstrip filmstripOnly = { filmstripOnly } />
                     { hideLabels || <Labels /> }
@@ -235,6 +240,10 @@ class Conference extends AbstractConference<Props, *> {
         this.props.dispatch(showToolbox());
     }
 
+    // 채팅창 범위 밖 클릭 시 채팅창 닫기
+    _closeChatWindow(){
+        this.props.dispatch(closeChatWindow());
+    }
     /**
      * Until we don't rewrite UI using react components
      * we use UI.start from old app. Also method translates

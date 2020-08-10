@@ -55,3 +55,6 @@ export const SET_PRIVATE_MESSAGE_RECIPIENT = 'SET_PRIVATE_MESSAGE_RECIPIENT';
  * }
  */
 export const TOGGLE_CHAT = 'TOGGLE_CHAT';
+
+// 채팅창 범위 밖 클릭 시 채팅창 닫기
+export const CLOSE_CHAT_WINDOW = 'CLOSE_CHAT_WINDOW';

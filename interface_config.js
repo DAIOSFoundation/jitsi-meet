@@ -107,10 +107,10 @@ var interfaceConfig = {
     HIDE_INVITE_MORE_HEADER: false,
 
     INITIAL_TOOLBAR_TIMEOUT: 20000,
-    JITSI_WATERMARK_LINK: 'https://daios.io',
+    JITSI_WATERMARK_LINK: 'https://dvision.daios.net',
 
     LANG_DETECTION: true, // Allow i18n to detect the system language
-    LIVE_STREAMING_HELP_LINK: 'https://daios.io', // Documentation reference for the live streaming feature.
+    LIVE_STREAMING_HELP_LINK: 'https://dvision.daios.net', // Documentation reference for the live streaming feature.
     LOCAL_THUMBNAIL_RATIO: 16 / 9, // 16:9
 
     /**
@@ -169,7 +169,7 @@ var interfaceConfig = {
      * If indicated some of the error dialogs may point to the support URL for
      * help.
      */
-    SUPPORT_URL: 'https://daios.io',
+    SUPPORT_URL: 'https://dvision.daios.net',
 
     TOOLBAR_ALWAYS_VISIBLE: false,
 
