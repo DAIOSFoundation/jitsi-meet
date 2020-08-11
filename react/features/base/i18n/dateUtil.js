@@ -30,6 +30,8 @@ require('moment/locale/sl');
 require('moment/locale/sv');
 require('moment/locale/tr');
 require('moment/locale/zh-cn');
+// 한국시간 추가
+require('moment/locale/ko')
 
 /**
  * Returns a localized date formatter initialized with a specific {@code Date}

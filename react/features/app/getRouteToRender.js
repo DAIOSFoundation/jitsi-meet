@@ -120,7 +120,18 @@ function _getWebWelcomePageRoute(state): Promise<Route> {
 
     if (isWelcomePageUserEnabled(state)) {
         if (isSupportedBrowser()) {
-            route.component = WelcomePage;
+
+            // const state = APP.store.getState();
+            // const { pageStatus } = state['features/pageStatus'];
+            //
+            // console.log("pageStatus",pageStatus)
+
+            // if(pageStatus === 'main'){
+            //     route.component = WelcomePageMain;
+            // }else{
+                route.component = WelcomePage
+            // }
+
         } else {
             route.component = UnsupportedDesktopBrowser;
         }
