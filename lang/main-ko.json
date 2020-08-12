@@ -588,7 +588,7 @@
             "feedback": "피드백 남기기",
             "fullScreen": "",
             "hangup": "",
-            "invite": "",
+            "invite": "사람 초대",
             "kick": "",
             "localRecording": "",
             "lockRoom": "",
@@ -609,7 +609,7 @@
             "speakerStats": "",
             "tileView": "",
             "toggleCamera": "카메라 토글",
-            "videomute": "",
+            "videomute": "카메라 시작 또는 중지",
             "videoblur": ""
         },
         "addPeople": "통화에 사용자 추가",
@@ -627,8 +627,8 @@
         "exitFullScreen": "전체화면 취소",
         "exitTileView": "",
         "feedback": "피드백 남기기",
-        "hangup": "",
-        "invite": "",
+        "hangup": "나가기",
+        "invite": "사람 초대",
         "login": "",
         "logout": "로그아웃",
         "lowerYourHand": "",
@@ -654,7 +654,7 @@
         "talkWhileMutedPopup": "",
         "tileViewToggle": "",
         "toggleCamera": "카메라 토글",
-        "videomute": "",
+        "videomute": "카메라 시작 또는 중지",
         "startvideoblur": "배경 흐리게",
         "stopvideoblur": ""
     },
@@ -717,7 +717,7 @@
         "muted": "음소거됨",
         "remoteControl": "원격 제어",
         "show": "",
-        "videomute": ""
+        "videomute": "카메라 시작 또는 중지"
     },
     "welcomepage": {
         "accessibilityLabel": {

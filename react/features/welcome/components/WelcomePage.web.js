@@ -137,6 +137,13 @@ class WelcomePage extends AbstractWelcomePage {
                 this._additionalToolbarContentTemplate.content.cloneNode(true)
             );
         }
+
+        window.history.pushState(null, '', location.href);
+
+        window.onpopstate = () => {
+            history.go(1);
+            window.location.href = 'https://dvision.daios.net'
+        };
     }
 
     /**
@@ -317,7 +324,6 @@ class WelcomePage extends AbstractWelcomePage {
         const { _calendarEnabled, _recentListEnabled, t } = this.props;
 
         const tabs = [];
-
         if (_calendarEnabled) {
             tabs.push({
                 label: t('welcomepage.calendar'),

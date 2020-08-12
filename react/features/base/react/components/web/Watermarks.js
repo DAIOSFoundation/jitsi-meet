@@ -236,8 +236,7 @@ class Watermarks extends Component<Props, State> {
             if (link) {
                 reactElement = (
                     <a
-                        href = { link }
-                        target = '_new'>
+                        href = { link }>
                         { reactElement }
                     </a>
                 );
@@ -260,8 +259,7 @@ class Watermarks extends Component<Props, State> {
             return (
                 <a
                     className = 'poweredby'
-                    href = 'http://jitsi.org'
-                    target = '_new'>
+                    href = 'https://dvision.daios.net'>
                     <span>{ t('poweredby') } jitsi.org</span>
                 </a>
             );

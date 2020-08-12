@@ -1,13 +1,18 @@
 import React from 'react';
-import {appNavigate} from '../../app/actions';
 import {useDispatch} from 'react-redux';
+import {changePageStatusMeet} from '../../pageStatus';
+import {setRoom} from '../../base/conference';
 
 const WelcomePageMain = () => {
 
     const dispatch = useDispatch();
 
-    const onClickHref = () => {
-        location.href = 'https://dvision-sub.daios.net'
+    // MainPage 방만들기 버튼 클릭 시 이벤트
+    const onClickMeet = () => {
+        // 방만들기 페이지 화면으로 이동하기 위해 현재 페이지 상태 값을 'meet' 으로 바꿈
+        dispatch(changePageStatusMeet())
+        // _getRouteToRender 함수 호출 하기 위해 사용
+        dispatch(setRoom())
     }
 
     return (
@@ -15,7 +20,7 @@ const WelcomePageMain = () => {
             backgroundImage: `url(images/dvision_main_img01.png)`,
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
-            backgroundPosition:'center center'
+            backgroundPosition: 'center center'
         }}>
             <div style={{position: 'relative', width: '100%', height: '100%'}}>
                 <div style={{
@@ -31,8 +36,8 @@ const WelcomePageMain = () => {
                     color: 'white',
                     width: 'auto',
                     height: 'auto',
-                    marginLeft:'10%',
-                    marginTop:'10%',
+                    marginLeft: '10%',
+                    marginTop: '10%',
                 }}>
                     <div style={{
                         fontWeight: 'bold',
@@ -57,7 +62,7 @@ const WelcomePageMain = () => {
                         }}>DVision is the best of Video Business Solution in the new-normal age.</span>
                     </div>
 
-                    <button onClick={onClickHref} style={{
+                    <button onClick={onClickMeet} style={{
                         borderRadius: 35,
                         outline: 'none',
                         borderColor: 'white',
@@ -72,9 +77,9 @@ const WelcomePageMain = () => {
                         textAlign: 'center',
                         display: 'inline-block',
                         marginRight: 10,
-                        opacity:0.8
+                        opacity: 0.8
                     }}>
-                        <text style={{zIndex:1, color:'#0d2656'}}>
+                        <text style={{zIndex: 1, color: '#0d2656'}}>
                             방 만들기
                         </text>
                     </button>
@@ -94,7 +99,7 @@ const WelcomePageMain = () => {
                         display: 'inline-block',
                         opacity: 0.8
                     }}>
-                        <text style={{zIndex:1, color:'#0d2656'}}>
+                        <text style={{zIndex: 1, color: '#0d2656'}}>
                             제품소개서 다운로드
                         </text>
                     </button>

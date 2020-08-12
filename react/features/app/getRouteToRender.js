@@ -1,14 +1,14 @@
 // @flow
 
-import { generateRoomWithoutSeparator } from '@jitsi/js-utils/random';
-import type { Component } from 'react';
+import {generateRoomWithoutSeparator} from '@jitsi/js-utils/random';
+import type {Component} from 'react';
 
-import { isRoomValid } from '../base/conference';
-import { isSupportedBrowser } from '../base/environment';
-import { toState } from '../base/redux';
-import { Conference } from '../conference';
-import { getDeepLinkingPage } from '../deep-linking';
-import { UnsupportedDesktopBrowser } from '../unsupported-browser';
+import {isRoomValid} from '../base/conference';
+import {isSupportedBrowser} from '../base/environment';
+import {toState} from '../base/redux';
+import {Conference} from '../conference';
+import {getDeepLinkingPage} from '../deep-linking';
+import {UnsupportedDesktopBrowser} from '../unsupported-browser';
 import {
     BlankPage,
     WelcomePage,
@@ -88,7 +88,7 @@ function _getWebConferenceRoute(state): ?Promise<Route> {
     // joined from the welcome page. The reason for doing this instead of using
     // the history API is that we want to load the config.js which takes the
     // room into account.
-    const { locationURL } = state['features/base/connection'];
+    const {locationURL} = state['features/base/connection'];
 
     if (window.location.href !== locationURL.href) {
         route.href = locationURL.href;
@@ -121,16 +121,14 @@ function _getWebWelcomePageRoute(state): Promise<Route> {
     if (isWelcomePageUserEnabled(state)) {
         if (isSupportedBrowser()) {
 
-            // const state = APP.store.getState();
-            // const { pageStatus } = state['features/pageStatus'];
-            //
-            // console.log("pageStatus",pageStatus)
+            const state = APP.store.getState();
+            const { pageStatus } = state['features/pageStatus'];
 
-            // if(pageStatus === 'main'){
-            //     route.component = WelcomePageMain;
-            // }else{
+            if(pageStatus === 'main'){
+                route.component = WelcomePageMain;
+            }else{
                 route.component = WelcomePage
-            // }
+            }
 
         } else {
             route.component = UnsupportedDesktopBrowser;
