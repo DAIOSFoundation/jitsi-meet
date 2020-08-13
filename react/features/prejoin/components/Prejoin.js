@@ -325,7 +325,7 @@ class Prejoin extends Component<Props, State> {
                                         onOptionsClick = { _onOptionsClick }
                                         testId = 'prejoin.joinMeeting'
                                         type = 'primary'>
-                                        { t('prejoin.joinMeeting') }
+                                        { t('prejoin.joinMeetingButton') }
                                     </ActionButton>
                                 </InlineDialog>
                             </div>
