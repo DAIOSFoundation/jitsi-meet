@@ -620,8 +620,8 @@
         "callQuality": "품질 설정하기",
         "chat": "열기 / 닫기 채팅창",
         "closeChat": "",
-        "documentClose": "",
-        "documentOpen": "",
+        "documentClose": "공유 문서 닫기",
+        "documentOpen": "공유 문서 열기",
         "enterFullScreen": "전체화면 보기",
         "enterTileView": "",
         "exitFullScreen": "전체화면 취소",
@@ -656,7 +656,7 @@
         "toggleCamera": "카메라 토글",
         "videomute": "카메라 시작 또는 중지",
         "startvideoblur": "배경 흐리게",
-        "stopvideoblur": ""
+        "stopvideoblur": "배경 흐리게 비활성화"
     },
     "transcribing": {
         "ccButtonTooltip": "",
