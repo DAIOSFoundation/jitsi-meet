@@ -86,7 +86,8 @@ class OverflowMenuProfileItem extends Component<Props> {
                         size = { 24 } />
                 </span>
                 <span className = 'profile-text'>
-                    { displayName }
+                    {/*{ displayName }*/}
+                    내 프로필 변경
                 </span>
             </li>
         );

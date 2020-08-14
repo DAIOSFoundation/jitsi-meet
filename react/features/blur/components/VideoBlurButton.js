@@ -46,7 +46,9 @@ class VideoBlurButton extends AbstractButton<Props, *> {
      * @returns {ReactElement}
      */
     _getElementAfter() {
-        return <BetaTag />;
+        // 베타태그 주석처리
+        // return <BetaTag />;
+        return null;
     }
 
     /**
