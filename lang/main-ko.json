@@ -131,6 +131,7 @@
         "accessibilityLabel": {
             "liveStreaming": "실시간 스트리밍:"
         },
+        "add": "추가",
         "allow": "허락",
         "alreadySharedVideoMsg": "",
         "alreadySharedVideoTitle": "한 번에 하나의 공유 비디오 만 허용됩니다",
@@ -280,7 +281,7 @@
     },
     "info": {
         "accessibilityLabel": "",
-        "addPassword": "",
+        "addPassword": "$t(lockRoomPassword) 추가",
         "cancelPassword": "",
         "conferenceURL": "링크:",
         "country": "지역",
@@ -401,9 +402,9 @@
     "lockRoomPasswordUppercase": "패스워드",
     "me": "Me",
     "notify": {
-        "connectedOneMember": "",
-        "connectedThreePlusMembers": "",
-        "connectedTwoMembers": "",
+        "connectedOneMember": "{{name}} 회의에 참여",
+        "connectedThreePlusMembers": "{{name}}님 외 {{count}}명이 회의에 참여했습니다.",
+        "connectedTwoMembers": "{{first}} 및 {{second}}이 회의에 참여했습니다.",
         "disconnected": "연결이 끊김",
         "focus": "컨퍼런스 포커스",
         "focusFail": "{{component}}을 사용할 수 없음 - {{ms}} 초 후에 다시 시도하십시오",
@@ -518,6 +519,12 @@
     },
     "sectionList": {
         "pullToRefresh": "당겨서 새로고침"
+    },
+    "security": {
+        "about": "회의에 $t(lockRoomPassword)를 추가 할 수 있습니다. 참가자는 회의 참가를 허용하기 전에 $t(lockRoomPassword)를 제공해야합니다.",
+        "aboutReadOnly": "Moderator participants can add a $t(lockRoomPassword) to the meeting. Participants will need to provide the $t(lockRoomPassword) before they are allowed to join the meeting.",
+        "insecureRoomNameWarning": "The room name is unsafe. Unwanted participants may join your conference. Consider securing your meeting using the security button.",
+        "securityOptions": "보안 옵션"
     },
     "settings": {
         "calendar": {
@@ -641,9 +648,11 @@
         "mute": "마이크 시작 또는 중지",
         "openChat": "",
         "pip": "",
+        "privateMessage": "1:1채팅",
         "profile": "",
         "raiseHand": "말하기 요청/해제",
         "raiseYourHand": "",
+        "security": "보안 옵션",
         "Settings": "설정",
         "sharedvideo": "YouTube 영상 공유",
         "muteEveryone": "전체 음소거",
@@ -657,7 +666,7 @@
         "stopSubtitles": "",
         "stopSharedVideo": "YouTube 영상 공유 중지",
         "talkWhileMutedPopup": "현재 음소거 상태입니다.",
-        "tileViewToggle": "",
+        "tileViewToggle": "타일 보기 전환",
         "toggleCamera": "카메라 토글",
         "videomute": "카메라 시작 또는 중지",
         "startvideoblur": "배경 흐리게",
@@ -711,18 +720,21 @@
         "onlyAudioAvailable": "오디오만 사용할 수 있습니다.",
         "onlyAudioSupported": "이 브라우저에서는 오디오만 지원합니다.",
         "sd": "SD",
+        "sdTooltip": "표준 화질 비디오보기",
         "standardDefinition": "표준화질"
     },
     "videothumbnail": {
         "domute": "음소거",
+        "domuteOthers": "해당 사용자 음소거",
         "flip": "플립",
+        "grantModerator": "방장 권한 부여",
         "kick": "내보내기",
         "moderator": "방장",
-        "mute": "",
-        "muted": "음소거됨",
+        "mute": "음소거",
+        "muted": "음소거",
         "remoteControl": "원격 제어",
         "show": "",
-        "videomute": "카메라 시작 또는 중지"
+        "videomute": "카메라 중지"
     },
     "welcomepage": {
         "accessibilityLabel": {
