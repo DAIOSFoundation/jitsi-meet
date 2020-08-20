@@ -2,6 +2,7 @@
     "addPeople": {
         "add": "초대",
         "addContacts": "연락처 초대",
+        "copyLink": "회의 링크 복사",
         "countryNotSupported": "아직 해당 지역을 지원하지 않습니다",
         "countryReminder": "미국 이외의 지역으로 전화하시겠습니까? 국가 번호로 시작해야합니다!",
         "disabled": "사람들을 초대 할 수 없습니다",
@@ -200,6 +201,7 @@
         "micUnknownError": "알 수 없는 이유로 마이크를 사용할 수 없습니다",
         "muteEveryoneElseDialog": "음소거 된 후에는 음소거를 해제 할 수 없지만 언제든지 스스로 음소거를 해제 할 수 있습니다.",
         "muteEveryoneElseTitle": "{{whom}}을 제외한 모든 사용자를 음소거 하시겠습니까?",
+        "muteEveryoneSelf": "본인",
         "muteParticipantBody": "당신이 다른 사람들의 음소거를 해제 할 수는 없지만 언제든지 다른 사람들은 스스로 음소거를 해제할 수 있습니다.",
         "muteParticipantButton": "음소거",
         "muteParticipantDialog": "",
