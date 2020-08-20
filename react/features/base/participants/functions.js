@@ -167,7 +167,7 @@ export function getParticipantDisplayName(
         if (participant.local) {
             return typeof interfaceConfig === 'object'
                 ? interfaceConfig.DEFAULT_LOCAL_DISPLAY_NAME
-                : 'me';
+                : '다이버';
         }
     }
 

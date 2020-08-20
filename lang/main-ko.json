@@ -117,6 +117,7 @@
         "tryAgainButton": "데스크톱에서 다시 시도하십시오"
     },
     "defaultLink": "e.g. {{url}}",
+    "defaultNickname": "ex. 다이버",
     "deviceError": {
         "cameraError": "카메라에 액세스하지 못했습니다",
         "cameraPermission": "카메라 권한을 얻는 중 오류가 발생했습니다",
@@ -389,7 +390,7 @@
         "label": "",
         "labelToolTip": "",
         "localRecording": "",
-        "me": "",
+        "me": "다이버",
         "messages": {
             "engaged": "",
             "finished": "",
@@ -407,7 +408,7 @@
     },
     "lockRoomPassword": "패스워드",
     "lockRoomPasswordUppercase": "패스워드",
-    "me": "Me",
+    "me": "다이버",
     "notify": {
         "connectedOneMember": "{{name}} 회의에 참여",
         "connectedThreePlusMembers": "{{name}}님 외 {{count}}명이 회의에 참여했습니다.",
@@ -420,7 +421,7 @@
         "invitedThreePlusMembers": "",
         "invitedTwoMembers": "",
         "kickParticipant": "{{kicker}}가 {{kicked}}를 추방했습니다.",
-        "me": "",
+        "me": "다이버",
         "moderator": "방장 권한이 부여되었습니다!",
         "muted": "음소거로 대화가 시작되었습니다",
         "mutedTitle": "음소거 상태입니다!",
