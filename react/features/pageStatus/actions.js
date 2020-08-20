@@ -1,9 +1,8 @@
-import {CHANGE_PAGE_STATUS_MEET} from './actionTypes'
+import {CHANGE_PAGE_STATUS} from './actionTypes'
 
-export function changePageStatusMeet() {
-    return function (dispatch) {
-        dispatch({type: CHANGE_PAGE_STATUS_MEET});
-    };
+export function changePageStatus(pageStatus: Object) {
+    return {
+        type: CHANGE_PAGE_STATUS,
+        ...pageStatus
+    }
 }
-
-

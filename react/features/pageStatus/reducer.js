@@ -1,7 +1,7 @@
 import {ReducerRegistry} from '../base/redux';
 
 import {
-    CHANGE_PAGE_STATUS_MEET
+    CHANGE_PAGE_STATUS
 } from './actionTypes';
 
 const DEFAULT_STATE = {
@@ -10,11 +10,10 @@ const DEFAULT_STATE = {
 
 ReducerRegistry.register('features/pageStatus', (state = DEFAULT_STATE, action) => {
     switch (action.type) {
-        case CHANGE_PAGE_STATUS_MEET: {
-            console.log("CHANGE_PAGE_STATUS_MEET !!!")
+        case CHANGE_PAGE_STATUS: {
             return {
                 ...state,
-                pageStatus: 'meet'
+                pageStatus:  action.pageStatus
             }
         }
     }

@@ -1,6 +1,6 @@
 import React from 'react';
 import {useDispatch} from 'react-redux';
-import {changePageStatusMeet} from '../../pageStatus';
+import {changePageStatus} from '../../pageStatus';
 import {setRoom} from '../../base/conference';
 
 const WelcomePageMain = () => {
@@ -10,7 +10,19 @@ const WelcomePageMain = () => {
     // MainPage 방만들기 버튼 클릭 시 이벤트
     const onClickMeet = () => {
         // 방만들기 페이지 화면으로 이동하기 위해 현재 페이지 상태 값을 'meet' 으로 바꿈
-        dispatch(changePageStatusMeet())
+        dispatch(changePageStatus({
+            'pageStatus':'meet'
+        }))
+        // _getRouteToRender 함수 호출 하기 위해 사용
+        dispatch(setRoom())
+    }
+
+    // MainPage 요금제 및 가격정책 버튼 클릭 시 이벤트
+    const onClickPlan = () => {
+        // 방만들기 페이지 화면으로 이동하기 위해 현재 페이지 상태 값을 'meet' 으로 바꿈
+        dispatch(changePageStatus({
+            'pageStatus':'plan'
+        }))
         // _getRouteToRender 함수 호출 하기 위해 사용
         dispatch(setRoom())
     }
@@ -97,10 +109,31 @@ const WelcomePageMain = () => {
                         color: 'white',
                         textAlign: 'center',
                         display: 'inline-block',
+                        marginRight: 10,
                         opacity: 0.8
                     }}>
                         <text style={{zIndex: 1, color: '#0d2656'}}>
                             제품소개서 다운로드
+                        </text>
+                    </button>
+                    <button onClick={onClickPlan} style={{
+                        borderRadius: 35,
+                        outline: 'none',
+                        borderColor: 'white',
+                        borderWidth: 1,
+                        backgroundColor: 'white',
+                        marginTop: 15,
+                        width: '200px',
+                        height: '50px',
+                        fontSize: 19,
+                        fontWeight: 'bold',
+                        color: 'white',
+                        textAlign: 'center',
+                        display: 'inline-block',
+                        opacity: 0.8
+                    }}>
+                        <text style={{zIndex: 1, color: '#0d2656'}}>
+                            요금제 및 가격 정책
                         </text>
                     </button>
                 </div>

@@ -265,7 +265,7 @@ class Watermarks extends Component<Props, State> {
             return (
                 <a
                     className = 'poweredby'
-                    href = 'https://dvision.daios.net'>
+                    href = 'https://dvision.daib.io'>
                     <span>{ t('poweredby') } jitsi.org</span>
                 </a>
             );

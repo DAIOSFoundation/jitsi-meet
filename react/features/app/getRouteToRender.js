@@ -18,6 +18,8 @@ import {
 
 // DVision Main 스크린
 import WelcomePageMain from '../welcome/components/WelcomePageMain';
+// DVision 요금제 및 가격 정책
+import DvisionPlanPage from '../welcome/components/DvisionPlanPage';
 
 /**
  * Object describing application route.
@@ -126,8 +128,10 @@ function _getWebWelcomePageRoute(state): Promise<Route> {
 
             if(pageStatus === 'main'){
                 route.component = WelcomePageMain;
-            }else{
+            }else if(pageStatus === 'meet'){
                 route.component = WelcomePage
+            }else if(pageStatus === 'plan'){
+                route.component = DvisionPlanPage
             }
 
         } else {
