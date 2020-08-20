@@ -176,7 +176,7 @@ class ProfileTab extends AbstractDialogTab<Props> {
                 </div>
                 { authLogin
                     && <div className = 'auth-name'>
-                        { t('settings.loggedIn', { name: authLogin }) }
+                        { t('settings.loggedIn', { name: authLogin.split('@')[0] }) }
                     </div> }
                 <Button
                     appearance = 'primary'

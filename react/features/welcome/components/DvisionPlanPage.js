@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import { makeStyles } from "@material-ui/core/styles";
 import Icon from "@material-ui/core/Icon";
@@ -20,6 +20,16 @@ const useStyles = makeStyles(styles);
 
 
 const DvisionPlanPage = () => {
+
+    // 뒤로가기 이벤트
+    useEffect(() => {
+        window.history.pushState(null, '', location.href);
+
+        window.onpopstate = () => {
+            history.go(1);
+            window.location.href = 'https://dvision.daib.io'
+        };
+    },[]);
 
     const classes = useStyles();
 

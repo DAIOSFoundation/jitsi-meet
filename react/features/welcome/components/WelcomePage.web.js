@@ -138,6 +138,7 @@ class WelcomePage extends AbstractWelcomePage {
             );
         }
 
+        // 뒤로가기 이벤트
         window.history.pushState(null, '', location.href);
 
         window.onpopstate = () => {

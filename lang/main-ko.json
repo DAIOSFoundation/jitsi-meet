@@ -207,7 +207,7 @@
         "muteParticipantDialog": "",
         "muteParticipantTitle": "이 참가자를 음소거 하시겠습니까?",
         "Ok": "확인",
-        "passwordLabel": "",
+        "passwordLabel": "비밀번호가 걸려있는 회의방 입니다. $t(lockRoomPassword)를 입력하세요.",
         "passwordNotSupported": "미팅 비밀번호 설정은 지원되지 않습니다",
         "passwordNotSupportedTitle": "",
         "passwordRequired": "패스워드 요청",
