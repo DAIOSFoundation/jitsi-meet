@@ -1,20 +1,33 @@
 import React, {useEffect} from 'react';
 
-import { makeStyles } from "@material-ui/core/styles";
-import Icon from "@material-ui/core/Icon";
+// @material-ui/core components
+import {makeStyles} from "@material-ui/core/styles";
 
-import Home from "@material-ui/icons/Home";
-import Business from "@material-ui/icons/Business";
-import AccountBalance from "@material-ui/icons/AccountBalance";
+// material-ui icons
+import Assignment from "@material-ui/icons/Assignment";
 
 // core components
 import GridContainer from "../../../components/Grid/GridContainer.js";
 import GridItem from "../../../components/Grid/GridItem.js";
-import Button from "../../../components/CustomButtons/Button.js";
+import Table from "../../../components/Table/Table.js";
 import Card from "../../../components/Card/Card.js";
+import CardHeader from "../../../components/Card/CardHeader.js";
+import CardIcon from "../../../components/Card/CardIcon.js";
 import CardBody from "../../../components/Card/CardBody.js";
 
-import styles from "../../../components/jss/pricingPageStyle.js";
+import {cardTitle} from "../../../components/jss/material-dashboard-pro-react.js";
+
+const styles = {
+    customCardContentClass: {
+        paddingLeft: "0",
+        paddingRight: "0"
+    },
+    cardIconTitle: {
+        ...cardTitle,
+        marginTop: "15px",
+        marginBottom: "0px",
+    }
+};
 
 const useStyles = makeStyles(styles);
 
@@ -29,85 +42,61 @@ const DvisionPlanPage = () => {
             history.go(1);
             window.location.href = 'https://dvision.daib.io'
         };
-    },[]);
+    }, []);
 
     const classes = useStyles();
 
     return (
-        <div className={classes.container}>
-            <GridContainer justify="center">
-                <GridItem xs={12} sm={12} md={6}>
-                    <h2 className={classes.title}>Pick the best plan for you</h2>
-                    <h5 className={classes.description}>
-                        You have Free Unlimited Updates and Premium Support on each package.
-                    </h5>
-                </GridItem>
-            </GridContainer>
-            <GridContainer justify="center">
-                <GridItem xs={12} sm={12} md={3}>
-                    <Card pricing raised>
-                        <CardBody pricing>
-                            <h6 className={classes.cardCategory}>SMALL COMPANY</h6>
-                            <h3 className={`${classes.cardTitle} ${classes.marginTop30}`}>
-                                $29
-                            </h3>
-                            <p className={classes.cardDescription}>
-                                This is good if your company size is between 2 and 10 Persons.
-                            </p>
-                            <Button round color="rose">
-                                Choose plan
-                            </Button>
-                        </CardBody>
-                    </Card>
-                </GridItem>
-                <GridItem xs={12} sm={12} md={3}>
-                    <Card pricing raised>
-                        <CardBody pricing>
-                            <h6 className={classes.cardCategory}>SMALL COMPANY</h6>
-                            <h3 className={`${classes.cardTitle} ${classes.marginTop30}`}>
-                                $29
-                            </h3>
-                            <p className={classes.cardDescription}>
-                                This is good if your company size is between 2 and 10 Persons.
-                            </p>
-                            <Button round color="rose">
-                                Choose plan
-                            </Button>
-                        </CardBody>
-                    </Card>
-                </GridItem> <GridItem xs={12} sm={12} md={3}>
-                <Card pricing raised>
-                    <CardBody pricing>
-                        <h6 className={classes.cardCategory}>SMALL COMPANY</h6>
-                        <h3 className={`${classes.cardTitle} ${classes.marginTop30}`}>
-                            $29
-                        </h3>
-                        <p className={classes.cardDescription}>
-                            This is good if your company size is between 2 and 10 Persons.
-                        </p>
-                        <Button round color="rose">
-                            Choose plan
-                        </Button>
-                    </CardBody>
-                </Card>
-            </GridItem> <GridItem xs={12} sm={12} md={3}>
-                <Card pricing raised>
-                    <CardBody pricing>
-                        <h6 className={classes.cardCategory}>SMALL COMPANY</h6>
-                        <h3 className={`${classes.cardTitle} ${classes.marginTop30}`}>
-                            $29
-                        </h3>
-                        <p className={classes.cardDescription}>
-                            This is good if your company size is between 2 and 10 Persons.
-                        </p>
-                        <Button round color="rose">
-                            Choose plan
-                        </Button>
+        <GridContainer>
+            <GridItem lg={10} xs={12} style={{margin: '0 auto'}}>
+                <Card>
+                    <CardHeader color="rose" icon>
+                        {/*<CardIcon color="rose">*/}
+                        {/*    <Assignment />*/}
+                        {/*</CardIcon>*/}
+                        <h4 className={classes.cardIconTitle}
+                            style={{
+                                marginTop: 30,
+                                marginBottom: 10,
+                                textAlign: 'center',
+                                color: 'black',
+                                fontWeight: 'bold',
+                                fontSize: 21
+                            }}>DVision 요금제 및 가격 정책</h4>
+                    </CardHeader>
+                    <CardBody style={{textAlign: "center"}}>
+                        <Table
+                            tableHeaderColor="primary"
+                            tableHead={["구분", "Personal", "Personal Pro", "Team", "Enterprise", "비고"]}
+                            tableData={[
+                                ["가격", "무료", "계정당 3만원/월", "계정당 5만원/월", "영업에 문의", ""],
+                                ["사용 가능 인원", "최대 2명", "최대 50명", "최대 200명", "무제한", ""],
+                                ["동시접속 가능 인원", "최대 2명", "최대 10명", "최대 50명", "무제한", ""],
+                                ["회의 제한 시간", "최대 1시간", "무제한", "무제한", "무제한", "회의 1회당 최대 사용 시간"],
+                                ["회의방 생성", "무제한", "무제한", "무제한", "무제한", ""],
+                                ["화면 공유", "기본 제공", "기본 제공", "기본 제공", "기본 제공", ""],
+                                ["채팅 기능", "기본 제공", "기본 제공", "기본 제공", "기본 제공", ""],
+                                ["가상 배경", "미제공", "기본 제공", "기본 제공", "기본 제공", ""],
+                                ["보안 기능", "미제공", "기본 제공", "기본 제공", "기본 제공", ""],
+                                ["화이트보드 기능", "미제공", "기본 제공", "기본 제공", "기본 제공", ""],
+                                ["캘린더 기능", "미제공", "기본 제공", "기본 제공", "기본 제공", "구글 캘린더 연동 가능"],
+                                ["이더패드 기능", "미제공", "미제공", "기본 제공", "기본 제공", "문서 공동 작업 기능"],
+                                ["관리자 페이지", "미제공", "미제공", "기본 제공", "기업에 맞춤 제공", ""],
+                                ["관리자 페이지", "미제공", "미제공", "기본 제공", "기업에 맞춤 제공", ""],
+                                ["녹화 기능", "미제공", "미제공", "기본 제공", "기업에 맞춤 제공", ""],
+                                ["저장 공간 제공", "미제공", "2G 기본 제공", "5G 기본 제공", "기업에 맞춤 제공", "저장 공간 추가 시 비용 발생", ""],
+                                ["로고 브랜딩", "미제공", "옵션 제공(영업에 문의)", "옵션 제공(영업에 문의)", "기본 제공", "옵션 제공 시 추가 비용 발생"],
+                                ["기술 지원", "미제공", "옵션 제공(영업에 문의)", "옵션 제공(영업에 문의)", "기본 제공", "옵션 제공 시 추가 비용 발생"],
+                                ["모바일 앱 지원", "미제공", "옵션 제공(영업에 문의)", "옵션 제공(영업에 문의)", "옵션 제공(영업에 문의)", "옵션 제공 시 추가 비용 발생"],
+                                ["자동 회의록 기능(beta)", "미제공", "옵션 제공(영업에 문의)", "옵션 제공(영업에 문의)", "옵션 제공(영업에 문의)", "옵션 제공 시 추가 비용 발생"],
+                            ]}
+                            coloredColls={[0]}
+                            colorsColls={["rose"]}
+                        />
                     </CardBody>
                 </Card>
             </GridItem>
-            </GridContainer>
-        </div>
+        </GridContainer>
     );
 };
 
