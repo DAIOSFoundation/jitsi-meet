@@ -89,10 +89,10 @@
         "packetloss": "패킷 손실:",
         "quality": {
             "good": "좋음",
-            "inactive": "Inactive",
-            "lost": "Lost",
-            "nonoptimal": "Nonoptimal",
-            "poor": "Poor"
+            "inactive": "비활성",
+            "lost": "손실",
+            "nonoptimal": "최상이 아님",
+            "poor": "불량"
         },
         "remoteaddress": "",
         "remoteport": "",
@@ -410,9 +410,9 @@
     "lockRoomPasswordUppercase": "패스워드",
     "me": "다이버",
     "notify": {
-        "connectedOneMember": "{{name}} 회의에 참여",
+        "connectedOneMember": "{{name}}님이 회의에 참여",
         "connectedThreePlusMembers": "{{name}}님 외 {{count}}명이 회의에 참여했습니다.",
-        "connectedTwoMembers": "{{first}} 및 {{second}}이 회의에 참여했습니다.",
+        "connectedTwoMembers": "{{first}} 및 {{second}}님이 회의에 참여했습니다.",
         "disconnected": "연결이 끊김",
         "focus": "컨퍼런스 포커스",
         "focusFail": "{{component}}을 사용할 수 없음 - {{ms}} 초 후에 다시 시도하십시오",
