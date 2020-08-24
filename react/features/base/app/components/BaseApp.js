@@ -19,6 +19,18 @@ import { SoundCollection } from '../../sounds';
 import { appWillMount, appWillUnmount } from '../actions';
 import logger from '../logger';
 
+/*
+*  DVision 전용 미들웨어 및 모듈 추가
+* */
+import createSagaMiddleware from 'redux-saga';
+import rootSaga from '../../../../modules/rootSaga';
+import * as modules from '../../../../modules'
+
+const middlewares = [];
+
+const sagaMiddleware = createSagaMiddleware();
+middlewares.push(sagaMiddleware);
+
 declare var APP: Object;
 
 /**
@@ -180,13 +192,15 @@ export default class BaseApp extends Component<*, State> {
      */
     _createStore() {
         // Create combined reducer from all reducers in ReducerRegistry.
-        const reducer = ReducerRegistry.combineReducers();
+        // DVision 모듈 추가
+        const reducer = ReducerRegistry.combineReducers(modules);
 
         // Apply all registered middleware from the MiddlewareRegistry and
         // additional 3rd party middleware:
         // - Thunk - allows us to dispatch async actions easily. For more info
         // @see https://github.com/gaearon/redux-thunk.
-        let middleware = MiddlewareRegistry.applyMiddleware(Thunk);
+        // DVision 미들웨어 추가
+        let middleware = MiddlewareRegistry.applyMiddleware(Thunk, ...middlewares);
 
         // Try to enable Redux DevTools Chrome extension in order to make it
         // available for the purposes of facilitating development.
@@ -199,6 +213,8 @@ export default class BaseApp extends Component<*, State> {
 
         const store = createStore(
             reducer, PersistenceRegistry.getPersistedState(), middleware);
+
+        sagaMiddleware.run(rootSaga);
 
         // StateListenerRegistry
         StateListenerRegistry.subscribe(store);

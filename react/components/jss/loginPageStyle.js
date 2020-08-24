@@ -8,7 +8,7 @@ import {
 
 import customCheckboxRadioSwitch from "../jss/customCheckboxRadioSwitch.js";
 
-const registerPageStyle = {
+const loginPageStyle = {
   ...customCheckboxRadioSwitch,
   cardTitle: {
     ...cardTitle,
@@ -58,7 +58,7 @@ const registerPageStyle = {
     color: grayColor[6]
   },
   customFormControlClasses: {
-    margin: "0 12px"
+    margin: "0"
   },
   checkboxLabelControl: {
     margin: "0"
@@ -70,4 +70,4 @@ const registerPageStyle = {
   }
 };
 
-export default registerPageStyle;
+export default loginPageStyle;
