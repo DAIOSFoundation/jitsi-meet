@@ -11,7 +11,7 @@ const WelcomePageMain = () => {
     const onClickMeet = () => {
         // 방만들기 페이지 화면으로 이동하기 위해 현재 페이지 상태 값을 'meet' 으로 바꿈
         dispatch(changePageStatus({
-            'pageStatus':'meet'
+            'pageStatus':'login'
         }))
         // _getRouteToRender 함수 호출 하기 위해 사용
         dispatch(setRoom())
