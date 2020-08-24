@@ -52,6 +52,10 @@ export default function CustomTable(props) {
                                     });
                                 return (
                                     <TableCell className={tableCellClasses}
+                                               style={{
+                                                   fontWeight: 'bold',
+                                                   color: 'white'
+                                               }}
                                                key={key}>
                                         {prop}
                                     </TableCell>
@@ -140,7 +144,11 @@ export default function CustomTable(props) {
                                     return (
                                         <TableCell className={tableCellClasses}
                                                    key={key}
-                                                   style={{width: '16%'}}>
+                                                   style={{
+                                                       width: '20%',
+                                                       fontSize: '18px',
+                                                       color: 'white'
+                                                   }}>
                                             {prop}
                                         </TableCell>
                                     );
