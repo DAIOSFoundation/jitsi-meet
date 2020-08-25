@@ -51,7 +51,7 @@ function InviteMore({
 }: Props) {
     return (
         _visible
-            ? <div className = { `invite-more-container${_tileViewEnabled ? ' elevated' : ''}` }>
+            ? <div style={{zIndex:1000}} className = { `invite-more-container${_tileViewEnabled ? ' elevated' : ''}` }>
                 <div className = 'invite-more-header'>
                     {t('addPeople.inviteMoreHeader')}
                 </div>
