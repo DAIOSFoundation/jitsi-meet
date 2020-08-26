@@ -90,7 +90,7 @@ class LargeVideo extends Component<Props> {
                 </div>
                 <div id='etherpad'/>
                 {
-                    this.state.urlValue === 'WEBINAR' ?
+                    this.state.urlValue === 'WEBINAR' || this.state.urlValue === 'WEBINAR2' ?
                         <img src={'images/top_banner.png'} style={{zIndex:100, position:'absolute', left:0, height:'150px', width:'86%'}} width={'100%'}
                              height={'150px'}/>
                              :
