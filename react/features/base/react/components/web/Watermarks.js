@@ -233,7 +233,7 @@ class Watermarks extends Component<Props, State> {
                 backgroundImage: `url(${_customLogoUrl || defaultJitsiLogoURL || interfaceConfig.DEFAULT_LOGO_URL})`,
                 maxWidth: 170,
                 maxHeight: 70,
-                top: -9
+                top: 0
             };
 
             reactElement = (<div
