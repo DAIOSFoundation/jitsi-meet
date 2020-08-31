@@ -390,7 +390,7 @@
         "label": "",
         "labelToolTip": "",
         "localRecording": "",
-        "me": "다이버",
+        "me": "Me",
         "messages": {
             "engaged": "",
             "finished": "",
@@ -408,7 +408,7 @@
     },
     "lockRoomPassword": "패스워드",
     "lockRoomPasswordUppercase": "패스워드",
-    "me": "다이버",
+    "me": "me",
     "notify": {
         "connectedOneMember": "{{name}}님이 회의에 참여",
         "connectedThreePlusMembers": "{{name}}님 외 {{count}}명이 회의에 참여했습니다.",
@@ -421,7 +421,7 @@
         "invitedThreePlusMembers": "",
         "invitedTwoMembers": "",
         "kickParticipant": "{{kicker}}가 {{kicked}}를 추방했습니다.",
-        "me": "다이버",
+        "me": "Me",
         "moderator": "방장 권한이 부여되었습니다!",
         "muted": "음소거로 대화가 시작되었습니다",
         "mutedTitle": "음소거 상태입니다!",
