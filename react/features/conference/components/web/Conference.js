@@ -203,7 +203,7 @@ class Conference extends AbstractConference<Props, *> {
                 <div id = 'videospace'>
                     <LargeVideo _closeChatWindow = {this._closeChatWindow}/>
                     <KnockingParticipantList />
-                    <Filmstrip filmstripOnly = { filmstripOnly } />
+                    <Filmstrip _closeChatWindow = {this._closeChatWindow} filmstripOnly = { filmstripOnly } />
                     { hideLabels || <Labels /> }
                 </div>
 

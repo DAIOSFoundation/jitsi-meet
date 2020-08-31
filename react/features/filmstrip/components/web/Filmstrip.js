@@ -227,6 +227,7 @@ class Filmstrip extends Component <Props> {
                     </div>
                     <div
                         className = { remoteVideosWrapperClassName }
+                        onClick={() => this.props._closeChatWindow()}
                         id = 'filmstripRemoteVideos'>
                         {/*
                           * XXX This extra video container is needed for

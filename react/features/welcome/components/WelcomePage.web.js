@@ -143,7 +143,7 @@ class WelcomePage extends AbstractWelcomePage {
 
         window.onpopstate = () => {
             history.go(1);
-            window.location.href = 'https://dvision.daib.io'
+            window.location.reload();
         };
     }
 

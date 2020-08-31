@@ -49,11 +49,6 @@ class LargeVideo extends Component<Props> {
 
     constructor(props) {
         super(props);
-
-        this.state = {
-            urlValue: '',
-        };
-
     }
     /**
      * Implements React's {@link Component#componentDidMount}.
@@ -62,10 +57,6 @@ class LargeVideo extends Component<Props> {
      */
     componentDidMount() {
         this.props._fetchCustomBrandingData();
-
-        this.setState({
-            urlValue : location.href.split('/')[3]
-        })
     }
 
     /**
@@ -85,17 +76,11 @@ class LargeVideo extends Component<Props> {
                 style={style}>
                 <Subject/>
                 <InviteMore/>
-                <div id='sharedVideo'>
+                <div id='sharedVideo' onClick={() => this.props._closeChatWindow()}>
                     <div id='sharedVideoIFrame'/>
                 </div>
                 <div id='etherpad'/>
-                {
-                    this.state.urlValue === 'WEBINAR' || this.state.urlValue === 'WEBINAR2' ?
-                        <img src={'images/innopolis_deagu.png'} style={{zIndex:100, position:'absolute', left:32,top:32, width:'140px'}} width={'100%'}
-                             height={'70px'}/>
-                             :
-                        <Watermarks/>
-                }
+                <Watermarks/>
                 <div id='dominantSpeaker'>
                     <div className='dynamic-shadow'/>
                     <div id='dominantSpeakerAvatarContainer'/>

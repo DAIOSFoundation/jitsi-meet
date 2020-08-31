@@ -231,8 +231,9 @@ class Watermarks extends Component<Props, State> {
             const link = _customLogoLink || this.state.jitsiWatermarkLink;
             const style = {
                 backgroundImage: `url(${_customLogoUrl || defaultJitsiLogoURL || interfaceConfig.DEFAULT_LOGO_URL})`,
-                maxWidth: 140,
-                maxHeight: 70
+                maxWidth: 170,
+                maxHeight: 70,
+                top: -9
             };
 
             reactElement = (<div
@@ -242,7 +243,8 @@ class Watermarks extends Component<Props, State> {
             if (link) {
                 reactElement = (
                     <a
-                        href = { link }>
+                        target={ '_blank' }
+                        href={ window.location.origin }>
                         { reactElement }
                     </a>
                 );
@@ -265,7 +267,7 @@ class Watermarks extends Component<Props, State> {
             return (
                 <a
                     className = 'poweredby'
-                    href = 'https://dvision.daib.io'>
+                    href={ window.location.origin }>
                     <span>{ t('poweredby') } jitsi.org</span>
                 </a>
             );
