@@ -134,7 +134,7 @@ class SpeakerStats extends Component<Props, State> {
 
         if (statsModel.isLocalStats()) {
             const { t } = this.props;
-            const meString = t('다이버');
+            const meString = t('me');
 
             displayName = this.props._localDisplayName;
             displayName
