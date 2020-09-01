@@ -718,7 +718,7 @@
     },
     "videoStatus": {
         "audioOnly": "오디오 전용",
-        "audioOnlyExpanded": "",
+        "audioOnlyExpanded": "낮은 대역폭 모드에 있습니다. 이 모드에서는 오디오 및 화면 공유 만 수신합니다.",
         "callQuality": "비디오 해상도",
         "hd": "고화질",
         "hdTooltip": "고화질 비디오 보기",
@@ -726,6 +726,7 @@
         "labelTooiltipNoVideo": "비디오 없음",
         "labelTooltipAudioOnly": "오디오 전용 모드 사용",
         "ld": "LD",
+        "ldTooltip": "저해상도 비디오 보기",
         "lowDefinition": "저화질",
         "onlyAudioAvailable": "오디오만 사용할 수 있습니다.",
         "onlyAudioSupported": "이 브라우저에서는 오디오만 지원합니다.",
