@@ -679,8 +679,8 @@
         "tileViewToggle": "보기 전환",
         "toggleCamera": "카메라 토글",
         "videomute": "카메라 시작 또는 중지",
-        "startvideoblur": "배경 옵션",
-        "stopvideoblur": "배경 옵션 중지"
+        "startvideoblur": "배경 흐림 효과",
+        "stopvideoblur": "배경 효과 중지"
     },
     "transcribing": {
         "ccButtonTooltip": "",

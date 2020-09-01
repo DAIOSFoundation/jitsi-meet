@@ -1,9 +1,9 @@
 /* @flow */
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
-import { translate } from '../../../i18n';
-import { connect } from '../../../redux';
+import {translate} from '../../../i18n';
+import {connect} from '../../../redux';
 
 declare var interfaceConfig: Object;
 
@@ -193,18 +193,18 @@ class Watermarks extends Component<Props, State> {
         if (this.state.showBrandWatermark) {
             reactElement = (
                 <div
-                    className = 'watermark rightwatermark'
-                    style = { _RIGHT_WATERMARK_STYLE } />
+                    className='watermark rightwatermark'
+                    style={_RIGHT_WATERMARK_STYLE}/>
             );
 
-            const { brandWatermarkLink } = this.state;
+            const {brandWatermarkLink} = this.state;
 
             if (brandWatermarkLink) {
                 reactElement = (
                     <a
-                        href = { brandWatermarkLink }
-                        target = '_new'>
-                        { reactElement }
+                        href={brandWatermarkLink}
+                        target='_new'>
+                        {reactElement}
                     </a>
                 );
             }
@@ -233,20 +233,35 @@ class Watermarks extends Component<Props, State> {
                 backgroundImage: `url(${_customLogoUrl || defaultJitsiLogoURL || interfaceConfig.DEFAULT_LOGO_URL})`,
                 maxWidth: 170,
                 maxHeight: 70,
-                top: 0
+                top: 0,
+                position: 'relative'
             };
 
             reactElement = (<div
-                className = 'watermark leftwatermark'
-                style = { style } />);
+                className='watermark leftwatermark'
+                style={style}/>);
 
             if (link) {
                 reactElement = (
-                    <a
-                        target={ '_blank' }
-                        href={ window.location.origin }>
-                        { reactElement }
-                    </a>
+                    <div style={{display: 'flex'}}>
+                        <a
+                            target={'_blank'}
+                            href={window.location.origin}>
+                            {reactElement}
+                        </a>
+                        <a
+                            target={'_blank'}
+                            href={window.location.origin}>
+                            <div className='watermark leftwatermark' style={{
+                                backgroundImage: `url(images/innopolis_deagu_01_02.png)`,
+                                maxWidth: 170,
+                                maxHeight: 70,
+                                top: 0,
+                                position: 'relative'
+                            }}>
+                            </div>
+                        </a>
+                    </div>
                 );
             }
         }
@@ -262,13 +277,13 @@ class Watermarks extends Component<Props, State> {
      */
     _renderPoweredBy() {
         if (this.state.showPoweredBy) {
-            const { t } = this.props;
+            const {t} = this.props;
 
             return (
                 <a
-                    className = 'poweredby'
-                    href={ window.location.origin }>
-                    <span>{ t('poweredby') } jitsi.org</span>
+                    className='poweredby'
+                    href={window.location.origin}>
+                    <span>{t('poweredby')} jitsi.org</span>
                 </a>
             );
         }
@@ -284,9 +299,9 @@ class Watermarks extends Component<Props, State> {
  * @returns {Props}
  */
 function _mapStateToProps(state) {
-    const { isGuest } = state['features/base/jwt'];
-    const { customizationReady, logoClickUrl, logoImageUrl } = state['features/dynamic-branding'];
-    const { room } = state['features/base/conference'];
+    const {isGuest} = state['features/base/jwt'];
+    const {customizationReady, logoClickUrl, logoImageUrl} = state['features/dynamic-branding'];
+    const {room} = state['features/base/conference'];
 
     return {
         /**
