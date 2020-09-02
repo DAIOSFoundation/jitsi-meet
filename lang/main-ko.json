@@ -164,7 +164,7 @@
         "dismiss": "",
         "displayNameRequired": "",
         "done": "완료",
-        "enterDisplayName": "여기에 이름을 입력하십시오.",
+        "enterDisplayName": "여기에 소속과 이름을 입력해 주세요.",
         "error": "에러",
         "externalInstallationMsg": "데스크톱 공유 확장 프로그램을 설치해야합니다.",
         "externalInstallationTitle": "확장 프로그램이 필요합니다.",
