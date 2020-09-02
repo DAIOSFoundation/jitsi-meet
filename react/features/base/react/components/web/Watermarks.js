@@ -249,18 +249,18 @@ class Watermarks extends Component<Props, State> {
                             href={window.location.origin}>
                             {reactElement}
                         </a>
-                        {/*<a*/}
-                        {/*    target={'_blank'}*/}
-                        {/*    href={window.location.origin}>*/}
-                        {/*    <div className='watermark leftwatermark' style={{*/}
-                        {/*        backgroundImage: `url(images/innopolis_deagu_01_02.png)`,*/}
-                        {/*        maxWidth: 170,*/}
-                        {/*        maxHeight: 70,*/}
-                        {/*        top: 0,*/}
-                        {/*        position: 'relative'*/}
-                        {/*    }}>*/}
-                        {/*    </div>*/}
-                        {/*</a>*/}
+                        <a
+                            target={'_blank'}
+                            href={window.location.origin}>
+                            <div className='watermark leftwatermark' style={{
+                                backgroundImage: `url(images/innopolis_deagu_01_02.png)`,
+                                maxWidth: 170,
+                                maxHeight: 70,
+                                top: 0,
+                                position: 'relative'
+                            }}>
+                            </div>
+                        </a>
                     </div>
                 );
             }
