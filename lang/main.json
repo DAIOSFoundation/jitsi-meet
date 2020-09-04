@@ -859,7 +859,7 @@
         "join": "CREATE / JOIN",
         "moderatedMessage": "Or <a href=\"{{url}}\" rel=\"noopener noreferrer\" target=\"_blank\">book a meeting URL</a> in advance where you are the only moderator.",
         "privacy": "Privacy",
-        "recentList": "Recent",
+        "c": "Recent",
         "recentListDelete": "Delete",
         "recentListEmpty": "Your recent list is currently empty. Chat with your team and you will find all your recent meetings here.",
         "reducedUIText": "Welcome to {{app}}!",
