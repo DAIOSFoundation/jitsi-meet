@@ -166,7 +166,7 @@ export default class MeetingsList extends Component<Props> {
         const rootClassName
             = `item ${
             onPress ? 'with-click-handler' : 'without-click-handler'}`;
-
+        console.log("TEST",elementAfter)
         return (
             // eslint-disable-next-line react-native/no-inline-styles
             <Container style={{position: 'relative'}} key={index}>
