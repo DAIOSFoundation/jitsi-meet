@@ -34,14 +34,14 @@
         "audioOnly": "음성 전용"
     },
     "calendarSync": {
-        "addMeetingURL": "",
+        "addMeetingURL": "회의 링크 추가",
         "confirmAddLink": "",
         "error": {
             "appConfiguration": "",
             "generic": "",
             "notSignedIn": ""
         },
-        "join": "",
+        "join": "입장",
         "joinTooltip": "",
         "nextMeeting": "다음 회의",
         "noEvents": "예정된 이벤트가 없습니다.",
@@ -576,7 +576,7 @@
     },
     "share": {
         "dialInfoText": "",
-        "mainText": ""
+        "mainText": "회의에 참여하려면 다음 링크를 클릭하십시오.:\n{{roomUrl}}"
     },
     "speaker": "스피커",
     "speakerStats": {
