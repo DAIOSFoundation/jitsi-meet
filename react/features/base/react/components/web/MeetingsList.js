@@ -161,6 +161,7 @@ export default class MeetingsList extends Component<Props> {
             title,
             url
         } = meeting;
+        console.log("TEST",elementAfter)
         const {hideURL = false, deleteRecentListEntry} = this.props;
         const onPress = this._onPress(url);
         const rootClassName
