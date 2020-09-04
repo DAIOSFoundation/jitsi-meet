@@ -161,7 +161,6 @@ export default class MeetingsList extends Component<Props> {
             title,
             url
         } = meeting;
-        console.log("TEST",elementAfter)
         const {hideURL = false, deleteRecentListEntry} = this.props;
         const onPress = this._onPress(url);
         const rootClassName
@@ -204,26 +203,29 @@ export default class MeetingsList extends Component<Props> {
                     </Container>
                 </Container>
                 {/* eslint-disable-next-line react-native/no-inline-styles */}
-                <div
-                    style={{
-                        position: 'absolute',
-                        top: '50%',
-                        right: 30,
-                        transform: 'translate(0,-50%)'
-                    }}>
-                    {/* eslint-disable-next-line react/jsx-no-bind */}
-                    <button style={{
-                        padding: 15,
-                        backgroundColor: 'black',
-                        color: 'white',
-                        border: 'none',
-                        outline: 'none'
-                    }} onClick={() => deleteRecentListEntry(meeting)}>
-                        <Text>
-                            삭제
-                        </Text>
-                    </button>
-                </div>
+                {
+                    elementAfter ? null :
+                        <div
+                            style={{
+                                position: 'absolute',
+                                top: '50%',
+                                right: 30,
+                                transform: 'translate(0,-50%)'
+                            }}>
+                            {/* eslint-disable-next-line react/jsx-no-bind */}
+                            <button style={{
+                                padding: 15,
+                                backgroundColor: 'black',
+                                color: 'white',
+                                border: 'none',
+                                outline: 'none'
+                            }} onClick={() => deleteRecentListEntry(meeting)}>
+                                <Text>
+                                    삭제
+                                </Text>
+                            </button>
+                        </div>
+                }
             </Container>
         );
     }
