@@ -42,7 +42,7 @@
             "notSignedIn": ""
         },
         "join": "입장",
-        "joinTooltip": "",
+        "joinTooltip": "회의에 참여",
         "nextMeeting": "다음 회의",
         "noEvents": "예정된 이벤트가 없습니다.",
         "ongoingMeeting": "",
