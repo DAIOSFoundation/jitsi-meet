@@ -202,6 +202,7 @@ export default class MeetingsList extends Component<Props> {
                     </Container>
                 </Container>
                 {/* eslint-disable-next-line react-native/no-inline-styles */}
+                {/* 미팅 리스트 - 캘린더 / 최근방 리스트 분기처리 */}
                 {
                     elementAfter ? null :
                         <div

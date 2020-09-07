@@ -227,8 +227,9 @@ class Filmstrip extends Component <Props> {
                     </div>
                     <div
                         className = { remoteVideosWrapperClassName }
-                        onClick={() => this.props._closeChatWindow()}
                         id = 'filmstripRemoteVideos'>
+                        {/* 빈 공백 클릭시 채팅창 닫기*/}
+                        <div onClick={() => this.props._closeChatWindow()} style={{height:'inherit', position:'absolute', width:'100%'}}/>
                         {/*
                           * XXX This extra video container is needed for
                           * scrolling thumbnails in Firefox; otherwise, the flex
