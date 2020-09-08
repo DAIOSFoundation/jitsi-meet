@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import Emoji from 'react-emoji-render';
 import TextareaAutosize from 'react-textarea-autosize';
 import type { Dispatch } from 'redux';
+import * as uploadActions from '../../../../modules/upload/action';
 
 import { translate } from '../../../base/i18n';
 import { connect } from '../../../base/redux';
@@ -108,6 +109,17 @@ class ChatInput extends Component<Props, State> {
         const smileysPanelClassName = `${this.state.showSmileysPanel
             ? 'show-smileys' : 'hide-smileys'} smileys-panel`;
 
+        // 파일 버튼 클릭 시
+        const onClickFile = () => {
+            document.getElementById("file").click();
+        }
+
+        // 파일 선택 시
+        const onChangeFileUpload = (e) => {
+            console.log("TEST", e.target.files[0])
+            this.props.dispatch(uploadActions.post_file_upload(e.target.files[0]))
+        }
+
         return (
             <div id = 'chat-input' >
                 <div className = 'smiley-input'>
@@ -134,6 +146,12 @@ class ChatInput extends Component<Props, State> {
                         placeholder = { this.props.t('chat.messagebox') }
                         value = { this.state.message } />
                 </div>
+                {/*<div style={{backgroundColor:'rgba(42,58,75,.9)', color:'white', display:'flex', justifyContent:'center', alignItems:'center'}}>*/}
+                {/*    <input type="file" id="file" name="file" onChange={onChangeFileUpload} style={{display:'none'}}/>*/}
+                {/*    <button style={{border:'none', padding:10, fontWeight:'bold', outline:'none'}} onClick={onClickFile}>*/}
+                {/*        파일*/}
+                {/*    </button>*/}
+                {/*</div>*/}
             </div>
         );
     }

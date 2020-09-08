@@ -1014,9 +1014,9 @@ class Toolbox extends Component<Props, State> {
             <LiveStreamButton
                 key = 'livestreaming'
                 showLabel = { true } />,
-            // <RecordButton
-            //     key = 'record'
-            //     showLabel = { true } />,
+            <RecordButton
+                key = 'record'
+                showLabel = { true } />,
             this._shouldShowButton('sharedvideo')
                 && <OverflowMenuItem
                     accessibilityLabel = { t('toolbar.accessibilityLabel.sharedvideo') }
