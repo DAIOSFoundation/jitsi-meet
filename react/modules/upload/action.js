@@ -1,5 +1,5 @@
 import {createAction} from "redux-actions";
-import {createRequestActionTypes} from "../../libs/createRequestSaga";
+import {createRequestActionTypes} from "../../library/createRequestSaga";
 
 // 파일 업로드
 export const [
