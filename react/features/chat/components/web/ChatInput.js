@@ -147,25 +147,24 @@ class ChatInput extends Component<Props, State> {
                 {/*            onSmileySelect = { this._onSmileySelect } />*/}
                 {/*    </div>*/}
                 {/*</div>*/}
-                <div style={{
-                    backgroundColor: 'rgba(42,58,75,.9)',
-                    color: 'white',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center'
-                }}>
-                    <input type="file" id="file" name="userFile"
-                           onChange={onChangeFileUpload}
-                           style={{display: 'none'}}/>
-                    <button style={{
-                        border: 'none',
-                        fontWeight: 'bold',
-                        outline: 'none'
-                    }} onClick={onClickFile}>
-                        <img style={{width: 40, height: 40}}
-                             src={"images/file_icon_50.png"} alt=""/>
-                    </button>
-                </div>
+                {/*<div style={{*/}
+                {/*    backgroundColor: 'rgba(42,58,75,.9)',*/}
+                {/*    color: 'white',*/}
+                {/*    display: 'flex',*/}
+                {/*    justifyContent: 'center',*/}
+                {/*    alignItems: 'center'*/}
+                {/*}}>*/}
+                {/*    <input type="file" id="file" name="userFile"*/}
+                {/*           onChange={onChangeFileUpload}*/}
+                {/*           style={{display: 'none'}}/>*/}
+                {/*    <button style={{*/}
+                {/*        border: 'none',*/}
+                {/*        outline: 'none'*/}
+                {/*    }} onClick={onClickFile}>*/}
+                {/*        <img style={{width: 40, height: 40}}*/}
+                {/*             src={"images/file_icon_50.png"} alt=""/>*/}
+                {/*    </button>*/}
+                {/*</div>*/}
                 <div className='usrmsg-form'>
                     <TextareaAutosize
                         id='usermsg'

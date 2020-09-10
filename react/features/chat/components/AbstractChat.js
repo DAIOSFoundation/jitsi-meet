@@ -101,7 +101,7 @@ export function _mapDispatchToProps(dispatch: Dispatch<any>) {
  *     _showNamePrompt: boolean
  * }}
  */
-export function _mapStateToProps(state: any) {
+export function _mapStateToProps(state: Object) {
     const { isOpen, messages } = state['features/chat'];
     const _localParticipant = getLocalParticipant(state);
     const loading = state.loading["chat/POST_FILE_UPLOAD"];

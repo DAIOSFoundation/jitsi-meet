@@ -76,6 +76,7 @@ export default class MessageContainer extends AbstractMessageContainer<Props> {
                 style={{position:'relative'}}
                 onScroll = { this._onChatScroll }
                 ref = { this._messageListRef }>
+                {/* 업로드 상태에 따른 로딩바 */}
                 {
                     this.props.loading ?
                         <div style={{position:'absolute', left:0, top:0, width:'100%', height:'100%'}}>

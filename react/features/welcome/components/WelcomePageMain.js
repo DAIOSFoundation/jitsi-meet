@@ -113,7 +113,7 @@ const WelcomePageMain = () => {
                         opacity: 0.8
                     }}>
                         <text style={{zIndex: 1, color: '#0d2656'}}>
-                            제품소개서 다운로드
+                            매뉴얼 다운로드
                         </text>
                     </button>
                     {/*<button onClick={onClickPlan} style={{*/}
