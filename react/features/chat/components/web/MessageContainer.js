@@ -8,6 +8,8 @@ import AbstractMessageContainer, { type Props }
 
 import ChatMessageGroup from './ChatMessageGroup';
 
+import LoadingBar from '../../../../components/Loading/Loading';
+
 /**
  * Displays all received chat messages, grouped by sender.
  *
@@ -71,8 +73,17 @@ export default class MessageContainer extends AbstractMessageContainer<Props> {
         return (
             <div
                 id = 'chatconversation'
+                style={{position:'relative'}}
                 onScroll = { this._onChatScroll }
                 ref = { this._messageListRef }>
+                {
+                    this.props.loading ?
+                        <div style={{position:'absolute', left:0, top:0, width:'100%', height:'100%'}}>
+                            <LoadingBar/>
+                        </div>
+                        :
+                        null
+                }
                 { messages }
                 <div ref = { this._messagesListEndRef } />
             </div>

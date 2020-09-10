@@ -113,6 +113,7 @@ class Chat extends AbstractChat<Props> {
         return (
             <>
                 <MessageContainer
+                    loading = { this.props.loading }
                     messages = { this.props._messages }
                     ref = { this._messageContainerRef } />
                 <MessageRecipient />

@@ -60,7 +60,7 @@ export function clearMessages() {
  *     message: string
  * }}
  */
-export function sendMessage(message: string, ignorePrivacy: boolean = false) {
+export function sendMessage(message: string | Object, ignorePrivacy: boolean = false) {
     return {
         type: SEND_MESSAGE,
         ignorePrivacy,

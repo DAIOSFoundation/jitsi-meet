@@ -91,10 +91,10 @@ MiddlewareRegistry.register(store => next => action => {
                 }
 
                 if (privateMessageRecipient) {
-                    conference.sendPrivateTextMessage(privateMessageRecipient.id, action.message);
-                    _persistSentPrivateMessage(store, privateMessageRecipient.id, action.message);
+                    conference.sendPrivateTextMessage(privateMessageRecipient.id, JSON.stringify(action.message));
+                    _persistSentPrivateMessage(store, privateMessageRecipient.id, JSON.stringify(action.message));
                 } else {
-                    conference.sendTextMessage(action.message);
+                    conference.sendTextMessage(JSON.stringify(action.message));
                 }
             }
         }

@@ -379,3 +379,11 @@
         }
     }
 }
+
+.chat-hover{
+    color:white;
+    cursor: pointer;
+    &:hover{
+        color: rgba(22,38,55,.8);
+    }
+}

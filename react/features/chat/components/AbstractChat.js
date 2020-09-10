@@ -83,7 +83,7 @@ export function _mapDispatchToProps(dispatch: Dispatch<any>) {
          * @returns {void}
          * @type {Function}
          */
-        _onSendMessage(text: string) {
+        _onSendMessage(text: string | Object) {
             dispatch(sendMessage(text));
         }
     };
@@ -101,11 +101,13 @@ export function _mapDispatchToProps(dispatch: Dispatch<any>) {
  *     _showNamePrompt: boolean
  * }}
  */
-export function _mapStateToProps(state: Object) {
+export function _mapStateToProps(state: any) {
     const { isOpen, messages } = state['features/chat'];
     const _localParticipant = getLocalParticipant(state);
+    const loading = state.loading["chat/POST_FILE_UPLOAD"];
 
     return {
+        loading: loading,
         _isOpen: isOpen,
         _messages: messages,
         _showNamePrompt: !_localParticipant.name

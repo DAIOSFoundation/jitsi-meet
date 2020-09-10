@@ -1,13 +1,13 @@
 // @flow
 
-import React, { Component } from 'react';
+import React, {Component, useEffect} from 'react';
 import Emoji from 'react-emoji-render';
 import TextareaAutosize from 'react-textarea-autosize';
-import type { Dispatch } from 'redux';
+import type {Dispatch} from 'redux';
 import * as uploadActions from '../../../../modules/upload/action';
 
-import { translate } from '../../../base/i18n';
-import { connect } from '../../../base/redux';
+import {translate} from '../../../base/i18n';
+import {connect} from '../../../base/redux';
 
 import SmileysPanel from './SmileysPanel';
 
@@ -99,6 +99,12 @@ class ChatInput extends Component<Props, State> {
         this._focus();
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.userFile !== this.props.userFile) {
+            this.props.onSend((this.props.userFile))
+        }
+    }
+
     /**
      * Implements React's {@link Component#render()}.
      *
@@ -116,42 +122,62 @@ class ChatInput extends Component<Props, State> {
 
         // 파일 선택 시
         const onChangeFileUpload = (e) => {
-            console.log("TEST", e.target.files[0])
-            this.props.dispatch(uploadActions.post_file_upload(e.target.files[0]))
+
+            let param = {
+                userFile: e.target.files[0]
+            }
+
+            this.props.dispatch(uploadActions.post_file_upload(param))
+            // input type = 'file' 값 초기화
+            document.getElementById("file").value = '';
         }
 
         return (
-            <div id = 'chat-input' >
-                <div className = 'smiley-input'>
-                    <div id = 'smileysarea'>
-                        <div id = 'smileys'>
-                            <Emoji
-                                onClick = { this._onToggleSmileysPanel }
-                                text = ':)' />
-                        </div>
-                    </div>
-                    <div className = { smileysPanelClassName }>
-                        <SmileysPanel
-                            onSmileySelect = { this._onSmileySelect } />
-                    </div>
-                </div>
-                <div className = 'usrmsg-form'>
-                    <TextareaAutosize
-                        id = 'usermsg'
-                        inputRef = { this._setTextAreaRef }
-                        maxRows = { 5 }
-                        onChange = { this._onMessageChange }
-                        onHeightChange = { this.props.onResize }
-                        onKeyDown = { this._onDetectSubmit }
-                        placeholder = { this.props.t('chat.messagebox') }
-                        value = { this.state.message } />
-                </div>
-                {/*<div style={{backgroundColor:'rgba(42,58,75,.9)', color:'white', display:'flex', justifyContent:'center', alignItems:'center'}}>*/}
-                {/*    <input type="file" id="file" name="file" onChange={onChangeFileUpload} style={{display:'none'}}/>*/}
-                {/*    <button style={{border:'none', padding:10, fontWeight:'bold', outline:'none'}} onClick={onClickFile}>*/}
-                {/*        파일*/}
-                {/*    </button>*/}
+            <div id='chat-input'>
+                {/*<div className = 'smiley-input'>*/}
+                {/*    <div id = 'smileysarea'>*/}
+                {/*        <div id = 'smileys'>*/}
+                {/*            <Emoji*/}
+                {/*                onClick = { this._onToggleSmileysPanel }*/}
+                {/*                text = ':)' />*/}
+                {/*        </div>*/}
+                {/*    </div>*/}
+                {/*    <div className = { smileysPanelClassName }>*/}
+                {/*        <SmileysPanel*/}
+                {/*            onSmileySelect = { this._onSmileySelect } />*/}
+                {/*    </div>*/}
                 {/*</div>*/}
+                <div style={{
+                    backgroundColor: 'rgba(42,58,75,.9)',
+                    color: 'white',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }}>
+                    <input type="file" id="file" name="userFile"
+                           onChange={onChangeFileUpload}
+                           style={{display: 'none'}}/>
+                    <button style={{
+                        border: 'none',
+                        fontWeight: 'bold',
+                        outline: 'none'
+                    }} onClick={onClickFile}>
+                        <img style={{width: 40, height: 40}}
+                             src={"images/file_icon_50.png"} alt=""/>
+                    </button>
+                </div>
+                <div className='usrmsg-form'>
+                    <TextareaAutosize
+                        id='usermsg'
+                        inputRef={this._setTextAreaRef}
+                        maxRows={5}
+                        onChange={this._onMessageChange}
+                        onHeightChange={this.props.onResize}
+                        onKeyDown={this._onDetectSubmit}
+                        placeholder={this.props.t('chat.messagebox')}
+                        value={this.state.message}/>
+                </div>
+
             </div>
         );
     }
@@ -186,7 +212,7 @@ class ChatInput extends Component<Props, State> {
             if (trimmed) {
                 this.props.onSend(trimmed);
 
-                this.setState({ message: '' });
+                this.setState({message: ''});
             }
         }
     }
@@ -201,7 +227,7 @@ class ChatInput extends Component<Props, State> {
      * @returns {void}
      */
     _onMessageChange(event) {
-        this.setState({ message: event.target.value });
+        this.setState({message: event.target.value});
     }
 
     _onSmileySelect: (string) => void;
@@ -232,7 +258,7 @@ class ChatInput extends Component<Props, State> {
      * @returns {void}
      */
     _onToggleSmileysPanel() {
-        this.setState({ showSmileysPanel: !this.state.showSmileysPanel });
+        this.setState({showSmileysPanel: !this.state.showSmileysPanel});
 
         this._focus();
     }
@@ -251,4 +277,10 @@ class ChatInput extends Component<Props, State> {
     }
 }
 
-export default translate(connect()(ChatInput));
+function _mapStateToProps(state) {
+    return {
+        userFile: state.upload.userFileInfo
+    }
+}
+
+export default translate(connect(_mapStateToProps)(ChatInput));
