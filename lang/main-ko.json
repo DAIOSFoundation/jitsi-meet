@@ -530,7 +530,7 @@
     },
     "security": {
         "about": "회의에 $t(lockRoomPassword)를 추가 할 수 있습니다. 참가자는 회의 참가를 허용하기 전에 $t(lockRoomPassword)를 제공해야합니다.",
-        "aboutReadOnly": "Moderator participants can add a $t(lockRoomPassword) to the meeting. Participants will need to provide the $t(lockRoomPassword) before they are allowed to join the meeting.",
+        "aboutReadOnly": "방 개설자에 한해 패스워드를 추가 할 수 있습니다. 참가자는 필요 시 방 개설자에게 패스워드 추가를 요청하시기 바랍니다.",
         "insecureRoomNameWarning": "The room name is unsafe. Unwanted participants may join your conference. Consider securing your meeting using the security button.",
         "securityOptions": "보안 옵션"
     },
