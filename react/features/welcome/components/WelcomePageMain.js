@@ -21,7 +21,7 @@ const WelcomePageMain = () => {
     const onClickPlan = () => {
         // 방만들기 페이지 화면으로 이동하기 위해 현재 페이지 상태 값을 'meet' 으로 바꿈
         dispatch(changePageStatus({
-            'pageStatus':'plan'
+            'pageStatus': 'plan'
         }))
         // _getRouteToRender 함수 호출 하기 위해 사용
         dispatch(setRoom())
@@ -95,7 +95,30 @@ const WelcomePageMain = () => {
                             방 만들기
                         </text>
                     </button>
-                    <button onClick={() => alert('현재 준비중 입니다.')} style={{
+                    <a download={'DVision_Manual'} href={`/static/DVision_Manual.pdf`}>
+                        <button style={{
+                            borderRadius: 35,
+                            outline: 'none',
+                            borderColor: 'white',
+                            borderWidth: 1,
+                            backgroundColor: 'white',
+                            marginTop: 155,
+                            width: '200px',
+                            height: '50px',
+                            fontSize: 19,
+                            fontWeight: 'bold',
+                            color: 'white',
+                            textAlign: 'center',
+                            display: 'inline-block',
+                            marginRight: 10,
+                            opacity: 0.8
+                        }}>
+                            <text style={{zIndex: 1, color: '#0d2656'}}>
+                                매뉴얼 다운로드
+                            </text>
+                        </button>
+                    </a>
+                    <button onClick={onClickPlan} style={{
                         borderRadius: 35,
                         outline: 'none',
                         borderColor: 'white',
@@ -113,29 +136,9 @@ const WelcomePageMain = () => {
                         opacity: 0.8
                     }}>
                         <text style={{zIndex: 1, color: '#0d2656'}}>
-                            매뉴얼 다운로드
+                            요금제 및 가격 정책
                         </text>
                     </button>
-                    {/*<button onClick={onClickPlan} style={{*/}
-                    {/*    borderRadius: 35,*/}
-                    {/*    outline: 'none',*/}
-                    {/*    borderColor: 'white',*/}
-                    {/*    borderWidth: 1,*/}
-                    {/*    backgroundColor: 'white',*/}
-                    {/*    marginTop: 15,*/}
-                    {/*    width: '200px',*/}
-                    {/*    height: '50px',*/}
-                    {/*    fontSize: 19,*/}
-                    {/*    fontWeight: 'bold',*/}
-                    {/*    color: 'white',*/}
-                    {/*    textAlign: 'center',*/}
-                    {/*    display: 'inline-block',*/}
-                    {/*    opacity: 0.8*/}
-                    {/*}}>*/}
-                    {/*    <text style={{zIndex: 1, color: '#0d2656'}}>*/}
-                    {/*        요금제 및 가격 정책*/}
-                    {/*    </text>*/}
-                    {/*</button>*/}
                 </div>
             </div>
         </div>
