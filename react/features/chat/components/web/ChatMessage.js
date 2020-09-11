@@ -65,7 +65,6 @@ class ChatMessage extends AbstractChatMessage<Props> {
 
         if (typeof JSON.parse(this._getMessageText()) === 'string') {
             const content = toArray(JSON.parse(this._getMessageText()), {className: 'smiley'});
-            console.log("CONTENT 111", content)
             content.forEach(i => {
                 if (typeof i === 'string') {
                     processedMessage.push(<Linkify
@@ -76,7 +75,6 @@ class ChatMessage extends AbstractChatMessage<Props> {
             });
         } else {
             const content = toArray(this._getMessageText(), {className: 'smiley'});
-            console.log("CONTENT 222", content)
             content.forEach(i => {
                 processedMessage.push(i);
             });

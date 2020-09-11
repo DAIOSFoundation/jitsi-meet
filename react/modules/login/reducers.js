@@ -7,7 +7,7 @@ const initialState = {
 }
 
 const login = handleActions({
-    [LOGIN.LOGIN_CHANGE_ID]: (state, action) => {
+    [LOGIN.CHANGE_LOGIN_ID]: (state, action) => {
         return produce(state, (draft) => {
             draft.userId = action.payload
         })

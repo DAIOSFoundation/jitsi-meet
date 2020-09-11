@@ -14,6 +14,8 @@ import PrejoinApp from './features/prejoin/components/PrejoinApp';
 const logger = getLogger('index.web');
 const OS = Platform.OS;
 
+import {CookiesProvider} from 'react-cookie';
+
 /**
  * Renders the app when the DOM tree has been loaded.
  */
@@ -69,7 +71,9 @@ globalNS.renderEntryPoint = ({
     elementId = 'react'
 }) => {
     ReactDOM.render(
-        <Component { ...props } />,
+        <CookiesProvider>
+            <Component { ...props } />
+        </CookiesProvider>,
         document.getElementById(elementId)
     );
 };

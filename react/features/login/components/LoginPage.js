@@ -34,6 +34,9 @@ import {setRoom} from '../../base/conference';
 import {GoogleLogin} from 'react-google-login';
 
 import * as loginActions from '../../../modules/login/action';
+import * as authActions from '../../../modules/auth/action';
+
+import {withCookies, useCookies} from 'react-cookie';
 
 const useStyles = makeStyles(styles);
 
@@ -41,12 +44,20 @@ const LoginPage = () => {
 
     const dispatch = useDispatch();
 
-    const {userId} = useSelector(
+    const {
+        jwt,
+        userId,
+        email,
+    } = useSelector(
         (state) => ({
-            userId: state.login.userId
+            jwt: state.auth.jwt,
+            userId: state.auth.userId,
+            email: state.auth.email
         }), shallowEqual)
 
-    console.log("userId", userId);
+    const [cookiesJWT, setCookieJWT] = useCookies(['jwt']);
+    const [cookiesUserID, setCookieUserID] = useCookies(['userId']);
+    const [cookiesEmail, setCookieEmail] = useCookies(['email']);
 
     // 뒤로가기 이벤트
     useEffect(() => {
@@ -58,21 +69,35 @@ const LoginPage = () => {
         };
     }, []);
 
-    const onClickMeet = () => {
-        // 방만들기 페이지 화면으로 이동하기 위해 현재 페이지 상태 값을 'meet' 으로 바꿈
-        dispatch(changePageStatus({
-            'pageStatus': 'meet'
-        }))
-        // _getRouteToRender 함수 호출 하기 위해 사용
-        dispatch(setRoom())
-    }
+    useEffect(() => {
+        if (jwt && userId && email) {
+            setCookieJWT('jwt', jwt);
+            setCookieUserID('userId', userId);
+            setCookieEmail('email', email);
+        }
+    }, [jwt, userId, email])
 
-    const onChangeText = (e) => {
-        dispatch(loginActions.login_change_id(e.target.value))
-    }
+    useEffect(() => {
+        if(cookiesJWT.jwt){
+            dispatch(changePageStatus({
+                'pageStatus': 'meet'
+            }))
+            // _getRouteToRender 함수 호출 하기 위해 사용
+            dispatch(setRoom())
+        }
+    },[cookiesJWT]);
 
     const successGoogleLogin = (res) => {
-        console.log("successGoogleLogin", res)
+
+        let param = {
+            'platform': 'google',
+            'accessToken': res.accessToken,
+            'name': res.profileObj.name,
+        }
+
+        console.log("successGoogleLogin", param)
+
+        dispatch(authActions.post_google_login(param))
     };
 
     const failedGoogleLogin = (res) => {
@@ -93,7 +118,7 @@ const LoginPage = () => {
                         <CardBody>
                             <GridContainer justify="center">
                                 <GoogleLogin
-                                    clientId="106358503881-urr58iic37alnh5u57m7fn7huelmiuij.apps.googleusercontent.com"
+                                    clientId="372866353222-8hh2rk7jci4pm0m1gggiabiqp3grfd58.apps.googleusercontent.com"
                                     buttonText="로그인"
                                     onSuccess={successGoogleLogin}
                                     onFailure={failedGoogleLogin}
@@ -108,4 +133,4 @@ const LoginPage = () => {
     );
 };
 
-export default LoginPage;
+export default withCookies(LoginPage);
