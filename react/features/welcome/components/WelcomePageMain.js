@@ -102,7 +102,7 @@ const WelcomePageMain = () => {
                             fontSize: '2vmin',
                             letterSpacing: 1,
                             opacity: 0.7
-                        }}>DVision is the best of Video Business Solution in the new-normal age.</span>
+                        }}>DVision is the best of Video Business Solution in the Next Normal age.</span>
                     </div>
 
                     <button onClick={onClickMeet} style={{

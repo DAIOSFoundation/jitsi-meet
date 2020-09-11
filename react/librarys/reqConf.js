@@ -1,5 +1,5 @@
-const host = "https://dvision-api.daib.io";
-// "https://dvision-api.daib.io"
+const host = "https://dvision-api.daib.io/v1";
+// "https://dvision-api.daib.io/v1"
 
 export const urls = {
   upload: host + "/upload",
