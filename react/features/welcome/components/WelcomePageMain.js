@@ -95,7 +95,7 @@ const WelcomePageMain = () => {
                             방 만들기
                         </text>
                     </button>
-                    <a download={'DVision_Manual'} href={`/static/DVision_Manual.pdf`}>
+                    <a download={'DVision_사용매뉴얼_다이브(주)'} href={`/static/DVision_Manual.pdf`}>
                         <button style={{
                             borderRadius: 35,
                             outline: 'none',
