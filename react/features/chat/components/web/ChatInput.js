@@ -134,19 +134,19 @@ class ChatInput extends Component<Props, State> {
 
         return (
             <div id='chat-input'>
-                {/*<div className = 'smiley-input'>*/}
-                {/*    <div id = 'smileysarea'>*/}
-                {/*        <div id = 'smileys'>*/}
-                {/*            <Emoji*/}
-                {/*                onClick = { this._onToggleSmileysPanel }*/}
-                {/*                text = ':)' />*/}
-                {/*        </div>*/}
-                {/*    </div>*/}
-                {/*    <div className = { smileysPanelClassName }>*/}
-                {/*        <SmileysPanel*/}
-                {/*            onSmileySelect = { this._onSmileySelect } />*/}
-                {/*    </div>*/}
-                {/*</div>*/}
+                <div className = 'smiley-input'>
+                    <div id = 'smileysarea'>
+                        <div id = 'smileys'>
+                            <Emoji
+                                onClick = { this._onToggleSmileysPanel }
+                                text = ':)' />
+                        </div>
+                    </div>
+                    <div className = { smileysPanelClassName }>
+                        <SmileysPanel
+                            onSmileySelect = { this._onSmileySelect } />
+                    </div>
+                </div>
                 {/*<div style={{*/}
                 {/*    backgroundColor: 'rgba(42,58,75,.9)',*/}
                 {/*    color: 'white',*/}

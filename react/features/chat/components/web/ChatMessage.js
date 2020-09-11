@@ -29,10 +29,7 @@ class ChatMessage extends AbstractChatMessage<Props> {
 
         // type -> string(메세지) 인지 object(파일 전송)인지 구분
         function typeCheck(str) {
-
-            let checkString = JSON.parse(str);
-
-            return typeof checkString
+            return typeof JSON.parse(str)
         }
 
         // Byte 단위 변환
@@ -65,16 +62,25 @@ class ChatMessage extends AbstractChatMessage<Props> {
         const processedMessage = [];
 
         // content is an array of text and emoji components
-        const content = toArray(this._getMessageText(), {className: 'smiley'});
 
-        content.forEach(i => {
-            if (typeof i === 'string') {
-                processedMessage.push(<Linkify
-                    key={JSON.parse(i)}>{JSON.parse(i)}</Linkify>);
-            } else {
+        if (typeof JSON.parse(this._getMessageText()) === 'string') {
+            const content = toArray(JSON.parse(this._getMessageText()), {className: 'smiley'});
+            console.log("CONTENT 111", content)
+            content.forEach(i => {
+                if (typeof i === 'string') {
+                    processedMessage.push(<Linkify
+                        key={(i)}>{(i)}</Linkify>);
+                } else {
+                    processedMessage.push(i);
+                }
+            });
+        } else {
+            const content = toArray(this._getMessageText(), {className: 'smiley'});
+            console.log("CONTENT 222", content)
+            content.forEach(i => {
                 processedMessage.push(i);
-            }
-        });
+            });
+        }
 
         return (
             <div className='chatmessage-wrapper'>

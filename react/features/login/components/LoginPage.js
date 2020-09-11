@@ -31,6 +31,8 @@ import {shallowEqual, useDispatch, useSelector} from 'react-redux';
 import {changePageStatus} from '../../pageStatus';
 import {setRoom} from '../../base/conference';
 
+import {GoogleLogin} from 'react-google-login';
+
 import * as loginActions from '../../../modules/login/action';
 
 const useStyles = makeStyles(styles);
@@ -44,7 +46,7 @@ const LoginPage = () => {
             userId: state.login.userId
         }), shallowEqual)
 
-    console.log("userId",userId);
+    console.log("userId", userId);
 
     // 뒤로가기 이벤트
     useEffect(() => {
@@ -69,6 +71,14 @@ const LoginPage = () => {
         dispatch(loginActions.login_change_id(e.target.value))
     }
 
+    const successGoogleLogin = (res) => {
+        console.log("successGoogleLogin", res)
+    };
+
+    const failedGoogleLogin = (res) => {
+        console.log("failedGoogleLogin", res)
+    }
+
     const classes = useStyles();
 
     return (
@@ -82,75 +92,13 @@ const LoginPage = () => {
                         }}>로그인</h2>
                         <CardBody>
                             <GridContainer justify="center">
-                                <GridItem xs={12} sm={8} md={5}>
-                                    <form className={classes.form}>
-                                        <CustomInput
-                                            formControlProps={{
-                                                fullWidth: true,
-                                                className: classes.customFormControlClasses
-                                            }}
-                                            onChangeText={(e) => onChangeText(e)}
-                                            inputProps={{
-                                                startAdornment: (
-                                                    <InputAdornment
-                                                        position="start"
-                                                        className={classes.inputAdornment}
-                                                    >
-                                                        <Face
-                                                            className={classes.inputAdornmentIcon}/>
-                                                    </InputAdornment>
-                                                ),
-                                                placeholder: "아이디"
-                                            }}
-                                        />
-                                        <CustomInput
-                                            formControlProps={{
-                                                fullWidth: true,
-                                                className: classes.customFormControlClasses
-                                            }}
-                                            inputProps={{
-                                                startAdornment: (
-                                                    <InputAdornment
-                                                        position="start"
-                                                        className={classes.inputAdornment}
-                                                    >
-                                                        <Icon
-                                                            className={classes.inputAdornmentIcon}>
-                                                            lock_outline
-                                                        </Icon>
-                                                    </InputAdornment>
-                                                ),
-                                                placeholder: "비밀번호"
-                                            }}
-                                        />
-                                        <div className={classes.center}
-                                             style={{
-                                                 marginTop: 30,
-                                                 display: 'flex',
-                                                 justifyContent: 'space-between'
-                                             }}>
-                                            <Button
-                                                onClick={() => alert("준비중 입니다.")}
-                                                round color="primary"
-                                                style={{
-                                                    fontSize: 16,
-                                                    width: 120,
-                                                    margin: '0 15px 0 0'
-                                                }}>
-                                                로그인
-                                            </Button>
-                                            <Button onClick={onClickMeet} round
-                                                    color="primary"
-                                                    style={{
-                                                        fontSize: 16,
-                                                        width: 120,
-                                                        margin: '0 0 0 15px'
-                                                    }}>
-                                                체험하기
-                                            </Button>
-                                        </div>
-                                    </form>
-                                </GridItem>
+                                <GoogleLogin
+                                    clientId="106358503881-urr58iic37alnh5u57m7fn7huelmiuij.apps.googleusercontent.com"
+                                    buttonText="로그인"
+                                    onSuccess={successGoogleLogin}
+                                    onFailure={failedGoogleLogin}
+                                    cookiePolicy={'single_host_origin'}
+                                />
                             </GridContainer>
                         </CardBody>
                     </Card>
