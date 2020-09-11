@@ -53,28 +53,28 @@ const WelcomePageMain = () => {
                     <img src={'images/watermark.png'} width={'100%'}
                          height={'100%'}/>
                 </div>
-                <button onClick={onClickLogin} style={{
-                    borderRadius: 35,
-                    outline: 'none',
-                    borderColor: 'white',
-                    borderWidth: 1,
-                    backgroundColor: 'white',
-                    width: '150',
-                    height: '50px',
-                    fontSize: 19,
-                    fontWeight: 'bold',
-                    color: 'white',
-                    textAlign: 'center',
-                    marginRight: 10,
-                    opacity: 0.8,
-                    right:15,
-                    top:25,
-                    position:'absolute'
-                }}>
-                    <text style={{zIndex: 1, color: '#0d2656'}}>
-                       로그인
-                    </text>
-                </button>
+                {/*<button onClick={onClickLogin} style={{*/}
+                {/*    borderRadius: 35,*/}
+                {/*    outline: 'none',*/}
+                {/*    borderColor: 'white',*/}
+                {/*    borderWidth: 1,*/}
+                {/*    backgroundColor: 'white',*/}
+                {/*    width: '150',*/}
+                {/*    height: '50px',*/}
+                {/*    fontSize: 19,*/}
+                {/*    fontWeight: 'bold',*/}
+                {/*    color: 'white',*/}
+                {/*    textAlign: 'center',*/}
+                {/*    marginRight: 10,*/}
+                {/*    opacity: 0.8,*/}
+                {/*    right:15,*/}
+                {/*    top:25,*/}
+                {/*    position:'absolute'*/}
+                {/*}}>*/}
+                {/*    <text style={{zIndex: 1, color: '#0d2656'}}>*/}
+                {/*       로그인*/}
+                {/*    </text>*/}
+                {/*</button>*/}
                 <div style={{
                     color: 'white',
                     width: 'auto',
