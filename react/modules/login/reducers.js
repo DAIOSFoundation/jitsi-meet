@@ -1,17 +1,22 @@
 import {handleActions} from 'redux-actions';
 import produce from 'immer';
-import * as LOGIN from './action'
+import * as Login from './action'
 
 const initialState = {
+    jwt: null,
     userId: null,
+    email: null,
 }
 
-const login = handleActions({
-    [LOGIN.CHANGE_LOGIN_ID]: (state, action) => {
+const auth = handleActions({
+    [Login.POST_GOOGLE_LOGIN_SUCCESS]: (state, action) => {
+        console.log('GOOGLE_LOGIN_SUCCESS', action.payload)
         return produce(state, (draft) => {
-            draft.userId = action.payload
+            draft.jwt = action.payload.data.jwt
+            draft.userId = action.payload.data.userId
+            draft.email = action.payload.data.email
         })
     }
 },initialState)
 
-export default login;
+export default auth;

@@ -1,5 +1,11 @@
 import {createAction} from 'redux-actions';
+import {createRequestActionTypes} from '../../librarys/createRequest';
 
-// 로그인 폼 아이디 입력
-export const CHANGE_LOGIN_ID = 'login/CHANGE_LOGIN_ID';
-export const change_login_id = createAction(CHANGE_LOGIN_ID);
+// Google Login
+export const [
+    POST_GOOGLE_LOGIN,
+    POST_GOOGLE_LOGIN_SUCCESS,
+    POST_GOOGLE_LOGIN_FAILED,
+] = createRequestActionTypes("auth/POST_GOOGLE_LOGIN");
+export const post_google_login = createAction(POST_GOOGLE_LOGIN);
+

@@ -1,0 +1,36 @@
+.welcomePageMainButton{
+    border-radius: 35px;
+    outline: none;
+    border-color: white;
+    border-width: 1px;
+    background-color: white;
+    margin-top: 155px;
+    width: 200px;
+    height: 50px;
+    font-size: 19px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    display: inline-block;
+    margin-right: 10px;
+    opacity: 0.8;
+}
+
+.welcomePageMainAuthButton{
+    border-radius: 35px;
+    outline: none;
+    border-color: white;
+    border-width: 1px;
+    background-color: white;
+    width: 150px;
+    height: 50px;
+    font-size: 19px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    margin-right: 10px;
+    opacity: 0.8;
+    right: 15px;
+    top: 25px;
+    position: absolute
+}

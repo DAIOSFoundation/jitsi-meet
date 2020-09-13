@@ -6,6 +6,7 @@ export const postFileUpload = async (params) => {
         method: 'post',
         url: urls.upload,
         data: objToFormData(params.userFile),
+        withCredentials: true,
         headers: {
             "Content-Type": "multipart/form-data"
         }

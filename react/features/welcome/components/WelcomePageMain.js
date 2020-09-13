@@ -2,10 +2,13 @@ import React from 'react';
 import {useDispatch} from 'react-redux';
 import {changePageStatus} from '../../pageStatus';
 import {setRoom} from '../../base/conference';
+import {useCookies} from 'react-cookie';
 
 const WelcomePageMain = () => {
 
     const dispatch = useDispatch();
+
+    const [cookies, removeCookie] = useCookies(['jwt']);
 
     // MainPage 방만들기 버튼 클릭 시 이벤트
     const onClickMeet = () => {
@@ -19,7 +22,6 @@ const WelcomePageMain = () => {
 
     // MainPage 요금제 및 가격정책 버튼 클릭 시 이벤트
     const onClickPlan = () => {
-        // 방만들기 페이지 화면으로 이동하기 위해 현재 페이지 상태 값을 'meet' 으로 바꿈
         dispatch(changePageStatus({
             'pageStatus': 'plan'
         }))
@@ -34,6 +36,11 @@ const WelcomePageMain = () => {
         }))
         // _getRouteToRender 함수 호출 하기 위해 사용
         dispatch(setRoom())
+    }
+
+    // 로그아웃
+    const onClickLogout = () => {
+        removeCookie('jwt')
     }
 
     return (
@@ -53,28 +60,22 @@ const WelcomePageMain = () => {
                     <img src={'images/watermark.png'} width={'100%'}
                          height={'100%'}/>
                 </div>
-                {/*<button onClick={onClickLogin} style={{*/}
-                {/*    borderRadius: 35,*/}
-                {/*    outline: 'none',*/}
-                {/*    borderColor: 'white',*/}
-                {/*    borderWidth: 1,*/}
-                {/*    backgroundColor: 'white',*/}
-                {/*    width: '150',*/}
-                {/*    height: '50px',*/}
-                {/*    fontSize: 19,*/}
-                {/*    fontWeight: 'bold',*/}
-                {/*    color: 'white',*/}
-                {/*    textAlign: 'center',*/}
-                {/*    marginRight: 10,*/}
-                {/*    opacity: 0.8,*/}
-                {/*    right:15,*/}
-                {/*    top:25,*/}
-                {/*    position:'absolute'*/}
-                {/*}}>*/}
-                {/*    <text style={{zIndex: 1, color: '#0d2656'}}>*/}
-                {/*       로그인*/}
-                {/*    </text>*/}
-                {/*</button>*/}
+                {
+                    (cookies.jwt !== 'undefined' && cookies.jwt !== undefined)?
+                        <button onClick={onClickLogout}
+                                className='welcomePageMainAuthButton'>
+                            <text style={{zIndex: 1, color: '#0d2656'}}>
+                                로그아웃
+                            </text>
+                        </button>
+                        :
+                        <button onClick={onClickLogin}
+                                className='welcomePageMainAuthButton'>
+                            <text style={{zIndex: 1, color: '#0d2656'}}>
+                                로그인
+                            </text>
+                        </button>
+                }
                 <div style={{
                     color: 'white',
                     width: 'auto',
@@ -105,67 +106,22 @@ const WelcomePageMain = () => {
                         }}>DVision is the best of Video Business Solution in the Next Normal age.</span>
                     </div>
 
-                    <button onClick={onClickMeet} style={{
-                        borderRadius: 35,
-                        outline: 'none',
-                        borderColor: 'white',
-                        borderWidth: 1,
-                        backgroundColor: 'white',
-                        marginTop: 155,
-                        width: '200px',
-                        height: '50px',
-                        fontSize: 19,
-                        fontWeight: 'bold',
-                        color: 'white',
-                        textAlign: 'center',
-                        display: 'inline-block',
-                        marginRight: 10,
-                        opacity: 0.8
-                    }}>
+                    <button onClick={onClickMeet}
+                            className='welcomePageMainButton'>
                         <text style={{zIndex: 1, color: '#0d2656'}}>
                             방 만들기
                         </text>
                     </button>
-                    <a download={'DVision_사용매뉴얼_다이브(주)'} href={`/static/DVision_Manual.pdf`}>
-                        <button style={{
-                            borderRadius: 35,
-                            outline: 'none',
-                            borderColor: 'white',
-                            borderWidth: 1,
-                            backgroundColor: 'white',
-                            marginTop: 155,
-                            width: '200px',
-                            height: '50px',
-                            fontSize: 19,
-                            fontWeight: 'bold',
-                            color: 'white',
-                            textAlign: 'center',
-                            display: 'inline-block',
-                            marginRight: 10,
-                            opacity: 0.8
-                        }}>
+                    <a download={'DVision_사용매뉴얼_다이브(주)'}
+                       href={`/static/DVision_Manual.pdf`}>
+                        <button className='welcomePageMainButton'>
                             <text style={{zIndex: 1, color: '#0d2656'}}>
                                 매뉴얼 다운로드
                             </text>
                         </button>
                     </a>
-                    <button onClick={onClickPlan} style={{
-                        borderRadius: 35,
-                        outline: 'none',
-                        borderColor: 'white',
-                        borderWidth: 1,
-                        backgroundColor: 'white',
-                        marginTop: 15,
-                        width: '200px',
-                        height: '50px',
-                        fontSize: 19,
-                        fontWeight: 'bold',
-                        color: 'white',
-                        textAlign: 'center',
-                        display: 'inline-block',
-                        marginRight: 10,
-                        opacity: 0.8
-                    }}>
+                    <button onClick={onClickPlan}
+                            className='welcomePageMainButton'>
                         <text style={{zIndex: 1, color: '#0d2656'}}>
                             요금제 및 가격 정책
                         </text>
