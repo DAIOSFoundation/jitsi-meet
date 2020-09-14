@@ -262,8 +262,8 @@
         "unlockRoom": "",
         "userID": "아이디",
         "userPassword": "비밀번호",
-        "WaitForHostMsg": "<b>{{room}}</b>방의 회의가 시작하기 전입니다. 방 개설자인 경우 로그인 버튼을 눌러 회의를 시작해 주시기 바랍니다.",
-        "WaitForHostMsgWOk": "<b>{{room}}</b>방의 회의가 시작하기 전입니다. 방 개설자인 경우 로그인 버튼을 눌러 회의를 시작해 주시기 바랍니다.",
+        "WaitForHostMsg": "회의가 시작하기 전입니다. 방 개설자인 경우 로그인 버튼을 눌러 회의를 시작해 주시기 바랍니다.",
+        "WaitForHostMsgWOk": "회의가 시작하기 전입니다. 방 개설자인 경우 로그인 버튼을 눌러 회의를 시작해 주시기 바랍니다.",
         "WaitingForHost": "방 개설자를 기다리는 중입니다.",
         "Yes": "확인",
         "yourEntireScreen": "전체 화면"
