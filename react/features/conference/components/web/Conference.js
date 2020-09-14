@@ -28,6 +28,8 @@ import type { AbstractProps } from '../AbstractConference';
 import Labels from './Labels';
 import { default as Notice } from './Notice';
 
+import BasicAlert from '../../../../components/Alert/BasicAlert';
+
 declare var APP: Object;
 declare var config: Object;
 declare var interfaceConfig: Object;
@@ -198,7 +200,10 @@ class Conference extends AbstractConference<Props, *> {
                 className = { _layoutClassName }
                 id = 'videoconference_page'
                 onMouseMove = { this._onShowToolbar }>
-
+                {/*<BasicAlert*/}
+                {/*    onPressOK={() => console.log("TEST")}*/}
+                {/*    title={'에러 테스트 입니다.'}*/}
+                {/*/>*/}
                 <Notice />
                 <div id = 'videospace'>
                     <LargeVideo _closeChatWindow = {this._closeChatWindow}/>
