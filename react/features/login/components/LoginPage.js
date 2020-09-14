@@ -111,7 +111,14 @@ const LoginPage = () => {
                         <h2 className={classes.cardTitle} style={{
                             fontWeight: 'bold',
                             color: 'black'
-                        }}>DVision</h2>
+                        }}>DVision 간편 로그인</h2>
+                        <h3 className={classes.cardTitle} style={{
+                            fontWeight: 'bold',
+                            color: 'black',
+                            marginTop:15
+                        }}>
+                            Google 계정을 통해 DVision에 간편하게 로그인 할 수 있습니다.
+                        </h3>
                         <CardBody>
                             <GridContainer justify="center">
                                 <GoogleLogin
