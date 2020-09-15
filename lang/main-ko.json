@@ -112,6 +112,7 @@
         "descriptionWithoutWeb": "",
         "downloadApp": "앱 다운로드",
         "launchWebButton": "웹에서 실행",
+        "joinInApp": "웹에서 실행",
         "openApp": "방으로 이동하기",
         "title": "{{app}}에서 회의 시작…",
         "tryAgainButton": "데스크톱에서 다시 시도하십시오"
