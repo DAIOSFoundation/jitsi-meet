@@ -98,7 +98,7 @@ const WelcomePageMain = () => {
                         </div>
                     </div>
 
-                    <div>
+                    <div style={{marginBottom:150}}>
                         <span style={{
                             fontSize: '2vmin',
                             letterSpacing: 1,

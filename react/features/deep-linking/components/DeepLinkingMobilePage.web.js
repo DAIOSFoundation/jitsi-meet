@@ -81,9 +81,6 @@ class DeepLinkingMobilePage extends Component<Props> {
         sendAnalytics(
             createDeepLinkingPageEvent(
                 'displayed', 'DeepLinkingMobile', {isMobileBrowser: true}));
-
-        generateDeepLinkingURL()
-        this._onOpenApp()
     }
 
     /**
@@ -151,17 +148,23 @@ class DeepLinkingMobilePage extends Component<Props> {
                                 </button>
                             </a>
                             :
-                            <a
-                                {...onOpenLinkProperties}
-                                className={`${_SNS}__href`}
-                                href={generateDeepLinkingURL()}
-                                onClick={this._onOpenApp}
-                                target='_top'>
-                                <button
-                                    className={`${_SNS}__button ${_SNS}__button_primary`}>
-                                    {t(`${_TNS}.joinInApp`)}
-                                </button>
-                            </a>
+                            <div>
+                                <p className={`${_SNS}__text`}>
+                                   DVision은 크롬 브라우저 환경에서 원활하게 작동합니다.<br/>
+                                   크롬 브라우저를 이용해주세요.
+                                </p>
+                                <a
+                                    {...onOpenLinkProperties}
+                                    className={`${_SNS}__href`}
+                                    href={generateDeepLinkingURL()}
+                                    onClick={this._onOpenApp}
+                                    target='_top'>
+                                    <button
+                                        className={`${_SNS}__button ${_SNS}__button_primary`}>
+                                        {t(`${_TNS}.joinInApp`)}
+                                    </button>
+                                </a>
+                            </div>
                     }
                     {/*<p className = { `${_SNS}__text` }>*/}
                     {/*    { t(`${_TNS}.ifDoNotHaveApp`) }*/}
