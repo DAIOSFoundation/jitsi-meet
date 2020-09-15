@@ -1,18 +1,18 @@
 // @flow
 
-import React, { Component } from 'react';
-import type { Dispatch } from 'redux';
+import React, {Component} from 'react';
+import type {Dispatch} from 'redux';
 
-import { createDeepLinkingPageEvent, sendAnalytics } from '../../analytics';
-import { isSupportedMobileBrowser } from '../../base/environment';
-import { translate } from '../../base/i18n';
-import { Platform } from '../../base/react';
-import { connect } from '../../base/redux';
-import { DialInSummary } from '../../invite';
-import { openWebApp } from '../actions';
-import { _TNS } from '../constants';
-import { generateDeepLinkingURL } from '../functions';
-import { renderPromotionalFooter } from '../renderPromotionalFooter';
+import {createDeepLinkingPageEvent, sendAnalytics} from '../../analytics';
+import {isSupportedMobileBrowser} from '../../base/environment';
+import {translate} from '../../base/i18n';
+import {Platform} from '../../base/react';
+import {connect} from '../../base/redux';
+import {DialInSummary} from '../../invite';
+import {openWebApp} from '../actions';
+import {_TNS} from '../constants';
+import {generateDeepLinkingURL} from '../functions';
+import {renderPromotionalFooter} from '../renderPromotionalFooter';
 
 declare var interfaceConfig: Object;
 
@@ -80,7 +80,7 @@ class DeepLinkingMobilePage extends Component<Props> {
     componentDidMount() {
         sendAnalytics(
             createDeepLinkingPageEvent(
-                'displayed', 'DeepLinkingMobile', { isMobileBrowser: true }));
+                'displayed', 'DeepLinkingMobile', {isMobileBrowser: true}));
     }
 
     /**
@@ -90,8 +90,8 @@ class DeepLinkingMobilePage extends Component<Props> {
      * @returns {ReactElement}
      */
     render() {
-        const { _downloadUrl, _room, t } = this.props;
-        const { HIDE_DEEP_LINKING_LOGO, NATIVE_APP_NAME, SHOW_DEEP_LINKING_IMAGE } = interfaceConfig;
+        const {_downloadUrl, _room, t} = this.props;
+        const {HIDE_DEEP_LINKING_LOGO, NATIVE_APP_NAME, SHOW_DEEP_LINKING_IMAGE} = interfaceConfig;
         const downloadButtonClassName
             = `${_SNS}__button ${_SNS}__button_primary`;
 
@@ -113,17 +113,17 @@ class DeepLinkingMobilePage extends Component<Props> {
             };
 
         return (
-            <div className = { _SNS }>
-                <div className = 'header'>
+            <div className={_SNS}>
+                <div className='header'>
                     {
                         HIDE_DEEP_LINKING_LOGO
                             ? null
                             : <img
-                                className = 'logo'
-                                src = 'images/logo-deep-linking.png' />
+                                className='logo'
+                                src='images/logo-deep-linking.png'/>
                     }
                 </div>
-                <div className = { `${_SNS}__body` }>
+                <div className={`${_SNS}__body`}>
                     {/*{*/}
                     {/*    SHOW_DEEP_LINKING_IMAGE*/}
                     {/*        ? <img*/}
@@ -137,17 +137,29 @@ class DeepLinkingMobilePage extends Component<Props> {
                     {/*<p className = { `${_SNS}__text` }>*/}
                     {/*    { t(`${_TNS}.ifHaveApp`) }*/}
                     {/*</p>*/}
-                    <a
-                        { ...onOpenLinkProperties }
-                        className = { `${_SNS}__href` }
-                        href = { generateDeepLinkingURL() }
-                        onClick = { this._onOpenApp }
-                        target = '_top'>
-                        <button className = { `${_SNS}__button ${_SNS}__button_primary` }>
-                            { t(`${_TNS}.joinInApp`) }
-                        </button>
-                    </a>
-                    <div>{navigator.userAgent}</div>
+                    {
+                        navigator.userAgent.search(/KAKAOTALK/i) === -1 ?
+                            isSupportedMobileBrowser()
+                            && <a
+                                onClick={this._onLaunchWeb}
+                                target='_top'>
+                                <button className={downloadButtonClassName}>
+                                    {t(`${_TNS}.launchWebButton`)}
+                                </button>
+                            </a>
+                            :
+                            <a
+                                {...onOpenLinkProperties}
+                                className={`${_SNS}__href`}
+                                href={generateDeepLinkingURL()}
+                                onClick={this._onOpenApp}
+                                target='_top'>
+                                <button
+                                    className={`${_SNS}__button ${_SNS}__button_primary`}>
+                                    {t(`${_TNS}.joinInApp`)}
+                                </button>
+                            </a>
+                    }
                     {/*<p className = { `${_SNS}__text` }>*/}
                     {/*    { t(`${_TNS}.ifDoNotHaveApp`) }*/}
                     {/*</p>*/}
@@ -170,11 +182,11 @@ class DeepLinkingMobilePage extends Component<Props> {
                     {/*            </button>*/}
                     {/*        </a>*/}
                     {/*}*/}
-                    { renderPromotionalFooter() }
+                    {renderPromotionalFooter()}
                     <DialInSummary
-                        className = 'deep-linking-dial-in'
-                        clickableNumbers = { true }
-                        room = { _room } />
+                        className='deep-linking-dial-in'
+                        clickableNumbers={true}
+                        room={_room}/>
                 </div>
             </div>
         );
@@ -187,7 +199,7 @@ class DeepLinkingMobilePage extends Component<Props> {
      * @returns {string} - The URL for downloading the app.
      */
     _generateDownloadURL() {
-        const { _downloadUrl: url } = this.props;
+        const {_downloadUrl: url} = this.props;
 
         if (url && typeof interfaceConfig.MOBILE_DYNAMIC_LINK === 'undefined') {
             return url;
@@ -226,7 +238,7 @@ class DeepLinkingMobilePage extends Component<Props> {
     _onDownloadApp() {
         sendAnalytics(
             createDeepLinkingPageEvent(
-                'clicked', 'downloadAppButton', { isMobileBrowser: true }));
+                'clicked', 'downloadAppButton', {isMobileBrowser: true}));
     }
 
     _onLaunchWeb: () => void;
@@ -239,7 +251,7 @@ class DeepLinkingMobilePage extends Component<Props> {
     _onLaunchWeb() {
         sendAnalytics(
             createDeepLinkingPageEvent(
-                'clicked', 'launchWebButton', { isMobileBrowser: true }));
+                'clicked', 'launchWebButton', {isMobileBrowser: true}));
         this.props.dispatch(openWebApp());
     }
 
@@ -254,7 +266,7 @@ class DeepLinkingMobilePage extends Component<Props> {
     _onOpenApp() {
         sendAnalytics(
             createDeepLinkingPageEvent(
-                'clicked', 'openAppButton', { isMobileBrowser: true }));
+                'clicked', 'openAppButton', {isMobileBrowser: true}));
     }
 }
 
