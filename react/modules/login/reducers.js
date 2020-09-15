@@ -1,6 +1,6 @@
 import {handleActions} from 'redux-actions';
 import produce from 'immer';
-import * as Login from './action'
+import * as LOGIN from './action'
 
 const initialState = {
     jwt: null,
@@ -9,12 +9,17 @@ const initialState = {
 }
 
 const auth = handleActions({
-    [Login.POST_GOOGLE_LOGIN_SUCCESS]: (state, action) => {
+    [LOGIN.POST_GOOGLE_LOGIN_SUCCESS]: (state, action) => {
         console.log('GOOGLE_LOGIN_SUCCESS', action.payload)
         return produce(state, (draft) => {
             draft.jwt = action.payload.data.jwt
             draft.userId = action.payload.data.userId
             draft.email = action.payload.data.email
+        })
+    },
+    [LOGIN.POST_GOOGLE_LOGIN_FAILED]: (state, action) => {
+        console.log('POST_GOOGLE_LOGIN_FAILED', action.payload)
+        return produce(state, (draft) => {
         })
     }
 },initialState)
