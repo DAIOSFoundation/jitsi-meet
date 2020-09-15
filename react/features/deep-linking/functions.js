@@ -35,6 +35,8 @@ export function generateDeepLinkingURL() {
         const pkg = 'com.android.chrome';
 
         return `intent://${url}#Intent;scheme=http;package=${pkg};end `;
+    }else{
+        return window.open(url)
     }
 
     // iOS: Replace the protocol part with the app scheme.
