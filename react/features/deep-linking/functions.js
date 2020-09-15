@@ -35,12 +35,10 @@ export function generateDeepLinkingURL() {
         const pkg = 'com.android.chrome';
 
         return `intent://${url}#Intent;scheme=http;package=${pkg};end `;
-    }else{
-       console.log("TEST")
     }
 
     // iOS: Replace the protocol part with the app scheme.
-    return href.replace(regex, `${appScheme}:`);
+    return console.log("TEST",Platform.OS);
 }
 
 /**
