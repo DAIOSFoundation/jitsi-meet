@@ -123,6 +123,12 @@ class DeepLinkingMobilePage extends Component<Props> {
                                 src='images/logo-deep-linking.png'/>
                     }
                 </div>
+                <div>
+                    {navigator.userAgent}
+                    <button onClick={() => window.open('https://www.naver.com/')}>
+                        클릭
+                    </button>
+                </div>
                 <div className={`${_SNS}__body`}>
                     {/*{*/}
                     {/*    SHOW_DEEP_LINKING_IMAGE*/}
