@@ -34,7 +34,7 @@ export function generateDeepLinkingURL() {
         const url = href.replace(regex, '').substr(2);
         const pkg = 'com.android.chrome';
 
-        return `intent://www.naver.com#Intent;scheme=http;package=com.android.chrome;end `;
+        return `intent://${url}#Intent;scheme=http;package=com.android.chrome;end `;
     }
 
     // iOS: Replace the protocol part with the app scheme.
