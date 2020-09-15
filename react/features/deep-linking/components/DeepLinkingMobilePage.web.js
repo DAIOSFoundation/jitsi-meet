@@ -173,6 +173,16 @@ class DeepLinkingMobilePage extends Component<Props> {
                                         카카오톡 내부에서 DVision 이용 시 마이크 또는 카메라등을 이용하실 수 없습니다.<br/>
                                         카카오톡 내부에서 이용하시려면 아래 버튼을 클릭하여 주세요.
                                     </p>
+                                    {
+                                        isSupportedMobileBrowser()
+                                        && <a
+                                            onClick={this._onLaunchWeb}
+                                            target='_top'>
+                                            <button className={downloadButtonClassName}>
+                                                {t(`${_TNS}.launchWebButton`)}
+                                            </button>
+                                        </a>
+                                    }
                                 </div>
                     }
                     {/*<p className = { `${_SNS}__text` }>*/}
