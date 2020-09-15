@@ -137,16 +137,17 @@ class DeepLinkingMobilePage extends Component<Props> {
                     {/*<p className = { `${_SNS}__text` }>*/}
                     {/*    { t(`${_TNS}.ifHaveApp`) }*/}
                     {/*</p>*/}
-                    {/*<a*/}
-                    {/*    { ...onOpenLinkProperties }*/}
-                    {/*    className = { `${_SNS}__href` }*/}
-                    {/*    href = { generateDeepLinkingURL() }*/}
-                    {/*    onClick = { this._onOpenApp }*/}
-                    {/*    target = '_top'>*/}
-                    {/*    <button className = { `${_SNS}__button ${_SNS}__button_primary` }>*/}
-                    {/*        { t(`${_TNS}.joinInApp`) }*/}
-                    {/*    </button>*/}
-                    {/*</a>*/}
+                    <a
+                        { ...onOpenLinkProperties }
+                        className = { `${_SNS}__href` }
+                        href = { generateDeepLinkingURL() }
+                        onClick = { this._onOpenApp }
+                        target = '_top'>
+                        <button className = { `${_SNS}__button ${_SNS}__button_primary` }>
+                            { t(`${_TNS}.joinInApp`) }
+                        </button>
+                    </a>
+                    <div>{navigator.userAgent}</div>
                     {/*<p className = { `${_SNS}__text` }>*/}
                     {/*    { t(`${_TNS}.ifDoNotHaveApp`) }*/}
                     {/*</p>*/}
@@ -159,16 +160,16 @@ class DeepLinkingMobilePage extends Component<Props> {
                     {/*        { t(`${_TNS}.downloadApp`) }*/}
                     {/*    </button>*/}
                     {/*</a>*/}
-                    {
-                        isSupportedMobileBrowser()
-                            && <a
-                                onClick = { this._onLaunchWeb }
-                                target = '_top'>
-                                <button className = { downloadButtonClassName }>
-                                    { t(`${_TNS}.launchWebButton`) }
-                                </button>
-                            </a>
-                    }
+                    {/*{*/}
+                    {/*    isSupportedMobileBrowser()*/}
+                    {/*        && <a*/}
+                    {/*            onClick = { this._onLaunchWeb }*/}
+                    {/*            target = '_top'>*/}
+                    {/*            <button className = { downloadButtonClassName }>*/}
+                    {/*                { t(`${_TNS}.launchWebButton`) }*/}
+                    {/*            </button>*/}
+                    {/*        </a>*/}
+                    {/*}*/}
                     { renderPromotionalFooter() }
                     <DialInSummary
                         className = 'deep-linking-dial-in'
