@@ -36,7 +36,7 @@ export function generateDeepLinkingURL() {
 
         return `intent://${url}#Intent;scheme=http;package=${pkg};end `;
     }else{
-        return window.open(url)
+       console.log("TEST")
     }
 
     // iOS: Replace the protocol part with the app scheme.
