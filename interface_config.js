@@ -47,8 +47,10 @@ var interfaceConfig = {
     DEFAULT_BACKGROUND: '#474747',
     DEFAULT_LOCAL_DISPLAY_NAME: 'me',
     DEFAULT_LOGO_URL: 'images/watermark.png',
+    // DEFAULT_LOGO_URL: 'images/innopolis_deagu_01_01.png', // 대구 웨비나 전용 로고 이미지
     DEFAULT_REMOTE_DISPLAY_NAME: '참여자',
     DEFAULT_WELCOME_PAGE_LOGO_URL: 'images/watermark.png',
+    // DEFAULT_WELCOME_PAGE_LOGO_URL: 'images/innopolis_deagu_01_01.png', // 대구 웨비나 전용 로고 이미지
 
     DISABLE_DOMINANT_SPEAKER_INDICATOR: false,
 

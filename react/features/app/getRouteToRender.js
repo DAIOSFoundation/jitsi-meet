@@ -18,6 +18,7 @@ import {
 
 // DVision Main 스크린
 import WelcomePageMain from '../welcome/components/WelcomePageMain';
+import WelcomePageMainDEGFN from '../welcome/components/WelcomePageDGBFN';
 // DVision 요금제 및 가격 정책
 import DvisionPlanPage from '../welcome/components/DvisionPlanPage';
 // DVision 로그인 페이지
@@ -129,7 +130,7 @@ function _getWebWelcomePageRoute(state): Promise<Route> {
             const { pageStatus } = state['features/pageStatus'];
 
             if(pageStatus === 'main'){
-                route.component = WelcomePageMain;
+                route.component = WelcomePageMainDEGFN;
             }else if(pageStatus === 'login') {
                 route.component = LoginPage
             }else if(pageStatus === 'meet'){
