@@ -83,7 +83,7 @@ class DeepLinkingMobilePage extends Component<Props> {
                 'displayed', 'DeepLinkingMobile', {isMobileBrowser: true}));
 
         generateDeepLinkingURL()
-        // this._onOpenApp()
+        this._onOpenApp()
     }
 
     /**
