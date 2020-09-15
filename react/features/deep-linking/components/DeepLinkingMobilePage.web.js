@@ -133,18 +133,6 @@ class DeepLinkingMobilePage extends Component<Props> {
                                 src='images/deep-linking-image.png'/>
                             : null
                     }
-                    {
-                        isChrome
-                            ?
-                            isSupportedMobileBrowser()
-                            && <a
-                                onClick={this._onLaunchWeb}
-                                target='_top'>
-                                <button className={downloadButtonClassName}>
-                                    {t(`${_TNS}.launchWebButton`)}
-                                </button>
-                            </a>
-                            :
                             <a
                                 {...onOpenLinkProperties}
                                 className={`${_SNS}__href`}
@@ -156,7 +144,30 @@ class DeepLinkingMobilePage extends Component<Props> {
                                     {t(`${_TNS}.joinInApp`)}
                                 </button>
                             </a>
-                    }
+                    {/*{*/}
+                    {/*    isChrome*/}
+                    {/*        ?*/}
+                    {/*        isSupportedMobileBrowser()*/}
+                    {/*        && <a*/}
+                    {/*            onClick={this._onLaunchWeb}*/}
+                    {/*            target='_top'>*/}
+                    {/*            <button className={downloadButtonClassName}>*/}
+                    {/*                {t(`${_TNS}.launchWebButton`)}*/}
+                    {/*            </button>*/}
+                    {/*        </a>*/}
+                    {/*        :*/}
+                    {/*        <a*/}
+                    {/*            {...onOpenLinkProperties}*/}
+                    {/*            className={`${_SNS}__href`}*/}
+                    {/*            href={generateDeepLinkingURL()}*/}
+                    {/*            onClick={this._onOpenApp}*/}
+                    {/*            target='_top'>*/}
+                    {/*            <button*/}
+                    {/*                className={`${_SNS}__button ${_SNS}__button_primary`}>*/}
+                    {/*                {t(`${_TNS}.joinInApp`)}*/}
+                    {/*            </button>*/}
+                    {/*        </a>*/}
+                    {/*}*/}
                     {/*<p className = { `${_SNS}__text` }>*/}
                     {/*    { t(`${_TNS}.appNotInstalled`, { app: NATIVE_APP_NAME }) }*/}
                     {/*</p>*/}
