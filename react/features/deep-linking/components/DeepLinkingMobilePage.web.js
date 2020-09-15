@@ -123,12 +123,6 @@ class DeepLinkingMobilePage extends Component<Props> {
                                 src='images/logo-deep-linking.png'/>
                     }
                 </div>
-                <div>
-                    {navigator.userAgent}
-                    <button onClick={() => window.open('https://www.naver.com/')}>
-                        클릭
-                    </button>
-                </div>
                 <div className={`${_SNS}__body`}>
                     {/*{*/}
                     {/*    SHOW_DEEP_LINKING_IMAGE*/}
@@ -154,23 +148,32 @@ class DeepLinkingMobilePage extends Component<Props> {
                                 </button>
                             </a>
                             :
-                            <div>
-                                <p className={`${_SNS}__text`}>
-                                   DVision은 크롬 브라우저 환경에서 원활하게 작동합니다.<br/>
-                                   크롬 브라우저를 이용해주세요.
-                                </p>
-                                <a
-                                    {...onOpenLinkProperties}
-                                    className={`${_SNS}__href`}
-                                    href={generateDeepLinkingURL()}
-                                    onClick={this._onOpenApp}
-                                    target='_top'>
-                                    <button
-                                        className={`${_SNS}__button ${_SNS}__button_primary`}>
-                                        {t(`${_TNS}.joinInApp`)}
-                                    </button>
-                                </a>
-                            </div>
+                            navigator.userAgent.search(/iPhone/i) === -1 ?
+                                <div>
+                                    <p className={`${_SNS}__text`}>
+                                        DVision은 크롬 브라우저 환경에서 원활하게 작동합니다.<br/>
+                                        크롬 브라우저를 이용해주세요.
+                                    </p>
+                                    <a
+                                        {...onOpenLinkProperties}
+                                        className={`${_SNS}__href`}
+                                        href={generateDeepLinkingURL()}
+                                        onClick={this._onOpenApp}
+                                        target='_top'>
+                                        <button
+                                            className={`${_SNS}__button ${_SNS}__button_primary`}>
+                                            {t(`${_TNS}.joinInApp`)}
+                                        </button>
+                                    </a>
+                                </div>
+                                :
+                                <div>
+                                    <p className={`${_SNS}__text`}>
+                                        DVision은 Safari 브라우저 환경에서 원활하게 작동합니다.<br/>
+                                        카카오톡 내부에서 DVision 이용 시 마이크 또는 카메라등을 이용하실 수 없습니다.<br/>
+                                        카카오톡 내부에서 이용하시려면 아래 버튼을 클릭하여 주세요.
+                                    </p>
+                                </div>
                     }
                     {/*<p className = { `${_SNS}__text` }>*/}
                     {/*    { t(`${_TNS}.ifDoNotHaveApp`) }*/}
