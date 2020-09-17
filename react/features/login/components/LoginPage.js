@@ -97,6 +97,7 @@ const LoginPage = () => {
         dispatch(loginActions.post_google_login(param))
     };
 
+    //todo failedGoogleLogin
     const failedGoogleLogin = (res) => {
         console.log("failedGoogleLogin", res)
     }

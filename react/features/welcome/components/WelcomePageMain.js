@@ -60,22 +60,22 @@ const WelcomePageMain = () => {
                     <img src={'images/watermark.png'} width={'100%'}
                          height={'100%'}/>
                 </div>
-                {/*{*/}
-                {/*    (cookies.jwt !== 'undefined' && cookies.jwt !== undefined)?*/}
-                {/*        <button onClick={onClickLogout}*/}
-                {/*                className='welcomePageMainAuthButton'>*/}
-                {/*            <text style={{zIndex: 1, color: '#0d2656'}}>*/}
-                {/*                로그아웃*/}
-                {/*            </text>*/}
-                {/*        </button>*/}
-                {/*        :*/}
-                {/*        <button onClick={onClickLogin}*/}
-                {/*                className='welcomePageMainAuthButton'>*/}
-                {/*            <text style={{zIndex: 1, color: '#0d2656'}}>*/}
-                {/*                로그인*/}
-                {/*            </text>*/}
-                {/*        </button>*/}
-                {/*}*/}
+                {
+                    (cookies.jwt !== 'undefined' && cookies.jwt !== undefined)?
+                        <button onClick={onClickLogout}
+                                className='welcomePageMainAuthButton'>
+                            <text style={{zIndex: 1, color: '#0d2656'}}>
+                                로그아웃
+                            </text>
+                        </button>
+                        :
+                        <button onClick={onClickLogin}
+                                className='welcomePageMainAuthButton'>
+                            <text style={{zIndex: 1, color: '#0d2656'}}>
+                                로그인
+                            </text>
+                        </button>
+                }
                 <div style={{
                     color: 'white',
                     width: 'auto',

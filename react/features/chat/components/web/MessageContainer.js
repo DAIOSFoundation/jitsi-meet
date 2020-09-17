@@ -9,6 +9,7 @@ import AbstractMessageContainer, { type Props }
 import ChatMessageGroup from './ChatMessageGroup';
 
 import LoadingBar from '../../../../components/Loading/Loading';
+import DragZone from '../../../../components/DropZone/DragZone';
 
 /**
  * Displays all received chat messages, grouped by sender.
@@ -64,29 +65,41 @@ export default class MessageContainer extends AbstractMessageContainer<Props> {
 
             return (
                 <ChatMessageGroup
-                    className = { messageType || MESSAGE_TYPE_REMOTE }
-                    key = { index }
-                    messages = { group } />
+                    className={messageType || MESSAGE_TYPE_REMOTE}
+                    key={index}
+                    messages={group}/>
             );
         });
 
         return (
             <div
-                id = 'chatconversation'
-                style={{position:'relative'}}
-                onScroll = { this._onChatScroll }
-                ref = { this._messageListRef }>
+                id='chatconversation'
+                style={{position: 'relative'}}
+                onScroll={this._onChatScroll}
+                ref={this._messageListRef}>
                 {/* 업로드 상태에 따른 로딩바 */}
                 {
                     this.props.loading ?
-                        <div style={{position:'absolute', left:0, top:0, width:'100%', height:'100%'}}>
+                        <div style={{
+                            position: 'sticky',
+                            left: 0,
+                            top: 0,
+                        }}>
                             <LoadingBar/>
                         </div>
                         :
                         null
                 }
-                { messages }
-                <div ref = { this._messagesListEndRef } />
+                <div className='dragAndDrop' style={{
+                    position: 'fixed',
+                    width: '365px',
+                    height: '81%',
+                    marginTop: '5%'
+                }}>
+                    <DragZone/>
+                </div>
+                {messages}
+                <div ref={this._messagesListEndRef}/>
             </div>
         );
     }
