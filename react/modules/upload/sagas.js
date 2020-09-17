@@ -1,7 +1,7 @@
 import { takeLatest } from "redux-saga/effects";
 import createRequestSaga from "../../librarys/createRequest";
 import * as uploadAPI from '../../librarys/api/upload';
-import * as UPLOAD from './action';
+import * as UPLOAD from './actions';
 
 const postFileUpload = createRequestSaga(
     UPLOAD.POST_FILE_UPLOAD,

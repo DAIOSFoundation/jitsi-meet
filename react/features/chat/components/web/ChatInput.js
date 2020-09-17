@@ -4,7 +4,7 @@ import React, {Component, useEffect} from 'react';
 import Emoji from 'react-emoji-render';
 import TextareaAutosize from 'react-textarea-autosize';
 import type {Dispatch} from 'redux';
-import * as uploadActions from '../../../../modules/upload/action';
+import * as uploadActions from '../../../../modules/upload/actions';
 
 import {translate} from '../../../base/i18n';
 import {connect} from '../../../base/redux';
@@ -127,9 +127,11 @@ class ChatInput extends Component<Props, State> {
                 userFile: e.target.files[0]
             }
 
-            this.props.dispatch(uploadActions.post_file_upload(param))
+            console.log("formatBytes(524700000);");
+
+            // this.props.dispatch(uploadActions.post_file_upload(param))
             // input type = 'file' 값 초기화
-            document.getElementById("file").value = '';
+            // document.getElementById("file").value = '';
         }
 
         return (

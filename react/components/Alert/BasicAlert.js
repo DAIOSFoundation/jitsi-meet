@@ -1,9 +1,4 @@
-import React, {useEffect} from 'react';
-import GridContainer from '../Grid/GridContainer';
-import GridItem from '../Grid/GridItem';
-import Card from '../Card/Card';
-import CardBody from '../Card/CardBody';
-import Button from '../CustomButtons/Button';
+import React from 'react';
 
 // react component used to create sweet alerts
 import SweetAlert from "react-bootstrap-sweetalert";
@@ -15,16 +10,15 @@ import styles from "../jss/sweetAlertStyle.js";
 
 const useStyles = makeStyles(styles);
 
-const BasicAlert = (props) => {
-
+const BasicAlert = () => {
 
     const classes = useStyles();
 
     return (
         <SweetAlert
-            style={{display: "block", margin: 0}}
-            title={<div style={{color: 'black'}}>{props.title}</div>}
-            onConfirm={props.onPressOK}
+            show={false}
+            title={<div style={{color: 'black'}}>test</div>}
+            onConfirm={() => console.log("TEST")}
             confirmBtnCssClass={classes.button + " " + classes.success}
             confirmBtnStyle={{
                 color: 'white',

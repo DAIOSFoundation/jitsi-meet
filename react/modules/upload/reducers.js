@@ -1,6 +1,6 @@
 import {handleActions} from "redux-actions";
 import produce from "immer";
-import * as UPLOAD from './action';
+import * as UPLOAD from './actions';
 
 const initialState = {
     userFileInfo: null, // gcs 업로드된 파일 정보 반환 값

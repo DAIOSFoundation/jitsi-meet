@@ -1,6 +1,6 @@
 import {handleActions} from 'redux-actions';
 import produce from 'immer';
-import * as LOGIN from './action'
+import * as LOGIN from './actions'
 
 const initialState = {
     jwt: null,

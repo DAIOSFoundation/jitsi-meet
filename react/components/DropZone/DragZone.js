@@ -1,7 +1,7 @@
 import React, {useCallback} from 'react';
 import {useDropzone} from 'react-dropzone'
 import {useDispatch} from 'react-redux';
-import * as uploadActions from '../../modules/upload/action';
+import * as uploadActions from '../../modules/upload/actions';
 
 const DragZone = () => {
 

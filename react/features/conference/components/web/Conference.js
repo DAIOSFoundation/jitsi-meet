@@ -200,10 +200,6 @@ class Conference extends AbstractConference<Props, *> {
                 className = { _layoutClassName }
                 id = 'videoconference_page'
                 onMouseMove = { this._onShowToolbar }>
-                {/*<BasicAlert*/}
-                {/*    onPressOK={() => console.log("TEST")}*/}
-                {/*    title={'에러 테스트 입니다.'}*/}
-                {/*/>*/}
                 <Notice />
                 <div id = 'videospace'>
                     <LargeVideo _closeChatWindow = {this._closeChatWindow}/>

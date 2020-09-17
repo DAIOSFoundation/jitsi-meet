@@ -1,6 +1,6 @@
 import { takeLatest } from "redux-saga/effects";
 import createRequestSaga from "../../librarys/createRequest";
-import * as LOGIN from './action';
+import * as LOGIN from './actions';
 import * as authAPI from '../../librarys/api/oauth/google';
 
 const postGoogleLogin = createRequestSaga(

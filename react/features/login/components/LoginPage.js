@@ -33,7 +33,7 @@ import {setRoom} from '../../base/conference';
 
 import {GoogleLogin} from 'react-google-login';
 
-import * as loginActions from '../../../modules/login/action';
+import * as loginActions from '../../../modules/login/actions';
 
 import {useCookies} from 'react-cookie';
 
