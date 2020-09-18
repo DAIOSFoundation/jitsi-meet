@@ -2,8 +2,8 @@
 
 import React from 'react';
 
-import { MESSAGE_TYPE_REMOTE } from '../../constants';
-import AbstractMessageContainer, { type Props }
+import {MESSAGE_TYPE_REMOTE} from '../../constants';
+import AbstractMessageContainer, {type Props}
     from '../AbstractMessageContainer';
 
 import ChatMessageGroup from './ChatMessageGroup';
@@ -84,6 +84,7 @@ export default class MessageContainer extends AbstractMessageContainer<Props> {
                             position: 'sticky',
                             left: 0,
                             top: 0,
+                            zIndex: 1,
                         }}>
                             <LoadingBar/>
                         </div>

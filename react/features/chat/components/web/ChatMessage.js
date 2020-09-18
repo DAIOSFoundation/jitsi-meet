@@ -6,9 +6,7 @@ import {toArray} from 'react-emoji-render';
 import {translate} from '../../../base/i18n';
 import {Linkify} from '../../../base/react';
 import {MESSAGE_TYPE_LOCAL} from '../../constants';
-import AbstractChatMessage, {
-    type Props
-} from '../AbstractChatMessage';
+import AbstractChatMessage, {type Props} from '../AbstractChatMessage';
 import PrivateMessageButton from '../PrivateMessageButton';
 
 import Axios from "axios";
@@ -33,15 +31,12 @@ class ChatMessage extends AbstractChatMessage<Props> {
         }
 
         // Byte 단위 변환
-        function formatBytes(bytes, decimals = 2) {
-            if (bytes === 0) return '0 Bytes';
-
-            const k = 1024;
-            const dm = decimals < 0 ? 0 : decimals;
-            const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-
-            const i = Math.floor(Math.log(bytes) / Math.log(k));
-
+        function formatBytes(bytes,decimalPoint) {
+            if(bytes === 0) return '0 Bytes';
+            let k = 1000,
+                dm = decimalPoint || 2,
+                sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
+                i = Math.floor(Math.log(bytes) / Math.log(k));
             return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
         }
 
@@ -59,10 +54,19 @@ class ChatMessage extends AbstractChatMessage<Props> {
             return window.open(arg)
         }
 
+        // 파일 확장자 가져오기 {s}
+        const getExtName = (message) => {
+            const index = message.lastIndexOf('.');
+
+            return message
+                .substring(index + 1, message.length)
+                .toLowerCase()
+        }
+        // 파일 확장자 가져오기 {e}
+
         const processedMessage = [];
 
         // content is an array of text and emoji components
-
         if (typeof JSON.parse(this._getMessageText()) === 'string') {
             const content = toArray(JSON.parse(this._getMessageText()), {className: 'smiley'});
             content.forEach(i => {
@@ -122,11 +126,18 @@ class ChatMessage extends AbstractChatMessage<Props> {
                                                 display: 'flex',
                                                 justifyContent: 'flex-end'
                                             }}>
-                                                <span
-                                                    className='chat-hover'
-                                                    onClick={() => directLinkOpen(JSON.parse(message.message).path)}>바로열기</span>
-                                                <span
-                                                    style={{margin: '0 5px 0 5px'}}>|</span>
+                                                {
+                                                    getExtName(JSON.parse(message.message).originalName) !== 'key' ?
+                                                       <div style={{display:'inline-block'}}>
+                                                            <span
+                                                                className='chat-hover'
+                                                                onClick={() => directLinkOpen(JSON.parse(message.message).path)}>바로열기</span>
+                                                           <span
+                                                               style={{margin: '0 5px 0 5px'}}>|</span>
+                                                       </div>
+                                                        :
+                                                        null
+                                                }
                                                 <span
                                                     className='chat-hover'
                                                     onClick={() => download(JSON.parse(message.message).path, JSON.parse(message.message).originalName)}>다운로드</span>

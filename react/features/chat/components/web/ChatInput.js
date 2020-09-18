@@ -4,12 +4,14 @@ import React, {Component, useEffect} from 'react';
 import Emoji from 'react-emoji-render';
 import TextareaAutosize from 'react-textarea-autosize';
 import type {Dispatch} from 'redux';
-import * as uploadActions from '../../../../modules/upload/actions';
 
 import {translate} from '../../../base/i18n';
 import {connect} from '../../../base/redux';
 
 import SmileysPanel from './SmileysPanel';
+
+import * as modalActions from '../../../../modules/modal/actions';
+import * as uploadActions from '../../../../modules/upload/actions';
 
 /**
  * The type of the React {@code Component} props of {@link ChatInput}.
@@ -103,6 +105,13 @@ class ChatInput extends Component<Props, State> {
         if (prevProps.userFile !== this.props.userFile) {
             this.props.onSend((this.props.userFile))
         }
+
+        if(this.props.uploadErrorMsg){
+            if(prevProps.uploadErrorMsg !== this.props.uploadErrorMsg){
+                this.props.dispatch(modalActions.change_modal_message(this.props.uploadErrorMsg))
+                this.props.dispatch(uploadActions.upload_message_clear())
+            }
+        }
     }
 
     /**
@@ -127,26 +136,29 @@ class ChatInput extends Component<Props, State> {
                 userFile: e.target.files[0]
             }
 
-            console.log("formatBytes(524700000);");
+            if (e.target.files[0].size < 577000000) {
+                this.props.dispatch(uploadActions.post_file_upload(param))
+            } else {
+                this.props.dispatch(modalActions.change_modal_message('파일 용량 제한은 500MB 미만입니다.'))
+            }
 
-            // this.props.dispatch(uploadActions.post_file_upload(param))
             // input type = 'file' 값 초기화
-            // document.getElementById("file").value = '';
+            document.getElementById("file").value = '';
         }
 
         return (
             <div id='chat-input'>
-                <div className = 'smiley-input'>
-                    <div id = 'smileysarea'>
-                        <div id = 'smileys'>
+                <div className='smiley-input'>
+                    <div id='smileysarea'>
+                        <div id='smileys'>
                             <Emoji
-                                onClick = { this._onToggleSmileysPanel }
-                                text = ':)' />
+                                onClick={this._onToggleSmileysPanel}
+                                text=':)'/>
                         </div>
                     </div>
-                    <div className = { smileysPanelClassName }>
+                    <div className={smileysPanelClassName}>
                         <SmileysPanel
-                            onSmileySelect = { this._onSmileySelect } />
+                            onSmileySelect={this._onSmileySelect}/>
                     </div>
                 </div>
                 <div style={{
@@ -280,7 +292,8 @@ class ChatInput extends Component<Props, State> {
 
 function _mapStateToProps(state) {
     return {
-        userFile: state.upload.userFileInfo
+        userFile: state.upload.userFileInfo,
+        uploadErrorMsg: state.upload.uploadErrorMsg,
     }
 }
 

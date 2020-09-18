@@ -28,7 +28,7 @@ import type { AbstractProps } from '../AbstractConference';
 import Labels from './Labels';
 import { default as Notice } from './Notice';
 
-import BasicAlert from '../../../../components/Alert/BasicAlert';
+import BasicModal from '../../../../components/Modal/BasicModal';
 
 declare var APP: Object;
 declare var config: Object;
@@ -200,6 +200,8 @@ class Conference extends AbstractConference<Props, *> {
                 className = { _layoutClassName }
                 id = 'videoconference_page'
                 onMouseMove = { this._onShowToolbar }>
+                {/*<BasicModal/>*/}
+                <BasicModal/>
                 <Notice />
                 <div id = 'videospace'>
                     <LargeVideo _closeChatWindow = {this._closeChatWindow}/>

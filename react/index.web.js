@@ -16,8 +16,6 @@ const OS = Platform.OS;
 
 import {CookiesProvider} from 'react-cookie';
 
-import BasicAlert from './components/Alert/BasicAlert';
-
 /**
  * Renders the app when the DOM tree has been loaded.
  */
@@ -74,8 +72,6 @@ globalNS.renderEntryPoint = ({
 }) => {
     ReactDOM.render(
         <CookiesProvider>
-            {/* Alert 컴포넌트 */}
-            <BasicAlert/>
             <Component { ...props } />
         </CookiesProvider>,
         document.getElementById(elementId)

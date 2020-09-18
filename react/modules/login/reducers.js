@@ -3,9 +3,9 @@ import produce from 'immer';
 import * as LOGIN from './actions'
 
 const initialState = {
-    jwt: null,
-    userId: null,
-    email: null,
+    jwt: null, // 로그인 성공 시 서버에서 반환하는 JWT 토큰
+    userId: null, //  로그인 성공 시 서버에서 반환하는 User ID
+    email: null, // 로그인 성공 시 서버에서 반환하는 Email
 }
 
 const auth = handleActions({
