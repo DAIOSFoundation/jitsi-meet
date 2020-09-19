@@ -51,6 +51,7 @@ const DEFAULT_WIDTH = 640;
 const DEFAULT_HEIGHT = 480;
 
 const ETHERPAD_CONTAINER_TYPE = 'etherpad';
+const ETHERPAD_CONTAINER_TYPE2 = 'etherpad2';
 
 /**
  * Container for Etherpad iframe.
@@ -108,7 +109,9 @@ class Etherpad extends LargeContainer {
      *
      */
     get container() {
-        return document.getElementById('etherpad');
+         document.getElementById('etherpad');
+         document.getElementById('etherpad2');
+         return true;
     }
 
     /**
@@ -204,7 +207,9 @@ export default class EtherpadManager {
      *
      */
     isVisible() {
-        return VideoLayout.isLargeContainerTypeVisible(ETHERPAD_CONTAINER_TYPE);
+         VideoLayout.isLargeContainerTypeVisible(ETHERPAD_CONTAINER_TYPE);
+         VideoLayout.isLargeContainerTypeVisible(ETHERPAD_CONTAINER_TYPE2);
+         return true;
     }
 
     /**
@@ -214,6 +219,10 @@ export default class EtherpadManager {
         this.etherpad = new Etherpad(getSharedDocumentUrl(APP.store.getState));
         VideoLayout.addLargeVideoContainer(
             ETHERPAD_CONTAINER_TYPE,
+            this.etherpad
+        );
+        VideoLayout.addLargeVideoContainer(
+            ETHERPAD_CONTAINER_TYPE2,
             this.etherpad
         );
     }
@@ -231,6 +240,8 @@ export default class EtherpadManager {
 
         VideoLayout.showLargeVideoContainer(
             ETHERPAD_CONTAINER_TYPE, !isVisible);
+        VideoLayout.showLargeVideoContainer(
+            ETHERPAD_CONTAINER_TYPE2, !isVisible);
 
         APP.store.dispatch(setDocumentEditingState(!isVisible));
     }

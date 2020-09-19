@@ -643,6 +643,8 @@
         "closeChat": "",
         "documentClose": "공동문서 작성 중지",
         "documentOpen": "공동문서 작성",
+        "documentOpen2": "공동문서 작성2",
+        "documentClose2": "공동문서 작성 중지2",
         "enterFullScreen": "전체 화면",
         "enterTileView": "타일 전환",
         "exitFullScreen": "전체화면 취소",

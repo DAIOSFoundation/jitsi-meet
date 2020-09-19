@@ -12,6 +12,7 @@ import { SHARE_DOCUMENT_VIEW_ID } from './constants';
 declare var APP: Object;
 
 const ETHERPAD_COMMAND = 'etherpad';
+const ETHERPAD_COMMAND2 = 'etherpad2';
 
 /**
  * Middleware that captures actions related to collaborative document editing
@@ -26,7 +27,7 @@ MiddlewareRegistry.register(({ dispatch, getState }) => next => action => {
     case TOGGLE_DOCUMENT_EDITING: {
         if (typeof APP === 'undefined') {
             const editing = !getState()['features/etherpad'].editing;
-            console.log("TEST editing ?", editing)
+
             dispatch(setDocumentEditingState(editing));
 
             if (editing) {
@@ -54,6 +55,31 @@ StateListenerRegistry.register(
     (conference, { dispatch, getState }, previousConference) => {
         if (conference) {
             conference.addCommandListener(ETHERPAD_COMMAND,
+                ({ value }) => {
+                    let url;
+                    const { etherpad_base: etherpadBase } = getState()['features/base/config'];
+
+                    if (etherpadBase) {
+                        const u = new URL(value, etherpadBase);
+
+                        url = u.toString();
+                    }
+
+                    dispatch(setDocumentUrl(url));
+                }
+            );
+        }
+
+        if (previousConference) {
+            dispatch(setDocumentUrl(undefined));
+        }
+    });
+
+StateListenerRegistry.register(
+    state => getCurrentConference(state),
+    (conference, { dispatch, getState }, previousConference) => {
+        if (conference) {
+            conference.addCommandListener(ETHERPAD_COMMAND2,
                 ({ value }) => {
                     let url;
                     const { etherpad_base: etherpadBase } = getState()['features/base/config'];

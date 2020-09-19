@@ -236,6 +236,19 @@ UI.initEtherpad = name => {
     APP.store.dispatch(setDocumentUrl(url.toString()));
 };
 
+UI.initEtherpad2 = name => {
+    if (etherpadManager || !config.wbo_base || !name) {
+        return;
+    }
+    logger.log('Etherpad2 is enabled');
+
+    etherpadManager = new EtherpadManager(eventEmitter);
+
+    const url = new URL(name, config.wbo_base);
+
+    APP.store.dispatch(setDocumentUrl(url.toString()));
+};
+
 /**
  * Returns the shared document manager object.
  * @return {EtherpadManager} the shared document manager object
