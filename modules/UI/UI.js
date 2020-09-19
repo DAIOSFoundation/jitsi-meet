@@ -229,8 +229,6 @@ UI.initEtherpad = name => {
     }
     logger.log('Etherpad is enabled');
 
-    console.log("TEST", config.etherpad_base)
-
     etherpadManager = new EtherpadManager(eventEmitter);
 
     const url = new URL(name, config.etherpad_base);
