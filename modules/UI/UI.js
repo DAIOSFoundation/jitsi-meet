@@ -20,6 +20,8 @@ import {
 import UIEvents from '../../service/UI/UIEvents';
 
 import EtherpadManager from './etherpad/Etherpad';
+import WBOManager from './wbo/WBO';
+
 import SharedVideoManager from './shared_video/SharedVideo';
 import messageHandler from './util/MessageHandler';
 import UIUtil from './util/UIUtil';
@@ -34,12 +36,17 @@ const eventEmitter = new EventEmitter();
 UI.eventEmitter = eventEmitter;
 
 let etherpadManager;
+let wboManager;
+
 let sharedVideoManager;
 
 const UIListeners = new Map([
     [
         UIEvents.ETHERPAD_CLICKED,
         () => etherpadManager && etherpadManager.toggleEtherpad()
+    ], [
+        UIEvents.WBO_CLICKED,
+        () => wboManager && wboManager.toggleEtherpad()
     ], [
         UIEvents.SHARED_VIDEO_CLICKED,
         () => sharedVideoManager && sharedVideoManager.toggleSharedVideo()
@@ -65,6 +72,10 @@ UI.isFullScreen = function() {
  */
 UI.isEtherpadVisible = function() {
     return Boolean(etherpadManager && etherpadManager.isVisible());
+};
+
+UI.isWBOVisible = function() {
+    return Boolean(wboManager && wboManager.isVisible());
 };
 
 /**
@@ -236,13 +247,13 @@ UI.initEtherpad = name => {
     APP.store.dispatch(setDocumentUrl(url.toString()));
 };
 
-UI.initEtherpad2 = name => {
-    if (etherpadManager || !config.wbo_base || !name) {
+UI.WBO = name => {
+    if (wboManager || !config.wbo_base || !name) {
         return;
     }
-    logger.log('Etherpad2 is enabled');
+    logger.log('WBO is enabled');
 
-    etherpadManager = new EtherpadManager(eventEmitter);
+    wboManager = new WBOManager(eventEmitter);
 
     const url = new URL(name, config.wbo_base);
 
@@ -254,6 +265,7 @@ UI.initEtherpad2 = name => {
  * @return {EtherpadManager} the shared document manager object
  */
 UI.getSharedDocumentManager = () => etherpadManager;
+UI.getWBOSharedDocumentManager = () => wboManager;
 
 /**
  * Show user on UI.

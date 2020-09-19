@@ -37,6 +37,7 @@ import { VideoBlurButton } from '../../../blur';
 import { CHAT_SIZE, ChatCounter, toggleChat } from '../../../chat';
 import { EmbedMeetingDialog } from '../../../embed-meeting';
 import { SharedDocumentButton } from '../../../etherpad';
+import { WBOSharedDocumentButton } from '../../../wbo';
 import { openFeedbackDialog } from '../../../feedback';
 import { beginAddPeople } from '../../../invite';
 import { openKeyboardShortcutsDialog } from '../../../keyboard-shortcuts';
@@ -1028,9 +1029,9 @@ class Toolbox extends Component<Props, State> {
                 && <SharedDocumentButton
                     key = 'etherpad'
                     showLabel = { true } />,
-            this._shouldShowButton('etherpad2')
-            && <SharedDocumentButton
-                key = 'etherpad2'
+            this._shouldShowButton('wbo')
+            && <WBOSharedDocumentButton
+                key = 'wbo'
                 showLabel = { true } />,
             <VideoBlurButton
                 key = 'videobackgroundblur'

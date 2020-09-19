@@ -11,7 +11,7 @@ import { SHARE_DOCUMENT_VIEW_ID } from './constants';
 
 declare var APP: Object;
 
-const ETHERPAD_COMMAND = 'etherpad';
+const WBO_COMMAND = 'wbo';
 
 /**
  * Middleware that captures actions related to collaborative document editing
@@ -25,7 +25,7 @@ MiddlewareRegistry.register(({ dispatch, getState }) => next => action => {
     switch (action.type) {
     case TOGGLE_DOCUMENT_EDITING: {
         if (typeof APP === 'undefined') {
-            const editing = !getState()['features/etherpad'].editing;
+            const editing = !getState()['features/wbo'].editing;
 
             dispatch(setDocumentEditingState(editing));
 
@@ -35,7 +35,7 @@ MiddlewareRegistry.register(({ dispatch, getState }) => next => action => {
                 dispatch(setActiveModalId(undefined));
             }
         } else {
-            APP.UI.emitEvent(UIEvents.ETHERPAD_CLICKED);
+            APP.UI.emitEvent(UIEvents.WBO_CLICKED);
         }
         break;
     }
@@ -53,7 +53,7 @@ StateListenerRegistry.register(
     state => getCurrentConference(state),
     (conference, { dispatch, getState }, previousConference) => {
         if (conference) {
-            conference.addCommandListener(ETHERPAD_COMMAND,
+            conference.addCommandListener(WBO_COMMAND,
                 ({ value }) => {
                     let url;
                     const { etherpad_base: etherpadBase } = getState()['features/base/config'];

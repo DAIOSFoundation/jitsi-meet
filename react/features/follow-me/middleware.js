@@ -152,6 +152,17 @@ function _onFollowMeCommand(attributes = {}, id, store) {
         }
     }
 
+    if (typeof APP !== 'undefined'
+        && oldState.wboSharedDocumentVisible !== attributes.wboSharedDocumentVisible) {
+        const isWBOVisible = attributes.wboSharedDocumentVisible === 'true';
+        const documentManager = APP.UI.getWBOSharedDocumentManager();
+
+        if (documentManager
+            && isWBOVisible !== state['features/wbo'].editing) {
+            documentManager.toggleEtherpad();
+        }
+    }
+
     const pinnedParticipant = getPinnedParticipant(state);
     const idOfParticipantToPin = attributes.nextOnStage;
 

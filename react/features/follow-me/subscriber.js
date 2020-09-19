@@ -73,6 +73,7 @@ function _getFollowMeState(state) {
         filmstripVisible: state['features/filmstrip'].visible,
         nextOnStage: pinnedParticipant && pinnedParticipant.id,
         sharedDocumentVisible: state['features/etherpad'].editing,
+        wboSharedDocumentVisible: state['features/wbo'].editing,
         tileViewEnabled: shouldDisplayTileView(state)
     };
 }

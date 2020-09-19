@@ -177,7 +177,7 @@ const commands = {
     CUSTOM_ROLE: 'custom-role',
     EMAIL: EMAIL_COMMAND,
     ETHERPAD: 'etherpad',
-    ETHERPAD2: 'etherpad2',
+    WBO: 'wbo',
     SHARED_VIDEO: 'shared-video'
 };
 
@@ -2202,9 +2202,9 @@ export default {
             }
         );
 
-        room.addCommandListener(this.commands.defaults.ETHERPAD2,
+        room.addCommandListener(this.commands.defaults.WBO,
             ({ value }) => {
-                APP.UI.initEtherpad2(value);
+                APP.UI.WBO(value);
             }
         );
 

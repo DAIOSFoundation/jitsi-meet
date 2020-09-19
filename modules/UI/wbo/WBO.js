@@ -1,6 +1,6 @@
 /* global $, APP, interfaceConfig */
 
-import { getSharedDocumentUrl, setDocumentEditingState } from '../../../react/features/etherpad';
+import { getSharedDocumentUrl, setDocumentEditingState } from '../../../react/features/wbo';
 import { getToolboxHeight } from '../../../react/features/toolbox/functions.web';
 import Filmstrip from '../videolayout/Filmstrip';
 import LargeContainer from '../videolayout/LargeContainer';
@@ -50,12 +50,12 @@ const DEFAULT_WIDTH = 640;
  */
 const DEFAULT_HEIGHT = 480;
 
-const ETHERPAD_CONTAINER_TYPE = 'etherpad';
+const WBO_CONTAINER_TYPE = 'wbo';
 
 /**
  * Container for Etherpad iframe.
  */
-class Etherpad extends LargeContainer {
+class WBO extends LargeContainer {
     /**
      * Creates new Etherpad object
      */
@@ -64,7 +64,7 @@ class Etherpad extends LargeContainer {
 
         const iframe = document.createElement('iframe');
 
-        iframe.id = 'etherpadIFrame';
+        iframe.id = 'wboIFrame';
         iframe.src = url;
         iframe.frameBorder = 0;
         iframe.scrolling = 'no';
@@ -108,7 +108,7 @@ class Etherpad extends LargeContainer {
      *
      */
     get container() {
-        return document.getElementById('etherpad');
+        return document.getElementById('wbo');
     }
 
     /**
@@ -184,7 +184,7 @@ class Etherpad extends LargeContainer {
 /**
  * Manager of the Etherpad frame.
  */
-export default class EtherpadManager {
+export default class WBOManager {
     /**
      *
      */
@@ -204,16 +204,16 @@ export default class EtherpadManager {
      *
      */
     isVisible() {
-        return VideoLayout.isLargeContainerTypeVisible(ETHERPAD_CONTAINER_TYPE);
+        return VideoLayout.isLargeContainerTypeVisible(WBO_CONTAINER_TYPE);
     }
 
     /**
      * Create new Etherpad frame.
      */
     openEtherpad() {
-        this.etherpad = new Etherpad(getSharedDocumentUrl(APP.store.getState));
+        this.etherpad = new WBO(getSharedDocumentUrl(APP.store.getState));
         VideoLayout.addLargeVideoContainer(
-            ETHERPAD_CONTAINER_TYPE,
+            WBO_CONTAINER_TYPE,
             this.etherpad
         );
     }
@@ -230,7 +230,7 @@ export default class EtherpadManager {
         const isVisible = this.isVisible();
 
         VideoLayout.showLargeVideoContainer(
-            ETHERPAD_CONTAINER_TYPE, !isVisible);
+            WBO_CONTAINER_TYPE, !isVisible);
 
         APP.store.dispatch(setDocumentEditingState(!isVisible));
     }
