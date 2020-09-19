@@ -6,7 +6,7 @@ import { setActiveModalId } from '../base/modal';
 import { MiddlewareRegistry, StateListenerRegistry } from '../base/redux';
 
 import { TOGGLE_DOCUMENT_EDITING } from './actionTypes';
-import { setDocumentEditingState, setDocumentUrl } from './actions';
+import { setDocumentEditingState, setWBODocumentUrl } from './actions';
 import { SHARE_DOCUMENT_VIEW_ID } from './constants';
 
 declare var APP: Object;
@@ -64,12 +64,12 @@ StateListenerRegistry.register(
                         url = u.toString();
                     }
 
-                    dispatch(setDocumentUrl(url));
+                    dispatch(setWBODocumentUrl(url));
                 }
             );
         }
 
         if (previousConference) {
-            dispatch(setDocumentUrl(undefined));
+            dispatch(setWBODocumentUrl(undefined));
         }
     });

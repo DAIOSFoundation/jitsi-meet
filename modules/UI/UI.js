@@ -10,6 +10,7 @@ import { isMobileBrowser } from '../../react/features/base/environment/utils';
 import { getLocalParticipant } from '../../react/features/base/participants';
 import { toggleChat } from '../../react/features/chat';
 import { setDocumentUrl } from '../../react/features/etherpad';
+import { setWBODocumentUrl } from '../../react/features/wbo';
 import { setFilmstripVisible } from '../../react/features/filmstrip';
 import { joinLeaveNotificationsDisabled, setNotificationsEnabled } from '../../react/features/notifications';
 import {
@@ -248,6 +249,7 @@ UI.initEtherpad = name => {
 };
 
 UI.WBO = name => {
+    console.log("TEST")
     if (wboManager || !config.wbo_base || !name) {
         return;
     }
@@ -257,7 +259,7 @@ UI.WBO = name => {
 
     const url = new URL(name, config.wbo_base);
 
-    APP.store.dispatch(setDocumentUrl(url.toString()));
+    APP.store.dispatch(setWBODocumentUrl(url.toString()));
 };
 
 /**

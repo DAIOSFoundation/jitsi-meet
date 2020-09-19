@@ -32,7 +32,7 @@ export function setDocumentEditingState(editing: boolean) {
  *    documentUrl: string
  * }}
  */
-export function setDocumentUrl(documentUrl: ?string) {
+export function setWBODocumentUrl(documentUrl: ?string) {
     return {
         type: SET_DOCUMENT_URL,
         documentUrl
