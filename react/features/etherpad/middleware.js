@@ -24,7 +24,6 @@ const ETHERPAD_COMMAND = 'etherpad';
 MiddlewareRegistry.register(({ dispatch, getState }) => next => action => {
     switch (action.type) {
     case TOGGLE_DOCUMENT_EDITING: {
-        console.log("TEST APP ?", APP)
         if (typeof APP === 'undefined') {
             const editing = !getState()['features/etherpad'].editing;
             console.log("TEST editing ?", editing)

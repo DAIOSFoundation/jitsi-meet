@@ -2197,6 +2197,7 @@ export default {
 
         room.addCommandListener(this.commands.defaults.ETHERPAD,
             ({ value }) => {
+                console.log("TEST VALUE",value)
                 APP.UI.initEtherpad(value);
             }
         );
