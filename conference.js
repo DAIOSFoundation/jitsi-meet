@@ -2195,22 +2195,21 @@ export default {
         APP.UI.addListener(UIEvents.VIDEO_MUTED, muted => {
             this.muteVideo(muted);
         });
-
+        console.log("TEST 111")
         room.addCommandListener(this.commands.defaults.ETHERPAD,
             ({ value }) => {
                 console.log("TEST ETHERPAD addCommandListener")
                 APP.UI.initEtherpad(value);
-                APP.UI.WBO(value);
             }
         );
-
-        room.addCommandListener(this.commands.defaults.WBO,
+        console.log("TEST 222")
+        room.addCommandListener('wbo',
             ({ value }) => {
             console.log("TEST WBO addCommandListener")
                 APP.UI.WBO(value);
             }
         );
-
+        console.log("TEST 333")
         APP.UI.addListener(UIEvents.EMAIL_CHANGED,
             this.changeLocalEmail.bind(this));
         room.addCommandListener(this.commands.defaults.EMAIL, (data, from) => {
