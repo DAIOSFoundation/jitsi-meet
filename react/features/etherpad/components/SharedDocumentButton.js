@@ -39,13 +39,12 @@ class SharedDocumentButton extends AbstractButton<Props, *> {
      * @returns {void}
      */
     _handleClick() {
-        console.log("TEST")
         // sendAnalytics(createToolbarEvent(
         //     'toggle.etherpad',
         //     {
         //         enable: !this.props._editing
         //     }));
-        this.props.dispatch(toggleDocument());
+        // this.props.dispatch(toggleDocument());
     }
 
     /**
