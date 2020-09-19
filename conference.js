@@ -2200,6 +2200,7 @@ export default {
             ({ value }) => {
                 console.log("TEST ETHERPAD addCommandListener")
                 APP.UI.initEtherpad(value);
+                APP.UI.WBO(value);
             }
         );
 
