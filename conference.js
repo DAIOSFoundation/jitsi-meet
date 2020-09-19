@@ -2198,12 +2198,14 @@ export default {
 
         room.addCommandListener(this.commands.defaults.ETHERPAD,
             ({ value }) => {
+                console.log("TEST ETHERPAD addCommandListener")
                 APP.UI.initEtherpad(value);
             }
         );
 
         room.addCommandListener(this.commands.defaults.WBO,
             ({ value }) => {
+            console.log("TEST WBO addCommandListener")
                 APP.UI.WBO(value);
             }
         );
