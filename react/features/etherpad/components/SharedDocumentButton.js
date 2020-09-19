@@ -44,7 +44,7 @@ class SharedDocumentButton extends AbstractButton<Props, *> {
         //     {
         //         enable: !this.props._editing
         //     }));
-        this.props.dispatch(toggleDocument());
+        // this.props.dispatch(toggleDocument());
     }
 
     /**
