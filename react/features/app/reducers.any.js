@@ -31,6 +31,7 @@ import '../deep-linking/reducer';
 import '../device-selection/reducer';
 import '../dropbox/reducer';
 import '../etherpad/reducer';
+import '../wbo/reducer';
 import '../filmstrip/reducer';
 import '../follow-me/reducer';
 import '../google-api/reducer';

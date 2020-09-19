@@ -26,6 +26,7 @@ import '../deep-linking/middleware';
 import '../device-selection/middleware';
 import '../display-name/middleware';
 import '../etherpad/middleware';
+import '../wbo/middleware';
 import '../filmstrip/middleware';
 import '../follow-me/middleware';
 import '../invite/middleware';
