@@ -2195,24 +2195,25 @@ export default {
         APP.UI.addListener(UIEvents.VIDEO_MUTED, muted => {
             this.muteVideo(muted);
         });
-        console.log("TEST 111")
+
         room.addCommandListener(this.commands.defaults.ETHERPAD,
             ({ value }) => {
-                console.log("TEST ETHERPAD addCommandListener")
+                console.log("TEST 111")
                 APP.UI.initEtherpad(value);
             }
         );
-        console.log("TEST 222")
-        room.addCommandListener('wbo',
+
+        room.addCommandListener(this.commands.defaults.ETHERPAD,
             ({ value }) => {
-            console.log("TEST WBO addCommandListener")
+                console.log("TEST 222")
                 APP.UI.WBO(value);
             }
         );
-        console.log("TEST 333")
+
         APP.UI.addListener(UIEvents.EMAIL_CHANGED,
             this.changeLocalEmail.bind(this));
         room.addCommandListener(this.commands.defaults.EMAIL, (data, from) => {
+            console.log("TEST 333")
             APP.store.dispatch(participantUpdated({
                 conference: room,
                 id: from,

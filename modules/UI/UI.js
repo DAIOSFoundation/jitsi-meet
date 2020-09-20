@@ -236,7 +236,7 @@ UI.addLocalVideoStream = track => {
  * @param {string} name etherpad id
  */
 UI.initEtherpad = name => {
-    console.log("TEST initEtherpad", config.wbo_base)
+    console.log("TEST initEtherpad")
     if (etherpadManager || !config.etherpad_base || !name) {
         return;
     }
