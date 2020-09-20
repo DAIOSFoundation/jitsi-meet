@@ -5,8 +5,8 @@ import { getCurrentConference } from '../base/conference';
 import { setActiveModalId } from '../base/modal';
 import { MiddlewareRegistry, StateListenerRegistry } from '../base/redux';
 
-import { TOGGLE_DOCUMENT_EDITING } from './actionTypes';
-import { setDocumentEditingState, setWBODocumentUrl } from './actions';
+import { WBO_TOGGLE_DOCUMENT_EDITING } from './actionTypes';
+import { setWBODocumentEditingState, setWBODocumentUrl } from './actions';
 import { SHARE_DOCUMENT_VIEW_ID } from './constants';
 
 declare var APP: Object;
@@ -23,11 +23,11 @@ const WBO_COMMAND = 'wbo';
 // eslint-disable-next-line no-unused-vars
 MiddlewareRegistry.register(({ dispatch, getState }) => next => action => {
     switch (action.type) {
-    case TOGGLE_DOCUMENT_EDITING: {
+    case WBO_TOGGLE_DOCUMENT_EDITING: {
         if (typeof APP === 'undefined') {
             const editing = !getState()['features/wbo'].editing;
 
-            dispatch(setDocumentEditingState(editing));
+            dispatch(setWBODocumentEditingState(editing));
 
             if (editing) {
                 dispatch(setActiveModalId(SHARE_DOCUMENT_VIEW_ID));

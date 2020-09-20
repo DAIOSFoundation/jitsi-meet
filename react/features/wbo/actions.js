@@ -16,7 +16,7 @@ import {
  *    editing: boolean
  * }}
  */
-export function setDocumentEditingState(editing: boolean) {
+export function setWBODocumentEditingState(editing: boolean) {
     return {
         type: WBO_SET_DOCUMENT_EDITING_STATUS,
         editing

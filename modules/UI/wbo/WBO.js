@@ -1,6 +1,6 @@
 /* global $, APP, interfaceConfig */
 
-import { getSharedDocumentUrl, setDocumentEditingState } from '../../../react/features/wbo';
+import { getSharedDocumentUrl, setWBODocumentEditingState } from '../../../react/features/wbo';
 import { getToolboxHeight } from '../../../react/features/toolbox/functions.web';
 import Filmstrip from '../videolayout/Filmstrip';
 import LargeContainer from '../videolayout/LargeContainer';
@@ -145,7 +145,7 @@ class WBO extends LargeContainer {
                 $iframe.css({ visibility: 'visible' });
                 $container.css({ zIndex: 2 });
 
-                APP.store.dispatch(setDocumentEditingState(true));
+                APP.store.dispatch(setWBODocumentEditingState(true));
 
                 resolve();
             });
@@ -166,7 +166,7 @@ class WBO extends LargeContainer {
                 $iframe.css({ visibility: 'hidden' });
                 $container.css({ zIndex: 0 });
 
-                APP.store.dispatch(setDocumentEditingState(false));
+                APP.store.dispatch(setWBODocumentEditingState(false));
 
                 resolve();
             });
@@ -232,6 +232,6 @@ export default class WBOManager {
         VideoLayout.showLargeVideoContainer(
             WBO_CONTAINER_TYPE, !isVisible);
 
-        APP.store.dispatch(setDocumentEditingState(!isVisible));
+        APP.store.dispatch(setWBODocumentEditingState(!isVisible));
     }
 }
