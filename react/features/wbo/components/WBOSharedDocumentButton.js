@@ -4,7 +4,7 @@ import type { Dispatch } from 'redux';
 
 import { createToolbarEvent, sendAnalytics } from '../../analytics';
 import { translate } from '../../base/i18n';
-import { IconShareDoc } from '../../base/icons';
+import { IconEdit } from '../../base/icons';
 import { connect } from '../../base/redux';
 import { AbstractButton, type AbstractButtonProps } from '../../base/toolbox/components';
 import { WBOToggleDocument } from '../actions';
@@ -28,7 +28,7 @@ type Props = AbstractButtonProps & {
  */
 class WBOSharedDocumentButton extends AbstractButton<Props, *> {
     accessibilityLabel = 'toolbar.accessibilityLabel.document';
-    icon = IconShareDoc;
+    icon = IconEdit;
     label = 'toolbar.wboOpen';
     toggledLabel = 'toolbar.wboClose';
 
