@@ -109,8 +109,8 @@ class WBO extends LargeContainer {
      */
     get container() {
         const wbo = document.getElementById('wbo')
-              wbo.style.position="absolute";
-              wbo.style.background="white";
+              wbo.style.position='absolute';
+              wbo.style.background='white';
 
         return wbo
     }

@@ -1029,10 +1029,10 @@ class Toolbox extends Component<Props, State> {
                 && <SharedDocumentButton
                     key = 'etherpad'
                     showLabel = { true } />,
-            this._shouldShowButton('wbo')
-            && <WBOSharedDocumentButton
-                key = 'wbo'
-                showLabel = { true } />,
+            // this._shouldShowButton('wbo')
+            // && <WBOSharedDocumentButton
+            //     key = 'wbo'
+            //     showLabel = { true } />,
             <VideoBlurButton
                 key = 'videobackgroundblur'
                 showLabel = { true }
