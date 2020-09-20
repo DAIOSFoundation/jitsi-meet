@@ -1,1 +1,1 @@
-export { default as WBOSharedDocumentButton } from './SharedDocumentButton';
+export { default as WBOSharedDocumentButton } from './WBOSharedDocumentButton';

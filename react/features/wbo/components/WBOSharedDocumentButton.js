@@ -26,7 +26,7 @@ type Props = AbstractButtonProps & {
 /**
  * Implements an {@link AbstractButton} to open the chat screen on mobile.
  */
-class SharedDocumentButton extends AbstractButton<Props, *> {
+class WBOSharedDocumentButton extends AbstractButton<Props, *> {
     accessibilityLabel = 'toolbar.accessibilityLabel.document';
     icon = IconShareDoc;
     label = 'toolbar.wboOpen';
@@ -40,7 +40,7 @@ class SharedDocumentButton extends AbstractButton<Props, *> {
      */
     _handleClick() {
         sendAnalytics(createToolbarEvent(
-            'toggle.etherpad',
+            'toggle.wbo',
             {
                 enable: !this.props._editing
             }));
@@ -77,4 +77,4 @@ function _mapStateToProps(state: Object, ownProps: Object) {
     };
 }
 
-export default translate(connect(_mapStateToProps)(SharedDocumentButton));
+export default translate(connect(_mapStateToProps)(WBOSharedDocumentButton));

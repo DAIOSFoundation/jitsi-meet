@@ -2197,7 +2197,6 @@ export default {
 
         room.addCommandListener(this.commands.defaults.ETHERPAD,
             ({ value }) => {
-                console.log("TEST 111")
                 APP.UI.initEtherpad(value);
             }
         );
@@ -2205,7 +2204,6 @@ export default {
         APP.UI.addListener(UIEvents.EMAIL_CHANGED,
             this.changeLocalEmail.bind(this));
         room.addCommandListener(this.commands.defaults.EMAIL, (data, from) => {
-            console.log("TEST 333")
             APP.store.dispatch(participantUpdated({
                 conference: room,
                 id: from,
