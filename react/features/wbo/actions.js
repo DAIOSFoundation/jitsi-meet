@@ -1,9 +1,9 @@
 // @flow
 
 import {
-    SET_DOCUMENT_EDITING_STATUS,
-    SET_DOCUMENT_URL,
-    TOGGLE_DOCUMENT_EDITING
+    WBO_SET_DOCUMENT_EDITING_STATUS,
+    WBO_SET_DOCUMENT_URL,
+    WBO_TOGGLE_DOCUMENT_EDITING
 } from './actionTypes';
 
 /**
@@ -18,7 +18,7 @@ import {
  */
 export function setDocumentEditingState(editing: boolean) {
     return {
-        type: SET_DOCUMENT_EDITING_STATUS,
+        type: WBO_SET_DOCUMENT_EDITING_STATUS,
         editing
     };
 }
@@ -34,7 +34,7 @@ export function setDocumentEditingState(editing: boolean) {
  */
 export function setWBODocumentUrl(documentUrl: ?string) {
     return {
-        type: SET_DOCUMENT_URL,
+        type: WBO_SET_DOCUMENT_URL,
         documentUrl
     };
 }
@@ -46,8 +46,8 @@ export function setWBODocumentUrl(documentUrl: ?string) {
  *    type: TOGGLE_DOCUMENT_EDITING
  * }}
  */
-export function toggleDocument() {
+export function WBOToggleDocument() {
     return {
-        type: TOGGLE_DOCUMENT_EDITING
+        type: WBO_TOGGLE_DOCUMENT_EDITING
     };
 }
