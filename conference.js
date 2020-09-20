@@ -2203,7 +2203,7 @@ export default {
             }
         );
 
-        room.addCommandListener(this.commands.defaults.ETHERPAD,
+        room.addCommandListener(this.commands.defaults.WBO,
             ({ value }) => {
                 console.log("TEST 222")
                 APP.UI.WBO(value);
