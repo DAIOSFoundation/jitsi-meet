@@ -236,31 +236,20 @@ UI.addLocalVideoStream = track => {
  * @param {string} name etherpad id
  */
 UI.initEtherpad = name => {
-    console.log("TEST initEtherpad")
+
     if (etherpadManager || !config.etherpad_base || !name) {
         return;
     }
     logger.log('Etherpad is enabled');
 
     etherpadManager = new EtherpadManager(eventEmitter);
-
-    const url = new URL(name, config.etherpad_base);
-
-    APP.store.dispatch(setDocumentUrl(url.toString()));
-};
-
-UI.WBO = name => {
-    console.log("TEST WBO")
-    if (wboManager || !config.wbo_base || !name) {
-        return;
-    }
-    logger.log('WBO is enabled');
-
     wboManager = new WBOManager(eventEmitter);
 
-    const url = new URL(name, config.wbo_base);
+    const url = new URL(name, config.etherpad_base);
+    const wboUrl = new URL(name, config.wbo_base);
 
-    APP.store.dispatch(setWBODocumentUrl(url.toString()));
+    APP.store.dispatch(setDocumentUrl(url.toString()));
+    APP.store.dispatch(setWBODocumentUrl(wboUrl.toString()));
 };
 
 /**
