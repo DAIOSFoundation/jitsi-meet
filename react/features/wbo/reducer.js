@@ -2,7 +2,7 @@
 
 import { ReducerRegistry } from '../base/redux';
 
-import { WBO_SET_DOCUMENT_EDITING_STATUS, WBO_SET_DOCUMENT_URL } from './actionTypes';
+import { SET_WBO_DOCUMENT_EDITING_STATUS, SET_WBO_DOCUMENT_URL } from './actionTypes';
 
 const DEFAULT_STATE = {
 
@@ -27,13 +27,13 @@ ReducerRegistry.register(
     'features/wbo',
     (state = DEFAULT_STATE, action) => {
         switch (action.type) {
-        case WBO_SET_DOCUMENT_EDITING_STATUS:
+        case SET_WBO_DOCUMENT_EDITING_STATUS:
             return {
                 ...state,
                 editing: action.editing
             };
 
-        case WBO_SET_DOCUMENT_URL:
+        case SET_WBO_DOCUMENT_URL:
             return {
                 ...state,
                 documentUrl: action.documentUrl

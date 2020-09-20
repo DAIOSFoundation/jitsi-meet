@@ -12,7 +12,7 @@ import { LoadingIndicator } from '../../../base/react';
 import { connect } from '../../../base/redux';
 import { WBOToggleDocument } from '../../actions';
 import { SHARE_DOCUMENT_VIEW_ID } from '../../constants';
-import { getSharedDocumentUrl } from '../../functions';
+import { getWBOSharedDocumentUrl } from '../../functions';
 
 import styles, { INDICATOR_COLOR } from './styles';
 
@@ -149,7 +149,7 @@ class SharedDocument extends PureComponent<Props> {
  */
 export function _mapStateToProps(state: Object) {
     const { editing } = state['features/wbo'];
-    const documentUrl = getSharedDocumentUrl(state);
+    const documentUrl = getWBOSharedDocumentUrl(state);
 
     return {
         _documentUrl: documentUrl,

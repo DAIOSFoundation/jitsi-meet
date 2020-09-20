@@ -15,7 +15,7 @@ const ETHERPAD_OPTIONS = {
  * @param {Function|Object} stateful - The redux store or {@code getState} function.
  * @returns {?string} - Current shared document URL or undefined.
  */
-export function getSharedDocumentUrl(stateful: Function | Object) {
+export function getWBOSharedDocumentUrl(stateful: Function | Object) {
     const state = toState(stateful);
     const { documentUrl } = state['features/wbo'];
     const { displayName } = state['features/base/settings'];

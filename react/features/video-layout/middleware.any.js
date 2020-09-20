@@ -1,13 +1,17 @@
 // @flow
 
-import { getCurrentConference } from '../base/conference';
-import { PIN_PARTICIPANT, pinParticipant, getPinnedParticipant } from '../base/participants';
-import { MiddlewareRegistry, StateListenerRegistry } from '../base/redux';
-import { SET_DOCUMENT_EDITING_STATUS } from '../etherpad';
-import { WBO_SET_DOCUMENT_EDITING_STATUS } from '../wbo';
+import {getCurrentConference} from '../base/conference';
+import {
+    PIN_PARTICIPANT,
+    pinParticipant,
+    getPinnedParticipant
+} from '../base/participants';
+import {MiddlewareRegistry, StateListenerRegistry} from '../base/redux';
+import {SET_DOCUMENT_EDITING_STATUS} from '../etherpad';
+import {SET_WBO_DOCUMENT_EDITING_STATUS} from '../wbo';
 
-import { SET_TILE_VIEW } from './actionTypes';
-import { setTileView } from './actions';
+import {SET_TILE_VIEW} from './actionTypes';
+import {setTileView} from './actions';
 
 import './subscriber';
 
@@ -24,26 +28,26 @@ MiddlewareRegistry.register(store => next => action => {
 
     switch (action.type) {
 
-    // Actions that temporarily clear the user preferred state of tile view,
-    // then re-set it when needed.
-    case PIN_PARTICIPANT: {
-        const pinnedParticipant = getPinnedParticipant(store.getState());
+        // Actions that temporarily clear the user preferred state of tile view,
+        // then re-set it when needed.
+        case PIN_PARTICIPANT: {
+            const pinnedParticipant = getPinnedParticipant(store.getState());
 
-        if (pinnedParticipant) {
-            _storeTileViewStateAndClear(store);
-        } else {
-            _restoreTileViewState(store);
+            if (pinnedParticipant) {
+                _storeTileViewStateAndClear(store);
+            } else {
+                _restoreTileViewState(store);
+            }
+            break;
         }
-        break;
-    }
-    case SET_DOCUMENT_EDITING_STATUS:
-        if (action.editing) {
-            _storeTileViewStateAndClear(store);
-        } else {
-            _restoreTileViewState(store);
-        }
-        break;
-        case WBO_SET_DOCUMENT_EDITING_STATUS:
+        case SET_DOCUMENT_EDITING_STATUS:
+            if (action.editing) {
+                _storeTileViewStateAndClear(store);
+            } else {
+                _restoreTileViewState(store);
+            }
+            break;
+        case SET_WBO_DOCUMENT_EDITING_STATUS:
             if (action.editing) {
                 _storeTileViewStateAndClear(store);
             } else {
@@ -51,11 +55,11 @@ MiddlewareRegistry.register(store => next => action => {
             }
             break;
 
-    // Things to update when tile view state changes
-    case SET_TILE_VIEW:
-        if (action.enabled && getPinnedParticipant(store)) {
-            store.dispatch(pinParticipant(null));
-        }
+        // Things to update when tile view state changes
+        case SET_TILE_VIEW:
+            if (action.enabled && getPinnedParticipant(store)) {
+                store.dispatch(pinParticipant(null));
+            }
     }
 
 
@@ -68,7 +72,7 @@ MiddlewareRegistry.register(store => next => action => {
  */
 StateListenerRegistry.register(
     state => getCurrentConference(state),
-    (conference, { dispatch }, previousConference) => {
+    (conference, {dispatch}, previousConference) => {
         if (conference !== previousConference) {
             // conference changed, left or failed...
             // Clear tile view state.
@@ -82,8 +86,8 @@ StateListenerRegistry.register(
  * @param {Object} store - The Redux Store.
  * @returns {void}
  */
-function _restoreTileViewState({ dispatch, getState }) {
-    const { tileViewEnabled } = getState()['features/video-layout'];
+function _restoreTileViewState({dispatch, getState}) {
+    const {tileViewEnabled} = getState()['features/video-layout'];
 
     if (tileViewEnabled === undefined && previousTileViewEnabled !== undefined) {
         dispatch(setTileView(previousTileViewEnabled));
@@ -98,8 +102,8 @@ function _restoreTileViewState({ dispatch, getState }) {
  * @param {Object} store - The Redux Store.
  * @returns {void}
  */
-function _storeTileViewStateAndClear({ dispatch, getState }) {
-    const { tileViewEnabled } = getState()['features/video-layout'];
+function _storeTileViewStateAndClear({dispatch, getState}) {
+    const {tileViewEnabled} = getState()['features/video-layout'];
 
     if (tileViewEnabled !== undefined) {
         previousTileViewEnabled = tileViewEnabled;

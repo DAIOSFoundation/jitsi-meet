@@ -1,6 +1,6 @@
 /* global $, APP, interfaceConfig */
 
-import { getSharedDocumentUrl, setWBODocumentEditingState } from '../../../react/features/wbo';
+import { getWBOSharedDocumentUrl, setWBODocumentEditingState } from '../../../react/features/wbo';
 import { getToolboxHeight } from '../../../react/features/toolbox/functions.web';
 import Filmstrip from '../videolayout/Filmstrip';
 import LargeContainer from '../videolayout/LargeContainer';
@@ -211,7 +211,7 @@ export default class WBOManager {
      * Create new Etherpad frame.
      */
     openEtherpad() {
-        this.etherpad = new WBO(getSharedDocumentUrl(APP.store.getState));
+        this.etherpad = new WBO(getWBOSharedDocumentUrl(APP.store.getState));
         VideoLayout.addLargeVideoContainer(
             WBO_CONTAINER_TYPE,
             this.etherpad

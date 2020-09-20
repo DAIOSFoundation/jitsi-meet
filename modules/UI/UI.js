@@ -240,7 +240,13 @@ UI.initEtherpad = name => {
     if (etherpadManager || !config.etherpad_base || !name) {
         return;
     }
+
+    if (wboManager || !config.wbo_base || !name) {
+        return;
+    }
+
     logger.log('Etherpad is enabled');
+    logger.log('WBO is enabled');
 
     etherpadManager = new EtherpadManager(eventEmitter);
     wboManager = new WBOManager(eventEmitter);
