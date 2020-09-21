@@ -20,6 +20,8 @@ import {
 import WelcomePageMain from '../welcome/components/WelcomePageMain';
 // 대구은행 전용 페이지
 import WelcomePageDGBFN from '../welcome/components/WelcomePageDGBFN';
+// All-Lang 전용 페이지
+import WelcomePageAllLang from '../welcome/components/WelcomePageAllLang';
 // DVision 요금제 및 가격 정책
 import DvisionPlanPage from '../welcome/components/DvisionPlanPage';
 // DVision 로그인 페이지
@@ -131,7 +133,7 @@ function _getWebWelcomePageRoute(state): Promise<Route> {
             const { pageStatus } = state['features/pageStatus'];
 
             if(pageStatus === 'main'){
-                route.component = WelcomePageMain;
+                route.component = WelcomePageAllLang;
             }else if(pageStatus === 'login') {
                 route.component = LoginPage
             }else if(pageStatus === 'meet'){

@@ -139,7 +139,7 @@ class ChatInput extends Component<Props, State> {
             if (e.target.files[0].size < 577000000) {
                 this.props.dispatch(uploadActions.post_file_upload(param))
             } else {
-                this.props.dispatch(modalActions.change_modal_message('파일 용량 제한은 500MB 미만입니다.'))
+                this.props.dispatch(modalActions.change_modal_message('파일 용량 제한은 500MB 이하입니다.'))
             }
 
             // input type = 'file' 값 초기화

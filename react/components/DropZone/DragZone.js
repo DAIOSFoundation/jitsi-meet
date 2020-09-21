@@ -12,7 +12,7 @@ const DragZone = () => {
         if (acceptedFiles.length !== 1) {
             return dispatch(modalActions.change_modal_message('현재 단일 파일 업로드만 가능합니다.'))
         } else if (acceptedFiles[0].size > 577000000) {
-            return dispatch(modalActions.change_modal_message('파일 용량 제한은 500MB 미만입니다.'))
+            return dispatch(modalActions.change_modal_message('파일 용량 제한은 500MB 이하입니다.'))
         } else {
             dispatch(uploadActions.post_file_upload({
                 'userFile': acceptedFiles[0]

@@ -53,7 +53,7 @@ const WelcomePageMain = () => {
             <div style={{position: 'relative', width: '100%', height: '100%'}}>
                 <div style={{
                     width: '170px',
-                    height: '70px',
+                    height: '35px',
                     paddingTop: 15,
                     paddingLeft: 30
                 }}>

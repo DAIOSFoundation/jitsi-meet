@@ -4,7 +4,7 @@ import {changePageStatus} from '../../pageStatus';
 import {setRoom} from '../../base/conference';
 import {useCookies} from 'react-cookie';
 
-const WelcomePageDGBFN = () => {
+const WelcomePageAllLang = () => {
 
     const dispatch = useDispatch();
 
@@ -45,19 +45,44 @@ const WelcomePageDGBFN = () => {
 
     return (
         <div style={{
-            backgroundColor:'#256DD6',
+            backgroundColor: '#85CDED',
             backgroundSize: 'cover',
-            width:'100%',
-            height:'100%'
+            width: '100%',
+            height: '100%'
         }}>
             <div style={{position: 'relative', width: '100%', height: '100%'}}>
-                <div style={{position:'absolute', bottom:0, right:0, width:'34%',height:'80%'}}>
-                    <img src={'images/dgbfn/dandi.png'} width={'100%'}
+                <div style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    right: 0,
+                    width: '34%',
+                    height: '50%'
+                }}>
+                    <img src={'images/allLang/allLangCharacter.png'}
+                         width={'100%'}
                          height={'100%'}/>
                 </div>
-                <div style={{position:'absolute', bottom:30, left:30}}>
-                    <img src={'images/dgbfn/dgbbank_logo.png'} width={198}
-                         height={34}/>
+                <div style={{
+                    position: 'absolute',
+                    top: '17%',
+                    right: 0,
+                    width: '25%',
+                    height: '20%'
+                }}>
+                    <img src={'images/allLang/allLangCloud_01.png'}
+                         width={'100%'}
+                         height={'100%'}/>
+                </div>
+                <div style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    width: '25%',
+                    height: '20%'
+                }}>
+                    <img src={'images/allLang/allLangCloud_02.png'}
+                         width={'100%'}
+                         height={'100%'}/>
                 </div>
                 <div style={{
                     width: '170px',
@@ -69,7 +94,7 @@ const WelcomePageDGBFN = () => {
                          height={'100%'}/>
                 </div>
                 {
-                    (cookies.jwt !== 'undefined' && cookies.jwt !== undefined)?
+                    (cookies.jwt !== 'undefined' && cookies.jwt !== undefined) ?
                         <button onClick={onClickLogout}
                                 className='welcomePageMainAuthButton'>
                             <text style={{zIndex: 1, color: '#0d2656'}}>
@@ -86,35 +111,44 @@ const WelcomePageDGBFN = () => {
                 }
                 <div style={{
                     marginLeft: '10%',
-                    marginTop: '5%',
+                    marginTop: '8%',
                 }}>
-                    <div style={{width:'40%', height:'9%'}}>
-                        <img src={'images/dgbfn/collab.png'} width={'100%'}
+                    <div style={{width: '30%', height: '9%'}}>
+                        <img src={'images/allLang/collab.png'} width={'100%'}
                              height={'100%'}/>
                     </div>
 
-                    <div style={{margin:'30px 0 100px 0', width:'35%', height:'18%'}}>
-                        <img src={'images/dgbfn/main_text01.png'} width={'100%'}
+                    <div style={{
+                        margin: '30px 0 40px 0',
+                        width: '33%',
+                        height: '18%'
+                    }}>
+                        <img src={'images/allLang/allLangText.png'}
+                             width={'100%'}
                              height={'100%'}/>
                     </div>
 
-                    <button onClick={onClickMeet}
+                    <button style={{backgroundColor: '#314C99'}}
+                            onClick={onClickMeet}
                             className='welcomePageMainButton'>
-                        <text style={{zIndex: 1, color: '#0042A2'}}>
+                        <text style={{zIndex: 1, color: '#FFFFFF'}}>
                             방 만들기
                         </text>
                     </button>
                     <a download={'DVision_사용매뉴얼_다이브(주)'}
                        href={`/static/DVision_Manual.pdf`}>
-                        <button className='welcomePageMainButton'>
-                            <text style={{zIndex: 1, color: '#0042A2'}}>
+                        <button
+                            style={{backgroundColor: '#314C99'}}
+                            className='welcomePageMainButton'>
+                            <text style={{zIndex: 1, color: '#FFFFFF'}}>
                                 매뉴얼 다운로드
                             </text>
                         </button>
                     </a>
-                    <button onClick={onClickPlan}
+                    <button style={{backgroundColor: '#314C99'}}
+                            onClick={onClickPlan}
                             className='welcomePageMainButton'>
-                        <text style={{zIndex: 1, color: '#0042A2'}}>
+                        <text style={{zIndex: 1, color: '#FFFFFF'}}>
                             요금제 및 가격 정책
                         </text>
                     </button>
@@ -124,7 +158,7 @@ const WelcomePageDGBFN = () => {
     );
 };
 
-export default WelcomePageDGBFN;
+export default WelcomePageAllLang;
 
 
 
