@@ -70,7 +70,7 @@ export default function Icon(props: Props) {
     } = styleTypeToObject(style ?? {});
     const calculatedColor = color ?? styleColor ?? DEFAULT_COLOR;
     const calculatedSize = size ?? styleSize ?? DEFAULT_SIZE;
-    console.log("TEST",props.src.name)
+    console.log("TEST",props)
     // Setting 버튼 분기처리 ( 버튼 이름이 Setting 버튼일 시 테마색 지정 )
     return (
         <div>
