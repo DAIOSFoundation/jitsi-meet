@@ -119,13 +119,16 @@ const WelcomePageAllLang = () => {
                     </div>
 
                     <div style={{
-                        margin: '30px 0 40px 0',
+                        margin: '70px 0 80px 0',
                         width: '33%',
                         height: '18%'
                     }}>
-                        <img src={'images/allLang/allLangText.png'}
-                             width={'100%'}
-                             height={'100%'}/>
+                        <a target='_blank'
+                           href="https://www.all-lang.com/launch/index.html">
+                            <img src={'images/allLang/allLangText.png'}
+                                 width={'100%'}
+                                 height={'100%'}/>
+                        </a>
                     </div>
 
                     <button style={{backgroundColor: '#314C99'}}
