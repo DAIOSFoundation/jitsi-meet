@@ -184,9 +184,9 @@ $welcomePageHeaderPaddingBottom: 0px;
 $welcomePageHeaderMinHeight: fit-content;
 
 $welcomePageHeaderTextMarginTop: 35px;
-$welcomePageHeaderTextMarginBottom: 35px;
+$welcomePageHeaderTextMarginBottom: 5px;
 $welcomePageHeaderTextDisplay: flex;
-$welcomePageHeaderTextWidth: 650px;
+$welcomePageHeaderTextWidth: 740px;
 
 $welcomePageHeaderTextTitleMarginBottom: 16px;
 $welcomePageHeaderTextTitleFontSize: 2.5rem;
@@ -218,12 +218,12 @@ $welcomePageTabContentDisplay: inherit;
 $welcomePageTabButtonsDisplay: flex;
 $welcomePageTabDisplay: block;
 
-$welcomePageButtonWidth: 51px;
+$welcomePageButtonWidth: 100px;
 $welcomePageButtonMinWidth: inherit;
 $welcomePageButtonFontSize: 14px;
 $welcomePageButtonHeight: 35px;
-$welcomePageButtonFontWeight: inherit;
-$welcomePageButtonBorderRadius: 4px;
+$welcomePageButtonFontWeight: bold;
+$welcomePageButtonBorderRadius: 19px;
 $welcomePageButtonLineHeight: 35px;
 
 /**

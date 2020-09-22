@@ -11,6 +11,7 @@
                     .toolbox-icon {
                         width: 28px;
                         height: 28px;
+
                         svg {
                             width: 18px;
                             height: 18px;
@@ -44,10 +45,12 @@
                 .settings-button-small-icon {
                     display: none;
                 }
+
                 .toolbox-button {
                     .toolbox-icon {
                         width: 18px;
                         height: 18px;
+
                         svg {
                             width: 12px;
                             height: 12px;
@@ -66,5 +69,37 @@
     }
     .chrome-extension-banner {
         display: none;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .welcome {
+        display: block;
+
+        .header {
+            height: 60%;
+
+            #enter_room {
+                margin-bottom: 20px
+            }
+
+            .tab-container {
+                width: 90%;
+                min-height: 150px;
+            }
+        }
+
+        .welcome-illust {
+            width: 100%;
+            height: 40%
+        }
+
+        .meetingRoomArea {
+            width: 100%;
+
+            .welcome-page-button {
+                font-size: 12px;
+            }
+        }
     }
 }

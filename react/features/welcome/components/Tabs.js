@@ -46,7 +46,7 @@ export default class Tabs extends Component<Props> {
             : {};
 
         return (
-            <div className = 'tab-container' style={{backgroundColor:'gray'}}>
+            <div className = 'tab-container'>
                 <div className = 'tab-content'>
                     { content }
                 </div>

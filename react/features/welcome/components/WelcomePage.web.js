@@ -2,16 +2,16 @@
 
 import React from 'react';
 
-import { isMobileBrowser } from '../../base/environment/utils';
-import { translate, translateToHTML } from '../../base/i18n';
-import { Icon, IconWarning } from '../../base/icons';
-import { Watermarks } from '../../base/react';
-import { connect } from '../../base/redux';
-import { CalendarList } from '../../calendar-sync';
-import { RecentList } from '../../recent-list';
-import { SettingsButton, SETTINGS_TABS } from '../../settings';
+import {isMobileBrowser} from '../../base/environment/utils';
+import {translate, translateToHTML} from '../../base/i18n';
+import {Icon, IconWarning} from '../../base/icons';
+import {Watermarks} from '../../base/react';
+import {connect} from '../../base/redux';
+import {CalendarList} from '../../calendar-sync';
+import {RecentList} from '../../recent-list';
+import {SettingsButton, SETTINGS_TABS} from '../../settings';
 
-import { AbstractWelcomePage, _mapStateToProps } from './AbstractWelcomePage';
+import {AbstractWelcomePage, _mapStateToProps} from './AbstractWelcomePage';
 import Tabs from './Tabs';
 
 /**
@@ -166,90 +166,101 @@ class WelcomePage extends AbstractWelcomePage {
      * @returns {ReactElement|null}
      */
     render() {
-        const { _moderatedRoomServiceUrl, t } = this.props;
-        const { APP_NAME, DEFAULT_WELCOME_PAGE_LOGO_URL } = interfaceConfig;
+        const {_moderatedRoomServiceUrl, t} = this.props;
+        const {APP_NAME, DEFAULT_WELCOME_PAGE_LOGO_URL} = interfaceConfig;
         const showAdditionalContent = this._shouldShowAdditionalContent();
         const showAdditionalToolbarContent = this._shouldShowAdditionalToolbarContent();
         const showResponsiveText = this._shouldShowResponsiveText();
 
         return (
             <div
-                className = { `welcome ${showAdditionalContent
-                    ? 'with-content' : 'without-content'}` }
-                id = 'welcome_page'>
-                <div className = 'welcome-watermark'>
-                    <Watermarks defaultJitsiLogoURL = { DEFAULT_WELCOME_PAGE_LOGO_URL } />
+                className={`welcome ${showAdditionalContent
+                    ? 'with-content' : 'without-content'}`}
+                id='welcome_page'>
+                <div className='welcome-illust'>
+                    <div className='welcome-watermark'>
+                        <Watermarks
+                            defaultJitsiLogoURL={DEFAULT_WELCOME_PAGE_LOGO_URL}/>
+                    </div>
+                    <div style={{position:'absolute', bottom:30, right:30, width:'70%', height:'70%'}}>
+                        <img src={'images/dvision-main-illust.png'} width={'100%'} height={'100%'} alt=""/>
+                    </div>
                 </div>
-                <div className = 'header'>
-                    <div className = 'welcome-page-settings'>
-                        <SettingsButton
-                            defaultTab = { SETTINGS_TABS.CALENDAR } />
-                        { showAdditionalToolbarContent
-                            ? <div
-                                className = 'settings-toolbar-content'
-                                ref = { this._setAdditionalToolbarContentRef } />
-                            : null
-                        }
-                    </div>
-                    <div className = 'header-image' />
-                    <div className = 'header-text'>
-                        <h1 className = 'header-text-title'>
-                            {/*{ t('welcomepage.title') }*/}
-                        </h1>
-                        <p className = 'header-text-description'>
-                            {/*{ t('welcomepage.appDescription',*/}
-                            {/*    { app: APP_NAME }) }*/}
-                        </p>
-                    </div>
-                    <div id = 'enter_room'>
-                        <div className = 'enter-room-input-container'>
-                            <div className = 'enter-room-title'>
-                                {/*{ t('welcomepage.enterRoomTitle') }*/}
-                            </div>
-                            <form onSubmit = { this._onFormSubmit }>
-                                <input
-                                    autoFocus = { true }
-                                    className = 'enter-room-input'
-                                    id = 'enter_room_field'
-                                    onChange = { this._onRoomChange }
-                                    pattern = { ROOM_NAME_VALIDATE_PATTERN_STR }
-                                    placeholder = { t('welcomepage.placeHolder') }
-                                    ref = { this._setRoomInputRef }
-                                    title = { t('welcomepage.roomNameAllowedChars') }
-                                    type = 'text'
-                                    value = { this.state.room } />
-                                { this._renderInsecureRoomNameWarning() }
-                            </form>
-                        </div>
-                        <div
-                            className = 'welcome-page-button'
-                            style={{ width:100, backgroundColor:'black' }}
-                            id = 'enter_room_button'
-                            onClick = { this._onFormSubmit }>
-                            {
-                                showResponsiveText
-                                    ? t('welcomepage.goSmall')
-                                    : t('welcomepage.go')
+                <div className='meetingRoomArea'>
+                    <div className='header'>
+                        <div className='welcome-page-settings'>
+                            <SettingsButton
+                                defaultTab={SETTINGS_TABS.CALENDAR}/>
+                            {showAdditionalToolbarContent
+                                ? <div
+                                    className='settings-toolbar-content'
+                                    ref={this._setAdditionalToolbarContentRef}/>
+                                : null
                             }
                         </div>
-                    </div>
-                    { _moderatedRoomServiceUrl && (
-                        <div id = 'moderated-meetings'>
-                            <p>
-                                {
-                                    translateToHTML(
-                                        t, 'welcomepage.moderatedMessage', { url: _moderatedRoomServiceUrl })
-                                }
-                            </p>
+                        {/*<div className='header-image'/>*/}
+                            {/*<h1 className='header-text-title'>*/}
+                            {/*    { t('welcomepage.title') }*/}
+                            {/*</h1>*/}
+                            {/*<p className='header-text-description'>*/}
+                            {/*    { t('welcomepage.appDescription',*/}
+                            {/*        { app: APP_NAME }) }*/}
+                            {/*</p>*/}
+                        <div className='header-text' style={{textAlign:'left'}}>
+                            <h3 style={{color:'black', fontWeight:'bold'}}>새로운 회의방 만들기</h3>
                         </div>
-                    ) }
-                    { this._renderTabs() }
+                        <div id='enter_room'>
+                            <div className='enter-room-input-container'>
+                                <div className='enter-room-title'>
+                                    {/*{ t('welcomepage.enterRoomTitle') }*/}
+                                </div>
+                                <form onSubmit={this._onFormSubmit}>
+                                    <input
+                                        autoFocus={true}
+                                        className='enter-room-input'
+                                        id='enter_room_field'
+                                        onChange={this._onRoomChange}
+                                        pattern={ROOM_NAME_VALIDATE_PATTERN_STR}
+                                        placeholder={t('welcomepage.placeHolder')}
+                                        ref={this._setRoomInputRef}
+                                        title={t('welcomepage.roomNameAllowedChars')}
+                                        type='text'
+                                        value={this.state.room}/>
+                                    {this._renderInsecureRoomNameWarning()}
+                                </form>
+                            </div>
+                                <div
+                                    className='welcome-page-button'
+                                    id='enter_room_button'
+                                    onClick={this._onFormSubmit}>
+                                    {
+                                        showResponsiveText
+                                            ? t('welcomepage.goSmall')
+                                            : t('welcomepage.go')
+                                    }
+                                    <div style={{width: 24, height: 24}}>
+                                        <img src={'images/new-room-icon.png'} width={'100%'} height={'100%'}  alt=""/>
+                                    </div>
+                                </div>
+                        </div>
+                        {_moderatedRoomServiceUrl && (
+                            <div id='moderated-meetings'>
+                                <p>
+                                    {
+                                        translateToHTML(
+                                            t, 'welcomepage.moderatedMessage', {url: _moderatedRoomServiceUrl})
+                                    }
+                                </p>
+                            </div>
+                        )}
+                        {this._renderTabs()}
+                    </div>
+                    {showAdditionalContent
+                        ? <div
+                            className='welcome-page-content'
+                            ref={this._setAdditionalContentRef}/>
+                        : null}
                 </div>
-                { showAdditionalContent
-                    ? <div
-                        className = 'welcome-page-content'
-                        ref = { this._setAdditionalContentRef } />
-                    : null }
             </div>
         );
     }
@@ -261,10 +272,10 @@ class WelcomePage extends AbstractWelcomePage {
      */
     _doRenderInsecureRoomNameWarning() {
         return (
-            <div className = 'insecure-room-name-warning'>
-                <Icon src = { IconWarning } />
+            <div className='insecure-room-name-warning'>
+                <Icon src={IconWarning}/>
                 <span>
-                    { this.props.t('security.insecureRoomNameWarning') }
+                    {this.props.t('security.insecureRoomNameWarning')}
                 </span>
             </div>
         );
@@ -308,7 +319,7 @@ class WelcomePage extends AbstractWelcomePage {
      * @returns {void}
      */
     _onTabSelected(tabIndex) {
-        this.setState({ selectedTab: tabIndex });
+        this.setState({selectedTab: tabIndex});
     }
 
     /**
@@ -322,20 +333,20 @@ class WelcomePage extends AbstractWelcomePage {
             return null;
         }
 
-        const { _calendarEnabled, _recentListEnabled, t } = this.props;
+        const {_calendarEnabled, _recentListEnabled, t} = this.props;
 
         const tabs = [];
         if (_calendarEnabled) {
             tabs.push({
                 label: t('welcomepage.calendar'),
-                content: <CalendarList />
+                content: <CalendarList/>
             });
         }
 
         if (_recentListEnabled) {
             tabs.push({
                 label: t('welcomepage.recentList'),
-                content: <RecentList />
+                content: <RecentList/>
             });
         }
 
@@ -345,9 +356,9 @@ class WelcomePage extends AbstractWelcomePage {
 
         return (
             <Tabs
-                onSelect = { this._onTabSelected }
-                selected = { this.state.selectedTab }
-                tabs = { tabs } />);
+                onSelect={this._onTabSelected}
+                selected={this.state.selectedTab}
+                tabs={tabs}/>);
     }
 
     /**
@@ -424,7 +435,7 @@ class WelcomePage extends AbstractWelcomePage {
      * @returns {boolean}
      */
     _shouldShowResponsiveText() {
-        const { innerWidth } = window;
+        const {innerWidth} = window;
 
         return innerWidth <= WINDOW_WIDTH_THRESHOLD;
     }
