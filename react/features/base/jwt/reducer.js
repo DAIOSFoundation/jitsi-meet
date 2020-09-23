@@ -34,7 +34,6 @@ const DEFAULT_STATE = {
 ReducerRegistry.register(
     'features/base/jwt',
     (state = DEFAULT_STATE, action) => {
-        console.log("TEST action",action)
         switch (action.type) {
         case SET_JWT: {
             // eslint-disable-next-line no-unused-vars
