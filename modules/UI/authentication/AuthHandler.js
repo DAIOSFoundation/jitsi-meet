@@ -207,6 +207,8 @@ function doXmppAuth(room, lockPassword) {
  * @param {string} [lockPassword] password to use if the conference is locked
  */
 function authenticate(room, lockPassword) {
+    console.log("TEST isTokenAuthEnabled", isTokenAuthEnabled)
+    console.log("TEST room.isExternalAuthEnabled()", room.isExternalAuthEnabled())
     if (isTokenAuthEnabled || room.isExternalAuthEnabled()) {
         doExternalAuth(room, lockPassword);
     } else {
