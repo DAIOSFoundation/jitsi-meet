@@ -21,6 +21,7 @@ const isTokenAuthEnabled
 const getTokenAuthUrl
     = JitsiMeetJS.util.AuthUtil.getTokenAuthUrl.bind(null, config.tokenAuthUrl);
 
+console.log("TEST SETSET")
 /**
  * Authenticate using external service or just focus
  * external auth window if there is one already.
