@@ -287,7 +287,6 @@ function devServerProxyBypass({ path }) {
             || path.startsWith('/lang/')
             || path.startsWith('/sounds/')
             || path.startsWith('/static/')
-            || path.startsWith('/auth/')
             || path.endsWith('.wasm')) {
 
         return path;
