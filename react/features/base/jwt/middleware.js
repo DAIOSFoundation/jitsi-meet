@@ -33,8 +33,8 @@ MiddlewareRegistry.register(store => next => action => {
         // the JSON Web Token comes from the conference/room's URL and isGuest
         // needs a recalculation upon SET_CONFIG as well.
         return _setConfigOrLocationURL(store, next, action);
+
     case SET_JWT:
-        console.log("TEST case SET_JWT:");
         return _setJWT(store, next, action);
     }
 
@@ -101,9 +101,8 @@ function _setConfigOrLocationURL({ dispatch, getState }, next, action) {
 
     const { locationURL } = getState()['features/base/connection'];
 
-    console.log("TEST dispatch(etJWT(locationU ")
     dispatch(
-        setJWT(locationURL ? parseJWTFromURLParams(locationURL) : undefined));
+        setJWT('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb250ZXh0Ijp7InVzZXIiOnsiYXZhdGFyIjoiaHR0cHM6Ly9yb2JvaGFzaC5vcmcvam9obi1kb2UiLCJuYW1lIjoiSm9obiBEb2UiLCJlbWFpbCI6Impkb2VAZXhhbXBsZS5jb20ifX0sImF1ZCI6ImR2aXNpb24iLCJpc3MiOiJkdmlzaW9uIiwic3ViIjoiZHZpc2lvbi5kYWlvcy5uZXQiLCJyb29tIjoiKiJ9.X4AvlNrkjK4RBXGdORrj_OtCZK1o6UKdaWZU-gO1yic');
 
     return result;
 }
@@ -123,7 +122,6 @@ function _setConfigOrLocationURL({ dispatch, getState }, next, action) {
  * specified {@code action}.
  */
 function _setJWT(store, next, action) {
-    console.log("TEST _setJWT");
     // eslint-disable-next-line no-unused-vars
     const { jwt, type, ...actionPayload } = action;
 
