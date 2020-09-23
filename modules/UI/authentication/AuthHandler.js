@@ -92,10 +92,12 @@ function initJWTTokenListener(room) {
 
         let jwt;
 
+        console.log("TEST data.jwtToken",data.jwtToken)
+
         if (data && (jwt = data.jwtToken)) {
             logger.info('Received JSON Web Token (JWT):', jwt);
 
-            APP.store.dispatch(setJWT('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb250ZXh0Ijp7InVzZXIiOnsiYXZhdGFyIjoiaHR0cHM6Ly9yb2JvaGFzaC5vcmcvam9obi1kb2UiLCJuYW1lIjoiSm9obiBEb2UiLCJlbWFpbCI6Impkb2VAZXhhbXBsZS5jb20ifX0sImF1ZCI6ImR2aXNpb24iLCJpc3MiOiJkdmlzaW9uIiwic3ViIjoiZHZpc2lvbi5kYWlvcy5uZXQiLCJyb29tIjoiKiJ9.X4AvlNrkjK4RBXGdORrj_OtCZK1o6UKdaWZU-gO1yic'));
+            APP.store.dispatch(setJWT(jwt));
 
             const roomName = room.getName();
 
