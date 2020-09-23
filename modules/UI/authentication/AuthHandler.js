@@ -94,7 +94,7 @@ function initJWTTokenListener(room) {
 
         if (data && (jwt = data.jwtToken)) {
             logger.info('Received JSON Web Token (JWT):', jwt);
-
+            console.log("TEST  APP.store.dispatch(setJWT(jwt));")
             APP.store.dispatch(setJWT(jwt));
 
             const roomName = room.getName();

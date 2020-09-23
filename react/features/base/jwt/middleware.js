@@ -33,8 +33,8 @@ MiddlewareRegistry.register(store => next => action => {
         // the JSON Web Token comes from the conference/room's URL and isGuest
         // needs a recalculation upon SET_CONFIG as well.
         return _setConfigOrLocationURL(store, next, action);
-
     case SET_JWT:
+        console.log("TEST case SET_JWT:");
         return _setJWT(store, next, action);
     }
 
@@ -101,6 +101,7 @@ function _setConfigOrLocationURL({ dispatch, getState }, next, action) {
 
     const { locationURL } = getState()['features/base/connection'];
 
+    console.log("TEST dispatch(etJWT(locationU ")
     dispatch(
         setJWT(locationURL ? parseJWTFromURLParams(locationURL) : undefined));
 
@@ -122,6 +123,7 @@ function _setConfigOrLocationURL({ dispatch, getState }, next, action) {
  * specified {@code action}.
  */
 function _setJWT(store, next, action) {
+    console.log("TEST _setJWT");
     // eslint-disable-next-line no-unused-vars
     const { jwt, type, ...actionPayload } = action;
 
