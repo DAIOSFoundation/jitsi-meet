@@ -241,9 +241,9 @@ UI.initEtherpad = name => {
         return;
     }
 
-    if (wboManager || !config.wbo_base || !name) {
-        return;
-    }
+    // if (wboManager || !config.wbo_base || !name) {
+    //     return;
+    // }
 
     logger.log('Etherpad is enabled');
     logger.log('WBO is enabled');
