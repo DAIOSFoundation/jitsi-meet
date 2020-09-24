@@ -133,7 +133,7 @@ function _getWebWelcomePageRoute(state): Promise<Route> {
             const { pageStatus } = state['features/pageStatus'];
 
             if(pageStatus === 'main'){
-                route.component = WelcomePageMain;
+                route.component = WelcomePageDGBFN;
             }else if(pageStatus === 'login') {
                 route.component = LoginPage
             }else if(pageStatus === 'meet'){
