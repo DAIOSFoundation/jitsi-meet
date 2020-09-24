@@ -104,7 +104,7 @@ function _setConfigOrLocationURL({ dispatch, getState }, next, action) {
 
     // 쿠키 가져오기
     const cookies = new Cookies();
-    console.log("JWT TOKEN", cookies.get('jwt'))
+    // console.log("JWT TOKEN", cookies.get('jwt'))
     dispatch(
         setJWT(locationURL ? parseJWTFromURLParams(locationURL) : undefined));
 
