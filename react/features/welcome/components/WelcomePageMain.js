@@ -2,13 +2,13 @@ import React from 'react';
 import {useDispatch} from 'react-redux';
 import {changePageStatus} from '../../pageStatus';
 import {setRoom} from '../../base/conference';
-import {useCookies} from 'react-cookie';
+import Cookies from 'universal-cookie';
 
 const WelcomePageMain = () => {
 
     const dispatch = useDispatch();
 
-    const [cookies, removeCookie] = useCookies(['jwt']);
+    const cookies = new Cookies();
 
     // MainPage 방만들기 버튼 클릭 시 이벤트
     const onClickMeet = () => {
@@ -40,7 +40,8 @@ const WelcomePageMain = () => {
 
     // 로그아웃
     const onClickLogout = () => {
-        removeCookie('jwt')
+        cookies.remove('jwt')
+        window.location.reload();
     }
 
     return (
@@ -61,7 +62,7 @@ const WelcomePageMain = () => {
                          height={'100%'}/>
                 </div>
                 {
-                    (cookies.jwt !== 'undefined' && cookies.jwt !== undefined)?
+                    (cookies.get('jwt') !== 'undefined' && cookies.get('jwt') !== undefined)?
                         <button onClick={onClickLogout}
                                 className='welcomePageMainAuthButton'>
                             <text style={{zIndex: 1, color: '#0d2656'}}>

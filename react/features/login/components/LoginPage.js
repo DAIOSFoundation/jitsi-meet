@@ -35,7 +35,7 @@ import {GoogleLogin} from 'react-google-login';
 
 import * as loginActions from '../../../modules/login/actions';
 
-import {useCookies} from 'react-cookie';
+import Cookies from 'universal-cookie';
 
 const useStyles = makeStyles(styles);
 
@@ -54,7 +54,7 @@ const LoginPage = () => {
             email: state.login.email
         }), shallowEqual)
 
-    const [cookies, setCookie] = useCookies(['jwt']);
+    const cookies = new Cookies();
 
     // 뒤로가기 이벤트
     useEffect(() => {
@@ -68,14 +68,14 @@ const LoginPage = () => {
 
     useEffect(() => {
         if (jwt) {
-            setCookie('jwt', jwt, { path: '/'});
+            cookies.set('jwt', jwt, { path: '/'});
         }else{
             console.log('jwt undefined !!!');
         }
     }, [jwt])
 
     useEffect(() => {
-        if(cookies.jwt !== 'undefined' && cookies.jwt !== undefined){
+        if(cookies.get('jwt') !== 'undefined' && cookies.get('jwt') !== undefined){
             dispatch(changePageStatus({
                 'pageStatus': 'meet'
             }))

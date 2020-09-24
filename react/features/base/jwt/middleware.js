@@ -13,6 +13,7 @@ import { MiddlewareRegistry } from '../redux';
 import { SET_JWT } from './actionTypes';
 import { setJWT } from './actions';
 import { parseJWTFromURLParams } from './functions';
+import Cookies from 'universal-cookie';
 
 declare var APP: Object;
 
@@ -101,6 +102,9 @@ function _setConfigOrLocationURL({ dispatch, getState }, next, action) {
 
     const { locationURL } = getState()['features/base/connection'];
 
+    // 쿠키 가져오기
+    const cookies = new Cookies();
+    console.log("JWT TOKEN", cookies.get('jwt'))
     dispatch(
         setJWT(locationURL ? parseJWTFromURLParams(locationURL) : undefined));
 
