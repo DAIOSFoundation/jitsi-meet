@@ -247,7 +247,7 @@ export default {
 
                 // Open login popup.
                 if (submitValue === 'authNow') {
-                    onAuthNow();
+                    console.log("TEST")
                 }
             }
         );
