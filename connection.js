@@ -36,6 +36,7 @@ export const DISCO_JIBRI_FEATURE = 'http://jitsi.org/protocol/jibri';
  * @param {string} [roomName] the name of the conference.
  */
 function checkForAttachParametersAndConnect(id, password, connection) {
+    console.log("TEST checkForAttachParametersAndConnect")
     if (window.XMPPAttachInfo) {
         APP.connect.status = 'connecting';
 
@@ -89,7 +90,7 @@ function connect(id, password, roomName) {
     let serviceUrl = connectionConfig.websocket || connectionConfig.bosh;
 
     serviceUrl += `?room=${roomName}`;
-    console.log("TEST SKH")
+    console.log("TEST connect")
     // FIXME Remove deprecated 'bosh' option assignment at some point(LJM will be accepting only 'serviceUrl' option
     //  in future). It's included for the time being for Jitsi Meet and lib-jitsi-meet versions interoperability.
     connectionConfig.serviceUrl = connectionConfig.bosh = serviceUrl;
@@ -197,6 +198,7 @@ function connect(id, password, roomName) {
  * @returns {Promise<JitsiConnection>}
  */
 export function openConnection({ id, password, retry, roomName }) {
+    console.log("TEST openConnection")
     const usernameOverride
         = jitsiLocalStorage.getItem('xmpp_username_override');
     const passwordOverride
