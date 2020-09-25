@@ -107,7 +107,7 @@ function _setConfigOrLocationURL({ dispatch, getState }, next, action) {
 
     if(cookies.get('jwt')){
         dispatch(
-            setJWT(locationURL ? parseJWTFromURLParams(locationURL) : undefined));
+            setJWT(cookies.get('jwt')));
     }
 
     return result;
