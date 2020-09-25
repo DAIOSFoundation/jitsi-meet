@@ -7,6 +7,8 @@ import { getConferenceTimestamp } from '../../base/conference/functions';
 import { getLocalizedDurationFormatter } from '../../base/i18n';
 import { connect } from '../../base/redux';
 
+import Cookies from 'universal-cookie';
+
 /**
  * The type of the React {@code Component} props of {@link ConferenceTimer}.
  */
@@ -131,10 +133,13 @@ class ConferenceTimer extends Component<Props, State> {
      * @returns {void}
      */
     _startTimer() {
+        const cookies = new Cookies();
+
         if (!this._interval) {
             this._setStateFromUTC(this.props._startTimestamp, (new Date()).getTime());
 
             this._interval = setInterval(() => {
+                console.log("TEST",cookies.get('jwt'))
                 this._setStateFromUTC(this.props._startTimestamp, (new Date()).getTime());
             }, 1000);
         }

@@ -90,6 +90,7 @@ const LoginPage = () => {
             'platform': 'google',
             'accessToken': res.accessToken,
             'name': res.profileObj.name,
+            'origin': window.location.origin
         }
 
         console.log("successGoogleLogin", param)
