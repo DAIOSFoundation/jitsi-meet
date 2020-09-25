@@ -250,10 +250,10 @@ export default {
 
                 // Open login popup.
                 if (submitValue === 'authNow') {
-                    const dispatch = useDispatch();
+                    // const dispatch = useDispatch();
 
                     // onAuthNow();
-                    dispatch(roomActions.change_meeting_room(room))
+                    // dispatch(roomActions.change_meeting_room(room))
                     window.location.href = `/#/auth/login?room=${room}`
                 }
             }
