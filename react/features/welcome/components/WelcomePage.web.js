@@ -178,13 +178,7 @@ class WelcomePage extends AbstractWelcomePage {
 
         // Google 로그인
         const onClickLogin = () => {
-
             window.location.href = '/#/auth/login'
-            // dispatch(changePageStatus({
-            //     'pageStatus': 'login'
-            // }))
-            // // _getRouteToRender 함수 호출 하기 위해 사용
-            // dispatch(setRoom())
         }
 
         // 로그아웃
@@ -207,17 +201,17 @@ class WelcomePage extends AbstractWelcomePage {
                         <img src={'images/dvision-main-illust.png'} width={'100%'} height={'100%'} alt=""/>
                     </div>
                     {
-                        (cookies.get('jwt') !== 'undefined' && cookies.get('jwt') !== undefined) ?
+                        (cookies.get('jwt')) ?
                             <button onClick={onClickLogout}
                                 className='meetings-auth-button'>
-                                <text style={{zIndex: 1, color: '#0d2656'}}>
+                                <text>
                                     로그아웃
                                 </text>
                             </button>
                             :
                             <button onClick={onClickLogin}
                                 className='meetings-auth-button'>
-                                <text style={{zIndex: 1, color: '#0d2656'}}>
+                                <text>
                                     로그인
                                 </text>
                             </button>

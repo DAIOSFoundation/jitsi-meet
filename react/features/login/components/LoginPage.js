@@ -45,13 +45,9 @@ const LoginPage = () => {
 
     const {
         jwt,
-        userId,
-        email,
     } = useSelector(
         (state) => ({
             jwt: state.login.jwt,
-            userId: state.login.userId,
-            email: state.login.email
         }), shallowEqual)
 
     const cookies = new Cookies();
@@ -65,7 +61,7 @@ const LoginPage = () => {
     }, [jwt])
 
     useEffect(() => {
-        if(cookies.get('jwt') !== 'undefined' && cookies.get('jwt') !== undefined){
+        if(cookies.get('jwt')){
             // dispatch(changePageStatus({
             //     'pageStatus': 'meet'
             // }))

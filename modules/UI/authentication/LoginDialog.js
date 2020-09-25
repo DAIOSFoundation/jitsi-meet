@@ -5,6 +5,8 @@ import {
     JitsiConnectionErrors
 } from '../../../react/features/base/lib-jitsi-meet';
 
+import * as roomActions from '../../../react/modules/room/actions';
+
 /**
  * Build html for "password required" dialog.
  * @returns {string} html string
@@ -248,8 +250,8 @@ export default {
                 // Open login popup.
                 if (submitValue === 'authNow') {
                     // onAuthNow();
-                    console.log("TEST",room)
-                    // window.location.href = '/#/auth/login'
+                    this.props.dispatch(roomActions.change_meeting_room(room))
+                    window.location.href = `/#/auth/login?room=${room}`
                 }
             }
         );
