@@ -2,14 +2,10 @@ import React from 'react';
 import {useDispatch} from 'react-redux';
 import {changePageStatus} from '../../pageStatus';
 import {setRoom} from '../../base/conference';
-import Cookies from 'universal-cookie';
-import {NavLink} from 'react-router-dom';
 
 const WelcomePageMain = () => {
 
     const dispatch = useDispatch();
-
-    const cookies = new Cookies();
 
     // MainPage 방만들기 버튼 클릭 시 이벤트
     const onClickMeet = () => {
@@ -30,23 +26,6 @@ const WelcomePageMain = () => {
         dispatch(setRoom())
     }
 
-    // Google 로그인
-    const onClickLogin = () => {
-
-        window.location.href = '/#/auth/login'
-        // dispatch(changePageStatus({
-        //     'pageStatus': 'login'
-        // }))
-        // // _getRouteToRender 함수 호출 하기 위해 사용
-        // dispatch(setRoom())
-    }
-
-    // 로그아웃
-    const onClickLogout = () => {
-        cookies.remove('jwt')
-        window.location.reload();
-    }
-
     return (
         <div style={{
             backgroundImage: `url(images/dvision_main_img01.png)`,
@@ -64,22 +43,6 @@ const WelcomePageMain = () => {
                     <img src={'images/watermark.png'} width={'100%'}
                          height={'100%'}/>
                 </div>
-                {
-                    (cookies.get('jwt') !== 'undefined' && cookies.get('jwt') !== undefined) ?
-                        <button onClick={onClickLogout}
-                                className='welcomePageMainAuthButton'>
-                            <text style={{zIndex: 1, color: '#0d2656'}}>
-                                로그아웃
-                            </text>
-                        </button>
-                        :
-                        <button onClick={onClickLogin}
-                                className='welcomePageMainAuthButton'>
-                            <text style={{zIndex: 1, color: '#0d2656'}}>
-                                로그인
-                            </text>
-                        </button>
-                }
                 <div style={{
                     color: 'white',
                     width: 'auto',

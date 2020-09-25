@@ -14,6 +14,8 @@ import {SettingsButton, SETTINGS_TABS} from '../../settings';
 import {AbstractWelcomePage, _mapStateToProps} from './AbstractWelcomePage';
 import Tabs from './Tabs';
 
+import Cookies from 'universal-cookie';
+
 /**
  * The pattern used to validate room name.
  * @type {string}
@@ -172,6 +174,25 @@ class WelcomePage extends AbstractWelcomePage {
         const showAdditionalToolbarContent = this._shouldShowAdditionalToolbarContent();
         const showResponsiveText = this._shouldShowResponsiveText();
 
+        const cookies = new Cookies();
+
+        // Google 로그인
+        const onClickLogin = () => {
+
+            window.location.href = '/#/auth/login'
+            // dispatch(changePageStatus({
+            //     'pageStatus': 'login'
+            // }))
+            // // _getRouteToRender 함수 호출 하기 위해 사용
+            // dispatch(setRoom())
+        }
+
+        // 로그아웃
+        const onClickLogout = () => {
+            cookies.remove('jwt')
+            window.location.reload();
+        }
+
         return (
             <div
                 className={`welcome ${showAdditionalContent
@@ -185,6 +206,22 @@ class WelcomePage extends AbstractWelcomePage {
                     <div style={{position:'absolute', bottom:30, right:30, width:'70%', height:'70%'}}>
                         <img src={'images/dvision-main-illust.png'} width={'100%'} height={'100%'} alt=""/>
                     </div>
+                    {
+                        (cookies.get('jwt') !== 'undefined' && cookies.get('jwt') !== undefined) ?
+                            <button onClick={onClickLogout}
+                                className='meetings-auth-button'>
+                                <text style={{zIndex: 1, color: '#0d2656'}}>
+                                    로그아웃
+                                </text>
+                            </button>
+                            :
+                            <button onClick={onClickLogin}
+                                className='meetings-auth-button'>
+                                <text style={{zIndex: 1, color: '#0d2656'}}>
+                                    로그인
+                                </text>
+                            </button>
+                    }
                 </div>
                 <div className='meetingRoomArea'>
                     <div className='header'>

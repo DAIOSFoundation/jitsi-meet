@@ -66,11 +66,12 @@ const LoginPage = () => {
 
     useEffect(() => {
         if(cookies.get('jwt') !== 'undefined' && cookies.get('jwt') !== undefined){
-            dispatch(changePageStatus({
-                'pageStatus': 'meet'
-            }))
-            // _getRouteToRender 함수 호출 하기 위해 사용
-            dispatch(setRoom())
+            // dispatch(changePageStatus({
+            //     'pageStatus': 'meet'
+            // }))
+            // // _getRouteToRender 함수 호출 하기 위해 사용
+            // dispatch(setRoom())
+            window.location.href = '/#'
         }
     },[cookies]);
 
