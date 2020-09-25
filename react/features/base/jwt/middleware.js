@@ -105,7 +105,6 @@ function _setConfigOrLocationURL({ dispatch, getState }, next, action) {
     // 쿠키 가져오기
     const cookies = new Cookies();
 
-    console.log("JWT",cookies.get('jwt'))
     if(cookies.get('jwt')){
         dispatch(
             setJWT(locationURL ? parseJWTFromURLParams(locationURL) : undefined));
@@ -129,6 +128,7 @@ function _setConfigOrLocationURL({ dispatch, getState }, next, action) {
  * specified {@code action}.
  */
 function _setJWT(store, next, action) {
+    console.log("TEST _setJWT !!!")
     // eslint-disable-next-line no-unused-vars
     const { jwt, type, ...actionPayload } = action;
 
