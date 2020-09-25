@@ -36,8 +36,6 @@ ReducerRegistry.register(
     (state = DEFAULT_STATE, action) => {
         switch (action.type) {
         case SET_JWT: {
-            console.log("TEST reducer SET_JWT action",action)
-            console.log("TEST reducer SET_JWT state",state)
             // eslint-disable-next-line no-unused-vars
             const { type, ...payload } = action;
             const nextState = {

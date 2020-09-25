@@ -247,7 +247,8 @@ export default {
 
                 // Open login popup.
                 if (submitValue === 'authNow') {
-                    console.log("TEST")
+                    // onAuthNow();
+                    window.location.href = '/#/auth/login'
                 }
             }
         );

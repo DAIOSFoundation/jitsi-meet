@@ -56,16 +56,6 @@ const LoginPage = () => {
 
     const cookies = new Cookies();
 
-    // 뒤로가기 이벤트
-    useEffect(() => {
-        window.history.pushState(null, '', location.href);
-
-        window.onpopstate = () => {
-            history.go(1);
-            window.location.reload();
-        };
-    }, []);
-
     useEffect(() => {
         if (jwt) {
             cookies.set('jwt', jwt, { path: '/'});
@@ -93,7 +83,7 @@ const LoginPage = () => {
             'origin': window.location.origin
         }
 
-        console.log("successGoogleLogin", param)
+        console.log("successGoogleLogin")
 
         dispatch(loginActions.post_google_login(param))
     };
@@ -106,7 +96,7 @@ const LoginPage = () => {
     const classes = useStyles();
 
     return (
-        <div className={classes.container}>
+        <div className={classes.container} style={{width:'100%',height:'100%', backgroundColor:'#1B2638'}}>
             <GridContainer justify="center">
                 <GridItem xs={12} sm={12} md={10}>
                     <Card className={classes.cardSignup}>

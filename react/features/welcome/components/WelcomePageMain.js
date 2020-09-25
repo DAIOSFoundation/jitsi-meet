@@ -3,6 +3,7 @@ import {useDispatch} from 'react-redux';
 import {changePageStatus} from '../../pageStatus';
 import {setRoom} from '../../base/conference';
 import Cookies from 'universal-cookie';
+import {NavLink} from 'react-router-dom';
 
 const WelcomePageMain = () => {
 
@@ -31,11 +32,13 @@ const WelcomePageMain = () => {
 
     // Google 로그인
     const onClickLogin = () => {
-        dispatch(changePageStatus({
-            'pageStatus': 'login'
-        }))
-        // _getRouteToRender 함수 호출 하기 위해 사용
-        dispatch(setRoom())
+
+        window.location.href = '/#/auth/login'
+        // dispatch(changePageStatus({
+        //     'pageStatus': 'login'
+        // }))
+        // // _getRouteToRender 함수 호출 하기 위해 사용
+        // dispatch(setRoom())
     }
 
     // 로그아웃
@@ -62,7 +65,7 @@ const WelcomePageMain = () => {
                          height={'100%'}/>
                 </div>
                 {
-                    (cookies.get('jwt') !== 'undefined' && cookies.get('jwt') !== undefined)?
+                    (cookies.get('jwt') !== 'undefined' && cookies.get('jwt') !== undefined) ?
                         <button onClick={onClickLogout}
                                 className='welcomePageMainAuthButton'>
                             <text style={{zIndex: 1, color: '#0d2656'}}>
@@ -99,7 +102,7 @@ const WelcomePageMain = () => {
                         </div>
                     </div>
 
-                    <div style={{marginBottom:150}}>
+                    <div style={{marginBottom: 150}}>
                         <span style={{
                             fontSize: '2vmin',
                             letterSpacing: 1,

@@ -128,7 +128,6 @@ function _setConfigOrLocationURL({ dispatch, getState }, next, action) {
  * specified {@code action}.
  */
 function _setJWT(store, next, action) {
-    console.log("TEST _setJWT !!!")
     // eslint-disable-next-line no-unused-vars
     const { jwt, type, ...actionPayload } = action;
 

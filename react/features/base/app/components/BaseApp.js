@@ -1,22 +1,22 @@
 // @flow
 
-import { jitsiLocalStorage } from '@jitsi/js-utils';
+import {jitsiLocalStorage} from '@jitsi/js-utils';
 import _ from 'lodash';
-import React, { Component, Fragment } from 'react';
-import { I18nextProvider } from 'react-i18next';
-import { Provider } from 'react-redux';
-import { compose, createStore } from 'redux';
+import React, {Component, Fragment} from 'react';
+import {I18nextProvider} from 'react-i18next';
+import {Provider} from 'react-redux';
+import {compose, createStore} from 'redux';
 import Thunk from 'redux-thunk';
 
-import { i18next } from '../../i18n';
+import {i18next} from '../../i18n';
 import {
     MiddlewareRegistry,
     PersistenceRegistry,
     ReducerRegistry,
     StateListenerRegistry
 } from '../../redux';
-import { SoundCollection } from '../../sounds';
-import { appWillMount, appWillUnmount } from '../actions';
+import {SoundCollection} from '../../sounds';
+import {appWillMount, appWillUnmount} from '../actions';
 import logger from '../logger';
 
 /*
@@ -25,6 +25,9 @@ import logger from '../logger';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from '../../../../modules/rootSaga';
 import * as modules from '../../../../modules'
+
+import {HashRouter, Route, Switch} from 'react-router-dom';
+import LoginPage from '../../../login/components/LoginPage';
 
 const middlewares = [];
 
@@ -134,18 +137,29 @@ export default class BaseApp extends Component<*, State> {
      * @returns {ReactElement}
      */
     render() {
-        const { route: { component, props }, store } = this.state;
+        const {route: {component, props}, store} = this.state;
 
         if (store) {
             return (
-                <I18nextProvider i18n = { i18next }>
-                    <Provider store = { store }>
-                        <Fragment>
-                            { this._createMainElement(component, props) }
-                            <SoundCollection />
-                            { this._createExtraElement() }
-                            { this._renderDialogContainer() }
-                        </Fragment>
+                <I18nextProvider i18n={i18next}>
+                    <Provider store={store}>
+                        <HashRouter>
+                            <Fragment>
+                                <Switch>
+                                    <Route
+                                        exact
+                                        path="/auth/login"
+                                        name="LoginPage"
+                                        render={(props) =>
+                                            <LoginPage {...props} />}
+                                    />
+                                    {this._createMainElement(component, props)}
+                                    <SoundCollection/>
+                                    {this._createExtraElement()}
+                                    {this._renderDialogContainer()}
+                                </Switch>
+                            </Fragment>
+                        </HashRouter>
                     </Provider>
                 </I18nextProvider>
             );
@@ -207,7 +221,7 @@ export default class BaseApp extends Component<*, State> {
         let devToolsExtension;
 
         if (typeof window === 'object'
-                && (devToolsExtension = window.devToolsExtension)) {
+            && (devToolsExtension = window.devToolsExtension)) {
             middleware = compose(middleware, devToolsExtension());
         }
 
@@ -254,7 +268,7 @@ export default class BaseApp extends Component<*, State> {
         // expected route. In order to mitigate the problem, _navigate was
         // changed to return a Promise.
         return new Promise(resolve => {
-            this.setState({ route }, resolve);
+            this.setState({route}, resolve);
         });
     }
 
