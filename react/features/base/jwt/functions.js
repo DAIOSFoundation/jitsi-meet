@@ -12,5 +12,7 @@ import { parseURLParams } from '../util';
  * {@code url}; otherwise, {@code undefined}.
  */
 export function parseJWTFromURLParams(url: URL = window.location) {
+    console.log("url",url)
+    console.log("parseURLParams",parseURLParams(url, true, 'search'))
     return parseURLParams(url, true, 'search').jwt;
 }
