@@ -28,8 +28,6 @@ import CardBody from "../../../components/Card/CardBody.js";
 import styles from "../../../components/jss/loginPageStyle";
 
 import {shallowEqual, useDispatch, useSelector} from 'react-redux';
-import {changePageStatus} from '../../pageStatus';
-import {setRoom} from '../../base/conference';
 
 import {GoogleLogin} from 'react-google-login';
 
@@ -62,11 +60,6 @@ const LoginPage = () => {
 
     useEffect(() => {
         if(cookies.get('jwt')){
-            // dispatch(changePageStatus({
-            //     'pageStatus': 'meet'
-            // }))
-            // // _getRouteToRender 함수 호출 하기 위해 사용
-            // dispatch(setRoom())
             window.location.href = '/#'
         }
     },[cookies]);

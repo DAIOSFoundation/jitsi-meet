@@ -5,6 +5,7 @@ import {
     JitsiConnectionErrors
 } from '../../../react/features/base/lib-jitsi-meet';
 
+import {useDispatch} from 'react-redux';
 import * as roomActions from '../../../react/modules/room/actions';
 
 /**
@@ -249,8 +250,10 @@ export default {
 
                 // Open login popup.
                 if (submitValue === 'authNow') {
+                    const dispatch = useDispatch();
+
                     // onAuthNow();
-                    this.props.dispatch(roomActions.change_meeting_room(room))
+                    dispatch(roomActions.change_meeting_room(room))
                     window.location.href = `/#/auth/login?room=${room}`
                 }
             }
