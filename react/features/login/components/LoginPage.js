@@ -59,19 +59,15 @@ const LoginPage = () => {
     }, [jwt])
 
     useEffect(() => {
-        console.log('TEST cookies.get(jwt)', cookies.get('jwt'))
-        console.log('TEST cookies.get(room))', cookies.get('room'))
-        if(cookies.get('jwt') && cookies.get('room')){
+        if (cookies.get('jwt') && cookies.get('room')) {
             window.location.href = `/${cookies.get('room')}`
             cookies.remove('room')
-        }else if(cookies.get('jwt')){
+        } else if (cookies.get('jwt')) {
             window.location.href = '/#'
-        }else{
+        } else {
             console.log('cookies && room undefined !!!')
         }
     }, [cookies]);
-
-
 
     const successGoogleLogin = (res) => {
 

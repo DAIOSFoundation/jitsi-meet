@@ -253,7 +253,7 @@ export default {
                     const cookies = new Cookies();
 
                     cookies.set('room', room, {path: '/'});
-                    window.location.href = `/#/auth/login?room=${room}`
+                    window.location.href = `/#/auth/login`
                 }
             }
         );
