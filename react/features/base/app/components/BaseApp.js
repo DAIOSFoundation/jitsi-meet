@@ -144,8 +144,8 @@ export default class BaseApp extends Component<*, State> {
                 <I18nextProvider i18n={i18next}>
                     <Provider store={store}>
                         <HashRouter>
-                            <Fragment>
-                                <Switch>
+                            <Switch>
+                                <Fragment>
                                     <Route
                                         exact
                                         path="/auth/login"
@@ -156,10 +156,10 @@ export default class BaseApp extends Component<*, State> {
                                     {this._createMainElement(component, props)}
                                     <SoundCollection/>
                                     {this._createExtraElement()}
-                                    {this._renderDialogContainer()}
-                                </Switch>
-                            </Fragment>
+                                </Fragment>
+                            </Switch>
                         </HashRouter>
+                        {this._renderDialogContainer()}
                     </Provider>
                 </I18nextProvider>
             );
