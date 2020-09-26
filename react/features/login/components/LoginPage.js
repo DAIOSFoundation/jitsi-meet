@@ -32,6 +32,7 @@ import {shallowEqual, useDispatch, useSelector} from 'react-redux';
 import {GoogleLogin} from 'react-google-login';
 
 import * as loginActions from '../../../modules/login/actions';
+import * as roomActions from '../../../modules/room/actions';
 
 import Cookies from 'universal-cookie';
 
@@ -43,26 +44,33 @@ const LoginPage = () => {
 
     const {
         jwt,
+        room
     } = useSelector(
         (state) => ({
             jwt: state.login.jwt,
+            room: state.room.room,
         }), shallowEqual)
 
     const cookies = new Cookies();
 
     useEffect(() => {
         if (jwt) {
-            cookies.set('jwt', jwt, { path: '/'});
-        }else{
+            cookies.set('jwt', jwt, {path: '/'});
+        } else {
             console.log('jwt undefined !!!');
         }
     }, [jwt])
 
     useEffect(() => {
-        if(cookies.get('jwt')){
+        if(room && cookies.get('jwt')){
+            window.location.href = `/#/${room}`
+            roomActions.change_meeting_room(null);
+        }else if(cookies.get('jwt')){
             window.location.href = '/#'
+        }else{
+            console.log('cookies && room undefined !!!')
         }
-    },[cookies]);
+    }, [cookies, room]);
 
     const successGoogleLogin = (res) => {
 
@@ -86,7 +94,11 @@ const LoginPage = () => {
     const classes = useStyles();
 
     return (
-        <div className={classes.container} style={{width:'100%',height:'100%', backgroundColor:'#1B2638'}}>
+        <div className={classes.container} style={{
+            width: '100%',
+            height: '100%',
+            backgroundColor: '#1B2638'
+        }}>
             <GridContainer justify="center">
                 <GridItem xs={12} sm={12} md={10}>
                     <Card className={classes.cardSignup}>
@@ -97,7 +109,7 @@ const LoginPage = () => {
                         <h3 className={classes.cardTitle} style={{
                             fontWeight: 'bold',
                             color: 'black',
-                            marginTop:15
+                            marginTop: 15
                         }}>
                             Google 계정을 통해 DVision에 간편하게 로그인 할 수 있습니다.
                         </h3>
