@@ -4,8 +4,7 @@ import { toJid } from '../../../react/features/base/connection/functions';
 import {
     JitsiConnectionErrors
 } from '../../../react/features/base/lib-jitsi-meet';
-
-import * as roomActions from '../../../react/modules/room/actions';
+import Cookies from 'universal-cookie';
 
 /**
  * Build html for "password required" dialog.
@@ -251,7 +250,9 @@ export default {
                 if (submitValue === 'authNow') {
 
                     // onAuthNow();
-                    APP.store.dispatch(roomActions.change_meeting_room(room))
+                    const cookies = new Cookies();
+
+                    cookies.set('room', room, {path: '/'});
                     window.location.href = `/#/auth/login?room=${room}`
                 }
             }

@@ -32,7 +32,6 @@ import {shallowEqual, useDispatch, useSelector} from 'react-redux';
 import {GoogleLogin} from 'react-google-login';
 
 import * as loginActions from '../../../modules/login/actions';
-import * as roomActions from '../../../modules/room/actions';
 
 import Cookies from 'universal-cookie';
 
@@ -44,11 +43,9 @@ const LoginPage = () => {
 
     const {
         jwt,
-        room
     } = useSelector(
         (state) => ({
             jwt: state.login.jwt,
-            room: state.room.room,
         }), shallowEqual)
 
     const cookies = new Cookies();
@@ -62,18 +59,19 @@ const LoginPage = () => {
     }, [jwt])
 
     useEffect(() => {
-        console.log('TEST room name',room)
-        if(room && cookies.get('jwt')){
-            console.log('room && cookies.get(jwt)')
-            window.location.href = `/${room}`
-            roomActions.change_meeting_room(null);
+        console.log('TEST cookies.get(jwt)', cookies.get('jwt'))
+        console.log('TEST cookies.get(room))', cookies.get('room'))
+        if(cookies.get('jwt') && cookies.get('room')){
+            window.location.href = `/${cookies.get('room')}`
+            cookies.remove('room')
         }else if(cookies.get('jwt')){
-            console.log('cookies.get(jwt)')
             window.location.href = '/#'
         }else{
             console.log('cookies && room undefined !!!')
         }
-    }, [cookies, room]);
+    }, [cookies]);
+
+
 
     const successGoogleLogin = (res) => {
 
