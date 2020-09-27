@@ -200,22 +200,22 @@ class WelcomePage extends AbstractWelcomePage {
                     <div style={{position:'absolute', bottom:30, right:30, width:'70%', height:'70%'}}>
                         <img src={'images/dvision-main-illust.png'} width={'100%'} height={'100%'} alt=""/>
                     </div>
-                    {
-                        (cookies.get('jwt')) ?
-                            <button onClick={onClickLogout}
-                                className='meetings-auth-button'>
-                                <text>
-                                    로그아웃
-                                </text>
-                            </button>
-                            :
-                            <button onClick={onClickLogin}
-                                className='meetings-auth-button'>
-                                <text>
-                                    로그인
-                                </text>
-                            </button>
-                    }
+                    {/*{*/}
+                    {/*    (cookies.get('jwt')) ?*/}
+                    {/*        <button onClick={onClickLogout}*/}
+                    {/*            className='meetings-auth-button'>*/}
+                    {/*            <text>*/}
+                    {/*                로그아웃*/}
+                    {/*            </text>*/}
+                    {/*        </button>*/}
+                    {/*        :*/}
+                    {/*        <button onClick={onClickLogin}*/}
+                    {/*            className='meetings-auth-button'>*/}
+                    {/*            <text>*/}
+                    {/*                로그인*/}
+                    {/*            </text>*/}
+                    {/*        </button>*/}
+                    {/*}*/}
                 </div>
                 <div className='meetingRoomArea'>
                     <div className='header'>
