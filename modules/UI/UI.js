@@ -241,21 +241,21 @@ UI.initEtherpad = name => {
         return;
     }
 
-    // if (wboManager || !config.wbo_base || !name) {
-    //     return;
-    // }
+    if (wboManager || !config.wbo_base || !name) {
+        return;
+    }
 
     logger.log('Etherpad is enabled');
-    // logger.log('WBO is enabled');
+    logger.log('WBO is enabled');
 
     etherpadManager = new EtherpadManager(eventEmitter);
-    // wboManager = new WBOManager(eventEmitter);
+    wboManager = new WBOManager(eventEmitter);
 
     const url = new URL(name, config.etherpad_base);
-    // const wboUrl = new URL(name, config.wbo_base);
+    const wboUrl = new URL(name, config.wbo_base);
 
     APP.store.dispatch(setDocumentUrl(url.toString()));
-    // APP.store.dispatch(setWBODocumentUrl(wboUrl.toString()));
+    APP.store.dispatch(setWBODocumentUrl(wboUrl.toString()));
 };
 
 /**
