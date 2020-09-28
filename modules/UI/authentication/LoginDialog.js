@@ -252,7 +252,7 @@ export default {
                     // onAuthNow();
                     const cookies = new Cookies();
 
-                    cookies.set('room', room, {path: '/'});
+                    cookies.set('room', room, {path: '/', secure: true});
                     window.location.href = `/#/auth/login`
                 }
             }

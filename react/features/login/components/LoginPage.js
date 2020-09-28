@@ -52,7 +52,7 @@ const LoginPage = () => {
 
     useEffect(() => {
         if (jwt) {
-            cookies.set('jwt', jwt, {path: '/'});
+            cookies.set('jwt', jwt, {path: '/', secure: true});
         } else {
             console.log('jwt undefined !!!');
         }
