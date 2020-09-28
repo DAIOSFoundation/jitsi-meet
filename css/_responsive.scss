@@ -72,7 +72,7 @@
     }
 }
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 768px) {
     .welcome {
         display: block;
 
@@ -91,7 +91,10 @@
 
         .welcome-illust {
             width: 100%;
-            height: 40%
+            height: 40%;
+            .illust-image {
+                background-image: url("../images/dvision-main-illust-768.png");
+            }
         }
 
         .meetingRoomArea {

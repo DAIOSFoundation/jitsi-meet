@@ -122,6 +122,22 @@
     }
 }
 
+.illust-image-wrapper{
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    width: 70%;
+    height: 70%;
+    .illust-image{
+        background-image: url("../images/dvision-main-illust.png");
+        width: 100%;
+        height: 100%;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}
+
 .meetings-auth-button{
     border-radius: 35px;
     outline: none;
