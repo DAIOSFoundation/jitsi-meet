@@ -40,7 +40,7 @@ class WBOSharedDocumentButton extends AbstractButton<Props, *> {
      */
     _handleClick() {
         sendAnalytics(createToolbarEvent(
-            'toggle.etherpad',
+            'toggle.wbo',
             {
                 enable: !this.props._editing
             }));
