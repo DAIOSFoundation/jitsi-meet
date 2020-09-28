@@ -8,6 +8,7 @@ import { IconEdit } from '../../base/icons';
 import { connect } from '../../base/redux';
 import { AbstractButton, type AbstractButtonProps } from '../../base/toolbox/components';
 import { WBOToggleDocument } from '../actions';
+import {toggleDocument} from '../../etherpad';
 
 
 type Props = AbstractButtonProps & {
@@ -44,7 +45,7 @@ class WBOSharedDocumentButton extends AbstractButton<Props, *> {
             {
                 enable: !this.props._editing
             }));
-        this.props.dispatch(WBOToggleDocument());
+        this.props.dispatch(toggleDocument());
     }
 
     /**
