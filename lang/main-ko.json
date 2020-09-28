@@ -218,7 +218,7 @@
         "recording": "레코딩",
         "recordingDisabledForGuestTooltip": "",
         "recordingDisabledTooltip": "",
-        "rejoinNow": "지금 재시도",
+        "rejoinNow": "재시도",
         "remoteControlAllowedMessage": "{{user}}이(가) 원격 제어 요청을 수락했습니다",
         "remoteControlDeniedMessage": "{{user}}이(가) 원격 제어 요청을 거부했습니다",
         "remoteControlErrorMessage": "{{user}}로부터 원격 제어 권한을 요청하는 동안 오류가 발생했습니다",
