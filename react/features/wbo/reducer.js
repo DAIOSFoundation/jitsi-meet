@@ -28,8 +28,6 @@ ReducerRegistry.register(
     (state = DEFAULT_STATE, action) => {
         switch (action.type) {
             case SET_WBO_DOCUMENT_EDITING_STATUS:
-            console.log("TEST action",action)
-            console.log("TEST state",...state)
             return {
                 ...state,
                 editing: action.editing
