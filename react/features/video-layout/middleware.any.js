@@ -47,11 +47,12 @@ MiddlewareRegistry.register(store => next => action => {
                 _restoreTileViewState(store);
             }
             break;
+
         case SET_WBO_DOCUMENT_EDITING_STATUS:
             if (action.editing) {
-                _restoreTileViewState(store);
-            } else {
                 _storeTileViewStateAndClear(store);
+            } else {
+                _restoreTileViewState(store);
             }
             break;
 

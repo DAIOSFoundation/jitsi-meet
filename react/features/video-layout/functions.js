@@ -99,6 +99,9 @@ export function shouldDisplayTileView(state: Object = {}) {
         // Editing etherpad
         state['features/etherpad']?.editing
 
+        // Editing wbo
+        || state['features/wbo']?.editing
+
         // We're in filmstrip-only mode
         || (typeof interfaceConfig === 'object' && interfaceConfig?.filmStripOnly)
 
