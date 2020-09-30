@@ -40,6 +40,7 @@ MiddlewareRegistry.register(store => next => action => {
             }
             break;
         }
+
         case SET_DOCUMENT_EDITING_STATUS:
             if (action.editing) {
                 _storeTileViewStateAndClear(store);
