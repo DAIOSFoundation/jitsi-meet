@@ -1,7 +1,7 @@
 import CircularProgress from '@material-ui/core/CircularProgress';
 import React from 'react';
 
-const Loading = () => {
+const FileUploadLoading = () => {
     return (
         <div style={{
             display: 'flex',
@@ -20,4 +20,4 @@ const Loading = () => {
     );
 };
 
-export default Loading;
+export default FileUploadLoading;

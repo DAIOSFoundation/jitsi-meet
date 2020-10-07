@@ -139,7 +139,7 @@ class ConferenceTimer extends Component<Props, State> {
             this._setStateFromUTC(this.props._startTimestamp, (new Date()).getTime());
 
             this._interval = setInterval(() => {
-                console.log("TEST",cookies.get('jwt'))
+                // console.log('TEST',cookies.get('jwt'))
                 this._setStateFromUTC(this.props._startTimestamp, (new Date()).getTime());
             }, 1000);
         }

@@ -70,6 +70,7 @@
     "pixelmatch": "5.1.0",
     "prop-types": "^15.7.2",
     "react": "16.9",
+    "react-big-calendar": "^0.28.0",
     "react-bootstrap-sweetalert": "^5.2.0",
     "react-cookie": "^4.0.3",
     "react-dom": "16.9",

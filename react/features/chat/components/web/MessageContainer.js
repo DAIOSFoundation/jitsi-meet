@@ -8,7 +8,7 @@ import AbstractMessageContainer, {type Props}
 
 import ChatMessageGroup from './ChatMessageGroup';
 
-import LoadingBar from '../../../../components/Loading/Loading';
+import FileUploadLoadingBar from '../../../../components/Loading/FileUploadLoading';
 import DragZone from '../../../../components/DropZone/DragZone';
 
 /**
@@ -86,7 +86,7 @@ export default class MessageContainer extends AbstractMessageContainer<Props> {
                             top: 0,
                             zIndex: 1,
                         }}>
-                            <LoadingBar/>
+                            <FileUploadLoadingBar/>
                         </div>
                         :
                         null
