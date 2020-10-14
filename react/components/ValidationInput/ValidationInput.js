@@ -1,32 +1,43 @@
 import React, {useState} from 'react';
 import TextField from '@material-ui/core/TextField';
+import {isEmpty} from '../../utils/functions';
 
-const ValidationInput = () => {
+// id : 텍스트 ID
+// label : 텍스트 Label
+// rowsMax : 텍스트 줄
+// value : 텍스트 값
+// valid : 텍스트 값 검증
+// errorText : 하단 에러 텍스트
 
-    const [value, setValue] = useState('');
-    const [isValue, setIsValue] = useState(false);
+const ValidationInput = (props) => {
 
-    const validateName = name => {
-        if (name.length > 1) {
-            setIsValue(false)
-            setValue(name)
+    const [valid, setValid] = useState(false);
+
+    const onChangeText = (value) => {
+        if (!isEmpty(props.valid)) {
+            if (!props.valid(value.target.value)) {
+                setValid(true)
+                return props.onChangeText(value, true)
+            } else {
+                setValid(false)
+                return props.onChangeText(value, false);
+            }
         } else {
-            setIsValue(true)
-            setValue(name)
+            return props.onChangeText(value)
         }
     }
 
     return (
         <div>
             <TextField
-                id=""
-                label="이름"
-                rowsMax={4}
-                value={value}
-                onChange={e => validateName(e.target.value)}
+                id={props.id}
+                label={props.label}
+                rowsMax={props.rowsMax}
+                value={props.value}
+                onChange={onChangeText}
                 variant="outlined"
-                helperText={isValue ? "정확한 값을 입력해주세요." : null}
-                error={isValue}
+                helperText={valid ? props.errorText : null}
+                error={valid}
             />
         </div>
     );

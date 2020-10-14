@@ -23,9 +23,7 @@ const UserCalendar = (props) => {
     //         .catch(err => logger.error('UserCalendar bootstrap failed', err))
     // }, [])
 
-
     const Event = ({event}) => {
-
         return (
             <>
                 {event.title}
@@ -34,7 +32,6 @@ const UserCalendar = (props) => {
     }
 
     const handleSelect = ({start, end}) => {
-
         setRegisterModal(true)
         // dispatch(createCalendarEvent('안녕하셍용'))
     }
