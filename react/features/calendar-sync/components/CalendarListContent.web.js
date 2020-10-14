@@ -8,7 +8,7 @@ import {
     sendAnalytics
 } from '../../analytics';
 import { appNavigate } from '../../app/actions';
-import { MeetingsList } from '../../base/react';
+import { CalendarList } from '../../base/react';
 import { connect } from '../../base/redux';
 
 import AddMeetingUrlButton from './AddMeetingUrlButton';
@@ -88,7 +88,7 @@ class CalendarListContent extends Component<Props> {
         const meetings = _eventList.map(this._toDisplayableItem);
 
         return (
-            <MeetingsList
+            <CalendarList
                 disabled = { disabled }
                 listEmptyComponent = { listEmptyComponent }
                 meetings = { meetings }
@@ -147,10 +147,13 @@ class CalendarListContent extends Component<Props> {
                 : (<AddMeetingUrlButton
                     calendarId = { event.calendarId }
                     eventId = { event.id } />),
-            date: event.startDate,
-            time: [ event.startDate, event.endDate ],
-            description: event.url,
+            date: new Date(event.startDate),
+            start: new Date(event.startDate),
+            end: new Date(event.endDate),
+            creator: event.creator,
+            attendees: event.attendees,
             title: event.title,
+            description: event.description,
             url: event.url
         };
     }

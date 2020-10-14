@@ -8,7 +8,8 @@ import {
     loadGoogleAPI,
     signIn,
     updateCalendarEvent,
-    updateProfile
+    updateProfile,
+    createCalendarEvent
 } from '../../google-api';
 
 /**
@@ -71,5 +72,12 @@ export const googleCalendarApi = {
      * @param {string} location - The location to save to the event.
      * @returns {function(Dispatch<any>): Promise<string|never>}
      */
-    updateCalendarEvent
+    updateCalendarEvent,
+
+    /**
+     *
+     * @param {string} room - 회의방 이름
+     * @returns {function(Dispatch<any>): Promise<string|never>}
+     */
+    createCalendarEvent
 };

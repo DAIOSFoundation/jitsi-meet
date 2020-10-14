@@ -28,6 +28,8 @@ import * as modules from '../../../../modules'
 
 import {HashRouter, Route, Switch} from 'react-router-dom';
 import LoginPage from '../../../login/components/LoginPage';
+import CalendarList from '../../../calendar-sync/components/CalendarList.web';
+import WelcomePage from '../../../welcome/components/WelcomePage.web';
 
 const middlewares = [];
 
@@ -152,6 +154,20 @@ export default class BaseApp extends Component<*, State> {
                                         name="LoginPage"
                                         render={(props) =>
                                             <LoginPage {...props} />}
+                                    />
+                                    <Route
+                                        exact
+                                        path="/meetingRoom"
+                                        name="MeetingRoom"
+                                        render={(props) =>
+                                            <WelcomePage {...props} />}
+                                    />
+                                    <Route
+                                        exact
+                                        path="/calendar"
+                                        name="UserCalendar"
+                                        render={(props) =>
+                                            <CalendarList {...props} />}
                                     />
                                     {this._createMainElement(component, props)}
                                     <SoundCollection/>

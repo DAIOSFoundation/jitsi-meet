@@ -200,7 +200,6 @@ class Conference extends AbstractConference<Props, *> {
                 className = { _layoutClassName }
                 id = 'videoconference_page'
                 onMouseMove = { this._onShowToolbar }>
-                {/*<BasicModal/>*/}
                 <BasicModal/>
                 <Notice />
                 <div id = 'videospace'>

@@ -34,4 +34,4 @@ export const FETCH_START_DAYS = -1;
 /**
  * The max number of events to fetch from the calendar.
  */
-export const MAX_LIST_LENGTH = 10;
+export const MAX_LIST_LENGTH = 1000;

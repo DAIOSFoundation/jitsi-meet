@@ -2,19 +2,18 @@ import React from 'react';
 import {useDispatch} from 'react-redux';
 import {changePageStatus} from '../../pageStatus';
 import {setRoom} from '../../base/conference';
+import {useHistory} from "react-router-dom";
 
 const WelcomePageMain = () => {
 
     const dispatch = useDispatch();
+    const history = useHistory();
 
     // MainPage 방만들기 버튼 클릭 시 이벤트
     const onClickMeet = () => {
-        // 방만들기 페이지 화면으로 이동하기 위해 현재 페이지 상태 값을 'meet' 으로 바꿈
-        dispatch(changePageStatus({
-            'pageStatus': 'meet'
-        }))
-        // _getRouteToRender 함수 호출 하기 위해 사용
-        dispatch(setRoom())
+        history.push({
+            pathname: `/meetingRoom`,
+        });
     }
 
     // MainPage 요금제 및 가격정책 버튼 클릭 시 이벤트

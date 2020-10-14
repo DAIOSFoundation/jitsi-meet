@@ -1,0 +1,144 @@
+.calendar-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    color: #3f4452;
+}
+
+.rbc-toolbar {
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+
+    button {
+        outline: none;
+    }
+
+    .rbc-toolbar-label {
+        font-size: 1.5em;
+        font-weight: 300;
+    }
+}
+
+.rbc-toolbar button.rbc-active:focus,
+.rbc-toolbar button.rbc-active:hover,
+.rbc-toolbar button:active:focus,
+.rbc-toolbar button:active:hover {
+    background-color: #eceff1;
+}
+
+.rbc-toolbar button.rbc-active,
+.rbc-toolbar button:active {
+    border-color: #cfd8dc;
+    background-color: #eceff1;
+}
+
+.rbc-btn-group {
+    display: inline-block;
+    // white-space: nowrap;
+}
+
+.rbc-btn-group button {
+    margin: 0 0 0 2px;
+    border-radius: 30px;
+    color: #3f4452
+}
+
+@media screen and (max-width: 526px) {
+    .rbc-btn-group button {
+        margin: 2px !important;
+    }
+}
+
+.rbc-btn-group button + button {
+    margin: 0 0 0 2px;
+    border-radius: 30px;
+}
+
+.rbc-btn-group + .rbc-btn-group,
+.rbc-btn-group + button {
+    margin-left: 10px;
+}
+
+.rbc-ellipsis,
+.rbc-event-label,
+.rbc-row-segment .rbc-event-content,
+.rbc-show-more {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.rbc-row-segment {
+    padding: 2px 6px 1px;
+}
+
+.rbc-event-label {
+    font-size: 80%;
+}
+
+.rbc-day-slot .rbc-event-label {
+    -webkit-flex: none;
+    -ms-flex: none;
+    flex: none;
+    padding-right: 5px;
+    width: auto;
+    font-weight: bold;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    color: #fff;
+    white-space: nowrap;
+}
+
+.rbc-day-slot .rbc-event-content {
+    width: 100%;
+    -webkit-flex: 1 1 0;
+    -ms-flex: 1 1 0px;
+    flex: 1 1 0;
+    word-wrap: break-word;
+    line-height: 1;
+    height: 100%;
+    min-height: 1em;
+}
+
+.rbc-event {
+    width: 100%;
+    position: relative; /* for resize handle and other inner positioning */
+    display: block; /* make the <a> tag block */
+    font-size: 0.85em;
+    border-radius: 2px;
+    padding: 0;
+    // @include shadow-big-color($brand-success);
+    font-weight: normal; /* undo jqui's ui-widget-header bold */
+    text-align: right;
+    border: none;
+    padding-bottom: 1px;
+    line-height: 1.2;
+    background-color: #3f82ff;
+
+    .rbc-event-content {
+        position: relative;
+        white-space: nowrap;
+        overflow: hidden;
+        color: #fff;
+        padding: 0 5px;
+    }
+}
+
+.rbc-event.rbc-selected {
+    background-color: #3F5DD7;
+}
+
+.rbc-day-slot .rbc-event {
+    display: block !important;
+    height: unset !important;
+    max-height: unset !important;
+}
+
+.rbc-agenda-table {
+    color: black;
+}

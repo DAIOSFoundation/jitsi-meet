@@ -103,5 +103,7 @@ $flagsImagePath: "../images/";
 @import 'e2ee';
 @import 'responsive';
 @import 'welcome_page_main';
+@import '../node_modules/react-big-calendar/lib/sass/styles';
+@import 'calendar';
 
 /* Modules END */

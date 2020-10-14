@@ -70,7 +70,7 @@ const googleApi = {
             .then(api => new Promise((resolve, reject) => {
                 const scope
                     = `${enableYoutube ? GOOGLE_SCOPE_YOUTUBE : ''} ${enableCalendar ? GOOGLE_SCOPE_CALENDAR : ''}`
-                        .trim();
+                    .trim();
 
                 // setTimeout is used as a workaround for api.client.init not
                 // resolving consistently when the Google API Client Library is
@@ -82,8 +82,8 @@ const googleApi = {
                         discoveryDocs: DISCOVERY_DOCS,
                         scope
                     })
-                    .then(resolve)
-                    .catch(reject);
+                        .then(resolve)
+                        .catch(reject);
                 }, 500);
             }));
     },
@@ -231,7 +231,9 @@ const googleApi = {
             location: entry.location,
             startDate: entry.start.dateTime,
             title: entry.summary,
-            url: this._getConferenceDataVideoUri(entry.conferenceData)
+            url: this._getConferenceDataVideoUri(entry.conferenceData),
+            attendees: entry.attendees,
+            creator: entry.creator.email
         };
     },
 
@@ -246,7 +248,7 @@ const googleApi = {
         try {
             // check conference data coming from calendar addons
             if (conferenceData.parameters.addOnParameters.parameters
-                    .conferenceSolutionType === 'jitsi') {
+                .conferenceSolutionType === 'jitsi') {
                 const videoEntry = conferenceData.entryPoints.find(
                     e => e.entryPointType === 'video');
 
@@ -290,12 +292,12 @@ const googleApi = {
 
                 const calendarIds
                     = calendarList.result.items.map(en => {
-                        return {
-                            id: en.id,
-                            accessRole: en.accessRole
-                        };
-                    });
-                const promises = calendarIds.map(({ id, accessRole }) => {
+                    return {
+                        id: en.id,
+                        accessRole: en.accessRole
+                    };
+                });
+                const promises = calendarIds.map(({id, accessRole}) => {
                     const startDate = new Date();
                     const endDate = new Date();
 
@@ -306,15 +308,15 @@ const googleApi = {
                     return this._getGoogleApiClient()
                         .client.calendar.events.list({
                             'calendarId': id,
-                            'timeMin': startDate.toISOString(),
-                            'timeMax': endDate.toISOString(),
+                            'timeMin': null, // 모두 가져오기
+                            'timeMax': null, // 모두 가져오기
                             'showDeleted': false,
                             'singleEvents': true,
                             'orderBy': 'startTime'
                         })
                         .then(result => result.result.items
                             .map(item => {
-                                const resultItem = { ...item };
+                                const resultItem = {...item};
 
                                 // add the calendarId only for the events
                                 // we can edit
@@ -377,6 +379,44 @@ const googleApi = {
             });
     },
     /* eslint-enable max-params */
+
+    /**
+     *
+     * @param {string} room - 회의방 이름
+     */
+    _createCalendarEntry(room) {
+        let event = {
+            'summary': '구글 등록 테스트 summary',
+            'description': '구글 등록 테스트 description',
+            'start': {
+                'dateTime': new Date('2020-10-12 13:00:00').toISOString(),
+            },
+            'end': {
+                'dateTime': new Date('2020-10-12 17:00:00').toISOString(),
+            },
+            'attendees': [
+                {'email': 'lpage@example.com'},
+                {'email': 'sbrin@example.com'}
+            ],
+            'reminders': {
+                'useDefault': false,
+                'overrides': [
+                    {'method': 'email', 'minutes': 24 * 60},
+                    {'method': 'popup', 'minutes': 10}
+                ]
+            }
+        }
+
+        let request = this._getGoogleApiClient().client.calendar.events.insert({
+            'calendarId': 'primary',
+            'resource': event
+        });
+
+        request.execute(function(event) {
+           console.log("TEST",event)
+        });
+
+    },
 
     /**
      * Returns the global Google API Client Library object. Direct use of this

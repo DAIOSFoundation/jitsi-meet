@@ -15,6 +15,7 @@ import {AbstractWelcomePage, _mapStateToProps} from './AbstractWelcomePage';
 import Tabs from './Tabs';
 
 import Cookies from 'universal-cookie';
+import { withRouter } from 'react-router-dom'
 
 /**
  * The pattern used to validate room name.
@@ -140,13 +141,6 @@ class WelcomePage extends AbstractWelcomePage {
             );
         }
 
-        // 뒤로가기 이벤트
-        window.history.pushState(null, '', location.href);
-
-        window.onpopstate = () => {
-            history.go(1);
-            window.location.reload();
-        };
     }
 
     /**
@@ -178,13 +172,18 @@ class WelcomePage extends AbstractWelcomePage {
 
         // Google 로그인
         const onClickLogin = () => {
-            window.location.href = '/#/auth/login'
+            this.props.history.push('/auth/login')
         }
 
         // 로그아웃
         const onClickLogout = () => {
             cookies.remove('jwt')
             window.location.reload();
+        }
+
+        // 일정 관리 페이지 이동
+        const onClickCalendar = () => {
+            this.props.history.push('/calendar')
         }
 
         return (
@@ -220,6 +219,10 @@ class WelcomePage extends AbstractWelcomePage {
                 <div className='meetingRoomArea'>
                     <div className='header'>
                         <div className='welcome-page-settings'>
+                                <button className='welcome-page-calendar-button' style={{marginRight:15}} onClick={onClickCalendar}>
+                                    <img src={"images/icon-calendar.png"} width={20} height={20} style={{marginRight: 5}}/>
+                                    <span style={{marginLeft: 5, fontSize: '14px'}}>일정 관리</span>
+                                </button>
                             <SettingsButton
                                 defaultTab={SETTINGS_TABS.CALENDAR}/>
                             {showAdditionalToolbarContent
@@ -367,12 +370,12 @@ class WelcomePage extends AbstractWelcomePage {
         const {_calendarEnabled, _recentListEnabled, t} = this.props;
 
         const tabs = [];
-        if (_calendarEnabled) {
-            tabs.push({
-                label: t('welcomepage.calendar'),
-                content: <CalendarList/>
-            });
-        }
+        // if (_calendarEnabled) {
+        //     tabs.push({
+        //         label: t('welcomepage.calendar'),
+        //         content: <CalendarList/>
+        //     });
+        // }
 
         if (_recentListEnabled) {
             tabs.push({
@@ -473,4 +476,4 @@ class WelcomePage extends AbstractWelcomePage {
 
 }
 
-export default translate(connect(_mapStateToProps)(WelcomePage));
+export default withRouter(translate(connect(_mapStateToProps)(WelcomePage)));

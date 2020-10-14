@@ -21,10 +21,9 @@ function _isDisplayableCalendarEntry(entry) {
     //   - Ends in the future (future or ongoing events)
     //   - Is not an all day event and there is only one attendee (these events
     //     are usually placeholder events that don't need to be shown.)
-    return entry.endDate > Date.now()
-        && !((entry.allDay
-                || entry.endDate - entry.startDate > ALLDAY_EVENT_LENGTH)
-                    && (!entry.attendees || entry.attendees.length < 2));
+    return!((entry.allDay))
+                // || entry.endDate - entry.startDate > ALLDAY_EVENT_LENGTH)
+                //     && (!entry.attendees || entry.attendees.length < 2));
 }
 
 /**
@@ -77,7 +76,7 @@ export function _updateCalendarEntries(events: Array<Object>) {
                 // day itself is not important because we don't want multiple
                 // occurrences of a recurring event or repetitions of an even
                 // from multiple calendars.
-                new Date(entry.startDate).toTimeString()
+                new Date(entry.startDate).toTimeString() + Math.random() // 반복 이벤트 보여주기 위해 랜덤 값 추가
             ]));
             const existingEntry = entryMap.get(key);
 
@@ -154,7 +153,9 @@ function _parseCalendarEntry(event, knownDomains) {
                 id: event.id,
                 startDate,
                 title: event.title,
-                url
+                url,
+                description: event.description,
+                creator: event.creator
             };
         }
     }

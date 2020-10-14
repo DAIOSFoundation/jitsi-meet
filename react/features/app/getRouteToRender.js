@@ -134,10 +134,6 @@ function _getWebWelcomePageRoute(state): Promise<Route> {
 
             if(pageStatus === 'main'){
                 route.component = WelcomePageMain;
-            }else if(pageStatus === 'login') {
-                route.component = LoginPage
-            }else if(pageStatus === 'meet'){
-                route.component = WelcomePage
             }else if(pageStatus === 'plan'){
                 route.component = DvisionPlanPage
             }
