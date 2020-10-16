@@ -15,7 +15,7 @@ import {AbstractWelcomePage, _mapStateToProps} from './AbstractWelcomePage';
 import Tabs from './Tabs';
 
 import Cookies from 'universal-cookie';
-import { withRouter } from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 
 /**
  * The pattern used to validate room name.
@@ -188,6 +188,7 @@ class WelcomePage extends AbstractWelcomePage {
 
         return (
             <div
+                style={{position: 'absolute', zIndex: 99999}}
                 className={`welcome ${showAdditionalContent
                     ? 'with-content' : 'without-content'}`}
                 id='welcome_page'>
@@ -202,14 +203,14 @@ class WelcomePage extends AbstractWelcomePage {
                     {
                         (cookies.get('jwt')) ?
                             <button onClick={onClickLogout}
-                                className='meetings-auth-button'>
+                                    className='meetings-auth-button'>
                                 <text>
                                     로그아웃
                                 </text>
                             </button>
                             :
                             <button onClick={onClickLogin}
-                                className='meetings-auth-button'>
+                                    className='meetings-auth-button'>
                                 <text>
                                     로그인
                                 </text>
@@ -219,10 +220,13 @@ class WelcomePage extends AbstractWelcomePage {
                 <div className='meetingRoomArea'>
                     <div className='header'>
                         <div className='welcome-page-settings'>
-                                <button className='welcome-page-calendar-button' style={{marginRight:15}} onClick={onClickCalendar}>
-                                    <img src={"images/icon-calendar.png"} width={20} height={20} style={{marginRight: 5}}/>
-                                    <span style={{marginLeft: 5, fontSize: '14px'}}>일정 관리</span>
-                                </button>
+                            <button className='welcome-page-calendar-button'
+                                    style={{marginRight: 15}}
+                                    onClick={onClickCalendar}>
+                                <img src={"images/icon-calendar.png"} width={20}
+                                     height={20} style={{marginRight: 5}}/>
+                                <span style={{marginLeft: 5, fontSize: '14px'}}>일정 관리</span>
+                            </button>
                             <SettingsButton
                                 defaultTab={SETTINGS_TABS.CALENDAR}/>
                             {showAdditionalToolbarContent
@@ -233,15 +237,17 @@ class WelcomePage extends AbstractWelcomePage {
                             }
                         </div>
                         {/*<div className='header-image'/>*/}
-                            {/*<h1 className='header-text-title'>*/}
-                            {/*    { t('welcomepage.title') }*/}
-                            {/*</h1>*/}
-                            {/*<p className='header-text-description'>*/}
-                            {/*    { t('welcomepage.appDescription',*/}
-                            {/*        { app: APP_NAME }) }*/}
-                            {/*</p>*/}
-                        <div className='header-text' style={{textAlign:'left'}}>
-                            <h3 style={{color:'black', fontWeight:'bold'}}>새로운 회의방 만들기</h3>
+                        {/*<h1 className='header-text-title'>*/}
+                        {/*    { t('welcomepage.title') }*/}
+                        {/*</h1>*/}
+                        {/*<p className='header-text-description'>*/}
+                        {/*    { t('welcomepage.appDescription',*/}
+                        {/*        { app: APP_NAME }) }*/}
+                        {/*</p>*/}
+                        <div className='header-text'
+                             style={{textAlign: 'left'}}>
+                            <h3 style={{color: 'black', fontWeight: 'bold'}}>새로운
+                                회의방 만들기</h3>
                         </div>
                         <div id='enter_room'>
                             <div className='enter-room-input-container'>
@@ -263,19 +269,20 @@ class WelcomePage extends AbstractWelcomePage {
                                     {this._renderInsecureRoomNameWarning()}
                                 </form>
                             </div>
-                                <div
-                                    className='welcome-page-button'
-                                    id='enter_room_button'
-                                    onClick={this._onFormSubmit}>
-                                    {
-                                        showResponsiveText
-                                            ? t('welcomepage.goSmall')
-                                            : t('welcomepage.go')
-                                    }
-                                    <div style={{width: 24, height: 24}}>
-                                        <img src={'images/new-room-icon.png'} width={'100%'} height={'100%'}  alt=""/>
-                                    </div>
+                            <div
+                                className='welcome-page-button'
+                                id='enter_room_button'
+                                onClick={this._onFormSubmit}>
+                                {
+                                    showResponsiveText
+                                        ? t('welcomepage.goSmall')
+                                        : t('welcomepage.go')
+                                }
+                                <div style={{width: 24, height: 24}}>
+                                    <img src={'images/new-room-icon.png'}
+                                         width={'100%'} height={'100%'} alt=""/>
                                 </div>
+                            </div>
                         </div>
                         {_moderatedRoomServiceUrl && (
                             <div id='moderated-meetings'>
