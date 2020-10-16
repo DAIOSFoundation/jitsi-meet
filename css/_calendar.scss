@@ -97,7 +97,7 @@
 .rbc-day-slot .rbc-event-content {
     width: 100%;
     -webkit-flex: 1 1 0;
-    -ms-flex: 1 1 0px;
+    -ms-flex: 1 1 0;
     flex: 1 1 0;
     word-wrap: break-word;
     line-height: 1;
@@ -111,12 +111,11 @@
     display: block; /* make the <a> tag block */
     font-size: 0.85em;
     border-radius: 2px;
-    padding: 0;
     // @include shadow-big-color($brand-success);
     font-weight: normal; /* undo jqui's ui-widget-header bold */
     text-align: right;
     border: none;
-    padding-bottom: 1px;
+    padding: 0 0 1px 0;
     line-height: 1.2;
     background-color: #3f82ff;
 
@@ -141,4 +140,53 @@
 
 .rbc-agenda-table {
     color: black;
+}
+
+.ScheduleRegisterModalWrapper {
+    position: absolute;
+    width: 32%;
+    background-color: white;
+    z-index: 99;
+    box-shadow: 0 2px 10px 5px rgba(87, 96, 176, 0.36);
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+
+    .ScheduleRegisterModalHeader {
+        height: 10%;
+        background-color: #3f83ff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: white;
+        padding: 10px 15px 10px 15px;
+
+        .ScheduleRegisterModalCancelButton {
+            width: 25px;
+            height: 25px;
+            outline: none;
+            border: none;
+            background-color: transparent;
+            padding: 0
+        }
+    }
+
+    .ScheduleRegisterModalDescription {
+        height: 8%;
+        background-color: #e4f2ff;
+        display: flex;
+        align-items: center;
+        color: #3f4452;
+        padding: 10px 10px 10px 15px;
+        border-bottom: 2px solid #cfd8dc;
+    }
+
+    .ScheduleRegisterModalAttendeesList{
+        display: inline-block;
+        padding: 5px;
+        background-color: #3f83ff;
+        color: white;
+        border-radius: 6px;
+        margin: 5px;
+    }
 }
