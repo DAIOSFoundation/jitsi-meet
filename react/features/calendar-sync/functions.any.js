@@ -155,7 +155,8 @@ function _parseCalendarEntry(event, knownDomains) {
                 title: event.title,
                 url,
                 description: event.description,
-                creator: event.creator
+                creator: event.creator,
+                event: event.location
             };
         }
     }

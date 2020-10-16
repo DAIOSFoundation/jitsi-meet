@@ -154,7 +154,8 @@ class CalendarListContent extends Component<Props> {
             attendees: event.attendees,
             title: event.title,
             description: event.description,
-            url: event.url
+            url: event.url,
+            location: event.location
         };
     }
 }

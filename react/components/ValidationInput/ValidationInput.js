@@ -4,10 +4,11 @@ import {isEmpty} from '../../utils/functions';
 
 // id : 텍스트 ID
 // label : 텍스트 Label
-// rowsMax : 텍스트 줄
 // value : 텍스트 값
 // valid : 텍스트 값 검증
 // errorText : 하단 에러 텍스트
+// placeholder : 텍스트 placeholder
+// fullWidth : 텍스트 전체 넓이 여부
 
 const ValidationInput = (props) => {
 
@@ -28,18 +29,18 @@ const ValidationInput = (props) => {
     }
 
     return (
-        <div>
+        <>
             <TextField
                 id={props.id}
+                fullWidth={props.fullWidth}
                 label={props.label}
-                rowsMax={props.rowsMax}
+                placeholder={props.placeholder}
                 value={props.value}
                 onChange={onChangeText}
-                variant="outlined"
                 helperText={valid ? props.errorText : null}
                 error={valid}
             />
-        </div>
+        </>
     );
 };
 
