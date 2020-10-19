@@ -1,23 +1,20 @@
 import CircularProgress from '@material-ui/core/CircularProgress';
 import React from 'react';
 
-const FileUploadLoading = () => {
+const BasicLoading = () => {
     return (
         <div style={{
             display: 'flex',
             position: 'absolute',
+            backgroundColor: 'rgba(0,0,0,0.1)',
             width: '100%',
-            height: '79vh',
+            height: '100%',
             justifyContent: 'center',
             alignItems: 'center',
-            flexDirection: 'column'
         }}>
-            <CircularProgress color="secondary"/>
-            <div style={{marginTop: 10, fontSize:'1rem'}}>
-                파일을 업로드 중입니다...
-            </div>
+            <CircularProgress/>
         </div>
     );
 };
 
-export default FileUploadLoading;
+export default BasicLoading;
