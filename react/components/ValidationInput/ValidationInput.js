@@ -6,7 +6,8 @@ import {isEmpty} from '../../utils/functions';
 // label : 텍스트 Label
 // value : 텍스트 값
 // valid : 텍스트 값 검증
-// errorText : 하단 에러 텍스트
+// descriptionText : 텍스트 하단 부가 설명
+// errorText : 텍스트 하단 에러 텍스트
 // placeholder : 텍스트 placeholder
 // fullWidth : 텍스트 전체 넓이 여부
 
@@ -37,7 +38,7 @@ const ValidationInput = (props) => {
                 placeholder={props.placeholder}
                 value={props.value}
                 onChange={onChangeText}
-                helperText={valid ? props.errorText : null}
+                helperText={valid ? props.errorText : props.descriptionText}
                 error={valid}
             />
         </>
