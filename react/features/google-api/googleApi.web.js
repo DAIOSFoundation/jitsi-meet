@@ -8,6 +8,8 @@ import {
 
 const GOOGLE_API_CLIENT_LIBRARY_URL = 'https://apis.google.com/js/api.js';
 
+import * as calendarActions from '../../../react/modules/calendar/actions';
+
 /**
  * A promise for dynamically loading the Google API Client Library.
  *
@@ -382,40 +384,23 @@ const googleApi = {
 
     /**
      *
-     * @param {string} room - 회의방 이름
+     * @param {Object} scheduleData - 회의방 이름
      */
-    _createCalendarEntry(room) {
-        let event = {
-            'summary': '구글 등록 테스트 summary',
-            'description': '구글 등록 테스트 description',
-            'start': {
-                'dateTime': new Date('2020-10-12 13:00:00').toISOString(),
-            },
-            'end': {
-                'dateTime': new Date('2020-10-12 17:00:00').toISOString(),
-            },
-            'attendees': [
-                {'email': 'lpage@example.com'},
-                {'email': 'sbrin@example.com'}
-            ],
-            'reminders': {
-                'useDefault': false,
-                'overrides': [
-                    {'method': 'email', 'minutes': 24 * 60},
-                    {'method': 'popup', 'minutes': 10}
-                ]
-            }
-        }
+    _createCalendarEntry(scheduleData) {
 
         let request = this._getGoogleApiClient().client.calendar.events.insert({
             'calendarId': 'primary',
-            'resource': event
+            'resource': scheduleData,
+            'sendUpdates': 'all'
         });
 
-        request.execute(function(event) {
-           console.log("TEST",event)
+        request.execute(function (event) {
+            if (!event.error) {
+                return APP.store.dispatch(calendarActions.change_calendar_message('scheduleInsertSuccess'))
+            } else {
+                return console.log("_createCalendarEntry FAILED", event)
+            }
         });
-
     },
 
     /**
