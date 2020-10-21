@@ -9,3 +9,14 @@ export const regEmail = (email) => {
     const reg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/m;
     return reg.test(email.trim());
 }
+
+// 회의방 이름 정규식
+export const regMeetingRoom = (name) => {
+    const reg = /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|\*]+$/;
+    return reg.test(name);
+}
+
+// 모든 공백 제거 정규식
+export const regSpaceRemove = (value) => {
+    return value.replace(/(\s*)/g, "")
+}

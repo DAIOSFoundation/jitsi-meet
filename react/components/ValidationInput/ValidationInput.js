@@ -10,6 +10,8 @@ import {isEmpty} from '../../utils/functions';
 // errorText : 텍스트 하단 에러 텍스트
 // placeholder : 텍스트 placeholder
 // fullWidth : 텍스트 전체 넓이 여부
+// multiline : textArea 기능 사용 여부
+// rowsMax : textArea 기능을 사용했을때 최대 몇줄을 허용하고 그 이후에는 스크롤 표시 여부
 
 const ValidationInput = (props) => {
 
@@ -40,6 +42,8 @@ const ValidationInput = (props) => {
                 onChange={onChangeText}
                 helperText={valid ? props.errorText : props.descriptionText}
                 error={valid}
+                multiline={props.multiline}
+                rowsMax={props.rowsMax}
             />
         </>
     );
