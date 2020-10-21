@@ -142,7 +142,7 @@
     color: black;
 }
 
-.ScheduleRegisterModalWrapper {
+.ScheduleModalWrapper {
     position: absolute;
     width: 32%;
     background-color: white;
@@ -154,7 +154,7 @@
     max-height: 85%;
     overflow: auto;
 
-    .ScheduleRegisterModalHeader {
+    .ScheduleModalHeader {
         height: 10%;
         background-color: #3f83ff;
         display: flex;
@@ -163,7 +163,7 @@
         color: white;
         padding: 10px 15px 10px 15px;
 
-        .ScheduleRegisterModalCancelButton {
+        .ScheduleModalCancelButton {
             width: 25px;
             height: 25px;
             outline: none;
@@ -190,6 +190,11 @@
         color: white;
         border-radius: 6px;
         margin: 5px;
+    }
+
+    .ScheduleModalTitle{
+        color: #818eb4;
+        font-size: 0.9vw;
     }
 }
 
