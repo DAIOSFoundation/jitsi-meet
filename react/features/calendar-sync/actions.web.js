@@ -289,3 +289,18 @@ export function updateProfile(calendarType: string): Function {
             });
     };
 }
+
+// 캘린더 이벤트 등록 API
+export function createCalendarEvent(scheduleData: Object): Function {
+    return (dispatch: Dispatch<any>, getState: Function) => {
+
+        const { integrationType } = getState()['features/calendar-sync'];
+        const integration = _getCalendarIntegration(integrationType);
+
+        if (!integration) {
+            return Promise.reject('No integration found');
+        }
+
+        return dispatch(integration.createCalendarEvent(scheduleData))
+    }
+}

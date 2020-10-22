@@ -225,3 +225,8 @@ export function updateCalendarEvent(
             .then(text =>
                 googleApi._updateCalendarEntry(id, calendarId, location, text));
 }
+
+export function createCalendarEvent(scheduleData: Object){
+    return (dispatch: Dispatch<any>, getState: Function) =>
+        googleApi._createCalendarEntry(scheduleData)
+}
