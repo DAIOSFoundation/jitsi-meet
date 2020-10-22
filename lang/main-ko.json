@@ -534,6 +534,7 @@
         "setEmailLabel": "이메일",
         "title": "프로필"
     },
+    "raisedHand": "{{name}}님이 말하고 싶어합니다.",
     "recording": {
         "authDropboxText": "Dropbox에 업로드",
         "availableSpace": "사용 가능한 공간 : {{spaceLeft}}MB (약 {{duration}}분 녹화)",

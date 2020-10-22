@@ -1067,21 +1067,21 @@ class Toolbox extends Component<Props, State> {
                     key = 'stats'
                     onClick = { this._onToolbarOpenSpeakerStats }
                     text = { t('toolbar.speakerStats') } />,
-            this._isEmbedMeetingVisible()
-                && <OverflowMenuItem
-                    accessibilityLabel = { t('toolbar.accessibilityLabel.embedMeeting') }
-                    icon = { IconCodeBlock }
-                    key = 'embed'
-                    onClick = { this._onToolbarOpenEmbedMeeting }
-                    text = { t('toolbar.embedMeeting') } />,
-            this._shouldShowButton('feedback')
-                && _feedbackConfigured
-                && <OverflowMenuItem
-                    accessibilityLabel = { t('toolbar.accessibilityLabel.feedback') }
-                    icon = { IconFeedback }
-                    key = 'feedback'
-                    onClick = { this._onToolbarOpenFeedback }
-                    text = { t('toolbar.feedback') } />,
+            // this._isEmbedMeetingVisible()
+            //     && <OverflowMenuItem
+            //         accessibilityLabel = { t('toolbar.accessibilityLabel.embedMeeting') }
+            //         icon = { IconCodeBlock }
+            //         key = 'embed'
+            //         onClick = { this._onToolbarOpenEmbedMeeting }
+            //         text = { t('toolbar.embedMeeting') } />,
+            // this._shouldShowButton('feedback')
+            //     && _feedbackConfigured
+            //     && <OverflowMenuItem
+            //         accessibilityLabel = { t('toolbar.accessibilityLabel.feedback') }
+            //         icon = { IconFeedback }
+            //         key = 'feedback'
+            //         onClick = { this._onToolbarOpenFeedback }
+            //         text = { t('toolbar.feedback') } />,
             this._shouldShowButton('shortcuts')
                 && <OverflowMenuItem
                     accessibilityLabel = { t('toolbar.accessibilityLabel.shortcuts') }
@@ -1093,10 +1093,10 @@ class Toolbox extends Component<Props, State> {
                 && <DownloadButton
                     key = 'download'
                     showLabel = { true } />,
-            this._shouldShowButton('help')
-                && <HelpButton
-                    key = 'help'
-                    showLabel = { true } />
+            // this._shouldShowButton('help')
+            //     && <HelpButton
+            //         key = 'help'
+            //         showLabel = { true } />
         ];
     }
 
