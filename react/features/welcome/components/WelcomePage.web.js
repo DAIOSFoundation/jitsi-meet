@@ -188,7 +188,7 @@ class WelcomePage extends AbstractWelcomePage {
 
         return (
             <div
-                style={{position: 'absolute', zIndex: 99999}}
+                style={{position: 'absolute', zIndex: 1, height: '100%'}}
                 className={`welcome ${showAdditionalContent
                     ? 'with-content' : 'without-content'}`}
                 id='welcome_page'>
