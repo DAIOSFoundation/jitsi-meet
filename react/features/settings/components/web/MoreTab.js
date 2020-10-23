@@ -161,7 +161,7 @@ class MoreTab extends AbstractDialogTab<Props, State> {
             languages,
             t
         } = this.props;
-        console.log('TEST',languages)
+
         const languageItems
             = languages.map(language => (
                 <DropdownItem
