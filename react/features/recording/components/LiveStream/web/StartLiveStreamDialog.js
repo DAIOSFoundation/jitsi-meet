@@ -320,7 +320,7 @@ class StartLiveStreamDialog
 
             break;
         }
-
+        console.log("TEST",this.state.errorType)
         if (this.state.errorType !== undefined) {
             googleContent = (
                 <GoogleSignInButton
