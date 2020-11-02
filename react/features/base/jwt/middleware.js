@@ -103,13 +103,16 @@ function _setConfigOrLocationURL({ dispatch, getState }, next, action) {
 
     const { locationURL } = getState()['features/base/connection'];
 
-    // 쿠키 가져오기
-    const cookies = new Cookies();
+    dispatch(
+        setJWT(locationURL ? parseJWTFromURLParams(locationURL) : undefined));
 
-    if(cookies.get('jwt')){
-        dispatch(
-            setJWT(cookies.get('jwt')));
-    }
+    // 쿠키 가져오기
+    // const cookies = new Cookies();
+    //
+    // if(cookies.get('jwt')){
+    //     dispatch(
+    //         setJWT(cookies.get('jwt')));
+    // }
 
     return result;
 }
