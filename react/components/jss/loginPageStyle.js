@@ -1,73 +1,51 @@
 import {
   container,
   cardTitle,
-  blackColor,
-  hexToRgb,
+  whiteColor,
   grayColor
-} from "./material-dashboard-pro-react.js";
+} from "./material-dashboard-pro-react";
 
-import customCheckboxRadioSwitch from "../jss/customCheckboxRadioSwitch.js";
-
-const loginPageStyle = {
-  ...customCheckboxRadioSwitch,
-  cardTitle: {
-    ...cardTitle,
-    textAlign: "center"
-  },
+const loginPageStyle = theme => ({
   container: {
     ...container,
-    position: "relative",
-    zIndex: "3"
-    // paddingTop: "23vh"
+    zIndex: "4",
+    [theme.breakpoints.down("sm")]: {
+      paddingBottom: "100px"
+    }
   },
-  cardSignup: {
-    borderRadius: "6px",
-    boxShadow:
-      "0 16px 24px 2px rgba(" +
-      hexToRgb(blackColor) +
-      ", 0.14), 0 6px 30px 5px rgba(" +
-      hexToRgb(blackColor) +
-      ", 0.12), 0 8px 10px -5px rgba(" +
-      hexToRgb(blackColor) +
-      ", 0.2)",
-    marginBottom: "100px",
-    padding: "40px 0px",
-    marginTop: "15vh"
+  cardTitle: {
+    ...cardTitle,
+    color: whiteColor
   },
-  center: {
+  textCenter: {
     textAlign: "center"
   },
-  right: {
-    textAlign: "right"
+  justifyContentCenter: {
+    justifyContent: "center !important"
   },
-  left: {
-    textAlign: "left"
-  },
-  form: {
-    padding: "0 20px",
-    position: "relative"
-  },
-  socialTitle: {
-    fontSize: "18px"
+  customButtonClass: {
+    "&,&:focus,&:hover": {
+      color: whiteColor
+    },
+    marginLeft: "5px",
+    marginRight: "5px"
   },
   inputAdornment: {
-    marginRight: "18px",
-    position: "relative"
+    marginRight: "18px"
   },
   inputAdornmentIcon: {
     color: grayColor[6]
   },
-  customFormControlClasses: {
-    margin: "0"
+  cardHidden: {
+    opacity: "0",
+    transform: "translate3d(0, -60px, 0)"
   },
-  checkboxLabelControl: {
-    margin: "0"
+  cardHeader: {
+    marginBottom: "20px"
   },
-  checkboxLabel: {
-    fontSize: "0.875rem",
-    marginLeft: "6px",
-    color: "rgba(" + hexToRgb(blackColor) + ", 0.26)"
+  socialLine: {
+    padding: "0.9375rem 0"
   }
-};
+});
 
 export default loginPageStyle;
