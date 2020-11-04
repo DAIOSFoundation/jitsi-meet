@@ -56,6 +56,14 @@ export function maybeOpenFeedbackDialog(conference: Object) {
         const state = getState();
         const { feedbackPercentage = 100 } = state['features/base/config'];
 
+        console.log("1", interfaceConfig.filmStripOnly)
+        console.log("2", config.iAmRecorder)
+        console.log("3", state['features/base/dialog'].component)
+        console.log("4", FeedbackDialog)
+        console.log("5", state['features/feedback'].submitted)
+        console.log("6", conference.isCallstatsEnabled())
+        console.log("7", feedbackPercentage > Math.random() * 100)
+
         if (interfaceConfig.filmStripOnly || config.iAmRecorder) {
             // Intentionally fall through the if chain to prevent further action
             // from being taken with regards to showing feedback.

@@ -76,7 +76,7 @@ const LoginPage = () => {
         //     cookies.remove('room')
         // } else
         if (cookies.get('jwt')) {
-            window.location.href = '/#'
+            window.location.href = window.location.origin
         } else {
             console.log('cookies && room undefined !!!')
         }
