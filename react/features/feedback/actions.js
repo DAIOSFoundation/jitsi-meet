@@ -56,29 +56,6 @@ export function maybeOpenFeedbackDialog(conference: Object) {
         const state = getState();
         const { feedbackPercentage = 100 } = state['features/base/config'];
 
-        console.log("1", interfaceConfig.filmStripOnly)
-        console.log("2", config.iAmRecorder)
-        console.log("3", state['features/base/dialog'].component)
-        console.log("4", FeedbackDialog)
-        console.log("5", state['features/feedback'].submitted)
-        console.log("6", conference.isCallstatsEnabled())
-        console.log("7", feedbackPercentage > Math.random() * 100)
-
-        if (interfaceConfig.filmStripOnly || config.iAmRecorder) {
-            // Intentionally fall through the if chain to prevent further action
-            // from being taken with regards to showing feedback.
-        } else if (state['features/base/dialog'].component === FeedbackDialog) {
-            // Feedback is currently being displayed.
-
-            return Promise.reject(FEEDBACK_REQUEST_IN_PROGRESS);
-        } else if (state['features/feedback'].submitted) {
-            // Feedback has been submitted already.
-
-            return Promise.resolve({
-                feedbackSubmitted: true,
-                showThankYou: true
-            });
-        } else if (conference.isCallstatsEnabled() && feedbackPercentage > Math.random() * 100) {
             return new Promise(resolve => {
                 dispatch(openFeedbackDialog(conference, () => {
                     const { submitted } = getState()['features/feedback'];
@@ -89,7 +66,32 @@ export function maybeOpenFeedbackDialog(conference: Object) {
                     });
                 }));
             });
-        }
+        // if (interfaceConfig.filmStripOnly || config.iAmRecorder) {
+        //     // Intentionally fall through the if chain to prevent further action
+        //     // from being taken with regards to showing feedback.
+        // } else if (state['features/base/dialog'].component === FeedbackDialog) {
+        //     // Feedback is currently being displayed.
+        //
+        //     return Promise.reject(FEEDBACK_REQUEST_IN_PROGRESS);
+        // } else if (state['features/feedback'].submitted) {
+        //     // Feedback has been submitted already.
+        //
+        //     return Promise.resolve({
+        //         feedbackSubmitted: true,
+        //         showThankYou: true
+        //     });
+        // } else if (conference.isCallstatsEnabled() && feedbackPercentage > Math.random() * 100) {
+        //     return new Promise(resolve => {
+        //         dispatch(openFeedbackDialog(conference, () => {
+        //             const { submitted } = getState()['features/feedback'];
+        //
+        //             resolve({
+        //                 feedbackSubmitted: submitted,
+        //                 showThankYou: false
+        //             });
+        //         }));
+        //     });
+        // }
 
         // If the feedback functionality isn't enabled we show a "thank you"
         // message. Signaling it (true), so the caller of requestFeedback can

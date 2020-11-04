@@ -233,28 +233,29 @@ class FeedbackDialog extends Component<Props, State> {
                 onSubmit = { this._onSubmit }
                 titleKey = 'feedback.rateExperience'>
                 <div className = 'feedback-dialog'>
-                    <div className = 'rating'>
-                        <div className = 'star-label'>
-                            <p id = 'starLabel'>
-                                { t(SCORES[scoreToDisplayAsSelected]) }
-                            </p>
-                        </div>
-                        <div
-                            className = 'stars'
-                            onMouseLeave = { this._onScoreContainerMouseLeave }>
-                            { scoreIcons }
-                        </div>
-                    </div>
-                    <div className = 'details'>
-                        <FieldTextAreaStateless
-                            autoFocus = { true }
-                            className = 'input-control'
-                            id = 'feedbackTextArea'
-                            label = { t('feedback.detailsLabel') }
-                            onChange = { this._onMessageChange }
-                            shouldFitContainer = { true }
-                            value = { message } />
-                    </div>
+                    테스트입니다
+                    {/*<div className = 'rating'>*/}
+                    {/*    <div className = 'star-label'>*/}
+                    {/*        <p id = 'starLabel'>*/}
+                    {/*            { t(SCORES[scoreToDisplayAsSelected]) }*/}
+                    {/*        </p>*/}
+                    {/*    </div>*/}
+                    {/*    <div*/}
+                    {/*        className = 'stars'*/}
+                    {/*        onMouseLeave = { this._onScoreContainerMouseLeave }>*/}
+                    {/*        { scoreIcons }*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
+                    {/*<div className = 'details'>*/}
+                    {/*    <FieldTextAreaStateless*/}
+                    {/*        autoFocus = { true }*/}
+                    {/*        className = 'input-control'*/}
+                    {/*        id = 'feedbackTextArea'*/}
+                    {/*        label = { t('feedback.detailsLabel') }*/}
+                    {/*        onChange = { this._onMessageChange }*/}
+                    {/*        shouldFitContainer = { true }*/}
+                    {/*        value = { message } />*/}
+                    {/*</div>*/}
                 </div>
             </Dialog>
         );
