@@ -18,11 +18,14 @@ const WelcomePageMain = () => {
 
     // MainPage 요금제 및 가격정책 버튼 클릭 시 이벤트
     const onClickPlan = () => {
-        dispatch(changePageStatus({
-            'pageStatus': 'plan'
-        }))
-        // _getRouteToRender 함수 호출 하기 위해 사용
-        dispatch(setRoom())
+        history.push({
+            pathname: `/plan`,
+        });
+        // dispatch(changePageStatus({
+        //     'pageStatus': 'plan'
+        // }))
+        // // _getRouteToRender 함수 호출 하기 위해 사용
+        // dispatch(setRoom())
     }
 
     return (

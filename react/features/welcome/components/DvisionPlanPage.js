@@ -34,16 +34,6 @@ const useStyles = makeStyles(styles);
 
 const DvisionPlanPage = () => {
 
-    // 뒤로가기 이벤트
-    useEffect(() => {
-        window.history.pushState(null, '', location.href);
-
-        window.onpopstate = () => {
-            history.go(1);
-            window.location.reload();
-        };
-    }, []);
-
     const classes = useStyles();
 
     return (

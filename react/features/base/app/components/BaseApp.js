@@ -30,6 +30,8 @@ import {HashRouter, Route, Switch} from 'react-router-dom';
 import LoginPage from '../../../login/components/LoginPage';
 import CalendarList from '../../../calendar-sync/components/CalendarList.web';
 import WelcomePage from '../../../welcome/components/WelcomePage.web';
+import WelcomePageMain from '../../../welcome/components/WelcomePageMain';
+import DvisionPlanPage from '../../../welcome/components/DvisionPlanPage';
 
 const middlewares = [];
 
@@ -148,6 +150,16 @@ export default class BaseApp extends Component<*, State> {
                         <HashRouter>
                             <Switch>
                                 <Fragment>
+                                    {this._createMainElement(component, props)}
+                                    <SoundCollection/>
+                                    {this._createExtraElement()}
+                                    <Route
+                                        exact
+                                        path="/"
+                                        name="MainPage"
+                                        render={(props) =>
+                                            <WelcomePageMain {...props} />}
+                                    />
                                     <Route
                                         exact
                                         path="/auth/login"
@@ -164,14 +176,18 @@ export default class BaseApp extends Component<*, State> {
                                     />
                                     <Route
                                         exact
+                                        path="/plan"
+                                        name="planPage"
+                                        render={(props) =>
+                                            <DvisionPlanPage {...props} />}
+                                    />
+                                    <Route
+                                        exact
                                         path="/calendar"
                                         name="UserCalendar"
                                         render={(props) =>
                                             <CalendarList {...props} />}
                                     />
-                                    {this._createMainElement(component, props)}
-                                    <SoundCollection/>
-                                    {this._createExtraElement()}
                                 </Fragment>
                             </Switch>
                         </HashRouter>
