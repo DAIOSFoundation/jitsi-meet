@@ -91,14 +91,14 @@ export default class MessageContainer extends AbstractMessageContainer<Props> {
                         :
                         null
                 }
-                <div className='dragAndDrop' style={{
-                    position: 'fixed',
-                    width: '365px',
-                    height: '81%',
-                    marginTop: '5%'
-                }}>
-                    <DragZone/>
-                </div>
+                {/*<div className='dragAndDrop' style={{*/}
+                {/*    position: 'fixed',*/}
+                {/*    width: '365px',*/}
+                {/*    height: '81%',*/}
+                {/*    marginTop: '5%'*/}
+                {/*}}>*/}
+                {/*    <DragZone/>*/}
+                {/*</div>*/}
                 {messages}
                 <div ref={this._messagesListEndRef}/>
             </div>

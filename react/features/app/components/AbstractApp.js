@@ -113,12 +113,13 @@ export class AbstractApp extends BaseApp<Props, *> {
     _openURL(url) {
         const cookies = new Cookies();
 
-        if(cookies.get('jwt')){
-            this.state.store.dispatch(appNavigate(toURLString(url)));
-        }else if(url !== window.location.origin + '/#/'){
-            return window.location.href = window.location.origin + '/#/auth/login'
-        }else{
-
-        }
+        this.state.store.dispatch(appNavigate(toURLString(url)));
+        // if(cookies.get('jwt')){
+        //     this.state.store.dispatch(appNavigate(toURLString(url)));
+        // }else if(url !== window.location.origin + '/#/'){
+        //     return window.location.href = window.location.origin + '/#/auth/login'
+        // }else{
+        //
+        // }
     }
 }
