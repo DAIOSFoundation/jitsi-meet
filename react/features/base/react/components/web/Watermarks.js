@@ -172,8 +172,10 @@ class Watermarks extends Component<Props, State> {
                 maxWidth: 170,
                 maxHeight: 70,
                 top: 0,
+                // top: 30, // Medicity Version
                 position: 'relative',
                 backgroundImage: `url(${_logoUrl})`,
+                // backgroundImage: `url(./images/medicity/세미나배너.png)`, // Medicity Version
             };
 
             reactElement = (<div

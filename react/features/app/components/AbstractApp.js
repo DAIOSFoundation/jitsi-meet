@@ -7,6 +7,7 @@ import { toURLString } from '../../base/util';
 import { OverlayContainer } from '../../overlay';
 import { appNavigate } from '../actions';
 import { getDefaultURL } from '../functions';
+import Cookies from 'universal-cookie';
 
 /**
  * The type of React {@code Component} props of {@link AbstractApp}.
@@ -110,6 +111,14 @@ export class AbstractApp extends BaseApp<Props, *> {
      * @returns {void}
      */
     _openURL(url) {
-        this.state.store.dispatch(appNavigate(toURLString(url)));
+        const cookies = new Cookies();
+
+        if(cookies.get('jwt')){
+            this.state.store.dispatch(appNavigate(toURLString(url)));
+        }else if(url !== window.location.origin + '/#/'){
+            return window.location.href = window.location.origin + '/#/auth/login'
+        }else{
+
+        }
     }
 }

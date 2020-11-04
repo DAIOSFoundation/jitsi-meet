@@ -12,6 +12,7 @@ import {isEmpty} from '../../utils/functions';
 // fullWidth : 텍스트 전체 넓이 여부
 // multiline : textArea 기능 사용 여부
 // rowsMax : textArea 기능을 사용했을때 최대 몇줄을 허용하고 그 이후에는 스크롤 표시 여부
+// type : 텍스트 값 타입
 
 const ValidationInput = (props) => {
 
@@ -44,6 +45,7 @@ const ValidationInput = (props) => {
                 error={valid}
                 multiline={props.multiline}
                 rowsMax={props.rowsMax}
+                type={props.type}
             />
         </>
     );

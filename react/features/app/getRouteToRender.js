@@ -132,12 +132,6 @@ function _getWebWelcomePageRoute(state): Promise<Route> {
             const state = APP.store.getState();
             const { pageStatus } = state['features/pageStatus'];
 
-            if(pageStatus === 'main'){
-                route.component = WelcomePageMain;
-            }else if(pageStatus === 'plan'){
-                route.component = DvisionPlanPage
-            }
-
         } else {
             route.component = UnsupportedDesktopBrowser;
         }

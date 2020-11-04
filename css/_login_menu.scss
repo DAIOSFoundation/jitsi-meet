@@ -16,3 +16,15 @@ a.disabled {
     top: 20px;
     left: 40px;
 }
+
+.loginMainMove {
+    border: none;
+    background-color: #0960ff;
+    padding: 7px;
+    borderRadius: 7px;
+
+    &:hover {
+        background-color: #ffffff;
+        color: #0960ff;
+    }
+}
