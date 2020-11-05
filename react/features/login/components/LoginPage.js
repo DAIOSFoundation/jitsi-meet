@@ -71,11 +71,10 @@ const LoginPage = () => {
     }, [jwt])
 
     useEffect(() => {
-        // if (cookies.get('jwt') && cookies.get('room')) {
-        //     window.location.href = `/${cookies.get('room')}`
-        //     cookies.remove('room')
-        // } else
-        if (cookies.get('jwt')) {
+        if (cookies.get('jwt') && cookies.get('room')) {
+            window.location.href = `/${cookies.get('room')}`
+            cookies.remove('room')
+        } else if (cookies.get('jwt')) {
             window.location.href = window.location.origin
         } else {
             console.log('cookies && room undefined !!!')
