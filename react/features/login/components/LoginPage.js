@@ -79,7 +79,7 @@ const LoginPage = () => {
         } else {
             console.log('cookies && room undefined !!!')
         }
-    }, [cookies]);
+    }, [cookies.get('jwt')]);
 
     const successGoogleLogin = (res) => {
 
