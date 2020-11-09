@@ -151,77 +151,75 @@ const LoginPage = () => {
             {/*</GridContainer>*/}
             <GridContainer justify="center">
                 <GridItem xs={12} sm={6} md={4}>
-                    <form>
-                        <Card login className={classes[cardAnimaton]}
-                              style={{padding: 15}}>
-                            {
-                                loading ?
-                                    <div style={{
-                                        marginTop: -15,
-                                        marginLeft: -15
-                                    }}>
-                                        <BasicLoading/>
-                                    </div>
-                                    :
-                                    null
-                            }
-                            <CardHeader
-                                className={`${classes.cardHeader} ${classes.textCenter}`}
-                                style={{
-                                    backgroundColor: '#0960ff',
-                                    marginTop: '-35px',
-                                    borderRadius: 7
-                                }}
-                            >
-                                <h3 className={classes.cardTitle} style={{
-                                    marginBottom: 0,
-                                    fontWeight: 500
-                                }}>DVision</h3>
-                            </CardHeader>
-                            <CardBody>
-                                <div>
-                                    <ValidationInput
-                                        id={'id'}
-                                        label={'아이디'}
-                                        placeholder={'아이디 입력'}
-                                        fullWidth
-                                        value={id}
-                                        onChangeText={(e) => onChangeID(e.target.value)}
-                                    />
+                    <Card login className={classes[cardAnimaton]}
+                          style={{padding: 15}}>
+                        {
+                            loading ?
+                                <div style={{
+                                    marginTop: -15,
+                                    marginLeft: -15
+                                }}>
+                                    <BasicLoading/>
                                 </div>
-                                <div style={{marginTop: 15}}>
-                                    <ValidationInput
-                                        id={'password'}
-                                        label={'비밀번호'}
-                                        placeholder={'비밀번호 입력'}
-                                        fullWidth
-                                        value={password}
-                                        onChangeText={(e) => onChangePassWord(e.target.value)}
-                                        type={'password'}
-                                    />
-                                </div>
-                            </CardBody>
-                            <CardFooter
-                                className={classes.justifyContentCenter}>
-                                <Button style={{
-                                    color: '#0960ff',
-                                    fontWeight: 'bold'
-                                }} simple
-                                        size="lg" block onClick={loginSubmit}>
-                                    로그인
-                                </Button>
-                            </CardFooter>
-                            <div style={{
-                                display: 'flex',
-                                justifyContent: 'flex-end'
-                            }}>
-                                <button className='loginMainMove'
-                                        onClick={onPressMain}>
-                                    메인으로가기
-                                </button>
+                                :
+                                null
+                        }
+                        <CardHeader
+                            className={`${classes.cardHeader} ${classes.textCenter}`}
+                            style={{
+                                backgroundColor: '#0960ff',
+                                marginTop: '-35px',
+                                borderRadius: 7
+                            }}
+                        >
+                            <h3 className={classes.cardTitle} style={{
+                                marginBottom: 0,
+                                fontWeight: 500
+                            }}>DVision</h3>
+                        </CardHeader>
+                        <CardBody>
+                            <div>
+                                <ValidationInput
+                                    id={'id'}
+                                    label={'아이디'}
+                                    placeholder={'아이디 입력'}
+                                    fullWidth
+                                    value={id}
+                                    onChangeText={(e) => onChangeID(e.target.value)}
+                                />
                             </div>
-                        </Card>
-                    </form>
+                            <div style={{marginTop: 15}}>
+                                <ValidationInput
+                                    id={'password'}
+                                    label={'비밀번호'}
+                                    placeholder={'비밀번호 입력'}
+                                    fullWidth
+                                    value={password}
+                                    onChangeText={(e) => onChangePassWord(e.target.value)}
+                                    type={'password'}
+                                />
+                            </div>
+                        </CardBody>
+                        <CardFooter
+                            className={classes.justifyContentCenter}>
+                            <Button style={{
+                                color: '#0960ff',
+                                fontWeight: 'bold'
+                            }} simple
+                                    size="lg" block onClick={loginSubmit}>
+                                로그인
+                            </Button>
+                        </CardFooter>
+                        <div style={{
+                            display: 'flex',
+                            justifyContent: 'flex-end'
+                        }}>
+                            <button className='loginMainMove'
+                                    onClick={onPressMain}>
+                                메인으로가기
+                            </button>
+                        </div>
+                    </Card>
                 </GridItem>
             </GridContainer>
         </div>
