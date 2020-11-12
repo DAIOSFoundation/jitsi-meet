@@ -175,7 +175,7 @@ class Watermarks extends Component<Props, State> {
                 top: 30, // Medicity Version
                 position: 'relative',
                 // backgroundImage: `url(${_logoUrl})`,
-                backgroundImage: `url(./images/medicity/세미나배너.png)`, // Medicity Version
+                backgroundImage: `url(./images/medicity/medicityLogo.png)`, // Medicity Version
             };
 
             reactElement = (<div

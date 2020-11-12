@@ -47,10 +47,10 @@ var interfaceConfig = {
     DEFAULT_BACKGROUND: '#474747',
     DEFAULT_LOCAL_DISPLAY_NAME: 'me',
     // DEFAULT_LOGO_URL: 'images/watermark.png',
-    DEFAULT_LOGO_URL: 'images/medicity/세미나배너.png', // 메디시티 전용 로고 이미지
+    DEFAULT_LOGO_URL: 'images/medicity/medicityLogo.png', // 메디시티 전용 로고 이미지
     DEFAULT_REMOTE_DISPLAY_NAME: '참여자',
     // DEFAULT_WELCOME_PAGE_LOGO_URL: 'images/watermark.png',
-    DEFAULT_WELCOME_PAGE_LOGO_URL: 'images/medicity/세미나배너.png', // 메디시티 전용 로고 이미지
+    DEFAULT_WELCOME_PAGE_LOGO_URL: 'images/medicity/medicityLogo.png', // 메디시티 전용 로고 이미지
 
     DISABLE_DOMINANT_SPEAKER_INDICATOR: false,
 
