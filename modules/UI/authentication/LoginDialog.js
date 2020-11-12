@@ -249,11 +249,11 @@ export default {
                 // Open login popup.
                 if (submitValue === 'authNow') {
 
-                    onAuthNow();
-                    // const cookies = new Cookies();
-                    //
-                    // cookies.set('room', room, {path: '/', secure: true});
-                    // window.location.href = `/#/auth/login`
+                    // onAuthNow();
+                    const cookies = new Cookies();
+
+                    cookies.set('room', room, {path: '/', secure: true});
+                    window.location.href = `/#/auth/login`
                 }
             }
         );
