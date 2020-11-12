@@ -1012,10 +1012,10 @@ class Toolbox extends Component<Props, State> {
         } = this.props;
 
         return [
-            // this._isProfileVisible()
-            //     && <OverflowMenuProfileItem
-            //         key = 'profile'
-            //         onClick = { this._onToolbarToggleProfile } />,
+            this._isProfileVisible()
+                && <OverflowMenuProfileItem
+                    key = 'profile'
+                    onClick = { this._onToolbarToggleProfile } />,
             this._shouldShowButton('videoquality')
                 && <OverflowMenuVideoQualityItem
                     key = 'videoquality'
