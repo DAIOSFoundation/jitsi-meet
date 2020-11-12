@@ -200,33 +200,33 @@ class WelcomePage extends AbstractWelcomePage {
                     <div className='illust-image-wrapper'>
                         <div className='illust-image'/>
                     </div>
-                    {
-                        (cookies.get('jwt')) ?
-                            <button onClick={onClickLogout}
-                                    className='meetings-auth-button'>
-                                <text>
-                                    로그아웃
-                                </text>
-                            </button>
-                            :
-                            <button onClick={onClickLogin}
-                                    className='meetings-auth-button'>
-                                <text>
-                                    로그인
-                                </text>
-                            </button>
-                    }
+                    {/*{*/}
+                    {/*    (cookies.get('jwt')) ?*/}
+                    {/*        <button onClick={onClickLogout}*/}
+                    {/*                className='meetings-auth-button'>*/}
+                    {/*            <text>*/}
+                    {/*                로그아웃*/}
+                    {/*            </text>*/}
+                    {/*        </button>*/}
+                    {/*        :*/}
+                    {/*        <button onClick={onClickLogin}*/}
+                    {/*                className='meetings-auth-button'>*/}
+                    {/*            <text>*/}
+                    {/*                로그인*/}
+                    {/*            </text>*/}
+                    {/*        </button>*/}
+                    {/*}*/}
                 </div>
                 <div className='meetingRoomArea'>
                     <div className='header'>
                         <div className='welcome-page-settings'>
-                            <button className='welcome-page-calendar-button'
-                                    style={{marginRight: 15}}
-                                    onClick={onClickCalendar}>
-                                <img src={"images/icon-calendar.png"} width={20}
-                                     height={20} style={{marginRight: 5}}/>
-                                <span style={{marginLeft: 5, fontSize: '14px'}}>일정 관리</span>
-                            </button>
+                            {/*<button className='welcome-page-calendar-button'*/}
+                            {/*        style={{marginRight: 15}}*/}
+                            {/*        onClick={onClickCalendar}>*/}
+                            {/*    <img src={"images/icon-calendar.png"} width={20}*/}
+                            {/*         height={20} style={{marginRight: 5}}/>*/}
+                            {/*    <span style={{marginLeft: 5, fontSize: '14px'}}>일정 관리</span>*/}
+                            {/*</button>*/}
                             <SettingsButton
                                 defaultTab={SETTINGS_TABS.CALENDAR}/>
                             {showAdditionalToolbarContent
