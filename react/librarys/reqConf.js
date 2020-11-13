@@ -3,7 +3,7 @@ const host = "https://dvision-api.daib.io/v1";
 
 export const urls = {
     upload: host + "/upload",
-    auths: host +"/auths",
+    oauths: host +"/oauths",
     login: host + "/users/signIn",
 };
 

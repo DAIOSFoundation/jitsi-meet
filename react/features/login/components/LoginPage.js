@@ -27,6 +27,7 @@ import {shallowEqual, useDispatch, useSelector} from 'react-redux';
 
 import Cookies from 'universal-cookie';
 import * as authActions from '../../../modules/auth/actions';
+import * as oauthActions from '../../../modules/oauth/actions';
 import BasicLoading from '../../../components/Loading/BasicLoading';
 import {useHistory} from "react-router-dom";
 
@@ -92,7 +93,7 @@ const LoginPage = () => {
 
         console.log("successGoogleLogin")
 
-        dispatch(authActions.post_google_login(param))
+        dispatch(oauthActions.post_google_login(param))
     };
 
     const onChangeID = (value) => {

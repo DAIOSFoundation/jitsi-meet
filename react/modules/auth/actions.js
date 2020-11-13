@@ -24,12 +24,3 @@ export const [
     POST_LOGIN_FAILED,
 ] = createRequestActionTypes("auth/POST_LOGIN");
 export const post_login = createAction(POST_LOGIN);
-
-// Google Login
-export const [
-    POST_GOOGLE_LOGIN,
-    POST_GOOGLE_LOGIN_SUCCESS,
-    POST_GOOGLE_LOGIN_FAILED,
-] = createRequestActionTypes("auth/POST_GOOGLE_LOGIN");
-export const post_google_login = createAction(POST_GOOGLE_LOGIN);
-
