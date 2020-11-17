@@ -161,24 +161,29 @@ class ChatInput extends Component<Props, State> {
                             onSmileySelect={this._onSmileySelect}/>
                     </div>
                 </div>
-                <div style={{
-                    backgroundColor: 'rgba(42,58,75,.9)',
-                    color: 'white',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center'
-                }}>
-                    <input type="file" id="file" name="userFile"
-                           onChange={onChangeFileUpload}
-                           style={{display: 'none'}}/>
-                    <button style={{
-                        border: 'none',
-                        outline: 'none'
-                    }} onClick={onClickFile}>
-                        <img style={{width: 40, height: 40}}
-                             src={"images/file_icon_50.png"} alt=""/>
-                    </button>
-                </div>
+                {
+                    navigator.userAgent.search(/Mobile/i) === -1 ?
+                        <div style={{
+                            backgroundColor: 'rgba(42,58,75,.9)',
+                            color: 'white',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center'
+                        }}>
+                            <input type="file" id="file" name="userFile"
+                                   onChange={onChangeFileUpload}
+                                   style={{display: 'none'}}/>
+                            <button style={{
+                                border: 'none',
+                                outline: 'none'
+                            }} onClick={onClickFile}>
+                                <img style={{width: 40, height: 40}}
+                                     src={"images/file_icon_50.png"} alt=""/>
+                            </button>
+                        </div>
+                        :
+                        null
+                }
                 <div className='usrmsg-form'>
                     <TextareaAutosize
                         id='usermsg'
