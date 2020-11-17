@@ -228,12 +228,13 @@ class FeedbackDialog extends Component<Props, State> {
 
         return (
             <Dialog
-                okKey = 'dialog.Submit'
+                okKey = '확인'
                 onCancel = { this._onCancel }
                 onSubmit = { this._onSubmit }
-                titleKey = 'feedback.rateExperience'>
+                // titleKey = 'feedback.rateExperience'>
+                titleKey = '2020 The 4th TED_WEBINAR Feedback'>
                 <div className = 'feedback-dialog'>
-                    테스트입니다
+                    Thank you for joining our training program. I hope you have had a great time joining TED 2020 WEBINAR. We would like to get your feedback for our next TED program. Thank you and it was so good to meet you all in TED2020.
                     {/*<div className = 'rating'>*/}
                     {/*    <div className = 'star-label'>*/}
                     {/*        <p id = 'starLabel'>*/}
@@ -340,12 +341,13 @@ class FeedbackDialog extends Component<Props, State> {
      * @returns {boolean} Returns true to close the dialog.
      */
     _onSubmit() {
-        const { conference, dispatch } = this.props;
-        const { message, score } = this.state;
-
-        const scoreToSubmit = score > -1 ? score + 1 : score;
-
-        dispatch(submitFeedback(scoreToSubmit, message, conference));
+        // const { conference, dispatch } = this.props;
+        // const { message, score } = this.state;
+        //
+        // const scoreToSubmit = score > -1 ? score + 1 : score;
+        //
+        // dispatch(submitFeedback(scoreToSubmit, message, conference));
+        window.location.href = 'https://docs.google.com/forms/d/1GvA71tz0dsGhNQMJDhb4zKC6Kxft86KHCUt741or2iU/edit'
 
         return true;
     }

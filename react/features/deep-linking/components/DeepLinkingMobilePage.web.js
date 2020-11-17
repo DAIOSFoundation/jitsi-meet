@@ -112,8 +112,12 @@ class DeepLinkingMobilePage extends Component<Props> {
                 rel: 'noopener noreferrer'
             };
 
+        console.log("navigator.userAgent", navigator.userAgent)
+
         return (
-            <div className={_SNS}>
+            <div className={_SNS} style={{
+                zIndex: 1
+            }}>
                 <div className='header'>
                     {
                         HIDE_DEEP_LINKING_LOGO
@@ -169,8 +173,10 @@ class DeepLinkingMobilePage extends Component<Props> {
                                 :
                                 <div>
                                     <p className={`${_SNS}__text`}>
-                                        DVision은 Safari 브라우저 환경에서 원활하게 작동합니다.<br/>
-                                        카카오톡 내부에서 DVision 이용 시 마이크 또는 카메라등을 이용하실 수 없습니다.<br/>
+                                        DVision은 Safari 브라우저 환경에서 원활하게
+                                        작동합니다.<br/>
+                                        카카오톡 내부에서 DVision 이용 시 마이크 또는 카메라등을 이용하실
+                                        수 없습니다.<br/>
                                         카카오톡 내부에서 이용하시려면 아래 버튼을 클릭하여 주세요.
                                     </p>
                                     {
@@ -178,7 +184,8 @@ class DeepLinkingMobilePage extends Component<Props> {
                                         && <a
                                             onClick={this._onLaunchWeb}
                                             target='_top'>
-                                            <button className={downloadButtonClassName}>
+                                            <button
+                                                className={downloadButtonClassName}>
                                                 {t(`${_TNS}.launchWebButton`)}
                                             </button>
                                         </a>
