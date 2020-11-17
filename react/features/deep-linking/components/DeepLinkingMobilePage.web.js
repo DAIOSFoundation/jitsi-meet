@@ -126,9 +126,11 @@ class DeepLinkingMobilePage extends Component<Props> {
                     }
                 </div>
                 <div className={`${_SNS}__body`}>
-                    {
-                        navigator.userAgent
-                    }
+                    {/* navigator.userAgent 테스트용 코드 {s} */}
+                    {/*{*/}
+                    {/*    navigator.userAgent*/}
+                    {/*}*/}
+                    {/* navigator.userAgent 테스트용 코드 {e} */}
                     {/*{*/}
                     {/*    SHOW_DEEP_LINKING_IMAGE*/}
                     {/*        ? <img*/}
@@ -159,6 +161,10 @@ class DeepLinkingMobilePage extends Component<Props> {
                                         DVision은 크롬 브라우저 환경에서 원활하게 작동합니다.<br/>
                                         크롬 브라우저를 이용해주세요.
                                     </p>
+                                    <p>
+                                        DVision works fine in the Chrome browser environment.<br/>
+                                        Please use a Chrome browser.
+                                    </p>
                                     <a
                                         {...onOpenLinkProperties}
                                         className={`${_SNS}__href`}
@@ -174,11 +180,14 @@ class DeepLinkingMobilePage extends Component<Props> {
                                 :
                                 <div>
                                     <p className={`${_SNS}__text`}>
-                                        DVision은 Safari 브라우저 환경에서 원활하게
-                                        작동합니다.<br/>
-                                        카카오톡 내부에서 DVision 이용 시 마이크 또는 카메라등을 이용하실
-                                        수 없습니다.<br/>
+                                        DVision은 Safari 브라우저 환경에서 원활하게 작동합니다.<br/>
+                                        카카오톡 내부에서 DVision 이용 시 마이크 또는 카메라등을 이용하실 수 없습니다.<br/>
                                         카카오톡 내부에서 이용하시려면 아래 버튼을 클릭하여 주세요.
+                                    </p>
+                                    <p>
+                                        DVision works fine in the Safari browser environment.<br/>
+                                        When using DVision inside kakaoTalk, you cannot use a microphone or camera.<br/>
+                                        Click the button below to use it inside kakaoTalk.
                                     </p>
                                     {
                                         isSupportedMobileBrowser()
