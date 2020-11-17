@@ -112,8 +112,6 @@ class DeepLinkingMobilePage extends Component<Props> {
                 rel: 'noopener noreferrer'
             };
 
-        console.log("navigator.userAgent", navigator.userAgent)
-
         return (
             <div className={_SNS} style={{
                 zIndex: 1
@@ -128,6 +126,9 @@ class DeepLinkingMobilePage extends Component<Props> {
                     }
                 </div>
                 <div className={`${_SNS}__body`}>
+                    {
+                        navigator.userAgent
+                    }
                     {/*{*/}
                     {/*    SHOW_DEEP_LINKING_IMAGE*/}
                     {/*        ? <img*/}
