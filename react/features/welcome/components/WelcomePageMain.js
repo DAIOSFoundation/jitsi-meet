@@ -33,7 +33,11 @@ const WelcomePageMain = () => {
             backgroundImage: `url(images/dvision_main_img01.png)`,
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center center'
+            backgroundPosition: 'center center',
+            position :'absolute',
+            top: 0,
+            width: '100%',
+            height: '100%'
         }}>
             <div style={{position: 'relative', width: '100%', height: '100%'}}>
                 <div style={{
