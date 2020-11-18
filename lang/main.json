@@ -744,6 +744,8 @@
         "closeChat": "Close chat",
         "documentClose": "Close shared document",
         "documentOpen": "Open shared document",
+        "wboOpen": "Open White board",
+        "wboClose": "Close White board",
         "download": "Download our apps",
         "e2ee": "End-to-End Encryption",
         "embedMeeting": "Embed meeting",
