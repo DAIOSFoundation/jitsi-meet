@@ -164,16 +164,16 @@ function _mapStateToProps(state) {
         });
     }
 
-    if (showProfileSettings) {
-        tabs.push({
-            name: SETTINGS_TABS.PROFILE,
-            component: ProfileTab,
-            label: 'profile.title',
-            props: getProfileTabProps(state),
-            styles: 'settings-pane profile-pane',
-            submit: submitProfileTab
-        });
-    }
+    // if (showProfileSettings) {
+    //     tabs.push({
+    //         name: SETTINGS_TABS.PROFILE,
+    //         component: ProfileTab,
+    //         label: 'profile.title',
+    //         props: getProfileTabProps(state),
+    //         styles: 'settings-pane profile-pane',
+    //         submit: submitProfileTab
+    //     });
+    // }
 
     if (showCalendarSettings) {
         tabs.push({
