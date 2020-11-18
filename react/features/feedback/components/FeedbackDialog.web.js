@@ -347,7 +347,7 @@ class FeedbackDialog extends Component<Props, State> {
         // const scoreToSubmit = score > -1 ? score + 1 : score;
         //
         // dispatch(submitFeedback(scoreToSubmit, message, conference));
-        window.location.href = 'https://docs.google.com/forms/d/1GvA71tz0dsGhNQMJDhb4zKC6Kxft86KHCUt741or2iU/edit'
+        window.location.href = 'https://forms.gle/mBBKUhfXj9bvG6ja7'
 
         return true;
     }
