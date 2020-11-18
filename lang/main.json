@@ -548,6 +548,7 @@
         "iWantToDialIn": "I want to dial in",
         "joinAudioByPhone": "Join with phone audio",
         "joinMeeting": "Join meeting",
+        "joinMeetingButton": "Join meeting",
         "joinWithoutAudio": "Join without audio",
         "initiated": "Call initiated",
         "linkCopied": "Link copied to clipboard",
@@ -873,9 +874,11 @@
             "video": "Video"
         },
         "calendar": "Calendar",
+        "scheduleManagement" : "scheduleManagement",
         "connectCalendarButton": "Connect your calendar",
         "connectCalendarText": "Connect your calendar to view all your meetings in {{app}}. Plus, add {{provider}} meetings to your calendar and start them with one click.",
         "enterRoomTitle": "Welcome to DVision!",
+        "roomTitle": "Create a new meeting room",
         "getHelp": "Get help",
         "go": "GO",
         "goSmall": "GO",
@@ -893,7 +896,8 @@
         "sendFeedback": "Send feedback",
         "terms": "Terms",
         "title": "DVision for non-facing imaging solution",
-        "placeHolder": "Please enter a room title"
+        "placeHolder": "Please enter a room title",
+        "remove": "Delete"
     },
     "lonelyMeetingExperience": {
         "button": "Invite others",
