@@ -275,11 +275,21 @@ export default class AbstractButton<P: Props, S: *> extends Component<P, S> {
             tooltip: this._getTooltip()
         };
 
+        const bigSizeIcon = ['toolbar.mute', 'toolbar.videomute', 'toolbar.hangup'];
+
         return (
-            <ToolboxItem
-                disabled = { this._isDisabled() }
-                onClick = { this._onClick }
-                { ...props } />
+            bigSizeIcon.includes(this.label) ?
+                <ToolboxItem
+                    bigSize = { true }
+                    disabled={this._isDisabled()}
+                    onClick={this._onClick}
+                    {...props} />
+                :
+                <ToolboxItem
+                    disabled={this._isDisabled()}
+                    onClick={this._onClick}
+                    {...props} />
+
         );
     }
 }

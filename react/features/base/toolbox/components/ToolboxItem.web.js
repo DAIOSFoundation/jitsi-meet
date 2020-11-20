@@ -109,8 +109,8 @@ export default class ToolboxItem extends AbstractToolboxItem<Props> {
      * @returns {ReactElement}
      */
     _renderIcon() {
-        const { customClass, disabled, icon, showLabel, toggled } = this.props;
-        const iconComponent = <Icon src = { icon } />;
+        const { customClass, disabled, icon, showLabel, toggled, bigSize } = this.props;
+        const iconComponent = <Icon src = { icon } size = { bigSize ? 40 : 24 } />;
         const elementType = showLabel ? 'span' : 'div';
         const className = `${showLabel ? 'overflow-menu-item-icon' : 'toolbox-icon'} ${
             toggled ? 'toggled' : ''} ${disabled ? 'disabled' : ''} ${customClass ?? ''}`;
