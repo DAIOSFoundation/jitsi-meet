@@ -146,8 +146,8 @@
         "downloadApp": "Download the app",
         "ifDoNotHaveApp": "If you don't have the app yet:",
         "ifHaveApp": "If you already have the app:",
-        "joinInApp": "Join this meeting using the app",
-        "launchWebButton": "Launch in web",
+        "joinInApp": "Open Chrome Browser",
+        "launchWebButton": "DVision Start",
         "title": "Launching your meeting in {{app}}...",
         "tryAgainButton": "Try again in desktop"
     },
@@ -548,6 +548,7 @@
         "iWantToDialIn": "I want to dial in",
         "joinAudioByPhone": "Join with phone audio",
         "joinMeeting": "Join meeting",
+        "joinMeetingButton": "Join meeting",
         "joinWithoutAudio": "Join without audio",
         "initiated": "Call initiated",
         "linkCopied": "Link copied to clipboard",
@@ -744,6 +745,8 @@
         "closeChat": "Close chat",
         "documentClose": "Close shared document",
         "documentOpen": "Open shared document",
+        "wboOpen": "Open White board",
+        "wboClose": "Close White board",
         "download": "Download our apps",
         "e2ee": "End-to-End Encryption",
         "embedMeeting": "Embed meeting",
@@ -871,9 +874,11 @@
             "video": "Video"
         },
         "calendar": "Calendar",
+        "scheduleManagement" : "scheduleManagement",
         "connectCalendarButton": "Connect your calendar",
         "connectCalendarText": "Connect your calendar to view all your meetings in {{app}}. Plus, add {{provider}} meetings to your calendar and start them with one click.",
         "enterRoomTitle": "Welcome to DVision!",
+        "roomTitle": "Create a new meeting room",
         "getHelp": "Get help",
         "go": "GO",
         "goSmall": "GO",
@@ -891,7 +896,8 @@
         "sendFeedback": "Send feedback",
         "terms": "Terms",
         "title": "DVision for non-facing imaging solution",
-        "placeHolder": "Please enter a room title"
+        "placeHolder": "Please enter a room title",
+        "remove": "Delete"
     },
     "lonelyMeetingExperience": {
         "button": "Invite others",

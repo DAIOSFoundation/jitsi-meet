@@ -31,7 +31,7 @@ import LoginPage from '../../../login/components/LoginPage';
 import CalendarList from '../../../calendar-sync/components/CalendarList.web';
 import WelcomePage from '../../../welcome/components/WelcomePage.web';
 import WelcomePageMain from '../../../welcome/components/WelcomePageMain';
-import DvisionPlanPage from '../../../welcome/components/DvisionPlanPage';
+import DVisionPlanPage from '../../../welcome/components/DvisionPlanPage';
 
 const middlewares = [];
 
@@ -179,7 +179,7 @@ export default class BaseApp extends Component<*, State> {
                                         path="/plan"
                                         name="planPage"
                                         render={(props) =>
-                                            <DvisionPlanPage {...props} />}
+                                            <DVisionPlanPage {...props} />}
                                     />
                                     <Route
                                         exact

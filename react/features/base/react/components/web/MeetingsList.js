@@ -11,6 +11,7 @@ import Container from './Container';
 import Text from './Text';
 
 import {Button} from './index';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 type Props = {
 
@@ -181,7 +182,7 @@ export default class MeetingsList extends Component<Props> {
                         </Text>
                     </Container>
                     <Container className='right-column'>
-                        <Text className='title' style={{color:'0960ff'}}>
+                        <Text className='title' style={{color: '0960ff'}}>
                             {title}
                         </Text>
                         {
@@ -216,15 +217,13 @@ export default class MeetingsList extends Component<Props> {
                             <button style={{
                                 padding: '9px 17px 9px 17px',
                                 backgroundColor: '#ffe7e7',
-                                fontWeight:'bold',
-                                color:'black',
+                                fontWeight: 'bold',
+                                color: 'black',
                                 border: 'none',
                                 outline: 'none',
                                 borderRadius: 17,
                             }} onClick={() => deleteRecentListEntry(meeting)}>
-                                <Text>
-                                    삭제
-                                </Text>
+                              <DeleteForeverIcon/>
                             </button>
                         </div>
                 }

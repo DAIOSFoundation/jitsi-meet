@@ -367,6 +367,9 @@ class Toolbox extends Component<Props, State> {
         return (
             <div
                 className = { rootClassNames }
+                style={{
+                    zIndex: 1
+                }}
                 id = 'new-toolbox'
                 onMouseOut = { this._onMouseOut }
                 onMouseOver = { this._onMouseOver }>

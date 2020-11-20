@@ -308,7 +308,7 @@ class Prejoin extends Component<Props, State> {
                 showAvatar = { showAvatar }
                 showConferenceInfo = { showConferenceInfo }
                 skipPrejoinButton = { this._renderSkipPrejoinButton() }
-                title = { t('prejoin.joinMeeting') }
+                title = { t('prejoin.premeeting') }
                 videoMuted = { !showCameraPreview }
                 videoTrack = { videoTrack }>
                 {showJoinActions && (

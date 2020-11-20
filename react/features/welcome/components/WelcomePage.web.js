@@ -225,7 +225,9 @@ class WelcomePage extends AbstractWelcomePage {
                                     onClick={onClickCalendar}>
                                 <img src={"images/icon-calendar.png"} width={20}
                                      height={20} style={{marginRight: 5}}/>
-                                <span style={{marginLeft: 5, fontSize: '14px'}}>일정 관리</span>
+                                <span style={{marginLeft: 5, fontSize: '14px'}}>
+                                      { t('welcomepage.scheduleManagement') }
+                                </span>
                             </button>
                             <SettingsButton
                                 defaultTab={SETTINGS_TABS.CALENDAR}/>
@@ -246,8 +248,9 @@ class WelcomePage extends AbstractWelcomePage {
                         {/*</p>*/}
                         <div className='header-text'
                              style={{textAlign: 'left'}}>
-                            <h3 style={{color: 'black', fontWeight: 'bold'}}>새로운
-                                회의방 만들기</h3>
+                            <h3 style={{color: 'black', fontWeight: 'bold'}}>
+                                { t('welcomepage.roomTitle') }
+                            </h3>
                         </div>
                         <div id='enter_room'>
                             <div className='enter-room-input-container'>

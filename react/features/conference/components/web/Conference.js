@@ -202,7 +202,9 @@ class Conference extends AbstractConference<Props, *> {
                 onMouseMove = { this._onShowToolbar }>
                 <BasicModal/>
                 <Notice />
-                <div id = 'videospace'>
+                <div id = 'videospace' style={{
+                    zIndex: 1
+                }}>
                     <LargeVideo _closeChatWindow = {this._closeChatWindow}/>
                     <KnockingParticipantList />
                     <Filmstrip _closeChatWindow = {this._closeChatWindow} filmstripOnly = { filmstripOnly } />
