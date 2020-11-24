@@ -1323,7 +1323,9 @@ class Toolbox extends Component<Props, State> {
 
         return (
             <div className = 'toolbox-content'>
-                <div className = 'button-group-left'>
+                <div className = 'button-group-left' style={{
+                    display: 'none'
+                }}>
                     { buttonsLeft.indexOf('chat') !== -1
                         && <div className = 'toolbar-button-with-badge'>
                             <ToolbarButton

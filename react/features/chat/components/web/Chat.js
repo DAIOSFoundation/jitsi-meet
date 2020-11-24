@@ -134,17 +134,17 @@ class Chat extends AbstractChat<Props> {
     _renderChatHeader() {
         return (
             <div className = 'chat-header'>
-                {/* Medicity Version */}
-                {/*<div style={{*/}
-                {/*    display: 'flex',*/}
-                {/*    alignItems: 'center',*/}
-                {/*    height: '100%',*/}
-                {/*    justifyContent: 'center'*/}
-                {/*}}>*/}
-                {/*    <button className='shareLinkButton' onClick={() => window.open('https://forms.gle/k4GcYrZyAJkp9qdb9')}>*/}
-                {/*        질문작성*/}
-                {/*    </button>*/}
-                {/*</div>*/}
+                 {/*Medicity Version*/}
+                <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    height: '100%',
+                    justifyContent: 'center'
+                }}>
+                    <button className='shareLinkButton' onClick={() => window.open('https://forms.gle/k4GcYrZyAJkp9qdb9')}>
+                        Q & A
+                    </button>
+                </div>
                 <div
                     className = 'chat-close'
                     onClick = { this.props._onToggleChat }>
