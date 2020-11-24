@@ -87,7 +87,6 @@ import OverflowMenuButton from './OverflowMenuButton';
 import OverflowMenuProfileItem from './OverflowMenuProfileItem';
 import ToolbarButton from './ToolbarButton';
 import VideoSettingsButton from './VideoSettingsButton';
-import {JitsiRecordingConstants} from '../../../base/lib-jitsi-meet';
 
 /**
  * The type of the React {@code Component} props of {@link Toolbox}.
@@ -1323,40 +1322,33 @@ class Toolbox extends Component<Props, State> {
         overflowMenuContent.splice(
             1, 0, ...this._renderMovedButtons(movedButtons));
 
-        console.log("TEST", this.props._isLiveStreamRunning)
-
         return (
             <div className='toolbox-content'>
-                {
-                    !this.props._isLiveStreamRunning ?
-                        <div className='button-group-left'>
-                            {buttonsLeft.indexOf('chat') !== -1
-                            && <div className='toolbar-button-with-badge'>
-                                <ToolbarButton
-                                    accessibilityLabel={t('toolbar.accessibilityLabel.chat')}
-                                    icon={IconChat}
-                                    onClick={this._onToolbarToggleChat}
-                                    toggled={_chatOpen}
-                                    tooltip={t('toolbar.chat')}/>
-                                <ChatCounter/>
-                            </div>}
-                            {buttonsLeft.indexOf('desktop') !== -1
-                            && this._renderDesktopSharingButton()}
-                            {buttonsLeft.indexOf('raisehand') !== -1
-                            && <ToolbarButton
-                                accessibilityLabel={t('toolbar.accessibilityLabel.raiseHand')}
-                                icon={IconRaisedHand}
-                                onClick={this._onToolbarToggleRaiseHand}
-                                toggled={_raisedHand}
-                                tooltip={t('toolbar.raiseHand')}/>}
-                            {
-                                buttonsLeft.indexOf('closedcaptions') !== -1
-                                && <ClosedCaptionButton/>
-                            }
-                        </div>
-                        :
-                        null
-                }
+                <div className='button-group-left'>
+                    {buttonsLeft.indexOf('chat') !== -1
+                    && <div className='toolbar-button-with-badge'>
+                        <ToolbarButton
+                            accessibilityLabel={t('toolbar.accessibilityLabel.chat')}
+                            icon={IconChat}
+                            onClick={this._onToolbarToggleChat}
+                            toggled={_chatOpen}
+                            tooltip={t('toolbar.chat')}/>
+                        <ChatCounter/>
+                    </div>}
+                    {buttonsLeft.indexOf('desktop') !== -1
+                    && this._renderDesktopSharingButton()}
+                    {buttonsLeft.indexOf('raisehand') !== -1
+                    && <ToolbarButton
+                        accessibilityLabel={t('toolbar.accessibilityLabel.raiseHand')}
+                        icon={IconRaisedHand}
+                        onClick={this._onToolbarToggleRaiseHand}
+                        toggled={_raisedHand}
+                        tooltip={t('toolbar.raiseHand')}/>}
+                    {
+                        buttonsLeft.indexOf('closedcaptions') !== -1
+                        && <ClosedCaptionButton/>
+                    }
+                </div>
 
                 <div className='button-group-center'>
                     {this._renderAudioButton()}
@@ -1480,9 +1472,7 @@ function _mapStateToProps(state) {
             || sharedVideoStatus === 'start'
             || sharedVideoStatus === 'pause',
         _visible: isToolboxVisible(state),
-        _visibleButtons: equals(visibleButtons, buttons) ? visibleButtons : buttons,
-        _isLiveStreamRunning: Boolean(
-            getActiveSession(state, JitsiRecordingConstants.mode.STREAM)),
+        _visibleButtons: equals(visibleButtons, buttons) ? visibleButtons : buttons
     };
 }
 
