@@ -82,24 +82,24 @@
             .toolbox-button {
 
                 .toolbox-icon {
-                    background-color: #fff;
+                    background-color: #3e65dd;
                     border-radius: 50%;
-                    border: 1px solid #d1dbe8;
+                    // border: 1px solid #d1dbe8;
                     margin: 0px 4px;
                     width: 38px;
                     height: 38px;
         
                     &:hover {
-                        background-color: #daebfa;
-                        border: 1px solid #daebfa;
+                        background-color: #2242a6
+                        // border: 1px solid #2242a6;
                     }
         
                     &.toggled {
-                        background: #2a3a4b;
-                        border: 1px solid #5e6d7a;
+                        background: #58627c;
+                        // border: 1px solid #5e6d7a;
     
                         svg {
-                            fill: #fff;
+                            fill: #3e65dd;
                         }
         
                         &:hover {
@@ -109,7 +109,7 @@
         
                     &.disabled, .disabled & {
                         cursor: initial;
-                        color: #fff;
+                        color: #3e65dd;
                         background-color: #a4b8d1;
                     }
     
