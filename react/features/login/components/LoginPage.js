@@ -57,13 +57,13 @@ const LoginPage = () => {
     const classes = useStyles();
 
     useEffect(() => {
-        const expires = new Date();
-        expires.setDate(Date.now() + 3600)
+        // const expires = new Date();
+        // expires.setDate(Date.now() + 3600)
 
         if (jwt) {
             cookies.set('jwt', jwt, {
                 path: '/',
-                maxAge: 3600,
+                maxAge: 25200,
                 secure: true
             });
         } else {
