@@ -142,7 +142,7 @@ class Chat extends AbstractChat<Props> {
                     justifyContent: 'center'
                 }}>
                     <button className='shareLinkButton' onClick={() => window.open('https://forms.gle/k4GcYrZyAJkp9qdb9')}>
-                        Q & A
+                        Question
                     </button>
                 </div>
                 <div
