@@ -1328,7 +1328,7 @@ class Toolbox extends Component<Props, State> {
         return (
             <div className='toolbox-content'>
                 {
-                    this.props._isLiveStreamRunning ?
+                    !this.props._isLiveStreamRunning ?
                         <div className='button-group-left'>
                             {buttonsLeft.indexOf('chat') !== -1
                             && <div className='toolbar-button-with-badge'>
