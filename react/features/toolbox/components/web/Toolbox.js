@@ -87,7 +87,6 @@ import OverflowMenuButton from './OverflowMenuButton';
 import OverflowMenuProfileItem from './OverflowMenuProfileItem';
 import ToolbarButton from './ToolbarButton';
 import VideoSettingsButton from './VideoSettingsButton';
-import Cookies from 'universal-cookie';
 
 /**
  * The type of the React {@code Component} props of {@link Toolbox}.
@@ -1323,12 +1322,8 @@ class Toolbox extends Component<Props, State> {
         overflowMenuContent.splice(
             1, 0, ...this._renderMovedButtons(movedButtons));
 
-        const cookies = new Cookies();
-
         return (
             <div className='toolbox-content'>
-                {
-                    !cookies.get('jwt') ?
                         <div className='button-group-left'>
                             {buttonsLeft.indexOf('chat') !== -1
                             && <div className='toolbar-button-with-badge'>
@@ -1354,9 +1349,6 @@ class Toolbox extends Component<Props, State> {
                                 && <ClosedCaptionButton/>
                             }
                         </div>
-                        :
-                        null
-                }
                 <div className='button-group-center'>
                     {this._renderAudioButton()}
                     <HangupButton
