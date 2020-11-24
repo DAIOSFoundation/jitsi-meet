@@ -1322,11 +1322,8 @@ class Toolbox extends Component<Props, State> {
         overflowMenuContent.splice(
             1, 0, ...this._renderMovedButtons(movedButtons));
 
-        console.log("TEST", this.props.streamStatus)
         return (
             <div className='toolbox-content'>
-                {
-                    this.props.streamStatus ?
                         <div className='button-group-left'>
                             {buttonsLeft.indexOf('chat') !== -1
                             && <div className='toolbar-button-with-badge'>
@@ -1352,9 +1349,6 @@ class Toolbox extends Component<Props, State> {
                                 && <ClosedCaptionButton/>
                             }
                         </div>
-                        :
-                        null
-                }
                 <div className='button-group-center'>
                     {this._renderAudioButton()}
                     <HangupButton
@@ -1477,8 +1471,7 @@ function _mapStateToProps(state) {
             || sharedVideoStatus === 'start'
             || sharedVideoStatus === 'pause',
         _visible: isToolboxVisible(state),
-        _visibleButtons: equals(visibleButtons, buttons) ? visibleButtons : buttons,
-        streamStatus: state.global.streamStatus
+        _visibleButtons: equals(visibleButtons, buttons) ? visibleButtons : buttons
     };
 }
 

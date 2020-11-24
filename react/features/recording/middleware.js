@@ -45,8 +45,6 @@ import {
     RECORDING_ON_SOUND_FILE
 } from './sounds';
 
-import * as globalActions from '../../modules/global/actions';
-
 declare var interfaceConfig: Object;
 
 /**
@@ -182,9 +180,6 @@ MiddlewareRegistry.register(({ dispatch, getState }) => next => action => {
                 }
 
                 if (soundID) {
-                    if(soundID === 'LIVE_STREAMING_ON_SOUND'){
-                        dispatch(globalActions.change_stream_status(true))
-                    }
                     dispatch(playSound(soundID));
                 }
             } else if (updatedSessionData.status === OFF
