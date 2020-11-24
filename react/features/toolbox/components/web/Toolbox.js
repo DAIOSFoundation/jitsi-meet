@@ -1324,7 +1324,7 @@ class Toolbox extends Component<Props, State> {
         return (
             <div className = 'toolbox-content'>
                 {
-                    !this.props._sharingVideo ?
+                    this.props._sharingVideo ?
                         <div className = 'button-group-left'>
                             { buttonsLeft.indexOf('chat') !== -1
                             && <div className = 'toolbar-button-with-badge'>
