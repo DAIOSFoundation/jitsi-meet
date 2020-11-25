@@ -232,9 +232,12 @@ class FeedbackDialog extends Component<Props, State> {
                 onCancel = { this._onCancel }
                 onSubmit = { this._onSubmit }
                 // titleKey = 'feedback.rateExperience'>
-                titleKey = '2020 The 4th TED_WEBINAR Feedback'>
-                <div className = 'feedback-dialog'>
-                    Thank you for joining our training program. I hope you have had a great time joining TED 2020 WEBINAR. We would like to get your feedback for our next TED program. Thank you and it was so good to meet you all in TED2020.
+                titleKey = 'TED2020-Webinar Feedback Survey'>
+                <div className = 'feedback-dialog' style={{
+                    fontSize: 15
+                }}>
+                    Join into survey! We would like to get your feedback for our next TED program.<br/>
+                    Thank you and it was so good to meet you all in TED2020.
                     {/*<div className = 'rating'>*/}
                     {/*    <div className = 'star-label'>*/}
                     {/*        <p id = 'starLabel'>*/}
