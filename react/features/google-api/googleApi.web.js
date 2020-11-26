@@ -235,7 +235,6 @@ const googleApi = {
             title: entry.summary,
             url: this._getConferenceDataVideoUri(entry.conferenceData),
             attendees: entry.attendees,
-            creator: entry.creator.email
         };
     },
 
