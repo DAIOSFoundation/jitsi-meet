@@ -24,12 +24,6 @@ import {withRouter} from 'react-router-dom'
 export const ROOM_NAME_VALIDATE_PATTERN_STR = '^[^?&:\u0022\u0027%#]+$';
 
 /**
- * Maximum number of pixels corresponding to a mobile layout.
- * @type {number}
- */
-const WINDOW_WIDTH_THRESHOLD = 425;
-
-/**
  * The Web container rendering the welcome page.
  *
  * @extends AbstractWelcomePage
@@ -81,6 +75,17 @@ class WelcomePage extends AbstractWelcomePage {
          */
         this._additionalToolbarContentRef = null;
 
+        this._additionalCardRef = null;
+
+        /**
+         * The template to use as the additional card displayed near the main one.
+         *
+         * @private
+         * @type {HTMLTemplateElement|null}
+         */
+        this._additionalCardTemplate = document.getElementById(
+            'welcome-page-additional-card-template');
+
         /**
          * The template to use as the main content for the welcome page. If
          * not found then only the welcome page head will display.
@@ -105,12 +110,14 @@ class WelcomePage extends AbstractWelcomePage {
         // Bind event handlers so they are only bound once per instance.
         this._onFormSubmit = this._onFormSubmit.bind(this);
         this._onRoomChange = this._onRoomChange.bind(this);
+        this._setAdditionalCardRef = this._setAdditionalCardRef.bind(this);
         this._setAdditionalContentRef
             = this._setAdditionalContentRef.bind(this);
         this._setRoomInputRef = this._setRoomInputRef.bind(this);
         this._setAdditionalToolbarContentRef
             = this._setAdditionalToolbarContentRef.bind(this);
         this._onTabSelected = this._onTabSelected.bind(this);
+        this._renderFooter = this._renderFooter.bind(this);
     }
 
     /**
@@ -141,6 +148,11 @@ class WelcomePage extends AbstractWelcomePage {
             );
         }
 
+        if (this._shouldShowAdditionalCard()) {
+            this._additionalCardRef.appendChild(
+                this._additionalCardTemplate.content.cloneNode(true)
+            );
+        }
     }
 
     /**
@@ -162,11 +174,11 @@ class WelcomePage extends AbstractWelcomePage {
      * @returns {ReactElement|null}
      */
     render() {
-        const {_moderatedRoomServiceUrl, t} = this.props;
-        const {APP_NAME, DEFAULT_WELCOME_PAGE_LOGO_URL} = interfaceConfig;
+        const { _moderatedRoomServiceUrl, t } = this.props;
+        const { DEFAULT_WELCOME_PAGE_LOGO_URL, DISPLAY_WELCOME_FOOTER } = interfaceConfig;
+        const showAdditionalCard = this._shouldShowAdditionalCard();
         const showAdditionalContent = this._shouldShowAdditionalContent();
         const showAdditionalToolbarContent = this._shouldShowAdditionalToolbarContent();
-        const showResponsiveText = this._shouldShowResponsiveText();
 
         const cookies = new Cookies();
 
@@ -276,11 +288,7 @@ class WelcomePage extends AbstractWelcomePage {
                                 className='welcome-page-button'
                                 id='enter_room_button'
                                 onClick={this._onFormSubmit}>
-                                {
-                                    showResponsiveText
-                                        ? t('welcomepage.goSmall')
-                                        : t('welcomepage.go')
-                                }
+                                { t('welcomepage.go')}
                                 <div style={{width: 24, height: 24}}>
                                     <img src={'images/new-room-icon.png'}
                                          width={'100%'} height={'100%'} alt=""/>
@@ -306,6 +314,7 @@ class WelcomePage extends AbstractWelcomePage {
                         : null}
                 </div>
             </div>
+
         );
     }
 
@@ -367,6 +376,45 @@ class WelcomePage extends AbstractWelcomePage {
     }
 
     /**
+     * Renders the footer.
+     *
+     * @returns {ReactElement}
+     */
+    _renderFooter() {
+        const { t } = this.props;
+        const {
+            MOBILE_DOWNLOAD_LINK_ANDROID,
+            MOBILE_DOWNLOAD_LINK_F_DROID,
+            MOBILE_DOWNLOAD_LINK_IOS
+        } = interfaceConfig;
+
+        return (<footer className = 'welcome-footer'>
+            <div className = 'welcome-footer-centered'>
+                <div className = 'welcome-footer-padded'>
+                    <div className = 'welcome-footer-row-block welcome-footer--row-1'>
+                        <div className = 'welcome-footer-row-1-text'>{t('welcomepage.jitsiOnMobile')}</div>
+                        <a
+                            className = 'welcome-badge'
+                            href = { MOBILE_DOWNLOAD_LINK_IOS }>
+                            <img src = './images/app-store-badge.png' />
+                        </a>
+                        <a
+                            className = 'welcome-badge'
+                            href = { MOBILE_DOWNLOAD_LINK_ANDROID }>
+                            <img src = './images/google-play-badge.png' />
+                        </a>
+                        <a
+                            className = 'welcome-badge'
+                            href = { MOBILE_DOWNLOAD_LINK_F_DROID }>
+                            <img src = './images/f-droid-badge.png' />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>);
+    }
+
+    /**
      * Renders tabs to show previous meetings and upcoming calendar events. The
      * tabs are purposefully hidden on mobile browsers.
      *
@@ -403,6 +451,19 @@ class WelcomePage extends AbstractWelcomePage {
                 onSelect={this._onTabSelected}
                 selected={this.state.selectedTab}
                 tabs={tabs}/>);
+    }
+
+    /**
+     * Sets the internal reference to the HTMLDivElement used to hold the
+     * additional card shown near the tabs card.
+     *
+     * @param {HTMLDivElement} el - The HTMLElement for the div that is the root
+     * of the welcome page content.
+     * @private
+     * @returns {void}
+     */
+    _setAdditionalCardRef(el) {
+        this._additionalCardRef = el;
     }
 
     /**
@@ -444,6 +505,19 @@ class WelcomePage extends AbstractWelcomePage {
     }
 
     /**
+     * Returns whether or not an additional card should be displayed near the tabs.
+     *
+     * @private
+     * @returns {boolean}
+     */
+    _shouldShowAdditionalCard() {
+        return interfaceConfig.DISPLAY_WELCOME_PAGE_ADDITIONAL_CARD
+            && this._additionalCardTemplate
+            && this._additionalCardTemplate.content
+            && this._additionalCardTemplate.innerHTML.trim();
+    }
+
+    /**
      * Returns whether or not additional content should be displayed below
      * the welcome page's header for entering a room name.
      *
@@ -470,20 +544,6 @@ class WelcomePage extends AbstractWelcomePage {
             && this._additionalToolbarContentTemplate.content
             && this._additionalToolbarContentTemplate.innerHTML.trim();
     }
-
-    /**
-     * Returns whether or not the screen has a size smaller than a custom margin
-     * and therefore display different text in the go button.
-     *
-     * @private
-     * @returns {boolean}
-     */
-    _shouldShowResponsiveText() {
-        const {innerWidth} = window;
-
-        return innerWidth <= WINDOW_WIDTH_THRESHOLD;
-    }
-
 }
 
 export default withRouter(translate(connect(_mapStateToProps)(WelcomePage)));

@@ -15,13 +15,13 @@ body.welcome-page {
 
     .welcome-illust {
         width: 40%;
-        background: #3f83ff;
+        background: #3F83FF;
         position: relative;
     }
 
-    .meetingRoomArea{
+    .meetingRoomArea {
         width: 60%;
-        background-color: #f2f3f6;
+        background-color: #F2F3F6;
     }
 
     .header {
@@ -121,7 +121,6 @@ body.welcome-page {
                     color: #253858;
                 }
             }
-
         }
 
         #moderated-meetings {
@@ -146,7 +145,7 @@ body.welcome-page {
             text-align: left;
             min-height: 354px;
             width: 710px;
-            background: #ffffff;
+            background: #FFFFFF;
             display: $welcomePageTabContainerDisplay;
             flex-direction: column;
 
@@ -198,9 +197,9 @@ body.welcome-page {
         height: $welcomePageButtonHeight;
         font-size: $welcomePageButtonFontSize;
         font-weight: $welcomePageButtonFontWeight;
-        background: #e7edff;
+        background: #E7EDFF;
         border-radius: $welcomePageButtonBorderRadius;
-        color: #3f4452;
+        color: #3F4452;
         text-align: center;
         vertical-align: middle;
         line-height: $welcomePageButtonLineHeight;
@@ -226,8 +225,8 @@ body.welcome-page {
         }
     }
 
-    .welcome-page-calendar-button{
-        background-color: #0960ff;
+    .welcome-page-calendar-button {
+        background-color: #0960FF;
         padding: 10px;
         height: 36px;
         font-size: 14px;
@@ -241,7 +240,6 @@ body.welcome-page {
     }
 
     .welcome-watermark {
-
         .watermark.leftwatermark {
             width: $welcomePageWatermarkWidth;
             height: $welcomePageWatermarkHeight;

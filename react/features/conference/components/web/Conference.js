@@ -14,7 +14,7 @@ import { CalleeInfoContainer } from '../../../invite';
 import { LargeVideo } from '../../../large-video';
 import { KnockingParticipantList, LobbyScreen } from '../../../lobby';
 import { Prejoin, isPrejoinPageVisible } from '../../../prejoin';
-import { fullScreenChanged, setToolboxAlwaysVisible, showToolbox } from '../../../toolbox/actions.web';
+import { fullScreenChanged, showToolbox } from '../../../toolbox/actions.web';
 import { closeChatWindow } from '../../../chat';
 import { Toolbox } from '../../../toolbox/components/web';
 import { LAYOUTS, getCurrentLayout } from '../../../video-layout';
@@ -31,7 +31,6 @@ import { default as Notice } from './Notice';
 import BasicModal from '../../../../components/Modal/BasicModal';
 
 declare var APP: Object;
-declare var config: Object;
 declare var interfaceConfig: Object;
 
 /**
@@ -183,17 +182,12 @@ class Conference extends AbstractConference<Props, *> {
      */
     render() {
         const {
-            // XXX The character casing of the name filmStripOnly utilized by
-            // interfaceConfig is obsolete but legacy support is required.
-            filmStripOnly: filmstripOnly
-        } = interfaceConfig;
-        const {
             _iAmRecorder,
             _isLobbyScreenVisible,
             _layoutClassName,
             _showPrejoin
         } = this.props;
-        const hideLabels = filmstripOnly || _iAmRecorder;
+        const hideLabels = _iAmRecorder;
 
         return (
             <div
@@ -207,18 +201,18 @@ class Conference extends AbstractConference<Props, *> {
                 }}>
                     <LargeVideo _closeChatWindow = {this._closeChatWindow}/>
                     <KnockingParticipantList />
-                    <Filmstrip _closeChatWindow = {this._closeChatWindow} filmstripOnly = { filmstripOnly } />
+                    <Filmstrip _closeChatWindow = {this._closeChatWindow}/>
                     { hideLabels || <Labels /> }
                 </div>
 
-                { filmstripOnly || _showPrejoin || _isLobbyScreenVisible || <Toolbox /> }
-                { filmstripOnly || <Chat /> }
+                { _showPrejoin || _isLobbyScreenVisible || <Toolbox /> }
+                <Chat />
 
                 { this.renderNotificationsContainer() }
 
                 <CalleeInfoContainer />
 
-                { !filmstripOnly && _showPrejoin && <Prejoin />}
+                { _showPrejoin && <Prejoin />}
             </div>
         );
     }
@@ -269,9 +263,6 @@ class Conference extends AbstractConference<Props, *> {
         dispatch(connect());
 
         maybeShowSuboptimalExperienceNotification(dispatch, t);
-
-        interfaceConfig.filmStripOnly
-            && dispatch(setToolboxAlwaysVisible(true));
     }
 }
 

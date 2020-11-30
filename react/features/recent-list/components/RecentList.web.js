@@ -6,7 +6,7 @@ import type { Dispatch } from 'redux';
 import { translate } from '../../base/i18n';
 import { MeetingsList } from '../../base/react';
 import { connect } from '../../base/redux';
-import { _deleteRecentListEntry } from '../actions';
+import { deleteRecentListEntry } from '../actions';
 import { isRecentListEnabled, toDisplayableList } from '../functions';
 
 import AbstractRecentList from './AbstractRecentList';
@@ -35,9 +35,6 @@ type Props = {
      * The recent list from the Redux store.
      */
     _recentList: Array<Object>,
-
-    // 최근 회의방 리스트 개별 제거 함수
-    _deleteRecentListEntry: Function
 };
 
 /**
@@ -58,6 +55,20 @@ class RecentList extends AbstractRecentList<Props> {
         this._getRenderListEmptyComponent
             = this._getRenderListEmptyComponent.bind(this);
         this._onPress = this._onPress.bind(this);
+        this._onItemDelete = this._onItemDelete.bind(this);
+    }
+
+    _onItemDelete: Object => void;
+
+    /**
+     * Deletes a recent entry.
+     *
+     * @param {Object} entry - The entry to be deleted.
+     * @inheritdoc
+     */
+    _onItemDelete(entry) {
+        console.log("TEST",entry)
+        this.props.dispatch(deleteRecentListEntry(entry));
     }
 
     /**
@@ -76,18 +87,13 @@ class RecentList extends AbstractRecentList<Props> {
         } = this.props;
         const recentList = toDisplayableList(_recentList);
 
-        // 최근 회의방 리스트 개별 제거 Dispatch
-        const deleteRecentListEntry = (entryId) => {
-            dispatch(_deleteRecentListEntry(entryId))
-        }
-
         return (
             <MeetingsList
-                deleteRecentListEntry = { deleteRecentListEntry }
                 disabled = { disabled }
                 hideURL = { true }
                 listEmptyComponent = { this._getRenderListEmptyComponent() }
                 meetings = { recentList }
+                onItemDelete = { this._onItemDelete }
                 onPress = { this._onPress } />
         );
     }

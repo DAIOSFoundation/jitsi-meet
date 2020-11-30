@@ -6,6 +6,7 @@ import {
     getLocalizedDateFormatter,
     getLocalizedDurationFormatter
 } from '../../../i18n';
+import { Icon, IconTrash } from '../../../icons';
 
 import Container from './Container';
 import Text from './Text';
@@ -41,12 +42,10 @@ type Props = {
     meetings: Array<Object>,
 
     /**
-     * Defines what happens when  an item in the section list is clicked
+     * Handler for deleting an item.
      */
-    onItemClick: Function,
-
     // 최근 회의방 리스트 개별 제거 함수
-    deleteRecentListEntry: Function
+    onItemDelete?: Function
 };
 
 /**
@@ -144,6 +143,25 @@ export default class MeetingsList extends Component<Props> {
         return null;
     }
 
+    _onDelete: Object => Function;
+
+    /**
+     * Returns a function that is used on the onDelete callback.
+     *
+     * @param {Object} item - The item to be deleted.
+     * @private
+     * @returns {Function}
+     */
+    _onDelete(item) {
+        const { onItemDelete } = this.props;
+
+        return evt => {
+            evt.stopPropagation();
+
+            onItemDelete && onItemDelete(item);
+        };
+    }
+
     _renderItem: (Object, number) => React$Node;
 
     /**
@@ -162,71 +180,50 @@ export default class MeetingsList extends Component<Props> {
             title,
             url
         } = meeting;
-        const {hideURL = false, deleteRecentListEntry} = this.props;
+        const { hideURL = false, onItemDelete } = this.props;
         const onPress = this._onPress(url);
         const rootClassName
             = `item ${
             onPress ? 'with-click-handler' : 'without-click-handler'}`;
         return (
-            // eslint-disable-next-line react-native/no-inline-styles
-            <Container style={{position: 'relative'}} key={index}>
-                <Container
-                    onClick={onPress}
-                    className={rootClassName}>
-                    <Container className='left-column'>
-                        <Text className='date'>
-                            {_toDateString(date)}
-                        </Text>
-                        <Text>
-                            {_toTimeString(time)}
-                        </Text>
-                    </Container>
-                    <Container className='right-column'>
-                        <Text className='title' style={{color: '0960ff'}}>
-                            {title}
-                        </Text>
-                        {
-                            hideURL || !url ? null : (
-                                <Text>
-                                    {url}
-                                </Text>)
-                        }
-                        {
-                            typeof duration === 'number' ? (
-                                <Text>
-                                    {getLocalizedDurationFormatter(duration)}
-                                </Text>) : null
-                        }
-                    </Container>
-                    <Container className='actions'>
-                        {elementAfter || null}
-                    </Container>
+            <Container
+                className = { rootClassName }
+                key = { index }
+                onClick = { onPress }>
+                <Container className = 'left-column'>
+                    <Text className = 'title'>
+                        { _toDateString(date) }
+                    </Text>
+                    <Text className = 'subtitle'>
+                        { _toTimeString(time) }
+                    </Text>
+                </Container>
+                <Container className = 'right-column'>
+                    <Text className = 'title'>
+                        { title }
+                    </Text>
+                    {
+                        hideURL || !url ? null : (
+                            <Text>
+                                { url }
+                            </Text>)
+                    }
+                    {
+                        typeof duration === 'number' ? (
+                            <Text className = 'subtitle'>
+                                { getLocalizedDurationFormatter(duration) }
+                            </Text>) : null
+                    }
+                </Container>
+                <Container className = 'actions'>
+                    { elementAfter || null }
+
+                    { onItemDelete && <Icon
+                        className = 'delete-meeting'
+                        onClick = { this._onDelete(meeting) }
+                        src = { IconTrash } />}
                 </Container>
                 {/* eslint-disable-next-line react-native/no-inline-styles */}
-                {/* 미팅 리스트 - 캘린더 / 최근방 리스트 분기처리 */}
-                {
-                    elementAfter ? null :
-                        <div
-                            style={{
-                                position: 'absolute',
-                                top: '50%',
-                                right: 30,
-                                transform: 'translate(0,-50%)'
-                            }}>
-                            {/* eslint-disable-next-line react/jsx-no-bind */}
-                            <button style={{
-                                padding: '9px 17px 9px 17px',
-                                backgroundColor: '#ffe7e7',
-                                fontWeight: 'bold',
-                                color: 'black',
-                                border: 'none',
-                                outline: 'none',
-                                borderRadius: 17,
-                            }} onClick={() => deleteRecentListEntry(meeting)}>
-                              <DeleteForeverIcon/>
-                            </button>
-                        </div>
-                }
             </Container>
         );
     }
