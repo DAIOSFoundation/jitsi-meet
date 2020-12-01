@@ -71,10 +71,11 @@ export default function Icon(props: Props) {
     const calculatedColor = color ?? styleColor ?? DEFAULT_COLOR;
     const calculatedSize = size ?? styleSize ?? DEFAULT_SIZE;
     // Setting 버튼 분기처리 ( 버튼 이름이 Setting 버튼일 시 테마색 지정 )
+    console.log("props.src.name =>", props.src.name);
     return (
         <div>
             {
-                (props.src.name === 'SvgSettings' || props.src.name === 'Fn') ?
+                (props.src.name === 'SvgSettings' || props.src.name === 'qn') ?
                     <Container
                         onClick={onClick}
                         style={restStyle}>
