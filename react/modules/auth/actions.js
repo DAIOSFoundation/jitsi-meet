@@ -17,6 +17,10 @@ export const change_password = createAction(CHANGE_PASSWORD);
 export const CHANGE_IS_VALID_PASSWORD = 'auth/CHANGE_IS_VALID_PASSWORD'
 export const change_is_valid_password = createAction(CHANGE_IS_VALID_PASSWORD);
 
+// 로그인 실패 메시지
+export const CHANGE_LOGIN_ERROR_MSG = 'auth/CHANGE_LOGIN_ERROR_MSG'
+export const change_login_error_msg = createAction(CHANGE_LOGIN_ERROR_MSG);
+
 // DVision 로그인 버튼
 export const [
     POST_LOGIN,

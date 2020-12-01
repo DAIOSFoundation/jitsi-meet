@@ -42,13 +42,15 @@ const LoginPage = () => {
         jwt,
         id,
         password,
+        loginErrorMsg,
         loading
     } = useSelector(
         (state) => ({
             jwt: state.auth.jwt,
             id: state.auth.id,
             password: state.auth.password,
-            loading: state.loading['auth/POST_LOGIN'],
+            loginErrorMsg: state.auth.loginErrorMsg,
+            loading: state.loading['auth/POST_LOGIN']
         }), shallowEqual)
 
     const [cardAnimaton, setCardAnimation] = useState("cardHidden");
@@ -57,9 +59,14 @@ const LoginPage = () => {
     const classes = useStyles();
 
     useEffect(() => {
+        dispatch(authActions.change_id(''));
+        dispatch(authActions.change_password(''));
+        dispatch(authActions.change_login_error_msg(null));
+    }, [])
+
+    useEffect(() => {
         // const expires = new Date();
         // expires.setDate(Date.now() + 3600)
-
         if (jwt) {
             cookies.set('jwt', jwt, {
                 path: '/',
@@ -124,6 +131,17 @@ const LoginPage = () => {
     setTimeout(function () {
         setCardAnimation("");
     }, 700);
+
+    // 로그인 실패 문구
+    const loginFailed = () => {
+        const loginFailedMessage = '회원정보가 일치하지 않습니다.'
+        if (loginErrorMsg) {
+            const errNumber = loginErrorMsg.responseMessage.split(' ')[0]
+            if (errNumber === 'E1010') {
+                return loginFailedMessage;
+            }
+        }
+    }
 
     return (
         <div className={classes.container}
@@ -201,6 +219,9 @@ const LoginPage = () => {
                                 />
                             </div>
                         </CardBody>
+                        <div style={{ color: 'red', textAlign: 'center' }}>
+                            {loginFailed()}
+                        </div>
                         <CardFooter
                             className={classes.justifyContentCenter}>
                             <Button style={{

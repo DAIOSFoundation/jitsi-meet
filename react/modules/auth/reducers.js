@@ -10,6 +10,7 @@ const initialState = {
     isValidId: true, // DVision 계정 아이디 유효성 검사
     password: '', // DVision 계정 비밀번호
     isValidPassword: true, // DVision 계정 비밀번호 유효성 검사
+    loginErrorMsg: null, // 로그인 실패시 메시지 정보 저장
 }
 
 const auth = handleActions({
@@ -37,6 +38,12 @@ const auth = handleActions({
             draft.isValidPassword = action.payload
         })
     },
+    [AUTH.CHANGE_LOGIN_ERROR_MSG]: (state, action) => {
+        console.log('CHANGE_LOGIN_ERROR_MSG', action.payload)
+        return produce(state, (draft) => {
+            draft.loginErrorMsg = action.payload
+        })
+    },
     [AUTH.POST_LOGIN_SUCCESS]: (state, action) => {
         console.log('POST_LOGIN_SUCCESS', action.payload)
         return produce(state, (draft) => {
@@ -46,6 +53,7 @@ const auth = handleActions({
     [AUTH.POST_LOGIN_FAILED]: (state, action) => {
         console.log('POST_LOGIN_FAILED', action.payload)
         return produce(state, (draft) => {
+            draft.loginErrorMsg = action.payload;
         })
     },
 }, initialState)
