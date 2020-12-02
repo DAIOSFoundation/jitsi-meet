@@ -28,6 +28,11 @@ const WelcomePageMain = () => {
         // dispatch(setRoom())
     }
 
+    // WelcomPageMain, 화상회의 겹치는 현상 분기처리 (WelcomPageMain 페이지가 아니면 null 반환)
+    if (document.location.pathname !== '/') {
+        return null;
+    }
+
     return (
         <div style={{
             backgroundImage: `url(images/dvision_main_img01.png)`,
