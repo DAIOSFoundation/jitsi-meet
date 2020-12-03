@@ -14,9 +14,6 @@ var config = {
         // Domain for authenticated users. Defaults to <domain>.
         // authdomain: 'jitsi-meet.example.com',
 
-        // Call control component (Jigasi).
-        // call_control: 'callcontrol.jitsi-meet.example.com',
-
         // Focus component domain. Defaults to focus.<domain>.
         // focus: 'focus.jitsi-meet.example.com',
 
@@ -327,10 +324,6 @@ var config = {
     // counter, but the bridge resets it. The bridge sends media packets with
     // TCC sequence numbers starting from 0.
     // enableIceRestart: false,
-
-    // Defines the minimum number of participants to start a call (the default
-    // is set in Jicofo and set to 2).
-    // minParticipants: 2,
 
     // Use TURN/UDP servers for the jitsi-videobridge connection (by default
     // we filter out TURN/UDP because it is usually not needed since the
@@ -686,7 +679,6 @@ var config = {
      forceJVB121Ratio
      hiddenDomain
      ignoreStartMuted
-     startBitrate
      */
 
 
