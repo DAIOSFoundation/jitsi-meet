@@ -54,6 +54,7 @@ const LoginPage = () => {
         }), shallowEqual)
 
     const [cardAnimaton, setCardAnimation] = useState("cardHidden");
+    const [errorCodes] = useState(['E1009', 'E1010']);
 
     const cookies = new Cookies();
     const classes = useStyles();
@@ -136,8 +137,8 @@ const LoginPage = () => {
     const loginFailed = () => {
         const loginFailedMessage = '회원정보가 일치하지 않습니다.'
         if (loginErrorMsg) {
-            const errNumber = loginErrorMsg.responseMessage.split(' ')[0]
-            if (errNumber === 'E1010') {
+            const errCode = loginErrorMsg.responseMessage.split(' ')[0]
+            if (errorCodes.includes(errCode)) {
                 return loginFailedMessage;
             }
         }
