@@ -165,8 +165,7 @@ class Watermarks extends Component<Props, State> {
             const style = {
                 maxWidth: 170,
                 maxHeight: 70,
-                top: 0,
-                // top: 30, // Medicity Version
+                top: 15,
                 position: 'relative',
                 backgroundImage: `url(${_logoUrl})`,
             };

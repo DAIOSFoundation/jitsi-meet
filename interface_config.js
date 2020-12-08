@@ -46,13 +46,11 @@ var interfaceConfig = {
 
     DEFAULT_BACKGROUND: '#474747',
     DEFAULT_LOCAL_DISPLAY_NAME: 'me',
-    DEFAULT_LOGO_URL: null,
-    // DEFAULT_LOGO_URL: 'images/medicity/medicityLogo.png', // 메디시티 전용 로고 이미지
-    // DEFAULT_LOGO_URL: 'images/medicity/hellomedicity_logo.png', // 헬로 메디시티 전용 로고 이미지
+    // DEFAULT_LOGO_URL: null,
+    DEFAULT_LOGO_URL: 'images/highUp/highUp.png', // 대구 하이업 행사 전용 로고 이미지
     DEFAULT_REMOTE_DISPLAY_NAME: '참여자',
-    DEFAULT_WELCOME_PAGE_LOGO_URL: null,
-    // DEFAULT_WELCOME_PAGE_LOGO_URL: 'images/medicity/medicityLogo.png', // 메디시티 전용 로고 이미지
-    // DEFAULT_WELCOME_PAGE_LOGO_URL: 'images/medicity/hellomedicity_logo.png', // 메디시티 전용 로고 이미지
+    // DEFAULT_WELCOME_PAGE_LOGO_URL: null,
+    DEFAULT_WELCOME_PAGE_LOGO_URL: 'images/highUp/highUp.png', // 대구 하이업 행사 전용 로고 이미지
 
     DISABLE_DOMINANT_SPEAKER_INDICATOR: false,
 
