@@ -35,7 +35,7 @@ const WelcomePageMain = () => {
 
     return (
         <div style={{
-            backgroundImage: `url(images/dvision_main_img01.png)`,
+            backgroundImage: `url(images/dvision_main_page.png)`,
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center center',
