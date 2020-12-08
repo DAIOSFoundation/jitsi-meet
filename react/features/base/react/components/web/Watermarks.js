@@ -163,9 +163,11 @@ class Watermarks extends Component<Props, State> {
 
         if (_showJitsiWatermark) {
             const style = {
-                maxWidth: 170,
-                maxHeight: 70,
-                top: 15,
+                // maxWidth: 170,
+                // maxHeight: 70,
+                width: 300,
+                height: 100,
+                top: 0,
                 position: 'relative',
                 backgroundImage: `url(${_logoUrl})`,
             };
@@ -182,19 +184,6 @@ class Watermarks extends Component<Props, State> {
                             href={window.location.origin}>
                             {reactElement}
                         </a>
-                        {/* 대구 웨비나 전용 로고 */}
-                        {/*<a*/}
-                        {/*    target={'_blank'}*/}
-                        {/*    href={window.location.origin}>*/}
-                        {/*    <div className='watermark leftwatermark' style={{*/}
-                        {/*        backgroundImage: `url(images/innopolis_deagu_01_02.png)`,*/}
-                        {/*        maxWidth: 170,*/}
-                        {/*        maxHeight: 70,*/}
-                        {/*        top: 0,*/}
-                        {/*        position: 'relative'*/}
-                        {/*    }}>*/}
-                        {/*    </div>*/}
-                        {/*</a>*/}
                     </div>
                 );
             }
