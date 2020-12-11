@@ -163,10 +163,10 @@ class Watermarks extends Component<Props, State> {
 
         if (_showJitsiWatermark) {
             const style = {
-                // maxWidth: 170,
-                // maxHeight: 70,
-                width: 300,
-                height: 100,
+                maxWidth: 170,
+                maxHeight: 70,
+                // width: 300,
+                // height: 100,
                 top: 0,
                 position: 'relative',
                 backgroundImage: `url(${_logoUrl})`,
