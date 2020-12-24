@@ -165,8 +165,8 @@ class Watermarks extends Component<Props, State> {
             const style = {
                 maxWidth: 170,
                 maxHeight: 70,
-                // width: 300,
-                // height: 100,
+                // width: 300, // 대구 하이업 행사 전용 사이즈
+                // height: 100, // 대구 하이업 행사 전용 사이즈
                 top: 0,
                 position: 'relative',
                 backgroundImage: `url(${_logoUrl})`,
