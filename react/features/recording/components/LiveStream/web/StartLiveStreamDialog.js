@@ -95,8 +95,8 @@ class StartLiveStreamDialog
                 titleKey = 'liveStreaming.start'
                 width = { 'small' }>
                 <div className = 'live-stream-dialog'>
-                    { _googleApiApplicationClientID
-                        ? this._renderYouTubePanel() : null }
+                    {/*{ _googleApiApplicationClientID*/}
+                    {/*    ? this._renderYouTubePanel() : null }*/}
                     <StreamKeyForm
                         onChange = { this._onStreamKeyChange }
                         value = {
