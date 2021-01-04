@@ -67,7 +67,6 @@ class RecentList extends AbstractRecentList<Props> {
      * @inheritdoc
      */
     _onItemDelete(entry) {
-        console.log("TEST",entry)
         this.props.dispatch(deleteRecentListEntry(entry));
     }
 

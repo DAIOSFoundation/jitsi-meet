@@ -83,6 +83,9 @@ class StartLiveStreamDialog
     render() {
         const { _googleApiApplicationClientID } = this.props;
 
+        console.log("this.state.streamKey => ", this.state.streamKey )
+        console.log("this.props._streamKey => ", this.props._streamKey )
+
         return (
             <Dialog
                 cancelKey = 'dialog.Cancel'
