@@ -70,9 +70,9 @@ class StartLiveStreamDialog
     componentDidMount() {
         super.componentDidMount();
 
-        if (this.props._googleApiApplicationClientID) {
-            this._onInitializeGoogleApi();
-        }
+        // if (this.props._googleApiApplicationClientID) {
+        //     this._onInitializeGoogleApi();
+        // }
     }
 
     /**
