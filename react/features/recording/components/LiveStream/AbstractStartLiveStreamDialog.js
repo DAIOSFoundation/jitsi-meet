@@ -213,12 +213,10 @@ export default class AbstractStartLiveStreamDialog<P: Props>
         sendAnalytics(
             createLiveStreamingDialogEvent('start', 'confirm.button'));
 
-        console.log("TEST KEY", key)
-
         this.props._conference.startRecording({
             broadcastId: selectedBroadcastID,
             mode: JitsiRecordingConstants.mode.STREAM,
-            streamId: key
+            streamId: 'rtmp://media.daios.net/live/' + key
         });
 
         return true;
