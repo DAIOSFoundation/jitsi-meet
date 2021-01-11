@@ -1058,6 +1058,7 @@ export default class JitsiMeetExternalAPI extends EventEmitter {
      * @returns {void}
      */
     startRecording(options) {
+        console.log("TEST", options)
         this.executeCommand('startRecording', options);
     }
 
