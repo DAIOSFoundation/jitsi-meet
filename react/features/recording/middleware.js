@@ -76,8 +76,6 @@ MiddlewareRegistry.register(({ dispatch, getState }) => next => action => {
 
     const result = next(action);
 
-    console.log("TEST 1 action.type ===> ", action.type)
-
     switch (action.type) {
     case APP_WILL_MOUNT:
         dispatch(registerSound(
@@ -182,8 +180,11 @@ MiddlewareRegistry.register(({ dispatch, getState }) => next => action => {
                 }
 
                 if (soundID) {
-                    console.log("TEST 2", soundID)
                     dispatch(playSound(soundID));
+
+                    if(soundID === 'LIVE_STREAMING_ON_SOUND'){
+                        console.log('라이브 스트리밍 시작 !!!')
+                    }
                 }
             } else if (updatedSessionData.status === OFF
                 && (!oldSessionData || oldSessionData.status !== OFF)) {
@@ -210,10 +211,12 @@ MiddlewareRegistry.register(({ dispatch, getState }) => next => action => {
                 }
 
                 if (soundOff && soundOn) {
-                    console.log("TEST 3", soundOff)
-                    console.log("TEST 4", soundOn)
                     dispatch(stopSound(soundOn));
                     dispatch(playSound(soundOff));
+
+                    if(soundOn === 'LIVE_STREAMING_ON_SOUND' && soundOff === 'LIVE_STREAMING_OFF_SOUND'){
+                        console.log('라이브 스트리밍 종료 !!!')
+                    }
                 }
             }
         }
