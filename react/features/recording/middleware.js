@@ -180,6 +180,7 @@ MiddlewareRegistry.register(({ dispatch, getState }) => next => action => {
                 }
 
                 if (soundID) {
+                    console.log("TEST", soundID)
                     dispatch(playSound(soundID));
                 }
             } else if (updatedSessionData.status === OFF

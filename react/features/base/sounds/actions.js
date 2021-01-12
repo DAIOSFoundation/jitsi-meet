@@ -98,7 +98,6 @@ export function playSound(soundId: string): Object {
  */
 export function registerSound(
         soundId: string, soundName: string, options: Object = {}): Object {
-    console.log("TEST",options)
     return {
         type: REGISTER_SOUND,
         soundId,
