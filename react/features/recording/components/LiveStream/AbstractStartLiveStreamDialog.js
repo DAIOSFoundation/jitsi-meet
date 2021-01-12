@@ -216,7 +216,8 @@ export default class AbstractStartLiveStreamDialog<P: Props>
         this.props._conference.startRecording({
             broadcastId: selectedBroadcastID,
             mode: JitsiRecordingConstants.mode.STREAM,
-            streamId: 'rtmp://media.daios.net/live/' + key
+            // streamId: 'rtmp://media.daios.net/live/' + key
+            streamId: key
         });
 
         return true;
