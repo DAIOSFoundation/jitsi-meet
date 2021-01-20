@@ -7,7 +7,6 @@ import EventEmitter from 'events';
 import Logger from 'jitsi-meet-logger';
 
 import { isMobileBrowser } from '../../react/features/base/environment/utils';
-import { getLocalParticipant } from '../../react/features/base/participants';
 import { toggleChat } from '../../react/features/chat';
 import { setDocumentUrl } from '../../react/features/etherpad';
 import { setWBODocumentUrl } from '../../react/features/wbo';
@@ -112,28 +111,10 @@ UI.notifyReservationError = function(code, msg) {
 };
 
 /**
- * Change nickname for the user.
- * @param {string} id user id
- * @param {string} displayName new nickname
- */
-UI.changeDisplayName = function(id, displayName) {
-    VideoLayout.onDisplayNameChanged(id, displayName);
-};
-
-/**
  * Initialize conference UI.
  */
 UI.initConference = function() {
-    const { getState } = APP.store;
-    const { id, name } = getLocalParticipant(getState);
-
     UI.showToolbar();
-
-    const displayName = config.displayJids ? id : name;
-
-    if (displayName) {
-        UI.changeDisplayName('localVideoContainer', displayName);
-    }
 };
 
 /**
@@ -269,18 +250,11 @@ UI.getWBOSharedDocumentManager = () => wboManager;
  * @param {JitsiParticipant} user
  */
 UI.addUser = function(user) {
-    const id = user.getId();
-    const displayName = user.getDisplayName();
     const status = user.getStatus();
 
     if (status) {
         // FIXME: move updateUserStatus in participantPresenceChanged action
         UI.updateUserStatus(user, status);
-    }
-
-    // set initial display name
-    if (displayName) {
-        UI.changeDisplayName(id, displayName);
     }
 };
 
@@ -472,14 +446,6 @@ UI.handleLastNEndpoints = function(leavingIds, enteringIds) {
  * @param {number} lvl audio level
  */
 UI.setAudioLevel = (id, lvl) => VideoLayout.setAudioLevel(id, lvl);
-
-/**
- * Hide connection quality statistics from UI.
- */
-UI.hideStats = function() {
-    VideoLayout.hideStats();
-};
-
 
 UI.notifyTokenAuthFailed = function() {
     messageHandler.showError({

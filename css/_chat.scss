@@ -436,14 +436,30 @@
     }
 }
 
-.shareLinkButton{
-    border: none;
-    background-color: #e7edff;
-    padding: 7px;
-    color: #3f4452;
-    font-weight: bold;
-    border-radius: 35px;
-    font-size: 13px;
-    margin: 5px;
-    width: 130px;
+.chat-dialog {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-top: -5px; // Margin set by atlaskit.
+
+    &-header {
+        display: flex;
+        justify-content: space-between;
+        margin: 16px 16px 24px;
+        width: calc(100% - 32px);
+        box-sizing: border-box;
+        color: #fff;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 32px;
+
+        .jitsi-icon > svg {
+            cursor: pointer;
+            fill: #A4B8D1;
+        }
+    }
+
+    #chatconversation {
+        width: 100%;
+    }
 }
