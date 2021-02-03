@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useMemo, useState} from "react";
 
 // @material-ui/core components
 import {makeStyles} from "@material-ui/core/styles";
@@ -40,14 +40,14 @@ const LoginPage = () => {
 
     const {
         jwt,
-        id,
+        email,
         password,
         loginErrorMsg,
         loading
     } = useSelector(
         (state) => ({
             jwt: state.auth.jwt,
-            id: state.auth.id,
+            email: state.auth.email,
             password: state.auth.password,
             loginErrorMsg: state.auth.loginErrorMsg,
             loading: state.loading['auth/POST_LOGIN']
@@ -60,7 +60,7 @@ const LoginPage = () => {
     const classes = useStyles();
 
     useEffect(() => {
-        dispatch(authActions.change_id(''));
+        dispatch(authActions.change_email(''));
         dispatch(authActions.change_password(''));
         dispatch(authActions.change_login_error_msg(null));
     }, [])
@@ -104,8 +104,8 @@ const LoginPage = () => {
         dispatch(oauthActions.post_google_login(param))
     };
 
-    const onChangeID = (value) => {
-        dispatch(authActions.change_id(value))
+    const onChangeEMAIL = (value) => {
+        dispatch(authActions.change_email(value))
     }
 
     const onChangePassWord = (value) => {
@@ -115,7 +115,7 @@ const LoginPage = () => {
     const loginSubmit = () => {
         let param = {
             'origin': window.location.origin,
-            userId: id,
+            email: email,
             password: password
         }
 
@@ -129,20 +129,32 @@ const LoginPage = () => {
             pathname: `/`,
         });
     }
+
+    // 회원가입 페이지 이동
+    const onPressSignUp = () => {
+        history.push({
+            pathname: `/auth/signUp`,
+        });
+    }
+
     setTimeout(function () {
         setCardAnimation("");
     }, 700);
 
     // 로그인 실패 문구
-    const loginFailed = () => {
-        const loginFailedMessage = '회원정보가 일치하지 않습니다.'
+    const loginFailed = useMemo(() => {
+        let loginFailedMessage = ''
+        console.log("호출 !!!")
         if (loginErrorMsg) {
             const errCode = loginErrorMsg.responseMessage.split(' ')[0]
             if (errorCodes.includes(errCode)) {
-                return loginFailedMessage;
+                loginFailedMessage = '회원정보가 일치하지 않습니다.'
+            } else if (errCode === 'E1011') {
+                loginFailedMessage = '계정 사용 기간 만료'
             }
+            return loginFailedMessage
         }
-    }
+    }, [loginErrorMsg])
 
     return (
         <div className={classes.container}
@@ -200,12 +212,12 @@ const LoginPage = () => {
                         <CardBody>
                             <div>
                                 <ValidationInput
-                                    id={'id'}
-                                    label={'아이디'}
-                                    placeholder={'아이디 입력'}
+                                    id={'email'}
+                                    label={'이메일'}
+                                    placeholder={'이메일 입력'}
                                     fullWidth
-                                    value={id}
-                                    onChangeText={(e) => onChangeID(e.target.value)}
+                                    value={email}
+                                    onChangeText={(e) => onChangeEMAIL(e.target.value)}
                                 />
                             </div>
                             <div style={{marginTop: 15}}>
@@ -220,8 +232,8 @@ const LoginPage = () => {
                                 />
                             </div>
                         </CardBody>
-                        <div style={{ color: 'red', textAlign: 'center' }}>
-                            {loginFailed()}
+                        <div style={{color: 'red', textAlign: 'center'}}>
+                            {loginFailed}
                         </div>
                         <CardFooter
                             className={classes.justifyContentCenter}>
@@ -235,9 +247,13 @@ const LoginPage = () => {
                         </CardFooter>
                         <div style={{
                             display: 'flex',
-                            justifyContent: 'flex-end'
+                            justifyContent: 'space-between'
                         }}>
-                            <button className='loginMainMove'
+                            <button className='loginButton'
+                                    onClick={onPressSignUp}>
+                                회원가입
+                            </button>
+                            <button className='loginButton'
                                     onClick={onPressMain}>
                                 메인으로가기
                             </button>

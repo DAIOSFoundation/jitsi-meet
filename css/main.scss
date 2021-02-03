@@ -50,7 +50,7 @@ $flagsImagePath: "../images/";
 @import 'participants-count';
 @import 'popup_menu';
 @import 'recording';
-@import 'login_menu';
+@import 'login';
 @import 'chat';
 @import 'ringing/ringing';
 @import 'welcome_page';
@@ -107,5 +107,6 @@ $flagsImagePath: "../images/";
 @import 'calendar';
 @import 'connection-status';
 @import 'drawer';
+@import 'sign-up';
 
 /* Modules END */

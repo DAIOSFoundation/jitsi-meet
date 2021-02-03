@@ -2,7 +2,7 @@ import 'date-fns';
 import React, {useCallback, useState} from 'react';
 import ValidationInput
     from '../../../components/ValidationInput/ValidationInput';
-import {useDispatch, useSelector} from 'react-redux';
+import {shallowEqual, useDispatch, useSelector} from 'react-redux';
 import * as calendarActions from '../../../../react/modules/calendar/actions';
 import {
     regEmail,
@@ -56,7 +56,7 @@ const ScheduleRegisterModal = () => {
         isValidMeetingRoomName: state.calendar.isValidMeetingRoomName,
         description: state.calendar.description,
         loadingStatus: state.calendar.loadingStatus,
-    }))
+    }), shallowEqual)
 
     const dispatch = useDispatch();
 

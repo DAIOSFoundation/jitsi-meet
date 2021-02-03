@@ -21,13 +21,13 @@ export const regSpaceRemove = (value) => {
     return value.replace(/(\s*)/g, "")
 }
 
-// 계정 아이디 정규식 //todo 추후 사용
-export const regAccountId = (id) => {
-    const reg = /^[a-zA-Z0-9]{10,15}$/
-    return reg.test(id)
+// 계정 닉네임 정규식
+export const regNickName = (name) => {
+    const reg = /^[ㄱ-ㅎ가-힣A-za-z0-9]{5,15}$/;
+    return reg.test(name)
 }
 
-// 계정 비밀번호 정규식용 //todo 추후 사용
+// 계정 비밀번호 정규식
 export const regAccountPassWord = (password) => {
     const reg = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/
     return reg.test(password)

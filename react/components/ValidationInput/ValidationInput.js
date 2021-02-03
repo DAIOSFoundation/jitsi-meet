@@ -13,42 +13,68 @@ import {isEmpty} from '../../utils/functions';
 // multiline : textArea 기능 사용 여부
 // rowsMax : textArea 기능을 사용했을때 최대 몇줄을 허용하고 그 이후에는 스크롤 표시 여부
 // type : 텍스트 값 타입
+// inputProps : input element에 적용되는 속성입니다.
 
-const ValidationInput = (props) => {
+const ValidationInput = ({
+                             valid,
+                             onChangeText,
+                             onKeyPress,
+                             id,
+                             fullWidth,
+                             label,
+                             placeholder,
+                             value,
+                             errorText,
+                             descriptionText,
+                             multiline,
+                             rowsMax,
+                             type,
+                             inputProps,
+                             style
+                         }) => {
 
-    const [valid, setValid] = useState(false);
+    const [isValid, setIsValid] = useState(false);
 
-    const onChangeText = (value) => {
-        if (!isEmpty(props.valid)) {
-            if (!props.valid(value.target.value)) {
-                setValid(true)
-                return props.onChangeText(value, true)
+    const onChangeTextFn = (e) => {
+        if (!isEmpty(valid)) {
+            if (!valid(e.target.value)) {
+                setIsValid(true)
+                return onChangeText(e, true)
             } else {
-                setValid(false)
-                return props.onChangeText(value, false);
+                setIsValid(false)
+                return onChangeText(e, false);
             }
         } else {
-            return props.onChangeText(value)
+            return onChangeText(e)
         }
+    }
+
+    const onKeyPressFn = (e) => {
+        if (!isEmpty(onKeyPress)) onKeyPress(e.key);
     }
 
     return (
         <>
             <TextField
-                id={props.id}
-                fullWidth={props.fullWidth}
-                label={props.label}
-                placeholder={props.placeholder}
-                value={props.value}
-                onChange={onChangeText}
-                helperText={valid ? props.errorText : props.descriptionText}
-                error={valid}
-                multiline={props.multiline}
-                rowsMax={props.rowsMax}
-                type={props.type}
+                id={id}
+                fullWidth={fullWidth}
+                label={label}
+                placeholder={placeholder}
+                value={value}
+                onChange={onChangeTextFn}
+                helperText={isValid ? errorText : descriptionText}
+                error={isValid}
+                onKeyPress={onKeyPressFn}
+                multiline={multiline}
+                rowsMax={rowsMax}
+                type={type}
+                InputProps={inputProps}
+                style={{
+                    ...style
+                }}
             />
         </>
     );
 };
 
-export default ValidationInput;
+export default React.memo(ValidationInput);

@@ -4,7 +4,8 @@ const host = "https://dvision-api.daib.io/v1";
 export const urls = {
     upload: host + "/upload",
     oauths: host +"/oauths",
-    login: host + "/users/signIn",
+    signIn: host + "/users/signIn",
+    signUp: host + "/users/signUp",
 };
 
 export const jsonHeader = () => {

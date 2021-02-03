@@ -28,6 +28,7 @@ import * as modules from '../../../../modules'
 
 import {HashRouter, Route, Switch} from 'react-router-dom';
 import LoginPage from '../../../login/components/LoginPage';
+import SignUpPage from '../../../sign-up/components/SignUpPage';
 import CalendarList from '../../../calendar-sync/components/CalendarList.web';
 import WelcomePage from '../../../welcome/components/WelcomePage.web';
 import WelcomePageMain from '../../../welcome/components/WelcomePageMain';
@@ -166,6 +167,13 @@ export default class BaseApp extends Component<*, State> {
                                         name="LoginPage"
                                         render={(props) =>
                                             <LoginPage {...props} />}
+                                    />
+                                    <Route
+                                        exact
+                                        path="/auth/signUp"
+                                        name="signUpPage"
+                                        render={(props) =>
+                                            <SignUpPage {...props} />}
                                     />
                                     <Route
                                         exact

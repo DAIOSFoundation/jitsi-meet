@@ -11,6 +11,9 @@ const BasicLoading = () => {
             height: '100%',
             justifyContent: 'center',
             alignItems: 'center',
+            top: 0,
+            left: 0,
+            zIndex: 1
         }}>
             <CircularProgress/>
         </div>
