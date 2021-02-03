@@ -12,7 +12,8 @@ import { parseURIString, safeDecodeURIComponent } from '../base/util';
  */
 export function toDisplayableList(recentList) {
     return (
-        recentList.slice(-5).reverse()
+        // recentList.slice(-5).reverse()
+        [ ...recentList ].reverse()
             .map(item => {
                 return {
                     date: item.date,

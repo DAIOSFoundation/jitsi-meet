@@ -42,9 +42,11 @@
         display: none;
     }
 
-    &.shift-right {
-        margin-left: $sidebarWidth;
-        width: calc(100% - #{$sidebarWidth});
+    @media (min-width: 581px) {
+        &.shift-right {
+            margin-left: $sidebarWidth;
+            width: calc(100% - #{$sidebarWidth});
+        }
     }
 
     .toolbox-background {
@@ -88,31 +90,32 @@
                     margin: 0px 4px;
                     width: 40px;
                     height: 40px;
-        
+
                     &:hover {
                         background-color: #2242a6
                         // border: 1px solid #2242a6;
                     }
-        
+
                     &.toggled {
                         background: #58627c;
                         // border: 1px solid #5e6d7a;
-    
+                        //background: #2a3a4b;
+                        //border: 1px solid #5e6d7a;
                         svg {
                             fill: #3e65dd;
                         }
-        
+
                         &:hover {
                             background-color: #5e6d7a;
                         }
                     }
-        
+
                     &.disabled, .disabled & {
                         cursor: initial;
                         color: #3e65dd;
                         background-color: #a4b8d1;
                     }
-    
+
                     svg {
                         fill: #5e6d7a;
                     }
@@ -124,7 +127,7 @@
                         border: 1px solid $hangupColor;
                         width: 40px;
                         height: 40px;
-                
+
                         &:hover {
                             background-color: $hangupColor;
                         }
@@ -262,7 +265,7 @@
             &:hover, &.toggled {
                 background: $newToolbarButtonHoverColor;
             }
-    
+
             &.disabled {
                 cursor: initial !important;
                 background-color: #a4b8d1 !important;

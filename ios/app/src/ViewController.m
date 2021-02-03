@@ -115,6 +115,14 @@
   NSLog(@"%@%@", @"Audio muted changed: ", data[@"muted"]);
 }
 
+- (void)endpointTextMessageReceived:(NSDictionary *)data {
+  NSLog(@"%@%@", @"Endpoint text message received: ", data);
+}
+
+- (void)screenShareToggled:(NSDictionary *)data {
+  NSLog(@"%@%@", @"Screen share toggled: ", data);
+}
+
 #pragma mark - Helpers
 
 - (void)terminate {
