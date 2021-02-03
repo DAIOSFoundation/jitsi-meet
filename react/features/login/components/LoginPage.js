@@ -144,7 +144,6 @@ const LoginPage = () => {
     // 로그인 실패 문구
     const loginFailed = useMemo(() => {
         let loginFailedMessage = ''
-        console.log("호출 !!!")
         if (loginErrorMsg) {
             const errCode = loginErrorMsg.responseMessage.split(' ')[0]
             if (errorCodes.includes(errCode)) {
@@ -155,6 +154,12 @@ const LoginPage = () => {
             return loginFailedMessage
         }
     }, [loginErrorMsg])
+
+    const onKeyPress = (key) => {
+        if(key === 'Enter'){
+            loginSubmit()
+        }
+    }
 
     return (
         <div className={classes.container}
@@ -218,6 +223,7 @@ const LoginPage = () => {
                                     fullWidth
                                     value={email}
                                     onChangeText={(e) => onChangeEMAIL(e.target.value)}
+                                    onKeyPress={onKeyPress}
                                 />
                             </div>
                             <div style={{marginTop: 15}}>
@@ -229,6 +235,7 @@ const LoginPage = () => {
                                     value={password}
                                     onChangeText={(e) => onChangePassWord(e.target.value)}
                                     type={'password'}
+                                    onKeyPress={onKeyPress}
                                 />
                             </div>
                         </CardBody>

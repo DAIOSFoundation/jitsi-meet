@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 
 // @material-ui/icons
 import Face from "@material-ui/icons/Face";
@@ -75,8 +75,6 @@ const SignUpPage = () => {
             })
         }
     }, [signUpMsg])
-
-    const [test, setTest] = useState(null);
 
     const textChangeActions = {
         email: signUpActions.change_email,
@@ -260,4 +258,4 @@ const SignUpPage = () => {
     );
 };
 
-export default React.memo(SignUpPage);
+export default SignUpPage;
