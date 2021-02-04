@@ -75,7 +75,7 @@ export default function Icon(props: Props) {
     return (
         <div>
             {
-                (props.src.name === 'SvgSettings' || props.src.name === 'cr') ?
+                (props.src.name === 'SvgSettings' || props.src.name === 'Hn') ?
                     <Container
                         onClick={onClick}
                         style={restStyle}>
