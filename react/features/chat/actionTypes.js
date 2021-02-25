@@ -25,6 +25,24 @@ export const ADD_MESSAGE = 'ADD_MESSAGE';
 export const CLEAR_MESSAGES = 'CLEAR_MESSAGES';
 
 /**
+ * The type of the action which signals the cancelation the chat panel.
+ *
+ * {
+ *     type: CLOSE_CHAT
+ * }
+ */
+export const CLOSE_CHAT = 'CLOSE_CHAT';
+
+/**
+ * The type of the action which signals to display the chat panel.
+ *
+ * {
+ *     type: OPEN_CHAT
+ * }
+ */
+export const OPEN_CHAT = 'OPEN_CHAT';
+
+/**
  * The type of the action which signals a send a chat message to everyone in the
  * conference.
  *
@@ -58,3 +76,4 @@ export const TOGGLE_CHAT = 'TOGGLE_CHAT';
 
 // 채팅창 범위 밖 클릭 시 채팅창 닫기
 export const CLOSE_CHAT_WINDOW = 'CLOSE_CHAT_WINDOW';
+

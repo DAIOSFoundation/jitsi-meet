@@ -91,9 +91,11 @@
                     width: 40px;
                     height: 40px;
 
-                    &:hover {
-                        background-color: #2242a6
-                        // border: 1px solid #2242a6;
+                    @media (hover: hover) and (pointer: fine) {
+                        &:hover {
+                            background-color: #2242a6
+                            // border: 1px solid #2242a6;
+                        }
                     }
 
                     &.toggled {
@@ -105,8 +107,10 @@
                             fill: #3e65dd;
                         }
 
-                        &:hover {
-                            background-color: #5e6d7a;
+                        @media (hover: hover) and (pointer: fine) {
+                            &:hover {
+                                background-color: #5e6d7a;
+                            }
                         }
                     }
 
@@ -128,8 +132,10 @@
                         width: 40px;
                         height: 40px;
 
-                        &:hover {
-                            background-color: $hangupColor;
+                        @media (hover: hover) and (pointer: fine) {
+                            &:hover {
+                                background-color: $hangupColor;
+                            }
                         }
 
                         svg {
@@ -160,8 +166,9 @@
                 cursor: pointer;
                 display: flex;
                 font-size: 14px;
-                height: 22px;
+                height: 40px;
                 padding: 5px 12px;
+                box-sizing: border-box;
 
                 div {
                     display: flex;
@@ -169,16 +176,20 @@
                     align-items: center;
                 }
 
-                &:hover {
-                    background-color: $overflowMenuItemHoverBG;
-                    color: $overflowMenuItemHoverColor;
+                @media (hover: hover) and (pointer: fine) {
+                    &:hover {
+                        background-color: $overflowMenuItemHoverBG;
+                        color: $overflowMenuItemHoverColor;
+                    }
                 }
 
                 &.unclickable {
                     cursor: default;
                 }
-                &.unclickable:hover {
-                    background: inherit;
+                @media (hover: hover) and (pointer: fine) {
+                    &.unclickable:hover {
+                        background: inherit;
+                    }
                 }
                 &.disabled {
                     cursor: initial;
@@ -197,15 +208,17 @@
             }
 
             .overflow-menu-item-icon {
-                margin-right: 10px;
+                margin-right: 16px;
 
                 i {
                     display: inline;
                     font-size: 24px;
                 }
 
-                i:hover {
-                    background-color: initial;
+                @media (hover: hover) and (pointer: fine) {
+                    i:hover {
+                        background-color: initial;
+                    }
                 }
 
                 img {
@@ -215,6 +228,8 @@
 
                 svg {
                     fill: #B8C7E0 !important;
+                    height: 20px;
+                    width: 20px;
                 }
             }
 
@@ -262,7 +277,13 @@
             justify-content: center;
             width: $newToolbarSize;
 
-            &:hover, &.toggled {
+            @media (hover: hover) and (pointer: fine) {
+                &:hover {
+                    background: $newToolbarButtonHoverColor;
+                }
+            }
+
+            &.toggled {
                 background: $newToolbarButtonHoverColor;
             }
 

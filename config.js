@@ -240,6 +240,12 @@ var config = {
     //     90: 2
     // },
 
+    // Provides a way to translate the legacy bridge signaling messages, 'LastNChangedEvent',
+    // 'SelectedEndpointsChangedEvent' and 'ReceiverVideoConstraint' into the new 'ReceiverVideoConstraints' message
+    // that invokes the new bandwidth allocation algorithm in the bridge which is described here
+    // - https://github.com/jitsi/jitsi-videobridge/blob/master/doc/allocation.md.
+    // useNewBandwidthAllocationStrategy: false,
+
     // Specify the settings for video quality optimizations on the client.
     // videoQuality: {
     //    // Provides a way to prevent a video codec from being negotiated on the JVB connection. The codec specified
@@ -261,9 +267,16 @@ var config = {
     //    // the available bandwidth calculated by the browser, but it will be capped by the values specified here.
     //    // This is currently not implemented on app based clients on mobile.
     //    maxBitratesVideo: {
-    //        low: 200000,
-    //        standard: 500000,
-    //        high: 1500000
+    //          VP8 : {
+    //              low: 200000,
+    //              standard: 500000,
+    //              high: 1500000
+    //          },
+    //          VP9: {
+    //              low: 100000,
+    //              standard: 300000,
+    //              high:  1200000
+    //          }
     //    },
     //
     //    // The options can be used to override default thresholds of video thumbnail heights corresponding to
@@ -317,6 +330,11 @@ var config = {
     // counter, but the bridge resets it. The bridge sends media packets with
     // TCC sequence numbers starting from 0.
     // enableIceRestart: false,
+
+    // Enables forced reload of the client when the call is migrated as a result of
+    // the bridge going down. Currently enabled by default as call migration through
+    // session-terminate is causing siganling issues when Octo is enabled.
+    // enableForcedReload: true,
 
     // Use TURN/UDP servers for the jitsi-videobridge connection (by default
     // we filter out TURN/UDP because it is usually not needed since the
@@ -725,6 +743,7 @@ var config = {
     //     'dialog.reservationError',
     //     'dialog.serviceUnavailable', // shown when server is not reachable
     //     'dialog.sessTerminated', // shown when there is a failed conference session
+    //     'dialog.sessionRestarted', // show when a client reload is initiated because of bridge migration
     //     'dialog.tokenAuthFailed', // show when an invalid jwt is used
     //     'dialog.transcribing', // transcribing notifications (pending, off)
     //     'dialOut.statusMessage', // shown when dial out status is updated.

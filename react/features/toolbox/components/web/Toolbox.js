@@ -1,6 +1,7 @@
 // @flow
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import * as wasmCheck from 'wasm-check';
 
 import {
     ACTION_SHORTCUT_TRIGGERED,
@@ -83,6 +84,7 @@ import DownloadButton from '../DownloadButton';
 import HangupButton from '../HangupButton';
 import HelpButton from '../HelpButton';
 import MuteEveryoneButton from '../MuteEveryoneButton';
+import MuteEveryonesVideoButton from '../MuteEveryonesVideoButton';
 
 import AudioSettingsButton from './AudioSettingsButton';
 import OverflowMenuButton from './OverflowMenuButton';
@@ -1075,18 +1077,22 @@ class Toolbox extends Component<Props, State> {
                 key='wbo'
                 showLabel={true}/>,
             this._shouldShowButton('videobackgroundblur')
-            && <VideoBlurButton
-                key='videobackgroundblur'
-                showLabel={true}
-                visible={!_screensharing}/>,
+                && <VideoBlurButton
+                    key = 'videobackgroundblur'
+                    showLabel = { true }
+                    visible = { !_screensharing && wasmCheck.feature.simd } />,
             this._shouldShowButton('settings')
             && <SettingsButton
                 key='settings'
                 showLabel={true}/>,
             this._shouldShowButton('mute-everyone')
-            && <MuteEveryoneButton
-                key='mute-everyone'
-                showLabel={true}/>,
+                && <MuteEveryoneButton
+                    key = 'mute-everyone'
+                    showLabel = { true } />,
+            this._shouldShowButton('mute-video-everyone')
+                && <MuteEveryonesVideoButton
+                    key = 'mute-video-everyone'
+                    showLabel = { true } />,
             this._shouldShowButton('stats')
             && <OverflowMenuItem
                 accessibilityLabel={t('toolbar.accessibilityLabel.speakerStats')}

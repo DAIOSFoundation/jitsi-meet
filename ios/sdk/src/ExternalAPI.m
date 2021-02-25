@@ -22,8 +22,19 @@ static NSString * const hangUpAction = @"org.jitsi.meet.HANG_UP";
 static NSString * const setAudioMutedAction = @"org.jitsi.meet.SET_AUDIO_MUTED";
 static NSString * const sendEndpointTextMessageAction = @"org.jitsi.meet.SEND_ENDPOINT_TEXT_MESSAGE";
 static NSString * const toggleScreenShareAction = @"org.jitsi.meet.TOGGLE_SCREEN_SHARE";
+static NSString * const retrieveParticipantsInfoAction = @"org.jitsi.meet.RETRIEVE_PARTICIPANTS_INFO";
+static NSString * const openChatAction = @"org.jitsi.meet.OPEN_CHAT";
+static NSString * const closeChatAction = @"org.jitsi.meet.CLOSE_CHAT";
+static NSString * const sendChatMessageAction = @"org.jitsi.meet.SEND_CHAT_MESSAGE";
 
 @implementation ExternalAPI
+
+static NSMapTable<NSString*, void (^)(NSArray* participantsInfo)> *participantInfoCompletionHandlers;
+
+__attribute__((constructor))
+static void initializeViewsMap() {
+    participantInfoCompletionHandlers = [NSMapTable strongToStrongObjectsMapTable];
+}
 
 RCT_EXPORT_MODULE();
 
@@ -32,7 +43,11 @@ RCT_EXPORT_MODULE();
         @"HANG_UP": hangUpAction,
         @"SET_AUDIO_MUTED" : setAudioMutedAction,
         @"SEND_ENDPOINT_TEXT_MESSAGE": sendEndpointTextMessageAction,
-        @"TOGGLE_SCREEN_SHARE": toggleScreenShareAction
+        @"TOGGLE_SCREEN_SHARE": toggleScreenShareAction,
+        @"RETRIEVE_PARTICIPANTS_INFO": retrieveParticipantsInfoAction,
+        @"OPEN_CHAT": openChatAction,
+        @"CLOSE_CHAT": closeChatAction,
+        @"SEND_CHAT_MESSAGE": sendChatMessageAction
     };
 };
 
@@ -48,7 +63,15 @@ RCT_EXPORT_MODULE();
 }
 
 - (NSArray<NSString *> *)supportedEvents {
-    return @[ hangUpAction, setAudioMutedAction, sendEndpointTextMessageAction, toggleScreenShareAction ];
+    return @[ hangUpAction,
+              setAudioMutedAction,
+              sendEndpointTextMessageAction,
+              toggleScreenShareAction,
+              retrieveParticipantsInfoAction,
+              openChatAction,
+              closeChatAction,
+              sendChatMessageAction
+    ];
 }
 
 /**
@@ -76,12 +99,26 @@ RCT_EXPORT_METHOD(sendEvent:(NSString *)name
     if (!delegate) {
         return;
     }
+    
+    if ([name isEqual: @"PARTICIPANTS_INFO_RETRIEVED"]) {
+        [self onParticipantsInfoRetrieved: data];
+        return;
+    }
 
     SEL sel = NSSelectorFromString([self methodNameFromEventName:name]);
 
     if (sel && [delegate respondsToSelector:sel]) {
         [delegate performSelector:sel withObject:data];
     }
+}
+
+- (void) onParticipantsInfoRetrieved:(NSDictionary *)data {
+    NSArray *participantsInfoArray = [data objectForKey:@"participantsInfo"];
+    NSString *completionHandlerId = [data objectForKey:@"requestId"];
+    
+    void (^completionHandler)(NSArray*) = [participantInfoCompletionHandlers objectForKey:completionHandlerId];
+    completionHandler(participantsInfoArray);
+    [participantInfoCompletionHandlers removeObjectForKey:completionHandlerId];
 }
 
 /**
@@ -116,17 +153,44 @@ RCT_EXPORT_METHOD(sendEvent:(NSString *)name
     [self sendEventWithName:setAudioMutedAction body:data];
 }
 
-- (void)sendEndpointTextMessage:(NSString*)to :(NSString*)message {
-    NSDictionary *data = @{
-        @"to": to,
-        @"message": message
-    };
+- (void)sendEndpointTextMessage:(NSString*)message :(NSString*)to {
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
+    data[@"to"] = to;
+    data[@"message"] = message;
     
     [self sendEventWithName:sendEndpointTextMessageAction body:data];
 }
 
 - (void)toggleScreenShare {
     [self sendEventWithName:toggleScreenShareAction body:nil];
+}
+
+- (void)retrieveParticipantsInfo:(void (^)(NSArray*))completionHandler {
+    NSString *completionHandlerId = [[NSUUID UUID] UUIDString];
+    NSDictionary *data = @{ @"requestId": completionHandlerId};
+    
+    [participantInfoCompletionHandlers setObject:[completionHandler copy] forKey:completionHandlerId];
+    
+    [self sendEventWithName:retrieveParticipantsInfoAction body:data];
+}
+
+- (void)openChat:(NSString*)to {
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
+    data[@"to"] = to;
+    
+    [self sendEventWithName:openChatAction body:data];
+}
+
+- (void)closeChat {
+    [self sendEventWithName:closeChatAction body:nil];
+}
+
+- (void)sendChatMessage:(NSString*)message :(NSString*)to {
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
+    data[@"to"] = to;
+    data[@"message"] = message;
+    
+    [self sendEventWithName:sendChatMessageAction body:data];
 }
 
 @end

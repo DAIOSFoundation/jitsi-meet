@@ -35,6 +35,7 @@ function getPerformanceHints(size) {
 const config = {
     devServer: {
         https: true,
+        host: '0.0.0.0',
         inline: true,
         proxy: {
             '/': {
@@ -194,12 +195,6 @@ module.exports = [
             'app.bundle': './app.js'
         },
         performance: getPerformanceHints(7 * 1024 * 1024)
-    }),
-    Object.assign({}, config, {
-        entry: {
-            'device_selection_popup_bundle': './react/features/settings/popup.js'
-        },
-        performance: getPerformanceHints(750 * 1024)
     }),
     Object.assign({}, config, {
         entry: {
