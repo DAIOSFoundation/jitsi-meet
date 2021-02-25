@@ -70,8 +70,6 @@ export default class AbstractMuteEveryonesVideoDialog<P: Props> extends Abstract
             exclude
         } = this.props;
 
-        console.log("exclude", exclude)
-        console.log("MEDIA_TYPE.VIDEO", MEDIA_TYPE.VIDEO)
         dispatch(muteAllParticipants(exclude, MEDIA_TYPE.VIDEO));
 
         return true;
