@@ -63,13 +63,13 @@ class MuteEveryonesVideoButton extends AbstractButton<Props, *> {
 function _mapStateToProps(state: Object, ownProps: Props) {
     const localParticipant = getLocalParticipant(state);
     const isModerator = localParticipant.role === PARTICIPANT_ROLE.MODERATOR;
-    const { visible } = ownProps;
+    // const { visible } = ownProps;
     const { disableRemoteMute } = state['features/base/config'];
 
     return {
         isModerator,
         localParticipantId: localParticipant.id,
-        visible: visible && isModerator && !disableRemoteMute
+        visible: isModerator && !disableRemoteMute
     };
 }
 
