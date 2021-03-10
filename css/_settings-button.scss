@@ -3,20 +3,18 @@
 
     .toolbox-icon {
         align-items: center;
+        border-radius: 3px;
         cursor: pointer;
         display: flex;
-        border-radius: 50%;
         justify-content: center;
-        width: 40px;
-        height: 40px;
 
         &.disabled, .disabled & {
             cursor: initial;
-            color: #3e65dd;
-            background-color: #a4b8d1;
+            color: #929292;
+            background-color: #36383c;
 
             &:hover {
-                background-color: #2242a6;
+                background-color: #36383c;
             }
         }
     }
