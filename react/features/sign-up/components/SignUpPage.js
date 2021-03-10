@@ -90,8 +90,8 @@ const SignUpPage = () => {
     }
 
     const onChange = (e, state, valid) => {
-        dispatch(textChangeActions[state](e.target.value));
-        if (valid === true || valid === false) {
+            dispatch(textChangeActions[state](e.target.value));
+        if (typeof valid === 'boolean') {
             dispatch(textValidActions[state](valid))
         }
     }

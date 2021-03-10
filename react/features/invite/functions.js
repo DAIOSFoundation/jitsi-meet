@@ -589,6 +589,31 @@ export function shouldDisplayDialIn(dialIn: Object) {
 }
 
 /**
+ * Returns if multiple dial-in numbers are available.
+ *
+ * @param {Array<string>|Object} dialInNumbers - The array or object of
+ * numbers to check.
+ * @private
+ * @returns {boolean}
+ */
+export function hasMultipleNumbers(dialInNumbers: ?Object) {
+    if (!dialInNumbers) {
+        return false;
+    }
+
+    if (Array.isArray(dialInNumbers)) {
+        return dialInNumbers.length > 1;
+    }
+
+    // deprecated and will be removed
+    const { numbers } = dialInNumbers;
+
+    // eslint-disable-next-line no-confusing-arrow
+    return Boolean(numbers && Object.values(numbers).map(a => Array.isArray(a) ? a.length : 0)
+        .reduce((a, b) => a + b) > 1);
+}
+
+/**
  * Sets the internal state of which dial-in number to display.
  *
  * @param {Array<string>|Object} dialInNumbers - The array or object of
@@ -719,4 +744,23 @@ export async function executeDialOutStatusRequest(url: string, reqId: string) {
     const json = await res.json();
 
     return res.ok ? json : Promise.reject(json);
+}
+
+export const sharingFeatures = {
+    email: 'email',
+    url: 'url',
+    dialIn: 'dial-in',
+    embed: 'embed'
+};
+
+/**
+ * Returns true if a specific sharing feature is enabled in interface configuration.
+ *
+ * @param {string} sharingFeature - The sharing feature to check.
+ * @returns {boolean}
+ */
+export function isSharingEnabled(sharingFeature: string) {
+    return typeof interfaceConfig === 'undefined'
+        || typeof interfaceConfig.SHARING_FEATURES === 'undefined'
+        || (interfaceConfig.SHARING_FEATURES.length && interfaceConfig.SHARING_FEATURES.indexOf(sharingFeature) > -1);
 }

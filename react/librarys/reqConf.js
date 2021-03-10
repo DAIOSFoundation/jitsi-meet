@@ -1,4 +1,4 @@
-const host = "https://dvision-api.daib.io/v1";
+const host = "http://localhost/v1";
 // "https://dvision-api.daib.io/v1"
 
 export const urls = {

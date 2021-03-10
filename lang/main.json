@@ -314,6 +314,7 @@
         "userID": "user id",
         "user": "user",
         "userPassword": "user password",
+        "videoLink": "Video link",
         "WaitForHostMsg": "The conference <b>{{room}}</b> has not yet started. If you are the host then please authenticate. Otherwise, please wait for the host to arrive.",
         "WaitForHostMsgWOk": "The conference <b>{{room}}</b> has not yet started. If you are the host then please press Ok to authenticate. Otherwise, please wait for the host to arrive.",
         "WaitingForHost": "Waiting for the host ...",
@@ -739,7 +740,7 @@
             "remoteVideoMute": "Disable camera of participant",
             "security": "Security options",
             "Settings": "Toggle settings",
-            "sharedvideo": "Toggle Youtube video sharing",
+            "sharedvideo": "Toggle YouTube video sharing",
             "shareRoom": "Invite someone",
             "shareYourScreen": "Toggle screenshare",
             "shortcuts": "Toggle shortcuts",
@@ -752,6 +753,7 @@
             "videoblur": "Toggle video blur"
         },
         "addPeople": "Add people to your call",
+        "audioSettings": "Audio settings",
         "audioOnlyOff": "Disable low bandwidth mode",
         "audioOnlyOn": "Enable low bandwidth mode",
         "audioRoute": "Select the sound device",
@@ -812,6 +814,7 @@
         "tileViewToggle": "Toggle tile view",
         "toggleCamera": "Toggle camera",
         "videomute": "Start / Stop camera",
+        "videoSettings": "Video settings",
         "startvideoblur": "Blur my background",
         "stopvideoblur": "Disable background blur"
     },
