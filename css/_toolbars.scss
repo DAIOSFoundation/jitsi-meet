@@ -110,8 +110,8 @@
     padding: 6px;
     text-align: center;
 
-    > div {
-        margin-left: 6px;
+    >div {
+        margin-left: 8px;
 
         &:first-child {
             margin-left: 0;
@@ -163,7 +163,11 @@
 
     &.disabled {
         cursor: initial;
-        color: #3b475c;
+        color: #929292;
+
+        svg {
+            fill: #929292;
+        }
     }
 
     @media (hover: hover) and (pointer: fine) {
