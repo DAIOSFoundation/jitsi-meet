@@ -28,6 +28,13 @@ const WelcomePageMain = () => {
         // dispatch(setRoom())
     }
 
+    // 회원가입 페이지 이동
+    const onClickSignUp = () => {
+        history.push({
+            pathname: `/auth/signUp`,
+        });
+    }
+
     // WelcomPageMain, 화상회의 겹치는 현상 분기처리 (WelcomPageMain 페이지가 아니면 null 반환)
     if (document.location.pathname !== '/') {
         return null;
@@ -83,7 +90,12 @@ const WelcomePageMain = () => {
                             opacity: 0.7
                         }}>DVision is the best of Video Business Solution in the Next Normal age.</span>
                     </div>
-
+                    <button onClick={onClickSignUp}
+                            className='welcomePageMainButton'>
+                        <text style={{zIndex: 1, color: '#0d2656'}}>
+                            회원가입
+                        </text>
+                    </button>
                     <button onClick={onClickMeet}
                             className='welcomePageMainButton'>
                         <text style={{zIndex: 1, color: '#0d2656'}}>
