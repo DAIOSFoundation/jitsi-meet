@@ -242,6 +242,7 @@ class WelcomePage extends AbstractWelcomePage {
                                 </span>
                             </button>
                             <SettingsButton
+                                welcome={true}
                                 defaultTab={SETTINGS_TABS.CALENDAR}/>
                             {showAdditionalToolbarContent
                                 ? <div

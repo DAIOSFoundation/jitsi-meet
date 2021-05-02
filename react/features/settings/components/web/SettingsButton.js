@@ -2,7 +2,7 @@
 
 import { createToolbarEvent, sendAnalytics } from '../../../analytics';
 import { translate } from '../../../base/i18n';
-import { IconSettings } from '../../../base/icons';
+import { IconSettings, IconSettingsBlue } from '../../../base/icons';
 import { connect } from '../../../base/redux';
 import { AbstractButton, type AbstractButtonProps } from '../../../base/toolbox/components';
 import { openSettingsDialog } from '../../actions';
@@ -29,7 +29,7 @@ type Props = AbstractButtonProps & {
  */
 class SettingsButton extends AbstractButton<Props, *> {
     accessibilityLabel = 'toolbar.accessibilityLabel.Settings';
-    icon = IconSettings;
+    icon = this.props.welcome ? IconSettingsBlue : IconSettings;
     label = 'toolbar.Settings';
 
     /**

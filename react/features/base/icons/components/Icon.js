@@ -70,33 +70,19 @@ export default function Icon(props: Props) {
     } = styleTypeToObject(style ?? {});
     const calculatedColor = color ?? styleColor ?? DEFAULT_COLOR;
     const calculatedSize = size ?? styleSize ?? DEFAULT_SIZE;
-    // Setting 버튼 분기처리 ( 버튼 이름이 Setting 버튼일 시 테마색 지정 )
-    // console.log("props.src.name =>", props.src.name);
+
     return (
         <div>
-            {
-                (props.src.name === 'SvgSettings' || props.src.name === 'xr') ?
-                    <Container
-                        onClick={onClick}
-                        style={restStyle}>
-                        <IconComponent
-                            fill={'#3f83ff'}
-                            height={calculatedSize}
-                            id={id}
-                            width={calculatedSize}/>
-                    </Container>
-                    :
-                    <Container
-                        className={`jitsi-icon ${className}`}
-                        onClick={onClick}
-                        style={restStyle}>
-                        <IconComponent
-                            fill={calculatedColor}
-                            height={calculatedSize}
-                            id={id}
-                            width={calculatedSize}/>
-                    </Container>
-            }
+            <Container
+                className={`jitsi-icon ${className}`}
+                onClick={onClick}
+                style={restStyle}>
+                <IconComponent
+                    fill={calculatedColor}
+                    height={calculatedSize}
+                    id={id}
+                    width={calculatedSize}/>
+            </Container>
         </div>
     );
 }
