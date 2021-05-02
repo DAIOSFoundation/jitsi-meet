@@ -141,7 +141,7 @@ const LoginPage = () => {
         setCardAnimation("");
     }, 700);
 
-    // 로그인 실패 문구
+    // 로그인 실패 문구 
     const loginFailed = useMemo(() => {
         let loginFailedMessage = ''
         if (loginErrorMsg) {
