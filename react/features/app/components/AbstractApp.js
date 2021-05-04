@@ -74,7 +74,7 @@ export class AbstractApp extends BaseApp<Props, *> {
     }
 
     /**
-     * Creates an extra {@link ReactElement}s to be added (unconditionaly)
+     * Creates an extra {@link ReactElement}s to be added (unconditionally)
      * alongside the main element.
      *
      * @abstract

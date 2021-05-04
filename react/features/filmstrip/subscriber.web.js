@@ -1,9 +1,9 @@
 // @flow
 
-import Filmstrip from '../../../modules/UI/videolayout/Filmstrip';
-import VideoLayout from '../../../modules/UI/videolayout/VideoLayout';
 import { StateListenerRegistry, equals } from '../base/redux';
+import { clientResized } from '../base/responsive-ui';
 import { setFilmstripVisible } from '../filmstrip/actions';
+import { getParticipantsPaneOpen } from '../participants-pane/functions';
 import { setOverflowDrawer } from '../toolbox/actions.web';
 import { getCurrentLayout, getTileViewGridDimensions, shouldDisplayTileView, LAYOUTS } from '../video-layout';
 
@@ -71,39 +71,16 @@ StateListenerRegistry.register(
         case LAYOUTS.HORIZONTAL_FILMSTRIP_VIEW:
             store.dispatch(setHorizontalViewDimensions(state['features/base/responsive-ui'].clientHeight));
             break;
-        case LAYOUTS.VERTICAL_FILMSTRIP_VIEW:
-            // Once the thumbnails are reactified this should be moved there too.
-            Filmstrip.resizeThumbnailsForVerticalView();
-            break;
         }
     });
 
 /**
- * Handles on stage participant updates.
- */
-StateListenerRegistry.register(
-    /* selector */ state => state['features/large-video'].participantId,
-    /* listener */ (participantId, store, oldParticipantId) => {
-        const newThumbnail = VideoLayout.getSmallVideo(participantId);
-        const oldThumbnail = VideoLayout.getSmallVideo(oldParticipantId);
-
-        if (newThumbnail) {
-            newThumbnail.updateView();
-        }
-
-        if (oldThumbnail) {
-            oldThumbnail.updateView();
-        }
-    }
-);
-
-/**
- * Listens for changes in the chat state to calculate the dimensions of the tile view grid and the tiles.
+ * Listens for changes in the chat state to recompute available width.
  */
 StateListenerRegistry.register(
     /* selector */ state => state['features/chat'].isOpen,
     /* listener */ (isChatOpen, store) => {
-        const state = store.getState();
+        const { innerWidth, innerHeight } = window;
 
         if (isChatOpen) {
             // $FlowFixMe
@@ -113,22 +90,21 @@ StateListenerRegistry.register(
             document.body.classList.remove('shift-right');
         }
 
-        if (shouldDisplayTileView(state)) {
-            const gridDimensions = getTileViewGridDimensions(state);
-            const { clientHeight, clientWidth } = state['features/base/responsive-ui'];
-
-            store.dispatch(
-                setTileViewDimensions(
-                    gridDimensions,
-                    {
-                        clientHeight,
-                        clientWidth
-                    },
-                    store
-                )
-            );
-        }
+        store.dispatch(clientResized(innerWidth, innerHeight));
     });
+
+/**
+ * Listens for changes in the participant pane state to calculate the
+ * dimensions of the tile view grid and the tiles.
+ */
+StateListenerRegistry.register(
+    /* selector */ getParticipantsPaneOpen,
+    /* listener */ (isOpen, store) => {
+        const { innerWidth, innerHeight } = window;
+
+        store.dispatch(clientResized(innerWidth, innerHeight));
+    });
+
 
 /**
  * Listens for changes in the client width to determine whether the overflow menu(s) should be displayed as drawers.

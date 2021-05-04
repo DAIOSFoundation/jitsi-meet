@@ -15,8 +15,10 @@ export default [
     'abTesting',
     'analytics.disabled',
     'audioLevelsInterval',
+    'audioQuality',
     'apiLogLevels',
     'avgRtpStatsN',
+    'backgroundAlpha',
 
     /**
      * The display name of the CallKit call representing the conference/meeting
@@ -84,6 +86,7 @@ export default [
     'disableH264',
     'disableHPF',
     'disableInviteFunctions',
+    'disableJoinLeaveSounds',
     'disableLocalVideoFlip',
     'disableNS',
     'disableProfile',
@@ -97,6 +100,7 @@ export default [
     'disableTileView',
     'displayJids',
     'doNotStoreRoom',
+    'doNotFlipLocalVideo',
     'dropbox',
     'e2eping',
     'enableDisplayNameInStats',
@@ -149,6 +153,7 @@ export default [
     'resolution',
     'startAudioMuted',
     'startAudioOnly',
+    'startLastN',
     'startScreenSharing',
     'startSilent',
     'startVideoMuted',

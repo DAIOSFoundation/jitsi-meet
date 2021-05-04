@@ -238,6 +238,36 @@ body.welcome-page {
         font-weight: bold;
         border: none;
         border-radius: 19px;
+    }
+
+    .welcome-watermark {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+
+        .watermark.leftwatermark {
+            width: $welcomePageWatermarkWidth;
+            height: $welcomePageWatermarkHeight;
+        }
+    }
+
+    &.without-content {
+        .welcome-card {
+            min-width: 500px;
+            max-width: 580px;
+        }
+    }
+
+    &.without-footer {
+        justify-content: start;
+    }
+
+    .welcome-cards-container {
+        color:#131519;
+        padding-top: 40px;
+    }
+
+    .welcome-card-row {
         display: flex;
         align-items: center;
         justify-content: center;

@@ -1,6 +1,13 @@
 /* eslint-disable no-unused-vars, no-var, max-len */
 /* eslint sort-keys: ["error", "asc", {"caseSensitive": false}] */
 
+/**
+ * !!!IMPORTANT!!!
+ *
+ * This file is considered deprecated. All options will eventually be moved to
+ * config.js, and no new options should be added here.
+ */
+
 var interfaceConfig = {
     APP_NAME: 'DVision',
     AUDIO_LEVEL_PRIMARY_COLOR: 'rgba(255,255,255,0.4)',
@@ -208,7 +215,7 @@ var interfaceConfig = {
     //     'fodeviceselection', 'hangup', 'profile', 'chat', 'recording',
     //     'livestreaming', 'etherpad', 'sharedvideo', 'settings', 'raisehand',
     //     'videoquality', 'filmstrip', 'invite', 'feedback', 'stats', 'shortcuts',
-    //     'tileview', 'videobackgroundblur', 'download', 'help', 'mute-everyone', 'security'
+    //     'tileview', 'select-background', 'download', 'help', 'mute-everyone', 'mute-video-everyone', 'security'
     // ],
 
     TOOLBAR_TIMEOUT: 4000,

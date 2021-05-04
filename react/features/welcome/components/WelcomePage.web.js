@@ -179,6 +179,8 @@ class WelcomePage extends AbstractWelcomePage {
         const showAdditionalCard = this._shouldShowAdditionalCard();
         const showAdditionalContent = this._shouldShowAdditionalContent();
         const showAdditionalToolbarContent = this._shouldShowAdditionalToolbarContent();
+        const contentClassName = showAdditionalContent ? 'with-content' : 'without-content';
+        const footerClassName = DISPLAY_WELCOME_FOOTER ? 'with-footer' : 'without-footer';
 
         const cookies = new Cookies();
 
@@ -201,8 +203,7 @@ class WelcomePage extends AbstractWelcomePage {
         return (
             <div
                 style={{position: 'absolute', zIndex: 1, height: '100%'}}
-                className={`welcome ${showAdditionalContent
-                    ? 'with-content' : 'without-content'}`}
+                className={`welcome ${contentClassName} ${footerClassName}`}
                 id='welcome_page'>
                 <div className='welcome-illust'>
                     <div className='welcome-watermark'>

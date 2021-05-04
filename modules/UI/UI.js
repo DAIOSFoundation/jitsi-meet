@@ -7,7 +7,7 @@ import EventEmitter from 'events';
 import Logger from 'jitsi-meet-logger';
 
 import { isMobileBrowser } from '../../react/features/base/environment/utils';
-import { toggleChat } from '../../react/features/chat';
+import { setColorAlpha } from '../../react/features/base/util';
 import { setDocumentUrl } from '../../react/features/etherpad';
 import { setWBODocumentUrl } from '../../react/features/wbo';
 import { setFilmstripVisible } from '../../react/features/filmstrip';
@@ -118,24 +118,12 @@ UI.initConference = function() {
 };
 
 /**
- * Returns the shared document manager object.
- * @return {EtherpadManager} the shared document manager object
- */
-UI.getSharedVideoManager = function() {
-    return sharedVideoManager;
-};
-
-/**
  * Starts the UI module and initializes all related components.
  *
  * @returns {boolean} true if the UI is ready and the conference should be
  * established, false - otherwise (for example in the case of welcome page)
  */
 UI.start = function() {
-    // Set the defaults for prompt dialogs.
-    $.prompt.setDefaults({ persistent: false });
-
-    VideoLayout.init(eventEmitter);
     VideoLayout.initLargeVideo();
 
     // Do not animate the video area on UI start (second argument passed into
@@ -150,17 +138,22 @@ UI.start = function() {
         $('body').addClass('mobile-browser');
     } else {
         $('body').addClass('desktop-browser');
+
+        if (config.backgroundAlpha !== undefined) {
+            const backgroundColor = $('body').css('background-color');
+            const alphaColor = setColorAlpha(backgroundColor, config.backgroundAlpha);
+
+            $('body').css('background-color', alphaColor);
+        }
     }
 
     if (config.iAmRecorder) {
         // in case of iAmSipGateway keep local video visible
         if (!config.iAmSipGateway) {
-            VideoLayout.setLocalVideoVisible(false);
             APP.store.dispatch(setNotificationsEnabled(false));
         }
 
         APP.store.dispatch(setToolboxEnabled(false));
-        UI.messageHandler.enablePopups(false);
     }
 };
 
@@ -197,14 +190,6 @@ UI.unbindEvents = () => {
             'webkitfullscreenchange mozfullscreenchange fullscreenchange');
 
     $(window).off('resize');
-};
-
-/**
- * Show local video stream on UI.
- * @param {JitsiTrack} track stream to show
- */
-UI.addLocalVideoStream = track => {
-    VideoLayout.changeLocalVideo(track);
 };
 
 /**
@@ -259,14 +244,6 @@ UI.addUser = function(user) {
 };
 
 /**
- * Update videotype for specified user.
- * @param {string} id user id
- * @param {string} newVideoType new videotype
- */
-UI.onPeerVideoTypeChanged
-    = (id, newVideoType) => VideoLayout.onVideoTypeChanged(id, newVideoType);
-
-/**
  * Updates the user status.
  *
  * @param {JitsiParticipant} user - The user which status we need to update.
@@ -302,11 +279,6 @@ UI.toggleFilmstrip = function() {
 };
 
 /**
- * Toggles the visibility of the chat panel.
- */
-UI.toggleChat = () => APP.store.dispatch(toggleChat());
-
-/**
  * Sets muted audio state for participant
  */
 UI.setAudioMuted = function(id) {
@@ -320,19 +292,14 @@ UI.setAudioMuted = function(id) {
  * Sets muted video state for participant
  */
 UI.setVideoMuted = function(id) {
-    VideoLayout.onVideoMute(id);
+    VideoLayout._updateLargeVideoIfDisplayed(id, true);
+
     if (APP.conference.isLocalId(id)) {
         APP.conference.updateVideoIconEnabled();
     }
 };
 
-/**
- * Triggers an update of remote video and large video displays so they may pick
- * up any state changes that have occurred elsewhere.
- *
- * @returns {void}
- */
-UI.updateAllVideos = () => VideoLayout.updateAllVideos();
+UI.updateLargeVideo = (id, forceUpdate) => VideoLayout.updateLargeVideo(id, forceUpdate);
 
 /**
  * Adds a listener that would be notified on the given type of event.
@@ -354,24 +321,12 @@ UI.removeAllListeners = function() {
 };
 
 /**
- * Removes the given listener for the given type of event.
- *
- * @param type the type of the event we're listening for
- * @param listener the listener we want to remove
- */
-UI.removeListener = function(type, listener) {
-    eventEmitter.removeListener(type, listener);
-};
-
-/**
  * Emits the event of given type by specifying the parameters in options.
  *
  * @param type the type of the event we're emitting
  * @param options the parameters for the event
  */
 UI.emitEvent = (type, ...options) => eventEmitter.emit(type, ...options);
-
-UI.clickOnVideo = videoNumber => VideoLayout.togglePin(videoNumber);
 
 // Used by torture.
 UI.showToolbar = timeout => APP.store.dispatch(showToolbox(timeout));

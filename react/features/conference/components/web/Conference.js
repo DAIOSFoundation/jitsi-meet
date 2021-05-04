@@ -8,11 +8,14 @@ import { getConferenceNameForTitle } from '../../../base/conference';
 import { connect, disconnect } from '../../../base/connection';
 import { translate } from '../../../base/i18n';
 import { connect as reactReduxConnect } from '../../../base/redux';
+import { setColorAlpha } from '../../../base/util';
 import { Chat } from '../../../chat';
 import { Filmstrip } from '../../../filmstrip';
 import { CalleeInfoContainer } from '../../../invite';
 import { LargeVideo } from '../../../large-video';
 import { KnockingParticipantList, LobbyScreen } from '../../../lobby';
+import { ParticipantsPane } from '../../../participants-pane/components';
+import { getParticipantsPaneOpen } from '../../../participants-pane/functions';
 import { Prejoin, isPrejoinPageVisible } from '../../../prejoin';
 import { fullScreenChanged, showToolbox } from '../../../toolbox/actions.web';
 import { closeChatWindow } from '../../../chat';
@@ -25,7 +28,7 @@ import {
 } from '../AbstractConference';
 import type { AbstractProps } from '../AbstractConference';
 
-import Labels from './Labels';
+import ConferenceInfo from './ConferenceInfo';
 import { default as Notice } from './Notice';
 
 import BasicModal from '../../../../components/Modal/BasicModal';
@@ -65,14 +68,19 @@ const LAYOUT_CLASSNAMES = {
 type Props = AbstractProps & {
 
     /**
-     * Whether the local participant is recording the conference.
+     * The alpha(opacity) of the background
      */
-    _iAmRecorder: boolean,
+    _backgroundAlpha: number,
 
     /**
      * Returns true if the 'lobby screen' is visible.
      */
     _isLobbyScreenVisible: boolean,
+
+    /**
+     * If participants pane is visible or not.
+     */
+    _isParticipantsPaneVisible: boolean,
 
     /**
      * The CSS class to apply to the root of {@link Conference} to modify the
@@ -103,6 +111,7 @@ class Conference extends AbstractConference<Props, *> {
     _onFullScreenChange: Function;
     _onShowToolbar: Function;
     _originalOnShowToolbar: Function;
+    _setBackground: Function;
 
     /**
      * Initializes a new Conference instance.
@@ -127,7 +136,7 @@ class Conference extends AbstractConference<Props, *> {
         // Bind event handler so it is only bound once for every instance.
         this._onFullScreenChange = this._onFullScreenChange.bind(this);
         this._closeChatWindow = this._closeChatWindow.bind(this);
-
+        this._setBackground = this._setBackground.bind(this);
     }
 
     /**
@@ -182,39 +191,73 @@ class Conference extends AbstractConference<Props, *> {
      */
     render() {
         const {
-            _iAmRecorder,
             _isLobbyScreenVisible,
+            _isParticipantsPaneVisible,
             _layoutClassName,
             _showPrejoin
         } = this.props;
-        const hideLabels = _iAmRecorder;
 
         return (
-            <div
-                className = { _layoutClassName }
-                id = 'videoconference_page'
-                onMouseMove = { this._onShowToolbar }>
-                <BasicModal/>
-                <Notice />
-                <div id = 'videospace' style={{
-                    zIndex: 1
-                }}>
-                    <LargeVideo _closeChatWindow = {this._closeChatWindow}/>
-                    <KnockingParticipantList />
-                    <Filmstrip _closeChatWindow = {this._closeChatWindow}/>
-                    { hideLabels || <Labels /> }
+            <div id = 'layout_wrapper'>
+                <div
+                    className = { _layoutClassName }
+                    id = 'videoconference_page'
+                    onMouseMove = { this._onShowToolbar }
+                    ref = { this._setBackground }>
+                    <BasicModal/>
+                    <ConferenceInfo />
+
+                    <Notice />
+                    <div id = 'videospace' style={{
+                        zIndex: 1
+                    }}>
+                        <LargeVideo _closeChatWindow = {this._closeChatWindow}/>
+                        {!_isParticipantsPaneVisible && <KnockingParticipantList />}
+                        <Filmstrip _closeChatWindow = {this._closeChatWindow}/>
+                    </div>
+
+                    { _showPrejoin || _isLobbyScreenVisible || <Toolbox /> }
+                    <Chat />
+
+                    { this.renderNotificationsContainer() }
+
+                    <CalleeInfoContainer />
+
+                    { _showPrejoin && <Prejoin />}
+
                 </div>
-
-                { _showPrejoin || _isLobbyScreenVisible || <Toolbox /> }
-                <Chat />
-
-                { this.renderNotificationsContainer() }
-
-                <CalleeInfoContainer />
-
-                { _showPrejoin && <Prejoin />}
+                <ParticipantsPane />
             </div>
         );
+    }
+
+    /**
+     * Sets custom background opacity based on config. It also applies the
+     * opacity on parent element, as the parent element is not accessible directly,
+     * only though it's child.
+     *
+     * @param {Object} element - The DOM element for which to apply opacity.
+     *
+     * @private
+     * @returns {void}
+     */
+    _setBackground(element) {
+        if (!element) {
+            return;
+        }
+
+        if (this.props._backgroundAlpha !== undefined) {
+            const elemColor = element.style.background;
+            const alphaElemColor = setColorAlpha(elemColor, this.props._backgroundAlpha);
+
+            element.style.background = alphaElemColor;
+            if (element.parentElement) {
+                const parentColor = element.parentElement.style.background;
+                const alphaParentColor = setColorAlpha(parentColor, this.props._backgroundAlpha);
+
+                element.parentElement.style.background = alphaParentColor;
+            }
+        }
     }
 
     /**
@@ -277,8 +320,9 @@ class Conference extends AbstractConference<Props, *> {
 function _mapStateToProps(state) {
     return {
         ...abstractMapStateToProps(state),
-        _iAmRecorder: state['features/base/config'].iAmRecorder,
+        _backgroundAlpha: state['features/base/config'].backgroundAlpha,
         _isLobbyScreenVisible: state['features/base/dialog']?.component === LobbyScreen,
+        _isParticipantsPaneVisible: getParticipantsPaneOpen(state),
         _layoutClassName: LAYOUT_CLASSNAMES[getCurrentLayout(state)],
         _roomName: getConferenceNameForTitle(state),
         _showPrejoin: isPrejoinPageVisible(state)

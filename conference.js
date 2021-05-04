@@ -1,10 +1,12 @@
 /* global APP, JitsiMeetJS, config, interfaceConfig */
 
+import { jitsiLocalStorage } from '@jitsi/js-utils';
 import EventEmitter from 'events';
 import Logger from 'jitsi-meet-logger';
 
 import { openConnection } from './connection';
 import { ENDPOINT_TEXT_MESSAGE_NAME } from './modules/API/constants';
+import { AUDIO_ONLY_SCREEN_SHARE_NO_TRACK } from './modules/UI/UIErrors';
 import AuthHandler from './modules/UI/authentication/AuthHandler';
 import UIUtil from './modules/UI/util/UIUtil';
 import mediaDeviceHelper from './modules/devices/mediaDeviceHelper';
@@ -125,6 +127,7 @@ import {
     makePrecallTest
 } from './react/features/prejoin';
 import { disableReceiver, stopReceiver } from './react/features/remote-control';
+import { setScreenAudioShareState, isScreenAudioShared } from './react/features/screen-share/';
 import { toggleScreenshotCaptureEffect } from './react/features/screenshot-capture';
 import { setSharedVideoStatus } from './react/features/shared-video/actions';
 import { AudioMixerEffect } from './react/features/stream-effects/audio-mixer/AudioMixerEffect';
@@ -378,7 +381,6 @@ class ConferenceConnector {
         if (this.reconnectTimeout !== null) {
             clearTimeout(this.reconnectTimeout);
         }
-        AuthHandler.closeAuth();
     }
 
     /**
@@ -393,7 +395,8 @@ class ConferenceConnector {
      *
      */
     connect() {
-        room.join();
+        // the local storage overrides here and in connection.js can be used by jibri
+        room.join(jitsiLocalStorage.getItem('xmpp_conference_password_override'));
     }
 }
 
@@ -506,7 +509,7 @@ export default {
         let tryCreateLocalTracks;
 
         // On Electron there is no permission prompt for granting permissions. That's why we don't need to
-        // spend much time displaying the overlay screen. If GUM is not resolved withing 15 seconds it will
+        // spend much time displaying the overlay screen. If GUM is not resolved within 15 seconds it will
         // probably never resolve.
         const timeout = browser.isElectron() ? 15000 : 60000;
 
@@ -568,7 +571,7 @@ export default {
 
                         if (err.name === JitsiTrackErrors.TIMEOUT && !browser.isElectron()) {
                             // In this case we expect that the permission prompt is still visible. There is no point of
-                            // executing GUM with different source. Also at the time of writting the following
+                            // executing GUM with different source. Also at the time of writing the following
                             // inconsistency have been noticed in some browsers - if the permissions prompt is visible
                             // and another GUM is executed the prompt does not change its content but if the user
                             // clicks allow the user action isassociated with the latest GUM call.
@@ -625,7 +628,7 @@ export default {
 
         // Hide the permissions prompt/overlay as soon as the tracks are
         // created. Don't wait for the connection to be made, since in some
-        // cases, when auth is rquired, for instance, that won't happen until
+        // cases, when auth is required, for instance, that won't happen until
         // the user inputs their credentials, but the dialog would be
         // overshadowed by the overlay.
         tryCreateLocalTracks.then(tracks => {
@@ -1399,9 +1402,6 @@ export default {
                     .then(() => {
                         this.localVideo = newTrack;
                         this._setSharingScreen(newTrack);
-                        if (newTrack) {
-                            APP.UI.addLocalVideoStream(newTrack);
-                        }
                         this.setVideoMuteStatus(this.isLocalVideoMuted());
                     })
                     .then(resolve)
@@ -1553,6 +1553,8 @@ export default {
             this._desktopAudioStream = undefined;
         }
 
+        APP.store.dispatch(setScreenAudioShareState(false));
+
         if (didHaveVideo) {
             promise = promise.then(() => createLocalTracksF({ devices: [ 'video' ] }))
                 .then(([ stream ]) => {
@@ -1669,6 +1671,23 @@ export default {
                 = this._turnScreenSharingOff.bind(this, didHaveVideo);
 
             const desktopVideoStream = desktopStreams.find(stream => stream.getType() === MEDIA_TYPE.VIDEO);
+            const dekstopAudioStream = desktopStreams.find(stream => stream.getType() === MEDIA_TYPE.AUDIO);
+
+            if (dekstopAudioStream) {
+                dekstopAudioStream.on(
+                    JitsiTrackEvents.LOCAL_TRACK_STOPPED,
+                    () => {
+                        logger.debug(`Local screensharing audio track stopped. ${this.isSharingScreen}`);
+
+                        // Handle case where screen share was stopped from  the browsers 'screen share in progress'
+                        // window. If audio screen sharing is stopped via the normal UX flow this point shouldn't
+                        // be reached.
+                        isScreenAudioShared(APP.store.getState())
+                            && this._untoggleScreenSharing
+                            && this._untoggleScreenSharing();
+                    }
+                );
+            }
 
             if (desktopVideoStream) {
                 desktopVideoStream.on(
@@ -1752,16 +1771,12 @@ export default {
             const isPortrait = height >= width;
             const DESKTOP_STREAM_CAP = 720;
 
-            // Config.js setting for resizing high resolution desktop tracks to 720p when presenter is turned on.
-            const resizeEnabled = config.videoQuality && config.videoQuality.resizeDesktopForPresenter;
             const highResolutionTrack
                 = (isPortrait && width > DESKTOP_STREAM_CAP) || (!isPortrait && height > DESKTOP_STREAM_CAP);
 
             // Resizing the desktop track for presenter is causing blurriness of the desktop share on chrome.
             // Disable resizing by default, enable it only when config.js setting is enabled.
-            // Firefox doesn't return width and height for desktop tracks. Therefore, track needs to be resized
-            // for creating the canvas for presenter.
-            const resizeDesktopStream = browser.isFirefox() || (highResolutionTrack && resizeEnabled);
+            const resizeDesktopStream = highResolutionTrack && config.videoQuality?.resizeDesktopForPresenter;
 
             if (resizeDesktopStream) {
                 let desktopResizeConstraints = {};
@@ -1779,7 +1794,7 @@ export default {
                     };
                 }
 
-                // Apply the contraints on the desktop track.
+                // Apply the constraints on the desktop track.
                 try {
                     await this.localVideo.track.applyConstraints(desktopResizeConstraints);
                 } catch (err) {
@@ -1837,14 +1852,28 @@ export default {
 
         return this._createDesktopTrack(options)
             .then(async streams => {
-                const desktopVideoStream = streams.find(stream => stream.getType() === MEDIA_TYPE.VIDEO);
+                let desktopVideoStream = streams.find(stream => stream.getType() === MEDIA_TYPE.VIDEO);
+
+                this._desktopAudioStream = streams.find(stream => stream.getType() === MEDIA_TYPE.AUDIO);
+
+                const { audioOnly = false } = options;
+
+                // If we're in audio only mode dispose of the video track otherwise the screensharing state will be
+                // inconsistent.
+                if (audioOnly) {
+                    desktopVideoStream.dispose();
+                    desktopVideoStream = undefined;
+
+                    if (!this._desktopAudioStream) {
+                        return Promise.reject(AUDIO_ONLY_SCREEN_SHARE_NO_TRACK);
+                    }
+                }
 
                 if (desktopVideoStream) {
                     logger.debug(`_switchToScreenSharing is using ${desktopVideoStream} for useVideoStream`);
                     await this.useVideoStream(desktopVideoStream);
                 }
 
-                this._desktopAudioStream = streams.find(stream => stream.getType() === MEDIA_TYPE.AUDIO);
 
                 if (this._desktopAudioStream) {
                     // If there is a localAudio stream, mix in the desktop audio stream captured by the screen sharing
@@ -1857,7 +1886,9 @@ export default {
                         // If no local stream is present ( i.e. no input audio devices) we use the screen share audio
                         // stream as we would use a regular stream.
                         await this.useAudioStream(this._desktopAudioStream);
+
                     }
+                    APP.store.dispatch(setScreenAudioShareState(true));
                 }
             })
             .then(() => {
@@ -1925,6 +1956,9 @@ export default {
         } else if (error.name === JitsiTrackErrors.SCREENSHARING_GENERIC_ERROR) {
             descriptionKey = 'dialog.screenSharingFailed';
             titleKey = 'dialog.screenSharingFailedTitle';
+        } else if (error === AUDIO_ONLY_SCREEN_SHARE_NO_TRACK) {
+            descriptionKey = 'notify.screenShareNoAudio';
+            titleKey = 'notify.screenShareNoAudioTitle';
         }
 
         APP.UI.messageHandler.showError({
@@ -1970,7 +2004,7 @@ export default {
             }
 
             APP.store.dispatch(updateRemoteParticipantFeatures(user));
-            logger.log(`USER ${id} connnected:`, user);
+            logger.log(`USER ${id} connected:`, user);
             APP.UI.addUser(user);
         });
 
@@ -2408,11 +2442,17 @@ export default {
             // There is no guarantee another event will trigger the update
             // immediately and in all situations, for example because a remote
             // participant is having connection trouble so no status changes.
-            APP.UI.updateAllVideos();
+            const displayedUserId = APP.UI.getLargeVideoID();
+
+            if (displayedUserId) {
+                APP.UI.updateLargeVideo(displayedUserId, true);
+            }
         });
 
         APP.UI.addListener(
-            UIEvents.TOGGLE_SCREENSHARING, this.toggleScreenSharing.bind(this)
+            UIEvents.TOGGLE_SCREENSHARING, audioOnly => {
+                this.toggleScreenSharing(undefined, { audioOnly });
+            }
         );
 
         /* eslint-disable max-params */
