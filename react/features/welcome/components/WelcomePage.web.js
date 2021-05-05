@@ -234,7 +234,6 @@ class WelcomePage extends AbstractWelcomePage {
                     <div className='header'>
                         <div className='welcome-page-settings'>
                             <button className='welcome-page-calendar-button'
-                                    style={{marginRight: 15}}
                                     onClick={onClickCalendar}>
                                 <img src={"images/icon-calendar.png"} width={20}
                                      height={20} style={{marginRight: 5}}/>

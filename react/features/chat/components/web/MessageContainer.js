@@ -93,8 +93,8 @@ export default class MessageContainer extends AbstractMessageContainer<Props> {
                 }
                 <div className='dragAndDrop' style={{
                     position: 'fixed',
-                    width: '365px',
-                    height: '81%',
+                    width: '315px',
+                    height: '84%',
                     marginTop: '5%'
                 }}>
                     <DragZone/>

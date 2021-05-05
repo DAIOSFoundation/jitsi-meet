@@ -121,9 +121,9 @@ export default class PreMeetingScreen extends PureComponent<Props> {
                             <div className = 'toolbox-content-items'>
                                 <AudioSettingsButton visible = { true } />
                                 <VideoSettingsButton visible = { true } />
-                                { ((visibleButtons && visibleButtons.includes('select-background'))
-                                   || (visibleButtons && visibleButtons.includes('videobackgroundblur')))
-                                   && <VideoBackgroundButton visible = { checkBlurSupport() } /> }
+                                {/*{ ((visibleButtons && visibleButtons.includes('select-background'))*/}
+                                {/*   || (visibleButtons && visibleButtons.includes('videobackgroundblur')))*/}
+                                {/*   && <VideoBackgroundButton visible = { checkBlurSupport() } /> }*/}
                             </div>
                         </div>
                     </div>

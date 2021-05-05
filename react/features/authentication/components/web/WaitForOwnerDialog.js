@@ -77,7 +77,7 @@ class WaitForOwnerDialog extends PureComponent<Props> {
      */
     _onIAmHost() {
         const { onAuthNow } = this.props;
-
+        console.log("로그인 테스트 !!!")
         onAuthNow && onAuthNow();
     }
 
