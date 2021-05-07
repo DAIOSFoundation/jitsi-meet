@@ -7,6 +7,7 @@ import { Dialog } from '../../../base/dialog';
 import { translate, translateToHTML } from '../../../base/i18n';
 import { connect } from '../../../base/redux';
 import { cancelWaitForOwner } from '../../actions.web';
+import Cookies from 'universal-cookie';
 
 /**
  * The type of the React {@code Component} props of {@link WaitForOwnerDialog}.
@@ -77,9 +78,15 @@ class WaitForOwnerDialog extends PureComponent<Props> {
      */
     _onIAmHost() {
         const { onAuthNow, _room: room } = this.props;
-        console.log("onAuthNow ===> ", onAuthNow)
-        console.log("room ===> ", room)
-        onAuthNow && onAuthNow();
+
+        // onAuthNow && onAuthNow();
+
+        if(onAuthNow){
+            const cookies = new Cookies();
+
+            cookies.set('room', room, {path: '/', secure: true});
+            window.location.href = `/#/auth/login`
+        }
     }
 
     /**
