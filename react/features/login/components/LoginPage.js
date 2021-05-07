@@ -141,7 +141,7 @@ const LoginPage = () => {
         setCardAnimation("");
     }, 700);
 
-    // 로그인 실패 문구 
+    // 로그인 실패 문구
     const loginFailed = useMemo(() => {
         let loginFailedMessage = ''
         if (loginErrorMsg) {
@@ -186,7 +186,7 @@ const LoginPage = () => {
             {/*        </Card>*/}
             {/*    </GridItem>*/}
             {/*</GridContainer>*/}
-            <GridContainer justify="center">
+            <GridContainer justify="center" style={{width:'100%'}}>
                 <GridItem xs={12} sm={6} md={4}>
                     <Card login className={classes[cardAnimaton]}
                           style={{padding: 15}}>

@@ -307,7 +307,7 @@
         "userPassword": "비밀번호",
         "WaitForHostMsg": "회의가 시작하기 전입니다. 방 개설자인 경우 로그인 버튼을 눌러 회의를 시작해 주시기 바랍니다.",
         "WaitForHostMsgWOk": "회의가 시작하기 전입니다. 방 개설자인 경우 로그인 버튼을 눌러 회의를 시작해 주시기 바랍니다.",
-        "WaitingForHost": "방 개설자를 기다리는 중입니다.",
+        "WaitingForHostTitle": "방 개설자를 기다리는 중입니다...",
         "Yes": "확인",
         "unlockRoom": "회의 비밀번호 제거",
         "yourEntireScreen": "전체 화면"

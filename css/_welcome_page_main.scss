@@ -31,3 +31,57 @@
     top: 25px;
     position: absolute
 }
+
+.wrapper{
+    background-image: url(../images/dvision_main_page.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position : absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.main-title{
+    font-weight: bold;
+    font-size: 42px;
+    margin-bottom: 20px;
+    padding-left: 30px;
+}
+
+.main-sub-title{
+    font-size: 25px;
+    letter-spacing: 1px;
+    opacity: 0.7;
+    padding-left: 30px;
+    margin-bottom: 150px;
+}
+
+.button-wrapper{
+    padding-left: 30px;
+}
+
+@media only screen and (max-width: 767px) {
+    .main-title{
+        font-size: 25px;
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .main-sub-title{
+        font-size: 20px;
+        padding-left: 0;
+        text-align: center;
+        margin-bottom: 100px;
+    }
+
+    .welcomePageMainButton{
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .button-wrapper{
+        padding-left: 0;
+    }
+}
